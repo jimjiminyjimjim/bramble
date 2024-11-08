@@ -6,8 +6,33 @@ import {
 } from "@builder.io/sdk-react";
 import { customComponents } from "@/components/builderRegistry";
 import Layout from "@/components/Layout";
+import Head from 'next/head';
+import { Metadata } from 'next'
 
 const PUBLIC_API_KEY = process.env.NEXT_PUBLIC_BUILDER_API_KEY
+
+
+
+export async function generateMetadata(props) {
+  const params = await props.params;
+  const searchParams = await props.searchParams;
+
+  const urlPath = "/" + (params.slug?.join("/") || "");
+
+  console.log("urlPath", urlPath);
+
+  const content = await fetchOneEntry({
+    options: getBuilderSearchParams(searchParams),
+    apiKey: PUBLIC_API_KEY,
+    model: "page",
+    userAttributes: { urlPath },
+  });
+
+  return {
+    title: `${content.data?.title} - ${content.data?.description}`,
+    descirption: content?.data?.description
+  }
+}
 
 export default async function Page(props) {
   const params = await props.params;
@@ -41,7 +66,8 @@ export default async function Page(props) {
   }
 
   return (
-    <Layout siteData={siteData.data}>
+    <>
+      <Layout siteData={siteData.data}>
       <Content
         content={content}
         apiKey={PUBLIC_API_KEY}
@@ -50,5 +76,7 @@ export default async function Page(props) {
         context={siteData.data}
       />
     </Layout>
+    </>
+   
   );
 }

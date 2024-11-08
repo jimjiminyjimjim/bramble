@@ -18,15 +18,11 @@ export default async function RootLayout({ children }) {
   const bodyFont = siteData?.data?.googleFontbody || "Roboto";
   const displayFont = siteData?.data?.googleFontHeading || "Roboto";
 
-  console.log("bodyFont", bodyFont);
-  console.log("displayFont", displayFont);
-
   const googleFontsUrl = `https://fonts.googleapis.com/css2?family=${bodyFont.replace(
     " ",
     "+"
   )}&family=${displayFont.replace(" ", "+")}&display=swap`;
 
-  console.log("googleFontsUrl", googleFontsUrl);
 
   return (
     <html lang="en" data-theme="cupcake">
