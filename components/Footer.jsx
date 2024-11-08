@@ -35,7 +35,7 @@ export const Footer = ({ social, theme }) => {
             </div>
           )}
 
-          <MailchimpSingup />
+          {/* <MailchimpSingup /> */}
         </div>
 
         {/* <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
