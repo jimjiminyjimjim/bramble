@@ -43,6 +43,13 @@ p {
   min-width: 100px;
 }
 
+a.builder-03ca72d55e144659ac51b3bff605cc25{
+  margin-top: 20px;
+  display: inline-block;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
 @keyframes bounce {
   0% {
     -webkit-transform: translateY(0);

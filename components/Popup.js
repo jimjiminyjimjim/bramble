@@ -47,26 +47,24 @@ const MailchimpFormEmbed = ({ embedHtml, siteData }) => {
 
 export function Popup({ children, formCode, siteData, ctaText, theme }) {
 
-  console.log("popup theme", theme);
   const colors = useTheme(theme);
   const [content, setContent] = useState(undefined);
 
-  console.log("POPUP COLORS", colors);
 
-  useEffect(() => {
-    // fetch initial data
-    fetchOneEntry({
-      model: "popup",
-      apiKey: "a42db2ee068342eda145f280f84fd130",
-    })
-      .then((item) => setContent(item.data.mailchimpForm))
-      .catch((err) => {
-        console.error(
-          "something went wrong while fetching Builder Content: ",
-          err
-        );
-      });
-  }, []);
+  // useEffect(() => {
+  //   // fetch initial data
+  //   fetchOneEntry({
+  //     model: "popup",
+  //     apiKey: "a42db2ee068342eda145f280f84fd130",
+  //   })
+  //     .then((item) => setContent(item.data.mailchimpForm))
+  //     .catch((err) => {
+  //       console.error(
+  //         "something went wrong while fetching Builder Content: ",
+  //         err
+  //       );
+  //     });
+  // }, []);
 
   return (
     <>
@@ -77,7 +75,7 @@ export function Popup({ children, formCode, siteData, ctaText, theme }) {
       >
         {ctaText}
       </button>
-      <dialog id="my_modal_3" className="modal modal-bottom sm:modal-middle">
+      {/* <dialog id="my_modal_3" className="modal modal-bottom sm:modal-middle">
         <div className="modal-box bg-white">
           <h3 className="text-xl font-semibold lg:text-3xl">
             {ctaText}
@@ -93,7 +91,7 @@ export function Popup({ children, formCode, siteData, ctaText, theme }) {
             {formCode && <MailchimpFormEmbed embedHtml={content} />}
           </div>
         </div>
-      </dialog>
+      </dialog> */}
     
     </>
   );

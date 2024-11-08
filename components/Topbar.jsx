@@ -5,24 +5,16 @@ import { useEffect, useState } from "react";
 import { ReactSVG } from "react-svg";
 import { anchorTags } from "@/helpers/anchorTags";
 import { useSiteData } from "@/helpers/siteData";
+import { useTheme } from "@/helpers/theme";
 
-const MenuItems = ({ items, onClick }) => (
-  <>
-    {items?.map((item, index) => {
-      return (
-        <Menu.Item key={index} className="font-medium" onClick={onClick}>
-          <a href={`#${anchorTags(item).id}`}>{item}</a>
-        </Menu.Item>
-      );
-    })}
-  </>
-);
+const MenuItems = ({ items, onClick, childItems }) => <>{childItems}</>;
 
-export const Topbar = ({ children }) => {
+export const Topbar = ({ children, theme }) => {
   const siteData = useSiteData();
   const [drawerOpened, setDrawerOpened] = useState(false);
   const [atTop, setAtTop] = useState(true);
   const [sectionIds, setSectionIds] = useState([]);
+  const colors = useTheme(theme);
 
   useEffect(() => {
     const onWindowScroll = () => {
@@ -46,9 +38,10 @@ export const Topbar = ({ children }) => {
     <>
       <div
         id="navbar-wrapper"
+        style={{ backgroundColor: "red" }}
         className={`container fixed inset-x-0 top-0 z-[60] transition-all duration-500 ${
           !atTop
-            ? "border top-0 xl:mt-4 mt-0 xl:rounded-full z-20 bg-base-100 lg:bg-opacity-95 border-base-content/10 "
+            ? "border top-0 xl:mt-4 mt-0 xl:rounded-full z-20 lg:bg-opacity-95 border-base-content/10 "
             : "border-base-content/10"
         }`}
       >
@@ -84,15 +77,14 @@ export const Topbar = ({ children }) => {
 
             <Navbar.End className="hidden lg:flex w-full">
               <Menu horizontal size="sm" className="gap-2 px-1 items-center">
-                <MenuItems items={sectionIds} />
+                <MenuItems items={sectionIds} childItems={children} />
               </Menu>
             </Navbar.End>
           </Navbar>
         </div>
       </div>
 
-      {/* </Theme> */}
-      <div className="lg:hidden">
+      {/* <div className="lg:hidden">
         <Drawer
           open={drawerOpened}
           onClickOverlay={() => setDrawerOpened(false)}
@@ -120,11 +112,12 @@ export const Topbar = ({ children }) => {
               <MenuItems
                 items={sectionIds}
                 onClick={() => setDrawerOpened(false)}
+                // childItems={children}
               />
             </Menu>
           }
         />
-      </div>
+      </div> */}
     </>
   );
 };
