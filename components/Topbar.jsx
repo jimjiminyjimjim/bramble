@@ -10,11 +10,14 @@ import { useTheme } from "@/helpers/theme";
 const MenuItems = ({ items, onClick, childItems }) => <>{childItems}</>;
 
 export const Topbar = ({ children, theme }) => {
+
+  console.log("theme", theme);
   const siteData = useSiteData();
   const [drawerOpened, setDrawerOpened] = useState(false);
   const [atTop, setAtTop] = useState(true);
   const [sectionIds, setSectionIds] = useState([]);
   const colors = useTheme(theme);
+
 
   useEffect(() => {
     const onWindowScroll = () => {
@@ -38,24 +41,20 @@ export const Topbar = ({ children, theme }) => {
     <>
       <div
         id="navbar-wrapper"
-        style={{ backgroundColor: "red" }}
-        className={`container fixed inset-x-0 top-0 z-[60] transition-all duration-500 ${
-          !atTop
-            ? "border top-0 xl:mt-4 mt-0 xl:rounded-full z-20 lg:bg-opacity-95 border-base-content/10 "
-            : "border-base-content/10"
-        }`}
+        style={{ backgroundColor: colors?.primary }}
+        className={`container fixed inset-x-0 top-0 lg:pt-10 z-[60] transition-all duration-500 `}
       >
         <div className="">
           <Navbar className="px-0">
             <Navbar.Start className="gap-2">
-              <Button
+              {/* <Button
                 shape="square"
                 color="ghost"
                 className="lg:hidden"
                 onClick={() => setDrawerOpened(true)}
               >
                 <MenuIcon className="inline-block text-xl" />
-              </Button>
+              </Button> */}
               <a
                 href="#"
                 className="text-brand-gradient text-2xl font-bold tracking-tighter"

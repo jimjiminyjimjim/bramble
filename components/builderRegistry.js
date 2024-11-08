@@ -26,7 +26,15 @@ export const customComponents = [
   {
     component: Topbar,
     name: "Topbar",
-    canHaveChildren: true
+    canHaveChildren: true,
+    inputs: [
+      {
+        name: "theme",
+        type: "enum",
+        enum: ["light", "dark", "white"],
+        defaultValue: "light",
+      },
+    ]
   },
   {
     component: PricingBlocks,

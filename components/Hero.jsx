@@ -8,6 +8,7 @@ import { useTheme } from "@/helpers/theme";
 export const Hero = ({ title, subtitle, description, downloads, image, theme, children }) => {
   const colors = useTheme(theme);
 
+
   return (
     <section className="relative py-8 lg:py-24">
       <div

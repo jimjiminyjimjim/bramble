@@ -22,7 +22,7 @@ export const PricingBlocks = ({ title, description, blocks, theme }) => {
           </div>
         )}
         <div
-          className={`grid gap-6 xl:gap-10`}
+          className={`lg:grid gap-6 xl:gap-10`}
           style={{
             gridTemplateColumns: `repeat(${blocks.length}, minmax(0, 1fr))`,
           }}
@@ -30,7 +30,7 @@ export const PricingBlocks = ({ title, description, blocks, theme }) => {
           {blocks?.map((block, index) => (
             <div
               key={index}
-              className="flex flex-col p-6 mx-auto max-w-[400px] text-center text-gray-900 bg-white rounded-xl border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white"
+              className="flex flex-col p-6 mx-auto max-w-[400px] text-center text-gray-900 bg-white rounded-xl border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white mt-[20px]"
             >
               <h3
                 className="text-3xl font-semibold"
