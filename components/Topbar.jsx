@@ -4,6 +4,7 @@ import { Menu as MenuIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { ReactSVG } from "react-svg";
 import { anchorTags } from "@/helpers/anchorTags";
+import { useSiteData } from "@/helpers/siteData";
 
 const MenuItems = ({ items, onClick }) => (
   <>
@@ -17,7 +18,8 @@ const MenuItems = ({ items, onClick }) => (
   </>
 );
 
-export const Topbar = ({ siteData }) => {
+export const Topbar = ({ children }) => {
+  const siteData = useSiteData();
   const [drawerOpened, setDrawerOpened] = useState(false);
   const [atTop, setAtTop] = useState(true);
   const [sectionIds, setSectionIds] = useState([]);
@@ -53,50 +55,14 @@ export const Topbar = ({ siteData }) => {
         <div className="">
           <Navbar className="px-0">
             <Navbar.Start className="gap-2">
-              <div className="flex-none lg:hidden">
-                <Drawer
-                  open={drawerOpened}
-                  onClickOverlay={() => setDrawerOpened(!drawerOpened)}
-                  side={
-                    <Menu className="min-h-full w-80 gap-2 bg-base-100 p-4 text-base-content">
-                      <Menu.Item className="font-medium">
-                        <a
-                          href="index.html"
-                          className="text-brand-gradient text-2xl font-bold tracking-tighter"
-                        >
-                          <ReactSVG
-                            src={siteData.logo}
-                            beforeInjection={(svg) => {
-                              svg
-                                .querySelectorAll("[fill]")
-                                .forEach((element) => {
-                                  element.removeAttribute("fill");
-                                });
-                              svg.setAttribute(
-                                "style",
-                                `width: 300px; height: 300px; fill: ${siteData.primaryColour} !important;`
-                              );
-                            }}
-                          />
-                        </a>
-                      </Menu.Item>
-                      <MenuItems
-                        items={sectionIds}
-                        onClick={() => setDrawerOpened(false)}
-                      />
-                    </Menu>
-                  }
-                >
-                  <Button
-                    shape="square"
-                    color="ghost"
-                    onClick={() => setDrawerOpened(true)}
-                  >
-                    <MenuIcon className="inline-block text-xl" />
-                  </Button>
-                </Drawer>
-              </div>
-
+              <Button
+                shape="square"
+                color="ghost"
+                className="lg:hidden"
+                onClick={() => setDrawerOpened(true)}
+              >
+                <MenuIcon className="inline-block text-xl" />
+              </Button>
               <a
                 href="#"
                 className="text-brand-gradient text-2xl font-bold tracking-tighter"
@@ -109,7 +75,7 @@ export const Topbar = ({ siteData }) => {
                     });
                     svg.setAttribute(
                       "style",
-                      `width: auto; height: 70px; fill: ${siteData.primaryColour} !important;`
+                      `width: auto; height: 50px; fill: ${siteData.primaryColour} !important;`
                     );
                   }}
                 />
@@ -123,6 +89,41 @@ export const Topbar = ({ siteData }) => {
             </Navbar.End>
           </Navbar>
         </div>
+      </div>
+
+      {/* </Theme> */}
+      <div className="lg:hidden">
+        <Drawer
+          open={drawerOpened}
+          onClickOverlay={() => setDrawerOpened(false)}
+          side={
+            <Menu className="min-h-full w-80 gap-2 bg-base-100 p-4 text-base-content">
+              <Menu.Item className="font-medium">
+                <a
+                  href="index.html"
+                  className="text-brand-gradient text-2xl font-bold tracking-tighter"
+                >
+                  <ReactSVG
+                    src={siteData.logo}
+                    beforeInjection={(svg) => {
+                      svg.querySelectorAll("[fill]").forEach((element) => {
+                        element.removeAttribute("fill");
+                      });
+                      svg.setAttribute(
+                        "style",
+                        `width: 300px; height: 300px; fill: ${siteData.primaryColour} !important;`
+                      );
+                    }}
+                  />
+                </a>
+              </Menu.Item>
+              <MenuItems
+                items={sectionIds}
+                onClick={() => setDrawerOpened(false)}
+              />
+            </Menu>
+          }
+        />
       </div>
     </>
   );

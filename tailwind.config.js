@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  mode: 'jit',
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -7,14 +8,14 @@ module.exports = {
     "node_modules/daisyui/dist/**/*.js",
     "node_modules/react-daisyui/dist/**/*.js",
   ],
-  // theme: {
-  //   extend: {
-  //     colors: {
-  //       background: "var(--background)",
-  //       foreground: "var(--foreground)",
-  //     },
-  //   },
-  // },
+  theme: {
+    extend: {
+      colors: {
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+      },
+    },
+  },
   darkMode: ["class", '[data-theme="dark"]'],
   theme: {
     extend: {
@@ -29,7 +30,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        body: ["'Figtree'", "sans-serif"],
+        body: ["var(--font-body)"],
+        display: ["var(--font-display)"],
       },
       colors: {
         "my-gradient":

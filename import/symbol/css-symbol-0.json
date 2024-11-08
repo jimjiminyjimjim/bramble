@@ -1,0 +1,49 @@
+{
+  "query": [],
+  "folders": [],
+  "id": "12fe65c54d7d4efe8f18091334f863bb",
+  "name": "CSS Symbol",
+  "published": "published",
+  "createdDate": 1729596303586,
+  "modelId": "9dd6ad4e25b040008fc3765910967388",
+  "data": {
+    "state": {
+      "deviceSize": "large",
+      "location": {
+        "path": "",
+        "query": {}
+      }
+    },
+    "blocks": [
+      {
+        "@type": "@builder.io/sdk:Element",
+        "@version": 2,
+        "layerName": "Box",
+        "id": "builder-f47e270232514faaa5f9d145bc33a55e",
+        "meta": {
+          "previousId": "builder-c1d2d8a830e34462b44963cfdc069b7d"
+        },
+        "responsiveStyles": {
+          "large": {
+            "display": "flex",
+            "flexDirection": "column",
+            "position": "relative",
+            "flexShrink": "0",
+            "boxSizing": "border-box",
+            "marginTop": "20px",
+            "height": "200px"
+          }
+        }
+      }
+    ]
+  },
+  "meta": {},
+  "variations": {},
+  "testRatio": 1,
+  "createdBy": "dcNxI5zabAdsqPRZxnbPU4eFr6H2",
+  "lastUpdatedBy": "dcNxI5zabAdsqPRZxnbPU4eFr6H2",
+  "rev": "9d7ob6i308",
+  "@originOrg": "4326c237495b421698d98079e65c9e17",
+  "@originContentId": "062243f7cc608c789929829a04cbe98c73c03bd7c0dc0d83609af9fd5c1d803b",
+  "@originModelId": "6b648c6356830afac14e2fbd39484faa544a7dd71316fb140190b8742b22b56f"
+}

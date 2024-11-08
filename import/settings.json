@@ -1,0 +1,76 @@
+{
+  "settings": {
+    "apps": {
+      "Rebuy": {},
+      "Postscript": {},
+      "Klaviyo": {},
+      "Yotpo": {},
+      "Stamped_io": {}
+    },
+    "useDefaultStyles": false,
+    "allowMarginEditing": false,
+    "absoluteMode": false,
+    "componentsOnlyMode": true,
+    "allowBuiltInComponents": false,
+    "customComponents": [
+      "Card",
+      "CatFacts",
+      "ProductGrid",
+      "BannerSlider",
+      "BrandHeader",
+      "Pricing Blocks",
+      "Hero",
+      "Feature",
+      "Organize",
+      "Topbar",
+      "FAQ",
+      "Footer",
+      "Theme Toggler",
+      "Works",
+      "Testimonial",
+      "Download",
+      "Block Name",
+      "Test",
+      "Signup",
+      "Button",
+      "Divider",
+      "Material Table",
+      "Material Tabs",
+      "Tooltip",
+      "Code Block",
+      "IntegrationPrioritySupportTip",
+      "IntegrateButton",
+      "Animated Logo",
+      "HeroImage",
+      "SignUp",
+      "Popup",
+      "TextBlock",
+      "MinFooter",
+      "Features",
+      "Stats",
+      "AppFeatures",
+      "Screenshots"
+    ]
+  },
+  "type": "space",
+  "name": "Mendara",
+  "loadPlugins": [],
+  "id": "4326c237495b421698d98079e65c9e17",
+  "@version": 7,
+  "cloneInfo": {
+    "contentIdMap": {
+      "8b8bfafd5364c29ce67d79973828e07f052e7e65fcfb813a5aa0c713bec08ff6": "1f1bf54506fa480eaa22c5e6f408c377",
+      "062243f7cc608c789929829a04cbe98c73c03bd7c0dc0d83609af9fd5c1d803b": "12fe65c54d7d4efe8f18091334f863bb",
+      "a4f790c27f0227d8d155ea0a2ad5975439edb537f47df398179d2749a0540383": "bc660dd2bff045738a2af084390d0098",
+      "aa97abd5febba5ef5712a3d57fa9b8f457e33def1e0b8c59eb0048060b615908": "f175eddd31ea406badc7ab6ac86fc252",
+      "e6235df29e0e1a0713c6609f231f235d6ea0c14b1c5ddc23b06d71a9ce19d119": "ffeadfeb5e8d42a7a646cad2bb289632"
+    },
+    "modelIdMap": {
+      "ac6947b2a66d6da31849cade05975da60fe89613cc8ea8424f6349c6db3bcd76": "14a83ed2ac2546e8bd938556f4731f4a",
+      "6b648c6356830afac14e2fbd39484faa544a7dd71316fb140190b8742b22b56f": "9dd6ad4e25b040008fc3765910967388",
+      "c76733dc98e5b50e0b0d8e6310756f33f2cfb92fb76803939255a8361d40180e": "22be9594ad304132ad2a40040d0f743a",
+      "e7b25855ac51a4e450924f86ad5c5f68761b11e84bf1ced4b752f13793608600": "4f3b0f3dae4d46faafee91d48a61fe2c",
+      "35ae6e42f65ec527288ec6b1a0a43d84404fc06cde461268acbacd2afa96f545": "0c90e74bc18c4cce98a318a124426fa7"
+    }
+  }
+}

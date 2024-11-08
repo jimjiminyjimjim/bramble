@@ -1,0 +1,315 @@
+{
+  "folders": [],
+  "createdDate": 1729612138972,
+  "id": "bc660dd2bff045738a2af084390d0098",
+  "name": "Test",
+  "modelId": "22be9594ad304132ad2a40040d0f743a",
+  "published": "published",
+  "meta": {
+    "hasLinks": false,
+    "kind": "page",
+    "lastPreviewUrl": "http://localhost:3000/test?builder.space=4326c237495b421698d98079e65c9e17&builder.user.permissions=read%2Ccreate%2Cpublish%2CeditCode%2CeditDesigns%2Cadmin%2CeditLayouts%2CeditLayers&builder.user.role.name=Admin&builder.user.role.id=admin&builder.cachebust=true&builder.preview=page&builder.noCache=true&builder.allowTextEdit=true&__builder_editing__=true&builder.overrides.page=a4f790c27f0227d8d155ea0a2ad5975439edb537f47df398179d2749a0540383&builder.overrides.a4f790c27f0227d8d155ea0a2ad5975439edb537f47df398179d2749a0540383=a4f790c27f0227d8d155ea0a2ad5975439edb537f47df398179d2749a0540383&builder.overrides.page:/test=a4f790c27f0227d8d155ea0a2ad5975439edb537f47df398179d2749a0540383",
+    "componentsUsed": {
+      "TextBlock": 2,
+      "Hero": 1,
+      "AppFeatures": 1,
+      "Footer": 1,
+      "Popup": 1,
+      "Screenshots": 1,
+      "Stats": 1,
+      "Pricing Blocks": 1
+    }
+  },
+  "query": [
+    {
+      "@type": "@builder.io/core:Query",
+      "property": "urlPath",
+      "operator": "is",
+      "value": "/test"
+    }
+  ],
+  "data": {
+    "url": "/test",
+    "state": {
+      "location": {
+        "path": "",
+        "query": {}
+      },
+      "deviceSize": "large"
+    },
+    "title": "",
+    "themeId": false,
+    "blocks": [
+      {
+        "@type": "@builder.io/sdk:Element",
+        "@version": 2,
+        "id": "builder-c50d72a386f74eafadbb2bbb0919b082",
+        "component": {
+          "name": "Hero",
+          "options": {
+            "theme": "light",
+            "title": "Ready to feel like yourself again?",
+            "subtitle": "YOU'VE come to the right place.",
+            "downloads": "Don't Show App Store",
+            "growth": "128.5%",
+            "userBase": "2.8M+",
+            "reviews": "2,800+",
+            "description": "An evidence-based program for postnatal mental health. Mendara helps you manage your symptoms, regain control, and find balance, so you can enjoy parenthood again.",
+            "image": "https://cdn.builder.io/api/v1/image/assets%2F4326c237495b421698d98079e65c9e17%2Fd7d7eebf8451405da65692cd5749b77e"
+          }
+        }
+      },
+      {
+        "@type": "@builder.io/sdk:Element",
+        "@version": 2,
+        "id": "builder-59607848954c41e0a37dd237d871e6fe",
+        "component": {
+          "name": "Custom Code",
+          "options": {
+            "code": "<script async data-nf='{\"formurl\":\"https://noteforms.com/forms/database-lcmr1n\",\"emoji\":\"💬\",\"position\":\"right\",\"bgcolor\":\"#3B82F6\",\"width\":\"500\"}' src='https://noteforms.com/widgets/embed-min.js'></script>",
+            "scriptsClientOnly": false
+          }
+        }
+      },
+      {
+        "@type": "@builder.io/sdk:Element",
+        "@version": 2,
+        "id": "builder-933219cd0eee409b9e5ede146a02d8c0",
+        "component": {
+          "name": "Stats",
+          "options": {
+            "heading": "Organize your tasks. Set priorities. Boost Productivity",
+            "description": "This organized feature list provides a clear overview of the AI landing page's capabilities, making it easier for users to understand the key functionalities of the app.",
+            "stats": [
+              {
+                "title": "1 in 5",
+                "description": "new parents experience postnatal depression",
+                "icon": "AiOutlineCheckCircle",
+                "image": "https://cdn.builder.io/api/v1/image/assets%2F4326c237495b421698d98079e65c9e17%2F9bf46d959e8945688de120cbc7b712fc"
+              },
+              {
+                "title": "40%",
+                "description": "of mothers delay seeking help due to stigma",
+                "icon": "AiOutlineCheckCircle",
+                "image": "https://cdn.builder.io/api/v1/image/assets%2F4326c237495b421698d98079e65c9e17%2F75ab6fe243224e5caf8da627cf4273bc"
+              },
+              {
+                "title": "30%",
+                "description": "of affected parents are fathers or non birthing partners",
+                "icon": "AiOutlineCheckCircle",
+                "image": "https://cdn.builder.io/api/v1/image/assets%2F4326c237495b421698d98079e65c9e17%2F89b56123af774227b1451b430dc3975c"
+              },
+              {
+                "title": "Half",
+                "description": "of all cases of PND remain undiagnosed ",
+                "icon": "AiOutlineCheckCircle",
+                "image": "https://cdn.builder.io/api/v1/image/assets%2F4326c237495b421698d98079e65c9e17%2F2696083c59134ca9812622e8424212f7"
+              }
+            ],
+            "title": "You're not alone.",
+            "theme": "light"
+          }
+        }
+      },
+      {
+        "@type": "@builder.io/sdk:Element",
+        "@version": 2,
+        "id": "builder-ebbf0c13c293443d8a214bd52a7e78eb",
+        "component": {
+          "name": "Screenshots",
+          "options": {
+            "heading": "",
+            "description": "",
+            "screens": [
+              {
+                "title": "A Support Coach in Your Pocket",
+                "description": "Mindy, your AI-powered recovery coach, will guide you through each step of the way, offering insights customized to your emotional and mental health needs.",
+                "image": "https://cdn.builder.io/api/v1/image/assets%2F4326c237495b421698d98079e65c9e17%2Fd7d7eebf8451405da65692cd5749b77e"
+              },
+              {
+                "title": "Personalised Support Through Every High and Low",
+                "description": "Mendara provides tools designed to help you manage the fluctuating emotions that are often part of postnatal depression. Whether you’re feeling isolated at home or anxious about returning to work, Mendara’s short exercises give you the support you need—when you need it.",
+                "image": "https://cdn.builder.io/api/v1/image/assets%2F4326c237495b421698d98079e65c9e17%2Fd7d7eebf8451405da65692cd5749b77e"
+              },
+              {
+                "title": "Understand the Changes Your Mind and Body Are Undergoing",
+                "description": "Learn about the neurological and hormonal changes that occur postpartum and how they influence your emotions. Mendara provides bite-sized, easily accessible insights to empower you with knowledge about what’s happening in your brain and body, helping you understand and manage the challenges of postnatal depression.",
+                "image": "https://cdn.builder.io/api/v1/image/assets%2F4326c237495b421698d98079e65c9e17%2Fd7d7eebf8451405da65692cd5749b77e"
+              },
+              {
+                "title": "Connect with a Compassionate Community of Parents",
+                "description": "Join a safe, judgment-free space where other parents share their experiences with postnatal depression. Find comfort in knowing you’re not alone and engage in live events and support sessions designed to foster connection, growth, and resilience among parents who truly understand what you’re going through.",
+                "image": "https://cdn.builder.io/api/v1/image/assets%2F4326c237495b421698d98079e65c9e17%2Fd7d7eebf8451405da65692cd5749b77e"
+              }
+            ],
+            "theme": "light",
+            "anchor": "How it works"
+          }
+        }
+      },
+      {
+        "@type": "@builder.io/sdk:Element",
+        "@version": 2,
+        "id": "builder-cee16b8855fd4775aab18a7667f8916d",
+        "component": {
+          "name": "Columns",
+          "options": {
+            "columns": [
+              {
+                "blocks": [
+                  {
+                    "@type": "@builder.io/sdk:Element",
+                    "@version": 2,
+                    "id": "builder-d5348dc3de4d4e78b6487bce0ec663f1",
+                    "component": {
+                      "name": "Pricing Blocks",
+                      "options": {
+                        "blocks": [
+                          {
+                            "title": "Pricing",
+                            "price": "£79/yr",
+                            "description": "Join Mendara for",
+                            "features": [
+                              {
+                                "description": "24/7 support with Mindy, your AI-powered coach, personalized to your mental health needs"
+                              },
+                              {
+                                "description": "Comprehensive education and actionable strategies designed for postnatal recovery"
+                              },
+                              {
+                                "description": "Private community access, providing continuous peer support"
+                              },
+                              {
+                                "description": "A dedicated team to guide and empower you through your recovery journey"
+                              }
+                            ],
+                            "period": ""
+                          }
+                        ],
+                        "theme": "light"
+                      }
+                    }
+                  }
+                ],
+                "width": 33.333333
+              },
+              {
+                "blocks": [],
+                "width": 66.666666
+              }
+            ],
+            "space": 0,
+            "stackColumnsAt": "tablet",
+            "reverseColumnsWhenStacked": false
+          }
+        }
+      },
+      {
+        "@type": "@builder.io/sdk:Element",
+        "@version": 2,
+        "id": "builder-dd3f37aa42884718bfc6a006f590d051",
+        "component": {
+          "name": "AppFeatures",
+          "options": {
+            "heading": "It Gets Better",
+            "description": "Grounded in clinical research, our program fits seamlessly into your life, providing a personalized approach that adapts to your journey.",
+            "features": [
+              {
+                "title": "Find Yourself Again",
+                "description": "Mendara helps you break the cycle of stress and regain a sense of balance in your new role as a parent.",
+                "icon": "AiOutlineCheckCircle",
+                "image": "https://cdn.builder.io/api/v1/image/assets%2F4326c237495b421698d98079e65c9e17%2F2696083c59134ca9812622e8424212f7"
+              },
+              {
+                "title": "Your Support Network",
+                "description": "Connect with other parents who get it. Anonymity respected—find your community when it works for you.",
+                "icon": "AiOutlineCheckCircle",
+                "image": "https://cdn.builder.io/api/v1/image/assets%2F4326c237495b421698d98079e65c9e17%2F270aef5fd7534a0f88406b48d56b02ec"
+              },
+              {
+                "title": "Rediscover Joy",
+                "description": "Parenthood can be tough, but there’s hope. We’re here to help you find those small moments of joy again.",
+                "icon": "AiOutlineCheckCircle",
+                "image": "https://cdn.builder.io/api/v1/image/assets%2F4326c237495b421698d98079e65c9e17%2F75ab6fe243224e5caf8da627cf4273bc"
+              },
+              {
+                "title": "Embrace your new life.",
+                "description": "It’s about gaining more—more calm, more confidence, and meaningful moments with your child that make this new chapter fulfilling.",
+                "icon": "AiOutlineCheckCircle",
+                "image": "https://cdn.builder.io/api/v1/image/assets%2F4326c237495b421698d98079e65c9e17%2F9bf46d959e8945688de120cbc7b712fc"
+              }
+            ],
+            "image": "https://cdn.builder.io/api/v1/image/assets%2F4326c237495b421698d98079e65c9e17%2Fd7d7eebf8451405da65692cd5749b77e",
+            "theme": "light"
+          }
+        }
+      },
+      {
+        "@type": "@builder.io/sdk:Element",
+        "@version": 2,
+        "id": "builder-cb4478ba4c5746a6a9611fa1b0686ee7",
+        "component": {
+          "name": "TextBlock",
+          "options": {
+            "title": "Mendara is Different",
+            "subtitle": "Accessing help for PND is often overwhelming and costly. Mendara is built to be accessible, effective, and right there when you need it.",
+            "body": "<p style=\"text-align: center;\"><strong>Our micro-intervention approach provides support in moments of need, offering tools to manage emotions, ease overwhelming thoughts, and guide you through the journey to recovery. Welcome to a program that truly understands your needs and adapts to your life.</strong></p><p><br></p>",
+            "ctaText": "Click Here",
+            "ctaLink": "https://www.builder.io",
+            "theme": "light"
+          }
+        }
+      },
+      {
+        "@type": "@builder.io/sdk:Element",
+        "@version": 2,
+        "id": "builder-427c83c0a00843e4938de69246ca6665",
+        "component": {
+          "name": "TextBlock",
+          "options": {
+            "title": "Support That Grows With You",
+            "subtitle": "Stay up to date with Mendara",
+            "body": "<p><br></p>",
+            "theme": "light"
+          }
+        },
+        "children": [
+          {
+            "@type": "@builder.io/sdk:Element",
+            "@version": 2,
+            "id": "builder-9fe5455542464e3ab080417507a4554e",
+            "component": {
+              "name": "Popup",
+              "options": {
+                "ctaText": "Sign Up",
+                "theme": "light"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "@type": "@builder.io/sdk:Element",
+        "@version": 2,
+        "id": "builder-46a1ad164e7c4c55a6e01624cd488577",
+        "component": {
+          "name": "Footer",
+          "options": {
+            "theme": "light",
+            "title": "Mendara"
+          }
+        }
+      }
+    ]
+  },
+  "variations": {},
+  "lastUpdated": 1730989188558,
+  "firstPublished": 1729612239437,
+  "testRatio": 1,
+  "createdBy": "dcNxI5zabAdsqPRZxnbPU4eFr6H2",
+  "lastUpdatedBy": "dcNxI5zabAdsqPRZxnbPU4eFr6H2",
+  "@originModelId": "c76733dc98e5b50e0b0d8e6310756f33f2cfb92fb76803939255a8361d40180e",
+  "rev": "s24cdu5eoe8",
+  "@originOrg": "4326c237495b421698d98079e65c9e17",
+  "@originContentId": "a4f790c27f0227d8d155ea0a2ad5975439edb537f47df398179d2749a0540383"
+}

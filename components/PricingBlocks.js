@@ -1,31 +1,53 @@
 "use client";
+import { useTheme } from "@/helpers/theme";
 
-export const PricingBlocks = ({ title, description, blocks }) => {
+export const PricingBlocks = ({ title, description, blocks, theme }) => {
+  const colors = useTheme(theme);
+
   return (
-    <section className="bg-white dark:bg-gray-900">
+    <section style={{ backgroundColor: colors.primary }}>
       <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-        <div className="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
-          <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
-            {title}
-          </h2>
-          <p className="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400">
-            {description}
-          </p>
-        </div>
-        <div className="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
+        {(title || description) && (
+          <div className="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
+            {title && (
+              <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 ">
+                {title}
+              </h2>
+            )}
+            {description && (
+              <p className="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400">
+                {description}
+              </p>
+            )}
+          </div>
+        )}
+        <div
+          className={`grid gap-6 xl:gap-10`}
+          style={{
+            gridTemplateColumns: `repeat(${blocks.length}, minmax(0, 1fr))`,
+          }}
+        >
           {blocks?.map((block, index) => (
             <div
               key={index}
-              className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white"
+              className="flex flex-col p-6 mx-auto max-w-[400px] text-center text-gray-900 bg-white rounded-xl border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white"
             >
-              <h3 className="mb-4 text-2xl font-semibold">{block.title}</h3>
+              <h3
+                className="text-3xl font-semibold"
+                style={{ color: colors?.text.title }}
+              >
+                {block.title}
+              </h3>
               <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
                 {block.description}
               </p>
               <div className="flex justify-center items-baseline my-8">
-                <span className="mr-2 text-5xl font-extrabold">
+                <h3
+                  className="mr-2 text-5xl font-extrabold"
+                  style={{ color: colors?.dark }}
+                >
                   {block.price}
-                </span>
+                </h3>
                 <span className="text-gray-500 dark:text-gray-400">
                   {block.period}
                 </span>

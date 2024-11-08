@@ -1,20 +1,13 @@
 "use client";
-import { Topbar } from "@/components/Topbar";
-import { Theme, useTheme } from "react-daisyui";
+import React from "react";
+
+export const Context = React.createContext();
 
 export default function Page({ children, siteData }) {
-//   const theme = useTheme("pastel");
-  
-//   console.log("theme", theme);
-  const { logo, primaryColor, secondaryColor } = siteData;
 
-  console.log("siteData", siteData);
   return (
-    <>
-      <Theme dataTheme={"cupcake"}>
-        <Topbar siteData={siteData}/>
+    <Context.Provider value={siteData}>
         {children}
-      </Theme>
-    </>
+    </Context.Provider>
   );
 }

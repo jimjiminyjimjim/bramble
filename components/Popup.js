@@ -1,8 +1,9 @@
 import { fetchOneEntry, subscribeToEditor } from "@builder.io/sdk-react";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useContext } from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
+import { useTheme } from "@/helpers/theme";
 
-const MailchimpFormEmbed = ({ embedHtml }) => {
+const MailchimpFormEmbed = ({ embedHtml, siteData }) => {
   const formRef = useRef(null);
 
   useEffect(() => {
@@ -44,8 +45,13 @@ const MailchimpFormEmbed = ({ embedHtml }) => {
   return <div ref={formRef} dangerouslySetInnerHTML={{ __html: embedHtml }} />;
 };
 
-export function Popup({ children, formCode, siteData, ctaText }) {
+export function Popup({ children, formCode, siteData, ctaText, theme }) {
+
+  console.log("popup theme", theme);
+  const colors = useTheme(theme);
   const [content, setContent] = useState(undefined);
+
+  console.log("POPUP COLORS", colors);
 
   useEffect(() => {
     // fetch initial data
@@ -65,14 +71,15 @@ export function Popup({ children, formCode, siteData, ctaText }) {
   return (
     <>
       <button
-        className="btn btn-primary"
+        className={`btn`}
+        style={{backgroundColor: colors?.button.dark, color: colors?.button.text}}
         onClick={() => document.getElementById("my_modal_3").showModal()}
       >
         {ctaText}
       </button>
       <dialog id="my_modal_3" className="modal modal-bottom sm:modal-middle">
         <div className="modal-box bg-white">
-          <h3 className="text-xl font-semibold lg:text-3xl text-black">
+          <h3 className="text-xl font-semibold lg:text-3xl">
             {ctaText}
           </h3>
 

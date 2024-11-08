@@ -7,8 +7,7 @@ import {
 import { customComponents } from "@/components/builderRegistry";
 import Layout from "@/components/Layout";
 
-const PUBLIC_API_KEY =
-  "a42db2ee068342eda145f280f84fd130"; /* Put your Public API Key here */
+const PUBLIC_API_KEY = process.env.NEXT_PUBLIC_BUILDER_API_KEY
 
 export default async function Page(props) {
   const params = await props.params;
@@ -48,6 +47,7 @@ export default async function Page(props) {
         apiKey={PUBLIC_API_KEY}
         model="page"
         customComponents={customComponents}
+        context={siteData.data}
       />
     </Layout>
   );

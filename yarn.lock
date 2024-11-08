@@ -779,6 +779,11 @@ chownr@^1.1.1:
   resolved "https://registry.yarnpkg.com/chownr/-/chownr-1.1.4.tgz#6fc9d7b42d32a583596337666e7d08084da2cc6b"
   integrity sha512-jJ0bqzaylmJtVnNgzTeSOs8DPavpbYgEr/b0YL8/2GO3xJEhInFmhKMUnEJQjZumK7KXGFhUy89PrsJWlakBVg==
 
+classix@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/classix/-/classix-2.2.0.tgz#39cfc3c4e8a3b46115d38b192e6dbbe16538ddaf"
+  integrity sha512-RBvlC0wwmDxyPjA+i1e09KuVQEGcJJz/w/bQ1Hxbz2I4NDetFOvrtIBknRhmO2gBUdOrIkMnYZWiGIjdBcNRVA==
+
 client-only@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/client-only/-/client-only-0.0.1.tgz#38bba5d403c41ab150bff64a95c85013cf73bca1"

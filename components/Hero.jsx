@@ -1,64 +1,55 @@
 "use client";
-import bgGradientImg from "@/assets/images/landing/bg-gradient.png";
+// import bgGradientImg from "@/assets/images/landing/bg-gradient.png";
+import mobile1Img from "@/assets/images/landing/mobile-1.png";
 import appstoreImg from "@/assets/images/logo/appstore.png";
 import playstoreImg from "@/assets/images/logo/playstore.png";
-import mobile1Img from "@/assets/images/landing/mobile-1.png";
-import avatar1Img from "@/assets/images/avatar/1.png";
-import Image from "next/image";
-import { Blocks } from '@builder.io/sdk-react';
+import { useTheme } from "@/helpers/theme";
 
-import {
-  ArrowDownToLineIcon,
-  SparkleIcon,
-  StarIcon,
-  TrendingUpIcon,
-  UsersIcon,
-  ZapIcon,
-} from "lucide-react";
-import { Card } from "react-daisyui";
-
-export const Hero = ({ title, subtitle, downloads, growth, userBase, reviews }) => {
+export const Hero = ({ title, subtitle, description, downloads, image, theme, children }) => {
+  const colors = useTheme(theme);
 
   return (
     <section className="relative py-8 lg:py-24">
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10 dark:opacity-5"
-        style={{ backgroundImage: `url(${bgGradientImg.src})` }}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundColor: colors?.primary }}
       ></div>
       <div className="container relative z-10">
         <div className="mt-16 grid items-center gap-12 lg:grid-cols-2 xl:gap-36">
           <div className="order-2 lg:order-1">
-            <h1 className="text-center text-3xl/tight font-bold leading-10 tracking-tight sm:text-start lg:text-4xl/tight">
-              <span className="text-brand-gradient">{title}</span>
+            <h1 className="text-center text-3xl/tight font-bold leading-10 tracking-tight sm:text-start lg:text-4xl/tight" style={{color: colors.dark}}>
+              {title}
             </h1>
-            <h5 className="mt-8 text-center text-base sm:text-start lg:text-lg">
+            <h5 className="mt-8 text-center font-bold text-xl sm:text-start lg:text-xl mb-2">
               {subtitle}
             </h5>
-            <div className="mt-16 flex justify-center gap-4 sm:justify-start">
-              <a href="#">
-                <img
-                  src={appstoreImg.src}
-                  alt="App Store"
-                />
-              </a>
-              <a href="#">
-                <img
-                  src={playstoreImg.src}
-                  alt="Play Store"
-                />
-              </a>
-            </div>
+            <p className="text-base font-body mb-3">{description}</p>
+            {children}
+            {downloads === "Show App Store" ? (
+              <div className="mt-16 flex justify-center gap-4 sm:justify-start">
+                <a href="#">
+                  <img src={appstoreImg.src} alt="App Store" />
+                </a>
+                <a href="#">
+                  <img src={playstoreImg.src} alt="Play Store" />
+                </a>
+              </div>
+            ) : null}
           </div>
 
           <div className="relative order-1 lg:order-2">
             <div className="flex justify-center">
-              <img
-                alt="Mobile-1"
-                className="bounce-animation h-[550px]"
-                src={mobile1Img.src}
-              />
+              {image ? (
+                <img src={image} className="bounce-animation h-[550px]" />
+              ) : (
+                <img
+                  alt="Mobile-1"
+                  className="bounce-animation h-[550px]"
+                  src={mobile1Img.src}
+                />
+              )}
             </div>
-            <div className="absolute left-0 top-[20%]">
+            {/* <div className="absolute left-0 top-[20%]">
               <Card className="bg-base-100 shadow transition-all hover:shadow-lg">
                 <Card.Body className="flex flex-row items-center justify-center gap-3 p-3">
                   <div className="flex items-center justify-center rounded-full bg-primary p-2">
@@ -73,8 +64,8 @@ export const Hero = ({ title, subtitle, downloads, growth, userBase, reviews }) 
                   </div>
                 </Card.Body>
               </Card>
-            </div>
-            <div className="absolute bottom-[20%] end-0">
+            </div> */}
+            {/* <div className="absolute bottom-[20%] end-0">
               <Card className="bg-base-100 shadow transition-all hover:shadow-lg">
                 <Card.Body className="w-64 gap-0 p-3">
                   <div className="flex gap-3">
@@ -110,39 +101,7 @@ export const Hero = ({ title, subtitle, downloads, growth, userBase, reviews }) 
                   </p>
                 </Card.Body>
               </Card>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-16 grid grid-cols-2 gap-20 text-center md:grid-cols-4">
-          <div>
-            <div className="inline-block rounded bg-primary/10 p-3 transition-all hover:bg-primary/25">
-              <ArrowDownToLineIcon className="size-8 text-primary" size={32} />
-            </div>
-            <p className="mt-3 text-4xl font-semibold">{downloads}</p>
-            <p className="mt-1 text-base-content/80">Downloads</p>
-          </div>
-          <div>
-            <div className="inline-block rounded bg-primary/10 p-3 transition-all hover:bg-primary/25">
-              <TrendingUpIcon className="size-8 text-primary" size={32} />
-            </div>
-            <p className="mt-3 text-4xl font-semibold">{growth}</p>
-            <p className="mt-1 text-base-content/80">YoY Growth</p>
-          </div>
-          <div>
-            <div className="inline-block rounded bg-primary/10 p-3 transition-all hover:bg-primary/25">
-              <UsersIcon className="size-8 text-primary" size={32} />
-            </div>
-
-            <p className="mt-3 text-4xl font-semibold">{userBase}</p>
-            <p className="mt-1 text-base-content/80">Active User Base</p>
-          </div>
-          <div>
-            <div className="inline-block rounded bg-primary/10 p-3 transition-all hover:bg-primary/25">
-              <SparkleIcon className="size-8 text-primary" size={32} />
-            </div>
-            <p className="mt-3 text-4xl font-semibold">{reviews}</p>
-            <p className="mt-1 text-base-content/80">5-Star Reviews</p>
+            </div> */}
           </div>
         </div>
       </div>
