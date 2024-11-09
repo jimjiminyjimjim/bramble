@@ -34,7 +34,7 @@ export const Screenshots = ({
               <img
                 src={screen.image}
                 alt={screen.title}
-                className="w-full object-cover"
+                className="w-full object-cover max-w-[70%] mx-auto"
               />
               <div className="p-4">
                 <h3 className="text-lg font-semibold">{screen.title}</h3>

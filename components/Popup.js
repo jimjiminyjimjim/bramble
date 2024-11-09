@@ -3,7 +3,7 @@ import { useEffect, useState, useRef, useContext } from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { useTheme } from "@/helpers/theme";
 
-const MailchimpFormEmbed = ({ embedHtml, siteData }) => {
+const MailchimpFormEmbed = ({ embedHtml, siteData, onFormSubmit }) => {
   const formRef = useRef(null);
 
   useEffect(() => {
@@ -25,12 +25,11 @@ const MailchimpFormEmbed = ({ embedHtml, siteData }) => {
         })
           .then(() => {
             console.log("Form successfully submitted");
-            // Handle success feedback
-            // document.getElementById("my_modal_3").close()
+            onFormSubmit("success");
           })
           .catch((error) => {
             console.error("Form submission error:", error);
-            // Handle error feedback
+            onFormSubmit("error");
           });
       };
 
@@ -40,46 +39,47 @@ const MailchimpFormEmbed = ({ embedHtml, siteData }) => {
       // Cleanup the event listener when the component is unmounted
       return () => form.removeEventListener("submit", handleFormSubmit);
     }
-  }, [embedHtml]);
+  }, [embedHtml, onFormSubmit]);
 
   return <div ref={formRef} dangerouslySetInnerHTML={{ __html: embedHtml }} />;
 };
 
 export function Popup({ children, formCode, siteData, ctaText, theme }) {
-
   const colors = useTheme(theme);
-  const [content, setContent] = useState(undefined);
+  const [content, setContent] = useState(null);
+  const [formStatus, setFormStatus] = useState(null);
 
+  useEffect(() => {
+    setContent(true);
+  }, []);
 
-  // useEffect(() => {
-  //   // fetch initial data
-  //   fetchOneEntry({
-  //     model: "popup",
-  //     apiKey: "a42db2ee068342eda145f280f84fd130",
-  //   })
-  //     .then((item) => setContent(item.data.mailchimpForm))
-  //     .catch((err) => {
-  //       console.error(
-  //         "something went wrong while fetching Builder Content: ",
-  //         err
-  //       );
-  //     });
-  // }, []);
+  const handleFormSubmit = (status) => {
+    setFormStatus(status);
+    if (status === "success") {
+      setTimeout(() => {
+        document.getElementById("my_modal_3").close();
+        setFormStatus(null);
+      }, 2000);
+    }
+  };
+
+  if (!content) return null;
 
   return (
     <>
       <button
         className={`btn`}
-        style={{backgroundColor: colors?.button.dark, color: colors?.button.text}}
+        style={{
+          backgroundColor: colors?.button.dark,
+          color: colors?.button.text,
+        }}
         onClick={() => document.getElementById("my_modal_3").showModal()}
       >
         {ctaText}
       </button>
-      {/* <dialog id="my_modal_3" className="modal modal-bottom sm:modal-middle">
+      <dialog id="my_modal_3" className="modal modal-bottom sm:modal-middle">
         <div className="modal-box bg-white">
-          <h3 className="text-xl font-semibold lg:text-3xl">
-            {ctaText}
-          </h3>
+          <h3 className="text-xl font-semibold lg:text-3xl">{ctaText}</h3>
 
           <form method="dialog">
             <button className="btn btn-sm btn-circle btn-black absolute right-2 top-2">
@@ -88,11 +88,15 @@ export function Popup({ children, formCode, siteData, ctaText, theme }) {
           </form>
           <div className="text-black">
             {children}
-            {formCode && <MailchimpFormEmbed embedHtml={content} />}
+            {formStatus === "success" ? (
+              <p>Thank you for your submission!</p>
+            ) : (
+              formCode && <MailchimpFormEmbed embedHtml={formCode} onFormSubmit={handleFormSubmit} />
+            )}
+            {formStatus === "error" && <p>There was an error submitting the form. Please try again.</p>}
           </div>
         </div>
-      </dialog> */}
-    
+      </dialog>
     </>
   );
 }

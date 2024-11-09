@@ -13,7 +13,7 @@ export function TextBlock({
 }) {
   const colors = useTheme(theme);
 
-  console.log("siteData HERE", colors);
+  console.log("WHITE HERE", colors);
 
   const childrenWithProps = React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {

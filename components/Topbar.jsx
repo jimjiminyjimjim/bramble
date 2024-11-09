@@ -6,18 +6,23 @@ import { ReactSVG } from "react-svg";
 import { anchorTags } from "@/helpers/anchorTags";
 import { useSiteData } from "@/helpers/siteData";
 import { useTheme } from "@/helpers/theme";
-
-const MenuItems = ({ items, onClick, childItems }) => <>{childItems}</>;
+import cx from "classix";
+const MenuItems = ({ items, onClick }) => (
+  <>
+    {items?.map((item, index) => (
+      <Menu.Item key={index} className="font-medium" onClick={onClick}>
+        <a href={`#${anchorTags(item).id}`}>{item}</a>
+      </Menu.Item>
+    ))}
+  </>
+);
 
 export const Topbar = ({ children, theme }) => {
-
-  console.log("theme", theme);
   const siteData = useSiteData();
   const [drawerOpened, setDrawerOpened] = useState(false);
   const [atTop, setAtTop] = useState(true);
   const [sectionIds, setSectionIds] = useState([]);
   const colors = useTheme(theme);
-
 
   useEffect(() => {
     const onWindowScroll = () => {
@@ -42,22 +47,24 @@ export const Topbar = ({ children, theme }) => {
       <div
         id="navbar-wrapper"
         style={{ backgroundColor: colors?.primary }}
-        className={`container fixed inset-x-0 top-0 lg:pt-10 z-[60] transition-all duration-500 `}
+        className={`bg-transparent fixed inset-x-0 top-0 z-[60] transition-all duration-500 ${
+          !atTop ? "py-0" : "py-4"
+        }`}
       >
-        <div className="">
+        <div className="container">
           <Navbar className="px-0">
             <Navbar.Start className="gap-2">
-              {/* <Button
-                shape="square"
-                color="ghost"
-                className="lg:hidden"
-                onClick={() => setDrawerOpened(true)}
-              >
-                <MenuIcon className="inline-block text-xl" />
-              </Button> */}
               <a
                 href="#"
-                className="text-brand-gradient text-2xl font-bold tracking-tighter"
+                className={cx(
+                  `max-w-[200px] lg:max-w-[350px] transition-all duration-300`,
+                  atTop ? "max-w-[100px]" : null
+                )}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  height: "100%",
+                }}
               >
                 <ReactSVG
                   src={siteData.logo}
@@ -67,56 +74,23 @@ export const Topbar = ({ children, theme }) => {
                     });
                     svg.setAttribute(
                       "style",
-                      `width: auto; height: 50px; fill: ${siteData.primaryColour} !important;`
+                      `width: 100%; height: auto; fill: ${siteData.primaryColour} !important; transition: width 0.3s ease;`
                     );
                   }}
+                  className="w-full h-auto"
                 />
               </a>
             </Navbar.Start>
 
-            <Navbar.End className="hidden lg:flex w-full">
+            <Navbar.End className="w-full">
               <Menu horizontal size="sm" className="gap-2 px-1 items-center">
-                <MenuItems items={sectionIds} childItems={children} />
+                <MenuItems items={sectionIds} />
               </Menu>
+              <div className="ml-auto">{children}</div>
             </Navbar.End>
           </Navbar>
         </div>
       </div>
-
-      {/* <div className="lg:hidden">
-        <Drawer
-          open={drawerOpened}
-          onClickOverlay={() => setDrawerOpened(false)}
-          side={
-            <Menu className="min-h-full w-80 gap-2 bg-base-100 p-4 text-base-content">
-              <Menu.Item className="font-medium">
-                <a
-                  href="index.html"
-                  className="text-brand-gradient text-2xl font-bold tracking-tighter"
-                >
-                  <ReactSVG
-                    src={siteData.logo}
-                    beforeInjection={(svg) => {
-                      svg.querySelectorAll("[fill]").forEach((element) => {
-                        element.removeAttribute("fill");
-                      });
-                      svg.setAttribute(
-                        "style",
-                        `width: 300px; height: 300px; fill: ${siteData.primaryColour} !important;`
-                      );
-                    }}
-                  />
-                </a>
-              </Menu.Item>
-              <MenuItems
-                items={sectionIds}
-                onClick={() => setDrawerOpened(false)}
-                // childItems={children}
-              />
-            </Menu>
-          }
-        />
-      </div> */}
     </>
   );
 };

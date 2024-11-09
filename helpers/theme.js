@@ -44,7 +44,7 @@ export const useTheme = (theme) => {
         background: context?.primaryColour,
         text: {
             title:  context?.primaryColour,
-            body: context?.primaryColour
+            body: "#333333"
         },
         button: {
             dark:  context?.primaryColour,
