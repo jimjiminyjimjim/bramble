@@ -38,6 +38,7 @@ export const customComponents = [
   },
   {
     component: PricingBlocks,
+    canHaveChildren: true,
     name: "Pricing Blocks",
     inputs: [
       { name: "anchor", type: "string" },
