@@ -57,8 +57,8 @@ export const Topbar = ({ children, theme }) => {
               <a
                 href="#"
                 className={cx(
-                  `max-w-[200px] lg:max-w-[350px] transition-all duration-300`,
-                  atTop ? "max-w-[100px]" : null
+                  `min-w-0 min-h-0 max-h-[80px] transition-all duration-300 block`,
+                  atTop ? "max-h-[50px]" : null
                 )}
                 style={{
                   display: "flex",
@@ -74,7 +74,7 @@ export const Topbar = ({ children, theme }) => {
                     });
                     svg.setAttribute(
                       "style",
-                      `width: 100%; height: auto; fill: ${siteData.primaryColour} !important; transition: width 0.3s ease;`
+                      `width: 100%; height: auto; object-fit: cover; fill: ${siteData.primaryColour};`
                     );
                   }}
                   className="w-full h-auto"

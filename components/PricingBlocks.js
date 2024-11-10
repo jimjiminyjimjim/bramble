@@ -85,7 +85,7 @@ export const PricingBlocks = ({
               </a> */}
             </div>
           ))}
-          <div className="flex justify-center items-center">{children}</div>
+          <div className="flex justify-center items-center mt-[20px]">{children}</div>
         </div>
       </div>
     </section>
