@@ -8,16 +8,17 @@ module.exports = {
     "node_modules/daisyui/dist/**/*.js",
     "node_modules/react-daisyui/dist/**/*.js",
   ],
-  theme: {
-    extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-      },
-    },
-  },
   darkMode: ["class", '[data-theme="dark"]'],
   theme: {
+    fontSize: {
+      sm: '0.8rem',
+      base: '1.1rem',
+      lg: '1.5rem',
+      '2xl': '1.563rem',
+      '3xl': '1.953rem',
+      '4xl': '2.441rem',
+      '5xl': '3.052rem',
+    },
     extend: {
       container: {
         center: true,

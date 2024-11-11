@@ -31,7 +31,7 @@ export const AppFeatures = ({
       <div className="container">
         <div className="text-center mb-8 lg:mb-16">
           <h2 className="text-4xl font-semibold">{heading}</h2>
-          <h4 className="mt-4 text-xl max-w-[600px] mx-auto text-center">
+          <h4 className="mt-4 text-lg max-w-[600px] mx-auto text-center">
             {description}
           </h4>
         </div>
@@ -64,8 +64,8 @@ export const AppFeatures = ({
                         )}
                       </div>
                       <div>
-                        <h4 className="text-xl font-bold">{feature.title}</h4>
-                        <p className="mt-1 text-base-content/80">
+                        <h4 className="text-2xl font-bold">{feature.title}</h4>
+                        <p className="mt-1 text-base">
                           {feature.description}
                         </p>
                       </div>

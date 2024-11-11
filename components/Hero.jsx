@@ -28,12 +28,12 @@ export const Hero = ({
         <div className="mt-16 grid items-center gap-12 lg:grid-cols-2 xl:gap-36">
           <div className="order-1 lg:order-1">
             <h1
-              className="text-center text-3xl/tight font-bold leading-10 tracking-tight sm:text-start lg:text-4xl/tight"
+              className="text-center font-bold leading-10 text-4xl lg:text-left"
               style={{ color: colors.dark }}
             >
               {title}
             </h1>
-            <h5 className="mt-8 text-center font-bold text-xl sm:text-start lg:text-xl mb-2">
+            <h5 className="mt-8 text-center font-bold text-xl sm:text-start lg:text-2xl mb-2">
               {subtitle}
             </h5>
             <p className="text-base font-body mb-3">{description}</p>

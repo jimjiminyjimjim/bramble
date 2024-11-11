@@ -25,20 +25,20 @@ export const Screenshots = ({
       <div className="container">
         <div className="lg:col-span-2">
           <p className="text-xl font-semibold lg:text-3xl">{title}</p>
-          <p className="mt-2 text-lg lg:text-2xl">{subtitle}</p>
+          <p className="mt-2 text-2xl">{subtitle}</p>
           <p className="mt-4 text-base">{description}</p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-20 mt-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 mt-4">
           {screens.map((screen, index) => (
             <div key={index} className={`${index % 2 !== 0 ? 'mt-12' : ''}`}>
               <img
                 src={screen.image}
                 alt={screen.title}
-                className="w-full object-cover max-w-[70%] mx-auto"
+                className="w-full object-cover max-w-[90%] mx-auto"
               />
               <div className="p-4">
-                <h3 className="text-lg font-semibold">{screen.title}</h3>
-                <p className="mt-2 text-sm">{screen.description}</p>
+                <h3 className="text-2xl font-semibold">{screen.title}</h3>
+                <p className="mt-2 text-base">{screen.description}</p>
               </div>
             </div>
           ))}

@@ -73,7 +73,7 @@ export const PricingBlocks = ({
                         clipRule="evenodd"
                       ></path>
                     </svg>
-                    <span>{feature?.description}</span>
+                    <p className="text-base">{feature?.description}</p>
                   </li>
                 ))}
               </ul>

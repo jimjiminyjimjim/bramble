@@ -29,7 +29,7 @@ export async function generateMetadata(props) {
   });
 
   return {
-    title: `${content.data?.title} - ${content.data?.description}`,
+    title: `${content?.data?.title} - ${content?.data?.description}`,
     descirption: content?.data?.description
   }
 }

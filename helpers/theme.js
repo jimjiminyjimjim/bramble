@@ -29,8 +29,8 @@ export const useTheme = (theme) => {
         secondary: context?.secondaryColour,
         background: context?.primaryColour,
         text: {
-            title:  context?.primaryColour,
-            body: context?.primaryColour
+            title:  context?.textColour,
+            body: context?.textColour
         },
         button: {
             dark:  context?.primaryColour,

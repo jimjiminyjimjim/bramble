@@ -30,10 +30,10 @@ export function TextBlock({
     >
       <div className="container">
         <div className="text-center">
-          <h2 className="text-2xl font-semibold lg:text-4xl">{title}</h2>
-          <p className="mt-4 text-base lg:text-lg">{subtitle}</p>
+          <h2 className="text-2xl font-bold lg:text-4xl">{title}</h2>
+          <p className="mt-4 text-lg">{subtitle}</p>
           <div
-            className="mt-1 text-base-content/80 mb-4 max-w-[800px] mx-auto"
+            className="mt-1 text-base font-body mb-4 max-w-[800px] mx-auto"
             dangerouslySetInnerHTML={{ __html: body }}
           />
           {childrenWithProps}

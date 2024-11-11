@@ -42,6 +42,7 @@ export const Topbar = ({ children, theme }) => {
     }
   }, []);
 
+  console.log("siteData", siteData);
   return (
     <>
       <div
@@ -70,11 +71,11 @@ export const Topbar = ({ children, theme }) => {
                   src={siteData.logo}
                   beforeInjection={(svg) => {
                     svg.querySelectorAll("[fill]").forEach((element) => {
-                      element.removeAttribute("fill");
+                      siteData.logoRecolour && element.removeAttribute("fill");
                     });
                     svg.setAttribute(
                       "style",
-                      `width: 100%; height: auto; object-fit: cover; fill: ${siteData.primaryColour};`
+                      `width: 100%; height: auto; object-fit: cover; ${siteData.logoRecolour ? `fill: ${siteData.primaryColour}` : null}`
                     );
                   }}
                   className="w-full h-auto"
