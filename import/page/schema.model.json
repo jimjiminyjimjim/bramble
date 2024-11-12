@@ -5,7 +5,7 @@
   "targetingSubset": [],
   "webhooks": [],
   "defaultTemplates": [],
-  "id": "22be9594ad304132ad2a40040d0f743a",
+  "id": "1661c1f3ffa84ca29d733e181e6e9406",
   "name": "page",
   "displayName": "",
   "kind": "page",
@@ -101,7 +101,7 @@
       "defaultCollapsed": false
     }
   ],
-  "examplePageUrl": "http://localhost:3000",
+  "examplePageUrl": "https://mendaracare.com/",
   "repeatable": false,
   "autoTracked": true,
   "singleton": false,
@@ -142,10 +142,8 @@
   "pathPrefix": "/",
   "hideFromUI": false,
   "enableIframeFormSubmissions": false,
+  "@originId": "c76733dc98e5b50e0b0d8e6310756f33f2cfb92fb76803939255a8361d40180e",
   "previewIframeTimeoutInSeconds": 20,
   "requireTemplate": false,
-  "lastUpdateBy": null,
-  "@originId": "c76733dc98e5b50e0b0d8e6310756f33f2cfb92fb76803939255a8361d40180e",
-  "apiGenerated": true,
-  "createdDate": 1730812695289
+  "lastUpdateBy": null
 }

@@ -20,9 +20,39 @@ import { SignUp } from "@/components/SignUp";
 import { Popup } from "@/components/Popup";
 import { TextBlock } from "@/components/TextBlock";
 import { Topbar } from "@/components/Topbar";
+import { Carousel } from "@/components/CustomTabs";
 
 // this array can contain as many custom components as you want
 export const customComponents = [
+  {
+    component: Carousel,
+    name: 'Carousel',
+    /** To accept children in your custom component and by default it is false */
+    canHaveChildren: true,
+    /** To receieve Builder props inside your custom component: by default false  */
+    shouldReceiveBuilderProps: {
+      /** To access builder's Blocks relative to your parent */
+      builderBlock: true,
+    },
+    inputs: [
+      {
+        name: 'slides',
+        type: 'list',
+        subFields: [
+        ],
+        defaultValue: [
+          {
+            '@type': '@builder.io/sdk:Element',
+            component: {
+              name: 'Text',
+              options: {
+                text: 'Carousel Text - Im editable'
+              }
+            },
+          }],
+      },
+    ],
+  },
   {
     component: Topbar,
     name: "Topbar",
@@ -34,12 +64,16 @@ export const customComponents = [
         enum: ["light", "dark", "white"],
         defaultValue: "light",
       },
-    ]
+    ],
   },
   {
+    name: "Pricing Blocks",
     component: PricingBlocks,
     canHaveChildren: true,
-    name: "Pricing Blocks",
+    shouldReceiveBuilderProps: {
+      /** To access builder's Blocks relative to your parent */
+      builderBlock: true,
+    },
     inputs: [
       { name: "anchor", type: "string" },
       {
@@ -50,7 +84,6 @@ export const customComponents = [
       },
       { name: "title", type: "string" },
       { name: "description", type: "string" },
-
       {
         name: "blocks",
         type: "list",
@@ -85,6 +118,65 @@ export const customComponents = [
               },
             ],
           },
+          {
+            name: "children",
+            type: "uiBlocks",
+            hideFromUI: true,
+            defaultValue: [
+              {
+                "@type": "@builder.io/sdk:Element",
+                component: {
+                  name: "Text",
+
+                  options: {
+                    text: "This is editable block within the builder editor",
+                  },
+                },
+                // responsiveStyles: {
+                //   large: {
+                //     ...,
+                //   },
+                //   small: {
+                //     ...,
+                //   },
+                // },
+              },
+            ],
+          },
+          // {
+          //   name: "button",
+          //   type: "boolean",
+          // },
+          // {
+          //   name: "buttonText",
+          //   type: "text",
+          //   showIf: function (options) {
+          //     return options.get("button") === true;
+          //   },
+          // },
+          // {
+          //   name: "mailchimp",
+          //   type: "boolean",
+          //   showIf: function (options) {
+          //     return options.get("button") === true;
+          //   },
+          // },
+          // {
+          //   name: "formCode", type: "code",
+          //   showIf: function (options) {
+          //     return options.get("mailchimp") === true;
+          //   }
+          // },
+          // {
+          //   name: "href",
+          //   type: "string",
+          //   showIf: function (options) {
+          //     return (
+          //       options.get("button") === true &&
+          //       !options.get("mailchimp") === false
+          //     );
+          //   },
+          // },
         ],
       },
     ],
@@ -173,7 +265,20 @@ export const customComponents = [
     component: TextBlock,
     name: "TextBlock",
     canHaveChildren: true,
+    shouldReceiveBuilderProps: {
+      builderBlock: true,
+    },
     inputs: [
+      {
+        name: "columnTest",
+        type: "list",
+        subFields: [
+          {
+            name: "children",
+            type: "uiBlocks",
+          },
+        ],
+      },
       {
         name: "theme",
         type: "enum",

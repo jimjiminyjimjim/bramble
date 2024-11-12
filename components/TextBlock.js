@@ -1,6 +1,7 @@
 import { anchorTags } from "@/helpers/anchorTags";
 import React from "react";
 import { useTheme } from "@/helpers/theme";
+import { Blocks, BuilderBlock } from "@builder.io/sdk-react";
 
 export function TextBlock({
   children,
@@ -10,10 +11,12 @@ export function TextBlock({
   anchor,
   siteData,
   theme,
+  coloumnTest,
+  builderBlock
 }) {
   const colors = useTheme(theme);
 
-  console.log("WHITE HERE", colors);
+  console.log(title, builderBlock);
 
   const childrenWithProps = React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
