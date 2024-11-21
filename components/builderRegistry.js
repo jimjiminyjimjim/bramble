@@ -22,6 +22,8 @@ import { TextBlock } from "@/components/TextBlock";
 import { Topbar } from "@/components/Topbar";
 import { Carousel } from "@/components/CustomTabs";
 
+import { TandCs } from "@/components/TandCs";
+
 // this array can contain as many custom components as you want
 export const customComponents = [
   {
@@ -510,6 +512,14 @@ export const customComponents = [
       },
       { name: "mailchimpForm", type: "boolean" },
       { name: "formCode", type: "code" },
+      { name: "ctaText", type: "string", defaultValue: "Click Me" },
+    ],
+  },
+  {
+    component: TandCs,
+    name: "TandCs",
+    canHaveChildren: true,
+    inputs: [
       { name: "ctaText", type: "string" },
     ],
   },
@@ -530,6 +540,7 @@ export const customComponents = [
   {
     component: Footer,
     name: "Footer",
+    canHaveChildren: true,
     inputs: [
       {
         name: "theme",

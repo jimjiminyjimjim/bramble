@@ -3,7 +3,7 @@ import { useTheme } from "@/helpers/theme";
 import { useSiteData } from "@/helpers/siteData";
 import { ReactSVG } from "react-svg";
 
-export const Footer = ({ social, theme }) => {
+export const Footer = ({ social, theme, children }) => {
   const colors = useTheme(theme);
   const siteData = useSiteData();
   return (
@@ -77,6 +77,7 @@ export const Footer = ({ social, theme }) => {
             </div>
           </div>
         </div> */}
+        {children}
       </div>
     </footer>
   );

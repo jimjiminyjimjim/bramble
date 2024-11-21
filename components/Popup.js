@@ -44,56 +44,86 @@ const MailchimpFormEmbed = ({ embedHtml, siteData, onFormSubmit }) => {
   return <div ref={formRef} dangerouslySetInnerHTML={{ __html: embedHtml }} />;
 };
 
-export function Popup({ children, formCode, siteData, ctaText, theme }) {
+function toCamelCase(text) {
+  return text
+    .toLowerCase() // Convert the text to lowercase
+    .replace(/[^a-z0-9]+(.)/g, (match, char) => char.toUpperCase()); // Remove non-alphanumeric chars and capitalize following letters
+}
+
+export function Popup({
+  children,
+  formCode,
+  siteData,
+  ctaText,
+  theme,
+  textLink,
+}) {
   const colors = useTheme(theme);
   const [content, setContent] = useState(null);
   const [formStatus, setFormStatus] = useState(null);
+
+  const modalName = toCamelCase(ctaText || "");
 
   useEffect(() => {
     setContent(true);
   }, []);
 
-  const handleFormSubmit = (status) => {
-    setFormStatus(status);
-    if (status === "success") {
-      setTimeout(() => {
-        document.getElementById("my_modal_3").close();
-        setFormStatus(null);
-      }, 2000);
-    }
+  const closeModal = () => {
+    const modal = document.getElementById("my_modal_3");
+    modal.close();
   };
 
   if (!content) return null;
 
   return (
     <>
-      <button
-        className={`btn`}
-        style={{
-          backgroundColor: colors?.button.dark,
-          color: colors?.button.text,
-        }}
-        onClick={() => document.getElementById("my_modal_3").showModal()}
-      >
-        {ctaText}
-      </button>
+      {textLink ? (
+        <a
+          href="#"
+          onClick={() => document.getElementById("my_modal_3").showModal()}
+        >
+          {ctaText}
+        </a>
+      ) : (
+        <button
+          className={`btn`}
+          style={{
+            backgroundColor: colors?.button.dark,
+            color: colors?.button.text,
+          }}
+          onClick={() => document.getElementById("my_modal_3").showModal()}
+        >
+          {ctaText}
+        </button>
+      )}
+
       <dialog id="my_modal_3" className="modal modal-bottom sm:modal-middle">
         <div className="modal-box bg-white">
           <h3 className="text-xl font-semibold lg:text-3xl">{ctaText}</h3>
 
           <form method="dialog">
-            <button className="btn btn-sm btn-circle btn-black absolute right-2 top-2">
+            <button
+              className="btn btn-sm btn-circle btn-black absolute right-2 top-2"
+              onClick={closeModal}
+            >
               ✕
             </button>
           </form>
           <div className="text-black">
             {children}
-            {formStatus === "success" ? (
+            {/* {formStatus === "success" ? (
               <p>Thank you for your submission!</p>
             ) : (
-              formCode && <MailchimpFormEmbed embedHtml={formCode} onFormSubmit={handleFormSubmit} />
+              formCode && (
+                <MailchimpFormEmbed
+                  embedHtml={formCode}
+                  onFormSubmit={handleFormSubmit}
+                />
+              )
             )}
-            {formStatus === "error" && <p>There was an error submitting the form. Please try again.</p>}
+            {formStatus === "error" && (
+              <p>There was an error submitting the form. Please try again.</p>
+            )} */}
           </div>
         </div>
       </dialog>

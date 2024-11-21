@@ -21,10 +21,12 @@ export async function generateMetadata(props) {
 
   console.log("urlPath", urlPath);
 
+  console.log("searchParams", searchParams);
   const content = await fetchOneEntry({
-    options: getBuilderSearchParams(searchParams),
+    options: {...getBuilderSearchParams(searchParams), enrich: true},
     apiKey: PUBLIC_API_KEY,
     model: "page",
+    includeRefs: true,
     userAttributes: { urlPath },
   });
 
