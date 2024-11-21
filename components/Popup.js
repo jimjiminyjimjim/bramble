@@ -62,8 +62,18 @@ export function Popup({
   const [content, setContent] = useState(null);
   const [formStatus, setFormStatus] = useState(null);
 
-  const modalName = toCamelCase(ctaText || "");
+  // const modalName = toCamelCase(ctaText || "");
 
+  const handleFormSubmit = (status) => {
+    setFormStatus(status);
+    if (status === "success") {
+      setTimeout(() => {
+        document.getElementById("my_modal_3").close();
+        setFormStatus(null);
+      }, 2000);
+    }
+  };
+  
   useEffect(() => {
     setContent(true);
   }, []);
@@ -111,7 +121,7 @@ export function Popup({
           </form>
           <div className="text-black">
             {children}
-            {/* {formStatus === "success" ? (
+            {formStatus === "success" ? (
               <p>Thank you for your submission!</p>
             ) : (
               formCode && (
@@ -123,7 +133,7 @@ export function Popup({
             )}
             {formStatus === "error" && (
               <p>There was an error submitting the form. Please try again.</p>
-            )} */}
+            )}
           </div>
         </div>
       </dialog>
