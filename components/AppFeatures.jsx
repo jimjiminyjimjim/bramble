@@ -15,6 +15,7 @@ export const AppFeatures = ({
   anchor,
   image,
   theme,
+  children,
 }) => {
   const colors = useTheme(theme);
 
@@ -65,13 +66,12 @@ export const AppFeatures = ({
                       </div>
                       <div>
                         <h4 className="text-2xl font-bold">{feature.title}</h4>
-                        <p className="mt-1 text-base">
-                          {feature.description}
-                        </p>
+                        <p className="mt-1 text-base">{feature.description}</p>
                       </div>
                     </div>
                   ))}
                 </div>
+                <div className="ml-10">{children}</div>
               </div>
               {!hideImage && (
                 <div className="relative flex justify-center items-center">

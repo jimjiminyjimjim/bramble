@@ -386,6 +386,7 @@ export const customComponents = [
   {
     component: AppFeatures,
     name: "AppFeatures",
+    canHaveChildren: true,
     inputs: [
       {
         name: "theme",
