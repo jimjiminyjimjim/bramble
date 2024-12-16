@@ -31,7 +31,7 @@ export const AppFeatures = ({
     >
       <div className="container">
         <div className="text-center mb-8 lg:mb-16">
-          <h2 className="text-4xl font-semibold">{heading}</h2>
+          <h2 className="text-4xl font-semibold" style={{ color: colors.dark }}>{heading}</h2>
           <h4 className="mt-4 text-lg max-w-[600px] mx-auto text-center">
             {description}
           </h4>

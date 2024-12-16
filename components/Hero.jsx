@@ -37,7 +37,7 @@ export const Hero = ({
               {subtitle}
             </h5>
             <p className="text-base font-body mb-3">{description}</p>
-            <div className="text-center lg:text-left">{children}</div>
+            <div className="text-center lg:text-left mt-[20px]">{children}</div>
             {downloads === "Show App Store" ? (
               <div className="mt-16 flex justify-center gap-4 sm:justify-start">
                 <a href="#">

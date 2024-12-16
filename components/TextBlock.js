@@ -12,7 +12,7 @@ export function TextBlock({
   siteData,
   theme,
   coloumnTest,
-  builderBlock
+  builderBlock,
 }) {
   const colors = useTheme(theme);
 
@@ -33,7 +33,12 @@ export function TextBlock({
     >
       <div className="container">
         <div className="text-center">
-          <h2 className="text-2xl font-bold lg:text-4xl">{title}</h2>
+          <h2
+            className="text-2xl font-bold lg:text-4xl"
+            style={{ color: colors.dark }}
+          >
+            {title}
+          </h2>
           <p className="mt-4 text-lg">{subtitle}</p>
           <div
             className="mt-1 text-base font-body mb-4 max-w-[800px] mx-auto"
