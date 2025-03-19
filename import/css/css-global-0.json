@@ -1,11 +1,11 @@
 {
   "query": [],
   "folders": [],
-  "id": "77c3b489424a4479869ad047e881722a",
+  "id": "3d470e0b8bb64ffb81e533b78ac1cfa7",
   "name": "CSS Global",
   "published": "published",
   "createdDate": 1729595774456,
-  "modelId": "1794f5da9d654436abbfda3e23fc135a",
+  "modelId": "9a7090c6fef74dbeb799b2d4bc1e345f",
   "data": {
     "inputs": [],
     "cssCode": "/*\n* Custom CSS styles\n*\n* Global by default, but use `&` to scope to just this content, e.g.\n*\n*   & .foo {\n*     color: 'red'\n*   }\n*/\n\n* {\n    background-color: 'blue';\n}",
@@ -28,8 +28,8 @@
   "testRatio": 1,
   "createdBy": "dcNxI5zabAdsqPRZxnbPU4eFr6H2",
   "lastUpdatedBy": "dcNxI5zabAdsqPRZxnbPU4eFr6H2",
-  "rev": "8sg9hv1zo74",
-  "@originOrg": "78e83bccf80d4dd5981595b9dc8f5296",
-  "@originContentId": "efa3ae50959d0b30e14cc2041b588d1946de34504d80057993121df658e763af",
-  "@originModelId": "881a8bfe34baa2ac18200345c342d067dd58f073cd95502aa09bdfdb2b14c2d6"
+  "rev": "f5h71ax2f58",
+  "@originOrg": "4326c237495b421698d98079e65c9e17",
+  "@originContentId": "8b8bfafd5364c29ce67d79973828e07f052e7e65fcfb813a5aa0c713bec08ff6",
+  "@originModelId": "ac6947b2a66d6da31849cade05975da60fe89613cc8ea8424f6349c6db3bcd76"
 }

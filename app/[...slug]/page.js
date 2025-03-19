@@ -28,7 +28,7 @@ export default async function Page(props) {
 
   const siteData = await fetchOneEntry({
     apiKey: PUBLIC_API_KEY,
-    model: "site-data",
+    model: "site-data"
   });
 
   const canShowContent = content || isPreviewing(searchParams);

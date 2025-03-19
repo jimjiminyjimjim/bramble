@@ -85,6 +85,7 @@ export function Popup({
 
   if (!content) return null;
 
+  console.log("formCode", formCode);
   return (
     <>
       {textLink ? (

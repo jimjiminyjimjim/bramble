@@ -5,7 +5,7 @@
   "targetingSubset": [],
   "webhooks": [],
   "defaultTemplates": [],
-  "id": "8b636921f9824acea58f6fda16c00fd5",
+  "id": "f06a59decb0543f28cd2e093a9228b4a",
   "name": "symbol",
   "displayName": "",
   "kind": "component",
@@ -86,7 +86,7 @@
   "previewIframeTimeoutInSeconds": 20,
   "requireTemplate": false,
   "lastUpdateBy": null,
-  "@originId": "aeb4fc8cf6747716b1a0e0a76820b03bc7c865344fea319843e181b32983afe9",
+  "@originId": "6b648c6356830afac14e2fbd39484faa544a7dd71316fb140190b8742b22b56f",
   "apiGenerated": true,
-  "createdDate": 1730992852407
+  "createdDate": 1730812695263
 }

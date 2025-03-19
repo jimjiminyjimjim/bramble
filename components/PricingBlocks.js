@@ -35,7 +35,7 @@ export const PricingBlocks = ({
 
      
 
-        <div className={`grid gap-5 lg:grid-cols-${blocks.length}`}>
+        <div className={`grid gap-5 lg:grid-cols-${blocks?.length}`}>
           {blocks?.map((block, index) => (
             <div
               key={index}
