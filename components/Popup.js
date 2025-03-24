@@ -100,7 +100,7 @@ export function Popup({
           className={`btn`}
           style={{
             backgroundColor: colors?.button.dark,
-            color: colors?.button.text,
+            color: "#FFFFFF",
           }}
           onClick={() => document.getElementById("my_modal_3").showModal()}
         >
