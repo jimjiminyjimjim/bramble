@@ -4,6 +4,7 @@ import mobile1Img from "@/assets/images/landing/mobile-1.png";
 import appstoreImg from "@/assets/images/logo/appstore.png";
 import playstoreImg from "@/assets/images/logo/playstore.png";
 import { useTheme } from "@/helpers/theme";
+import cx from "classix";
 
 export const Hero = ({
   title,
@@ -13,6 +14,7 @@ export const Hero = ({
   image,
   theme,
   children,
+  bounce
 }) => {
   const colors = useTheme(theme);
 
@@ -53,11 +55,20 @@ export const Hero = ({
           <div className="relative order-2 lg:order-2">
             <div className="flex justify-center">
               {image ? (
-                <img src={image} className="bounce-animation h-[550px]" />
+                <img
+                  src={image}
+                  className={cx(
+                    bounce ? "bounce-animation" : null,
+                    "h-[550px]"
+                  )}
+                />
               ) : (
                 <img
                   alt="Mobile-1"
-                  className="bounce-animation h-[550px]"
+                  className={cx(
+                    bounce ? "bounce-animation" : null,
+                    "h-[550px]"
+                  )}
                   src={mobile1Img.src}
                 />
               )}

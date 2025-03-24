@@ -7,6 +7,8 @@ import { Hero } from "@/components/Hero";
 import { Stats } from "@/components/Stats";
 import { Feature } from "@/components/Feature";
 import { AppFeatures } from "@/components/AppFeatures";
+import { FeatureGrid } from "@/components/FeatureGrid";
+
 import { Screenshots } from "@/components/Screenshots";
 
 import { FAQ } from "@/components/FAQ";
@@ -194,6 +196,7 @@ export const customComponents = [
         enum: ["light", "dark", "white"],
         defaultValue: "light",
       },
+      { name: "bounce", type: "boolean" },
       {
         name: "title",
         type: "string",
@@ -386,6 +389,67 @@ export const customComponents = [
   {
     component: AppFeatures,
     name: "AppFeatures",
+    canHaveChildren: true,
+    inputs: [
+      {
+        name: "theme",
+        type: "enum",
+        enum: ["light", "dark", "white"],
+        defaultValue: "light",
+      },
+      { name: "anchor", type: "string" },
+      {
+        name: "heading",
+        type: "string",
+        defaultValue: "Organize your tasks. Set priorities. Boost Productivity",
+      },
+      {
+        name: "description",
+        type: "string",
+        defaultValue:
+          "This organized feature list provides a clear overview of the AI landing page's capabilities, making it easier for users to understand the key functionalities of the app.",
+      },
+      {
+        name: "image",
+        type: "file",
+        allowedFileTypes: ["jpeg", "jpg", "png", "svg"],
+      },
+      {
+        name: "hideImage",
+        type: "boolean",
+      },
+      {
+        name: "features",
+        type: "list",
+        subFields: [
+          {
+            name: "title",
+            type: "string",
+            defaultValue: "Real-time Data Processing",
+          },
+          {
+            name: "description",
+            type: "string",
+            defaultValue:
+              "Swift processing of data for instant insights and responses. Ensure up-to-date information and analysis in real-time.",
+          },
+          {
+            name: "icon",
+            type: "string",
+            defaultValue: "AiOutlineCheckCircle",
+          },
+          {
+            name: "image",
+            type: "file",
+            allowedFileTypes: ["jpeg", "jpg", "png", "svg"],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    component: FeatureGrid,
+    name: "FeatureGrid",
     canHaveChildren: true,
     inputs: [
       {
