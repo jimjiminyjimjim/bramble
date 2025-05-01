@@ -22,6 +22,11 @@ p {
   font-family: var(--font-body);
 }
 
+/* .builder-block{
+  z-index: 1;
+} */
+
+
 .text-brand-gradient {
   background: linear-gradient(to right, #fc766a 0%, #cc3c08 100%);
   -webkit-background-clip: text;
@@ -43,10 +48,10 @@ p {
   min-width: 100px;
 }
 
-a.builder-03ca72d55e144659ac51b3bff605cc25{
+a{
   margin-top: 20px;
   display: inline-block;
-  border-radius: 50px;
+  border-radius: 50px !important;
   font-size: 18px;
 }
 
@@ -60,3 +65,4 @@ a.builder-03ca72d55e144659ac51b3bff605cc25{
     transform: translateY(-8px);
   }
 }
+

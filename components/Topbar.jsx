@@ -17,7 +17,7 @@ const MenuItems = ({ items, onClick }) => (
   </>
 );
 
-export const Topbar = ({ children, theme }) => {
+export const Topbar = ({ children,  theme }) => {
   const siteData = useSiteData();
   const [drawerOpened, setDrawerOpened] = useState(false);
   const [atTop, setAtTop] = useState(true);
@@ -48,7 +48,7 @@ export const Topbar = ({ children, theme }) => {
       <div
         id="navbar-wrapper"
         style={{ backgroundColor: colors?.primary }}
-        className={`bg-transparent fixed inset-x-0 top-0 z-[60] transition-all duration-500 ${
+        className={`bg-transparent inset-x-0 top-0 !z-50 transition-all duration-500 ${
           !atTop ? "py-0" : "py-4"
         }`}
       >

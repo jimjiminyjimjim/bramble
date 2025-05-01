@@ -1,85 +1,100 @@
-import { fetchOneEntry, subscribeToEditor } from "@builder.io/sdk-react";
-import { useEffect, useState, useRef } from "react";
+import { useState, useMemo } from "react";
+import { useTheme } from "@/helpers/theme";
+import { parseMailchimpEmbed } from "@/helpers/mailchimpParser";
 
-const MailchimpFormEmbed = ({ embedHtml }) => {
-  const formRef = useRef(null);
+const getContrastTextColour = (color) => {
+  // Accept hex, short-hex or rgb() — fall back to black.
+  try {
+    let r, g, b;
 
-  useEffect(() => {
-    // Find the form inside the rendered HTML
-    const form = formRef.current?.querySelector("form");
-
-    if (form) {
-      // Intercept form submission
-      const handleFormSubmit = (e) => {
-        e.preventDefault(); // Prevent the default form submission
-
-        const formData = new FormData(form); // Collect form data
-
-        // Send the form data programmatically via fetch
-        fetch(form.action, {
-          method: form.method,
-          body: formData,
-          mode: "no-cors",
-        })
-          .then(() => {
-            console.log("Form successfully submitted");
-            // Handle success feedback
-          })
-          .catch((error) => {
-            console.error("Form submission error:", error);
-            // Handle error feedback
-          });
-      };
-
-      // Attach the custom submit handler to the form
-      form.addEventListener("submit", handleFormSubmit);
-
-      // Cleanup the event listener when the component is unmounted
-      return () => form.removeEventListener("submit", handleFormSubmit);
+    if (color.startsWith("#")) {
+      const hex = color.replace("#", "");
+      const full = hex.length === 3
+        ? hex.split("").map((c) => c + c).join("")
+        : hex;
+      r = parseInt(full.slice(0, 2), 16);
+      g = parseInt(full.slice(2, 4), 16);
+      b = parseInt(full.slice(4, 6), 16);
+    } else if (color.startsWith("rgb")) {
+      [r, g, b] = color
+        .replace(/[^\d,]/g, "")
+        .split(",")
+        .map((n) => parseInt(n, 10));
+    } else {
+      return "#000";
     }
-  }, [embedHtml]);
 
-  return <div ref={formRef} dangerouslySetInnerHTML={{ __html: embedHtml }} />;
+    // Perceived luminance formula (sRGB)
+    const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+
+    // Anything under ~0.55 is “dark” → use white text
+    return luminance < 0.55 ? "#fff" : "#000";
+  } catch {
+    return "#000";
+  }
 };
 
-export function Popup({ children, formCode, siteData }) {
-  const [content, setContent] = useState(undefined);
+export function Mailchimp({ placeholder = "Enter your email", mailchimpFormCode, theme, ctaText, ctaColor }) {
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
 
-  useEffect(() => {
-    // fetch initial data
-    fetchOneEntry({
-      model: "popup",
-      apiKey: "a42db2ee068342eda145f280f84fd130",
-    })
-      .then((item) => setContent(item.data.mailchimpForm))
-      .catch((err) => {
-        console.error(
-          "something went wrong while fetching Builder Content: ",
-          err
-        );
-      });
-  }, []);
+
+  const colors = useTheme(theme);
+
+  const background = ctaColor || colors?.buttonColor || "#eeeeee";
+  const textColour = useMemo(() => getContrastTextColour(background), [background]);
+  
+  const { host, u, id, tags, honeypot } = useMemo(
+    () => parseMailchimpEmbed(mailchimpFormCode) ?? {},
+    [mailchimpFormCode]
+  );
+
+  const handleSubmit = async () => {
+    if (!email.includes("@")) { setError("Please enter a valid email"); return; }
+
+    const url  = `https://${host}/subscribe/post?u=${u}&id=${id}`;
+    const data = new FormData();
+
+    data.append("EMAIL", email);
+    data.append("u", u);
+    data.append("id", id);
+
+    if (tags)     data.append("tags", tags);
+    if (honeypot) data.append(honeypot, "");     // keeps spam-trap field happy
+
+    try {
+      await fetch(url, { method: "POST", mode: "no-cors", body: data });
+      setSubmitted(true); setError(""); setEmail("");
+    } catch(err) {
+      console.error("Error submitting form", err);
+      setError("Something went wrong – please try again.");
+    }
+  };
+
 
   return (
-    <>
-      <button
-        className="btn"
-        onClick={() => document.getElementById("my_modal_1").showModal()}
-      >
-        open modal
-      </button>
-      <dialog id="my_modal_1" className="modal p-0">
-        <div className="modal-box p-0">
-          {children}
-          {formCode && <MailchimpFormEmbed embedHtml={content} />}
-          <div className="modal-action">
-            <form method="dialog">
-              {/* if there is a button in form, it will close the modal */}
-              <button className="btn">Close</button>
-            </form>
-          </div>
-        </div>
-      </dialog>
-    </>
+    <div className="w-full mt-10">
+      {/* Row: input is 3/4, button 1/4 (gap respected) */}
+      <div className="flex h-12 gap-5">
+        <input
+          type="email"
+          value={email}
+          placeholder={placeholder}
+          onChange={e => setEmail(e.target.value)}
+          className="flex-[2_2_0%] rounded-full px-4 py-2 border border-gray-300 h-full"
+        />
+        <button
+          onClick={handleSubmit}
+          className="flex-[1_1_0%] btn h-full m-0"
+          style={{ backgroundColor: background, color: textColour }}
+        >
+          {ctaText}
+        </button>
+      </div>
+
+      {submitted && <p className="text-green-600 text-sm mt-2">Thanks! Check your inbox.</p>}
+      {error && <p className="text-red-600 text-sm mt-2">{error}</p>}
+    </div>
   );
 }

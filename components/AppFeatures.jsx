@@ -10,13 +10,15 @@ export const AppFeatures = ({
   heading,
   description,
   features,
+  align,
   integrations,
   hideImage,
   anchor,
   image,
   theme,
-  children,
+  children
 }) => {
+  console.log("align", align);
   const colors = useTheme(theme);
 
   const splitIndex = Math.ceil(features?.length / 2);
@@ -25,17 +27,24 @@ export const AppFeatures = ({
 
   return (
     <section
-      className="py-8 lg:py-24"
+      className="py-8 lg:py-48"
       {...anchorTags(anchor)}
       style={{ backgroundColor: colors.primary }}
     >
       <div className="container">
-        <div className="text-center mb-8 lg:mb-16">
-          <h2 className="text-4xl font-semibold" style={{ color: colors.dark }}>{heading}</h2>
-          <h4 className="mt-4 text-lg max-w-[600px] mx-auto text-center">
-            {description}
-          </h4>
-        </div>
+        {align === "center" && (
+          <div className="text-center mb-8 lg:mb-16">
+            <h2
+              className="text-4xl font-semibold"
+              style={{ color: colors.dark }}
+            >
+              {heading}
+            </h2>
+            <h4 className="mt-4 text-lg max-w-[600px] mx-auto text-center">
+              {description}
+            </h4>
+          </div>
+        )}
         <div
           className={`${
             features?.length < 5 && hideImage
@@ -49,11 +58,28 @@ export const AppFeatures = ({
                 className={`flex flex-col justify-between ${hideImage ? "items-center text-center" : ""}`}
               >
                 <div className="space-y-8">
+                  {align === "left" && (
+                    <div className="text-left mb-8 lg:mb-16">
+                      <h2
+                        className="text-4xl font-semibold leading-tight"
+                        style={{ color: colors.dark }}
+                      >
+                        {heading}
+                      </h2>
+                      <h4 className="mt-4 text-lg max-w-[600px] mx-auto text-left">
+                        {description}
+                      </h4>
+                    </div>
+                  )}
                   {features?.map((feature, index) => (
-                    <div className="flex items-start gap-5" key={index}>
+                    <div className="flex items-center gap-5" key={index}>
                       <div className="inline-flex items-center justify-center rounded font-medium text-primary">
                         {feature.image ? (
-                          <img src={feature.image} alt={feature.title} />
+                          <img
+                            src={feature.image}
+                            alt={feature.title}
+                            className="max-w-[80px]"
+                          />
                         ) : (
                           !hideImage && (
                             <DynamicIcon
@@ -64,9 +90,17 @@ export const AppFeatures = ({
                           )
                         )}
                       </div>
-                      <div>
-                        <h4 className="text-2xl font-bold">{feature.title}</h4>
-                        <p className="mt-1 text-base">{feature.description}</p>
+                      <div className="flex flex-col items-center justify-center ">
+                        {feature?.title && (
+                          <h4 className="text-2xl font-bold leading-tight">
+                            {feature?.title}
+                          </h4>
+                        )}
+                        {feature?.description && (
+                          <p className="mt-1 text-base">
+                            {feature?.description}
+                          </p>
+                        )}
                       </div>
                     </div>
                   ))}

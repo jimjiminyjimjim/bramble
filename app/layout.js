@@ -26,15 +26,16 @@ export default async function RootLayout({ children }) {
   console.log("NEXT_PUBLIC_GTM", process.env.NEXT_PUBLIC_GTM);
 
   return (
-    <html lang="en" data-theme="cupcake">
+    <html lang="en" data-theme="cupcake" className="min-h-screen">
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM} />
-      <body>
+      <body className="min-h-screen flex flex-col justify-center">
         <link rel="stylesheet" href={googleFontsUrl} />
         <style>
           {`
             :root {
               --font-body: '${bodyFont}', sans-serif;
               --font-display: '${displayFont}', sans-serif;
+              position: relative;
             }
           `}
         </style>

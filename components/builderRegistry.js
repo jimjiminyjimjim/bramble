@@ -4,6 +4,8 @@ import { PricingBlocks } from "@/components/PricingBlocks";
 import { register } from "@builder.io/sdk-react";
 import { HeroImage } from "@/components/HeroImage";
 import { Hero } from "@/components/Hero";
+import { OnePager } from "@/components/OnePager";
+
 import { Stats } from "@/components/Stats";
 import { Feature } from "@/components/Feature";
 import { AppFeatures } from "@/components/AppFeatures";
@@ -26,36 +28,38 @@ import { Carousel } from "@/components/CustomTabs";
 
 import { TandCs } from "@/components/TandCs";
 
+import { Mailchimp } from "@/components/Mailchimp";
+
 // this array can contain as many custom components as you want
 export const customComponents = [
   {
     component: Carousel,
-    name: 'Carousel',
+    name: "Carousel",
     /** To accept children in your custom component and by default it is false */
     canHaveChildren: true,
     /** To receieve Builder props inside your custom component: by default false  */
     shouldReceiveBuilderProps: {
       /** To access builder's Blocks relative to your parent */
-      builderBlock: true,
+      builderBlock: true
     },
     inputs: [
       {
-        name: 'slides',
-        type: 'list',
-        subFields: [
-        ],
+        name: "slides",
+        type: "list",
+        subFields: [],
         defaultValue: [
           {
-            '@type': '@builder.io/sdk:Element',
+            "@type": "@builder.io/sdk:Element",
             component: {
-              name: 'Text',
+              name: "Text",
               options: {
-                text: 'Carousel Text - Im editable'
+                text: "Carousel Text - Im editable"
               }
-            },
-          }],
-      },
-    ],
+            }
+          }
+        ]
+      }
+    ]
   },
   {
     component: Topbar,
@@ -66,17 +70,40 @@ export const customComponents = [
         name: "theme",
         type: "enum",
         enum: ["light", "dark", "white"],
-        defaultValue: "light",
+        defaultValue: "light"
+      }
+    ]
+  },
+  {
+    component: Mailchimp,
+    name: "Mailchimp Input",
+    inputs: [
+      {
+        name: "placeholder",
+        defaultValue: "Please enter your email"
       },
-    ],
+      {
+        name: "ctaColor",
+        type: "color"
+      },
+      {
+        name: "successMessage",
+        type: "string",
+        defaultValue: "Thank you for signing up!"
+      },
+      { name: "mailchimpFormCode", type: "code" },
+      { name: "ctaText", type: "string", defaultValue: "Click Me" }
+    ]
   },
   {
     name: "Pricing Blocks",
     component: PricingBlocks,
     canHaveChildren: true,
     shouldReceiveBuilderProps: {
-      /** To access builder's Blocks relative to your parent */
       builderBlock: true,
+      builderContext: true,
+      builderComponents: true,
+      builderLinkComponent: true
     },
     inputs: [
       { name: "anchor", type: "string" },
@@ -84,32 +111,43 @@ export const customComponents = [
         name: "theme",
         type: "enum",
         enum: ["light", "dark", "white"],
-        defaultValue: "light",
+        defaultValue: "light"
       },
       { name: "title", type: "string" },
+      {
+        name: "subtitle",
+        type: "string",
+        defaultValue: "Best option for personal use"
+      },
       { name: "description", type: "string" },
       {
-        name: "blocks",
+        name: "pricingBlocks",
         type: "list",
+        defaultValue: [{ blocks: [] }],
         subFields: [
+          {
+            name: "image",
+            type: "file",
+            allowedFileTypes: ["jpeg", "jpg", "png", "svg"]
+          },
           {
             name: "title",
             type: "string",
-            defaultValue: "Starter",
+            defaultValue: "Starter"
           },
           {
             name: "price",
             type: "string",
-            defaultValue: "$29",
+            defaultValue: "$29"
           },
           {
             name: "period",
-            type: "string",
+            type: "string"
           },
           {
             name: "description",
             type: "string",
-            defaultValue: "Best option for personal use",
+            defaultValue: "Best option for personal use"
           },
           {
             name: "features",
@@ -118,35 +156,15 @@ export const customComponents = [
               {
                 name: "description",
                 type: "string",
-                defaultValue: "Individual configuration",
-              },
-            ],
+                defaultValue: "Individual configuration"
+              }
+            ]
           },
           {
-            name: "children",
+            name: "blocks",
             type: "uiBlocks",
-            hideFromUI: true,
-            defaultValue: [
-              {
-                "@type": "@builder.io/sdk:Element",
-                component: {
-                  name: "Text",
-
-                  options: {
-                    text: "This is editable block within the builder editor",
-                  },
-                },
-                // responsiveStyles: {
-                //   large: {
-                //     ...,
-                //   },
-                //   small: {
-                //     ...,
-                //   },
-                // },
-              },
-            ],
-          },
+            defaultValue: []
+          }
           // {
           //   name: "button",
           //   type: "boolean",
@@ -181,51 +199,61 @@ export const customComponents = [
           //     );
           //   },
           // },
-        ],
-      },
-    ],
+        ]
+      }
+    ]
   },
   {
     component: Hero,
     name: "Hero",
     canHaveChildren: true,
+    noWrap: true,
     inputs: [
       {
         name: "theme",
         type: "enum",
         enum: ["light", "dark", "white"],
-        defaultValue: "light",
+        defaultValue: "light"
       },
       { name: "bounce", type: "boolean" },
       {
         name: "title",
         type: "string",
         defaultValue:
-          "daisyAi - Advancing You Towards Efficiency, Convenience, and Innovation",
+          "daisyAi - Advancing You Towards Efficiency, Convenience, and Innovation"
       },
       {
         name: "subtitle",
         type: "string",
         defaultValue:
-          "Empower Your Mobile Journey with WrapAi, the Next-Generation App that Puts the Power of Performance Right in the Palm of Your Hand",
+          "Empower Your Mobile Journey with WrapAi, the Next-Generation App that Puts the Power of Performance Right in the Palm of Your Hand"
       },
       {
         name: "description",
         type: "longText",
         defaultValue:
-          "Empower Your Mobile Journey with WrapAi, the Next-Generation App that Puts the Power of Performance Right in the Palm of Your Hand",
+          "Empower Your Mobile Journey with WrapAi, the Next-Generation App that Puts the Power of Performance Right in the Palm of Your Hand"
       },
       {
         name: "image",
         type: "file",
-        allowedFileTypes: ["jpeg", "jpg", "png", "svg"],
+        allowedFileTypes: ["jpeg", "jpg", "png", "svg"]
+      },
+      {
+        name: "backgroundImage",
+        type: "file",
+        allowedFileTypes: ["jpeg", "jpg", "svg"]
       },
       {
         name: "downloads",
         type: "enum",
-        enum: ["Show App Store", "Don't Show App Store"],
+        enum: ["Show App Store", "Don't Show App Store"]
       },
-    ],
+      {
+        name: "fullScreen",
+        type: "boolean"
+      }
+    ]
   },
   {
     component: HeroImage,
@@ -234,14 +262,14 @@ export const customComponents = [
     /** To receieve Builder props inside your custom component: by default false  */
     shouldReceiveBuilderProps: {
       /** To access builder's Blocks relative to your parent */
-      builderBlock: true,
+      builderBlock: true
     },
     inputs: [
       {
         name: "theme",
         type: "enum",
         enum: ["light", "dark", "white"],
-        defaultValue: "light",
+        defaultValue: "light"
       },
       { name: "anchor", type: "string" },
       { name: "alignment", type: "enum", enum: ["left", "center", "right"] },
@@ -249,29 +277,29 @@ export const customComponents = [
         name: "title",
         type: "string",
         defaultValue:
-          "daisyAi - Advancing You Towards Efficiency, Convenience, and Innovation",
+          "daisyAi - Advancing You Towards Efficiency, Convenience, and Innovation"
       },
       {
         name: "subtitle",
         type: "string",
         defaultValue:
-          "Empower Your Mobile Journey with WrapAi, the Next-Generation App that Puts the Power of Performance Right in the Palm of Your Hand",
+          "Empower Your Mobile Journey with WrapAi, the Next-Generation App that Puts the Power of Performance Right in the Palm of Your Hand"
       },
       {
         name: "image",
         type: "file",
         allowedFileTypes: ["jpeg", "jpg", "png", "svg"],
         defaultValue:
-          "https://cdn.builder.io/api/v1/image/assets%2Fpwgjf0RoYWbdnJSbpBAjXNRMe9F2%2Ffb27a7c790324294af8be1c35fe30f4d",
-      },
-    ],
+          "https://cdn.builder.io/api/v1/image/assets%2Fpwgjf0RoYWbdnJSbpBAjXNRMe9F2%2Ffb27a7c790324294af8be1c35fe30f4d"
+      }
+    ]
   },
   {
     component: TextBlock,
     name: "TextBlock",
     canHaveChildren: true,
     shouldReceiveBuilderProps: {
-      builderBlock: true,
+      builderBlock: true
     },
     inputs: [
       {
@@ -280,36 +308,36 @@ export const customComponents = [
         subFields: [
           {
             name: "children",
-            type: "uiBlocks",
-          },
-        ],
+            type: "uiBlocks"
+          }
+        ]
       },
       {
         name: "theme",
         type: "enum",
         enum: ["light", "dark", "white"],
-        defaultValue: "light",
+        defaultValue: "light"
       },
       {
         name: "title",
         type: "string",
         defaultValue:
-          "daisyAi - Advancing You Towards Efficiency, Convenience, and Innovation",
+          "daisyAi - Advancing You Towards Efficiency, Convenience, and Innovation"
       },
 
       {
         name: "subtitle",
         type: "string",
         defaultValue:
-          "daisyAi - Advancing You Towards Efficiency, Convenience, and Innovation",
+          "daisyAi - Advancing You Towards Efficiency, Convenience, and Innovation"
       },
       {
         name: "body",
         type: "richText",
         defaultValue:
-          "Empower Your Mobile Journey with WrapAi, the Next-Generation App that Puts the Power of Performance Right in the Palm of Your Hand",
-      },
-    ],
+          "Empower Your Mobile Journey with WrapAi, the Next-Generation App that Puts the Power of Performance Right in the Palm of Your Hand"
+      }
+    ]
   },
   {
     component: SignUp,
@@ -319,26 +347,26 @@ export const customComponents = [
         name: "theme",
         type: "enum",
         enum: ["light", "dark", "white"],
-        defaultValue: "light",
+        defaultValue: "light"
       },
       { name: "anchor", type: "string" },
       {
         name: "title",
         type: "string",
         defaultValue:
-          "daisyAi - Advancing You Towards Efficiency, Convenience, and Innovation",
+          "daisyAi - Advancing You Towards Efficiency, Convenience, and Innovation"
       },
       {
         name: "subtitle",
         type: "string",
         defaultValue:
-          "Empower Your Mobile Journey with WrapAi, the Next-Generation App that Puts the Power of Performance Right in the Palm of Your Hand",
+          "Empower Your Mobile Journey with WrapAi, the Next-Generation App that Puts the Power of Performance Right in the Palm of Your Hand"
       },
       {
         name: "maichimpUrl",
-        type: "string",
-      },
-    ],
+        type: "string"
+      }
+    ]
   },
   {
     component: Screenshots,
@@ -348,19 +376,19 @@ export const customComponents = [
         name: "theme",
         type: "enum",
         enum: ["light", "dark", "white"],
-        defaultValue: "light",
+        defaultValue: "light"
       },
       { name: "anchor", type: "string" },
       {
         name: "heading",
         type: "string",
-        defaultValue: "Organize your tasks. Set priorities. Boost Productivity",
+        defaultValue: "Organize your tasks. Set priorities. Boost Productivity"
       },
       {
         name: "description",
         type: "string",
         defaultValue:
-          "This organized feature list provides a clear overview of the AI landing page's capabilities, making it easier for users to understand the key functionalities of the app.",
+          "This organized feature list provides a clear overview of the AI landing page's capabilities, making it easier for users to understand the key functionalities of the app."
       },
       {
         name: "screens",
@@ -369,22 +397,22 @@ export const customComponents = [
           {
             name: "title",
             type: "string",
-            defaultValue: "Real-time Data Processing",
+            defaultValue: "Real-time Data Processing"
           },
           {
             name: "description",
             type: "string",
             defaultValue:
-              "Swift processing of data for instant insights and responses. Ensure up-to-date information and analysis in real-time.",
+              "Swift processing of data for instant insights and responses. Ensure up-to-date information and analysis in real-time."
           },
           {
             name: "image",
             type: "file",
-            allowedFileTypes: ["jpeg", "jpg", "png", "svg"],
-          },
-        ],
-      },
-    ],
+            allowedFileTypes: ["jpeg", "jpg", "png", "svg"]
+          }
+        ]
+      }
+    ]
   },
   {
     component: AppFeatures,
@@ -395,28 +423,34 @@ export const customComponents = [
         name: "theme",
         type: "enum",
         enum: ["light", "dark", "white"],
-        defaultValue: "light",
+        defaultValue: "light"
       },
       { name: "anchor", type: "string" },
       {
         name: "heading",
         type: "string",
-        defaultValue: "Organize your tasks. Set priorities. Boost Productivity",
+        defaultValue: "Organize your tasks. Set priorities. Boost Productivity"
       },
       {
         name: "description",
         type: "string",
         defaultValue:
-          "This organized feature list provides a clear overview of the AI landing page's capabilities, making it easier for users to understand the key functionalities of the app.",
+          "This organized feature list provides a clear overview of the AI landing page's capabilities, making it easier for users to understand the key functionalities of the app."
       },
       {
         name: "image",
         type: "file",
-        allowedFileTypes: ["jpeg", "jpg", "png", "svg"],
+        allowedFileTypes: ["jpeg", "jpg", "png", "svg"]
       },
       {
         name: "hideImage",
-        type: "boolean",
+        type: "boolean"
+      },
+      {
+        name: "align",
+        type: "enum",
+        enum: ["left", "center", "right"],
+        defaultValue: "center"
       },
       {
         name: "features",
@@ -425,27 +459,27 @@ export const customComponents = [
           {
             name: "title",
             type: "string",
-            defaultValue: "Real-time Data Processing",
+            defaultValue: "Real-time Data Processing"
           },
           {
             name: "description",
             type: "string",
             defaultValue:
-              "Swift processing of data for instant insights and responses. Ensure up-to-date information and analysis in real-time.",
+              "Swift processing of data for instant insights and responses. Ensure up-to-date information and analysis in real-time."
           },
           {
             name: "icon",
             type: "string",
-            defaultValue: "AiOutlineCheckCircle",
+            defaultValue: "AiOutlineCheckCircle"
           },
           {
             name: "image",
             type: "file",
-            allowedFileTypes: ["jpeg", "jpg", "png", "svg"],
-          },
-        ],
-      },
-    ],
+            allowedFileTypes: ["jpeg", "jpg", "png", "svg"]
+          }
+        ]
+      }
+    ]
   },
   {
     component: FeatureGrid,
@@ -456,28 +490,28 @@ export const customComponents = [
         name: "theme",
         type: "enum",
         enum: ["light", "dark", "white"],
-        defaultValue: "light",
+        defaultValue: "light"
       },
       { name: "anchor", type: "string" },
       {
         name: "heading",
         type: "string",
-        defaultValue: "Organize your tasks. Set priorities. Boost Productivity",
+        defaultValue: "Organize your tasks. Set priorities. Boost Productivity"
       },
       {
         name: "description",
         type: "string",
         defaultValue:
-          "This organized feature list provides a clear overview of the AI landing page's capabilities, making it easier for users to understand the key functionalities of the app.",
+          "This organized feature list provides a clear overview of the AI landing page's capabilities, making it easier for users to understand the key functionalities of the app."
       },
       {
         name: "image",
         type: "file",
-        allowedFileTypes: ["jpeg", "jpg", "png", "svg"],
+        allowedFileTypes: ["jpeg", "jpg", "png", "svg"]
       },
       {
         name: "hideImage",
-        type: "boolean",
+        type: "boolean"
       },
       {
         name: "features",
@@ -486,27 +520,27 @@ export const customComponents = [
           {
             name: "title",
             type: "string",
-            defaultValue: "Real-time Data Processing",
+            defaultValue: "Real-time Data Processing"
           },
           {
             name: "description",
             type: "string",
             defaultValue:
-              "Swift processing of data for instant insights and responses. Ensure up-to-date information and analysis in real-time.",
+              "Swift processing of data for instant insights and responses. Ensure up-to-date information and analysis in real-time."
           },
           {
             name: "icon",
             type: "string",
-            defaultValue: "AiOutlineCheckCircle",
+            defaultValue: "AiOutlineCheckCircle"
           },
           {
             name: "image",
             type: "file",
-            allowedFileTypes: ["jpeg", "jpg", "png", "svg"],
-          },
-        ],
-      },
-    ],
+            allowedFileTypes: ["jpeg", "jpg", "png", "svg"]
+          }
+        ]
+      }
+    ]
   },
   {
     component: Stats,
@@ -516,19 +550,19 @@ export const customComponents = [
         name: "theme",
         type: "enum",
         enum: ["light", "dark", "white"],
-        defaultValue: "light",
+        defaultValue: "light"
       },
       { name: "anchor", type: "string" },
       {
         name: "title",
         type: "string",
-        defaultValue: "Organize your tasks. Set priorities. Boost Productivity",
+        defaultValue: "Organize your tasks. Set priorities. Boost Productivity"
       },
       {
         name: "subtitle",
         type: "string",
         defaultValue:
-          "This organized feature list provides a clear overview of the AI landing page's capabilities, making it easier for users to understand the key functionalities of the app.",
+          "This organized feature list provides a clear overview of the AI landing page's capabilities, making it easier for users to understand the key functionalities of the app."
       },
       {
         name: "stats",
@@ -537,27 +571,27 @@ export const customComponents = [
           {
             name: "title",
             type: "string",
-            defaultValue: "Real-time Data Processing",
+            defaultValue: "Real-time Data Processing"
           },
           {
             name: "description",
             type: "string",
             defaultValue:
-              "Swift processing of data for instant insights and responses. Ensure up-to-date information and analysis in real-time.",
+              "Swift processing of data for instant insights and responses. Ensure up-to-date information and analysis in real-time."
           },
           {
             name: "image",
             type: "file",
-            allowedFileTypes: ["jpeg", "jpg", "png", "svg"],
+            allowedFileTypes: ["jpeg", "jpg", "png", "svg"]
           },
           {
             name: "icon",
             type: "string",
-            defaultValue: "AiOutlineCheckCircle",
-          },
-        ],
-      },
-    ],
+            defaultValue: "AiOutlineCheckCircle"
+          }
+        ]
+      }
+    ]
   },
   {
     component: Popup,
@@ -566,19 +600,19 @@ export const customComponents = [
     /** To receieve Builder props inside your custom component: by default false  */
     shouldReceiveBuilderProps: {
       /** To access builder's Blocks relative to your parent */
-      builderBlock: true,
+      builderBlock: true
     },
     inputs: [
       {
         name: "theme",
         type: "enum",
         enum: ["light", "dark", "white"],
-        defaultValue: "light",
+        defaultValue: "light"
       },
       { name: "mailchimpForm", type: "boolean" },
       { name: "formCode", type: "code" },
-      { name: "ctaText", type: "string", defaultValue: "Click Me" },
-    ],
+      { name: "ctaText", type: "string", defaultValue: "Click Me" }
+    ]
   },
   {
     component: TandCs,
@@ -586,7 +620,8 @@ export const customComponents = [
     canHaveChildren: true,
     inputs: [
       { name: "ctaText", type: "string" },
-    ],
+      { name: "colour", type: "color" }
+    ]
   },
   {
     component: FAQ,
@@ -596,11 +631,11 @@ export const customComponents = [
         name: "theme",
         type: "enum",
         enum: ["light", "dark", "white"],
-        defaultValue: "light",
+        defaultValue: "light"
       },
       { name: "title", type: "string" },
-      { name: "anchor", type: "string" },
-    ],
+      { name: "anchor", type: "string" }
+    ]
   },
   {
     component: Footer,
@@ -611,11 +646,13 @@ export const customComponents = [
         name: "theme",
         type: "enum",
         enum: ["light", "dark", "white"],
-        defaultValue: "light",
+        defaultValue: "light"
       },
       { name: "anchor", type: "string" },
       { name: "title", type: "string" },
-    ],
+      { name: "overlay", type: "boolean" },
+      { name: "horizontal", type: "boolean" }
+    ]
   },
   {
     component: MinFooter,
@@ -625,11 +662,11 @@ export const customComponents = [
         name: "theme",
         type: "enum",
         enum: ["light", "dark", "white"],
-        defaultValue: "light",
+        defaultValue: "light"
       },
       { name: "anchor", type: "string" },
-      { name: "title", type: "string" },
-    ],
+      { name: "title", type: "string" }
+    ]
   },
   {
     component: Works,
@@ -639,11 +676,11 @@ export const customComponents = [
         name: "theme",
         type: "enum",
         enum: ["light", "dark", "white"],
-        defaultValue: "light",
+        defaultValue: "light"
       },
       { name: "anchor", type: "string" },
-      { name: "title", type: "string" },
-    ],
+      { name: "title", type: "string" }
+    ]
   },
   {
     component: Testimonial,
@@ -653,11 +690,11 @@ export const customComponents = [
         name: "theme",
         type: "enum",
         enum: ["light", "dark", "white"],
-        defaultValue: "light",
+        defaultValue: "light"
       },
       { name: "anchor", type: "string" },
-      { name: "title", type: "string" },
-    ],
+      { name: "title", type: "string" }
+    ]
   },
   {
     component: Download,
@@ -667,10 +704,10 @@ export const customComponents = [
         name: "theme",
         type: "enum",
         enum: ["light", "dark", "white"],
-        defaultValue: "light",
+        defaultValue: "light"
       },
       { name: "anchor", type: "string" },
-      { name: "title", type: "string" },
-    ],
-  },
+      { name: "title", type: "string" }
+    ]
+  }
 ];

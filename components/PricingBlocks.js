@@ -1,20 +1,19 @@
 "use client";
 import { useTheme } from "@/helpers/theme";
+import { Blocks } from "@builder.io/sdk-react";
 
 export const PricingBlocks = ({
   title,
+  subtitle,
   description,
-  blocks,
+  pricingBlocks,
   theme,
-  children,
   builderBlock,
-  columnTest
+  builderComponents,
+  builderContext,
+  builderLinkComponent
 }) => {
   const colors = useTheme(theme);
-
-  console.log("pricing blocks", builderBlock);
-  console.log("columnTest", columnTest);
-
   return (
     <section style={{ backgroundColor: colors.primary }}>
       <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
@@ -25,6 +24,14 @@ export const PricingBlocks = ({
                 {title}
               </h2>
             )}
+            {subtitle && (
+              <p
+                className="mt-4 text-base lg:text-xl"
+                style={{ color: colors.text.body }}
+              >
+                {subtitle}
+              </p>
+            )}
             {description && (
               <p className="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400">
                 {description}
@@ -33,72 +40,89 @@ export const PricingBlocks = ({
           </div>
         )}
 
-     
-
-        <div className={`grid gap-5 lg:grid-cols-${blocks?.length}`}>
-          {blocks?.map((block, index) => (
-            <div
-              key={index}
-              className="flex flex-col p-6 mx-auto max-w-[400px] text-center text-gray-900 bg-white rounded-xl border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white mt-[20px]"
-            >
-              <h3
-                className="text-3xl font-semibold"
-                style={{ color: colors?.text.title }}
+        <div className="flex flex-wrap justify-center gap-12">
+          {pricingBlocks?.map((pricingBlock, index) => {
+            console.log("pricingBlocks", pricingBlocks[index]);
+            return (
+              <div
+                key={index}
+                className="w-full max-w-[400px] flex flex-col p-6
+                text-center bg-white rounded-xl border shadow
+                dark:bg-gray-800 dark:text-white"
               >
-                {block.title}
-              </h3>
-              <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
-                {block.description}
-              </p>
-              <div className="flex justify-center items-baseline my-8">
+                {pricingBlock?.image && (
+                  <img
+                    src={pricingBlock?.image}
+                    alt={pricingBlock?.title}
+                    className="max-w-[80px] mx-auto mb-5"
+                  />
+                )}
                 <h3
-                  className="mr-2 text-5xl font-extrabold"
-                  style={{ color: colors?.dark }}
+                  className="text-3xl font-semibold"
+                  style={{ color: colors?.text.title }}
                 >
-                  {block.price}
+                  {pricingBlock.title}
                 </h3>
-                <span className="text-gray-500 dark:text-gray-400">
-                  {block.period}
-                </span>
+                <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400 mb-4">
+                  {pricingBlock.description}
+                </p>
+                {(pricingBlock?.price || pricingBlock?.period) && (
+                  <div className="flex justify-center items-baseline my-4">
+                    {pricingBlock?.price && (
+                      <h3
+                        className="mr-2 text-5xl font-extrabold"
+                        style={{ color: colors?.dark }}
+                      >
+                        {pricingBlock.price}
+                      </h3>
+                    )}
+                    {pricingBlock.period && (
+                      <span className="text-gray-500 dark:text-gray-400">
+                        {pricingBlock.period}
+                      </span>
+                    )}
+                  </div>
+                )}
+                {pricingBlock?.features?.length && (
+                  <ul role="list" className="mb-8 space-y-4 text-left">
+                    {pricingBlock?.features?.map((feature, idx) => (
+                      <li key={idx} className="flex items-center space-x-3">
+                        <svg
+                          className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                            clipRule="evenodd"
+                          ></path>
+                        </svg>
+                        <p className="text-base">{feature?.description}</p>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                <Blocks
+                  parent={builderBlock.id}
+                  path={`component.options.pricingBlocks.${index}.blocks`}
+                  registeredComponents={builderComponents}
+                  context={builderContext}
+                  linkComponent={builderLinkComponent}
+                  blocks={pricingBlock.blocks}
+                />
               </div>
-              <ul role="list" className="mb-8 space-y-4 text-left">
-                {block?.features?.map((feature, idx) => (
-                  <li key={idx} className="flex items-center space-x-3">
-                    <svg
-                      className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                    <p className="text-base">{feature?.description}</p>
-                  </li>
-                ))}
-              </ul>
-
-              {/* <Blocks
-                parent={builderBlock?.id}
-                path={`component.options.blocks.${index}.children`}
-                blocks={block.children}
-              /> */}
-
-              {/* <a
-                href="#"
-                className="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white dark:focus:ring-primary-900"
-              >
-                Get started
-              </a> */}
-            </div>
-          ))}
+            );
+          })}
         </div>
-        {/* <div className="flex justify-center items-center mt-[20px]">
-          {children}
-        </div> */}
+
+        {/* <Blocks
+        parent={builderBlock?.id}
+        path={`blocks[${0}].blocks`}
+        blocks={pricingBlocks?.[0].children}
+      /> */}
       </div>
     </section>
   );

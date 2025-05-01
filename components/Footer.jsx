@@ -2,29 +2,37 @@ import MailchimpSingup from "@/components/MailchimpSignup";
 import { useTheme } from "@/helpers/theme";
 import { useSiteData } from "@/helpers/siteData";
 import { ReactSVG } from "react-svg";
+import cx from "classix";
 
-export const Footer = ({ social, theme, children }) => {
+export const Footer = ({ social, horizontal, overlay, theme, children }) => {
   const colors = useTheme(theme);
   const siteData = useSiteData();
   return (
     <footer
-      className="text-neutral-content"
-      style={{ backgroundColor: colors.dark }}
+      className={cx("text-neutral-content",  overlay && "transparent relative lg:absolute bottom-[20px] max-w-[1600px] left-0 right-0 mx-auto")}
+      style={{ backgroundColor: !overlay && colors.dark }}
     >
-      <div className="container py-12">
-        <ReactSVG
-          src={siteData.logo}
-          beforeInjection={(svg) => {
-            svg.querySelectorAll("[fill]").forEach((element) => {
-              element.removeAttribute("fill");
-            });
-            svg.setAttribute(
-              "style",
-              `width: 100px; height: auto; fill: white !important;`
-            );
-          }}
-        />
-        <div className="mt-8 flex flex-wrap items-center justify-between gap-6">
+      <div className={cx("container", !overlay && "py-12")}>
+        {!overlay && (
+          <ReactSVG
+            src={siteData.logo}
+            beforeInjection={(svg) => {
+              svg.querySelectorAll("[fill]").forEach((element) => {
+                element.removeAttribute("fill");
+              });
+              svg.setAttribute(
+                "style",
+                `width: 100px; height: auto; fill: white !important;`
+              );
+            }}
+          />
+        )}
+        <div
+          className={cx(
+            !overlay && "mt-8 ",
+            "flex flex-wrap items-center justify-between gap-6"
+          )}
+        >
           {social && (
             <div className="inline-flex gap-3">
               {social?.map((item, index) => (
@@ -77,7 +85,9 @@ export const Footer = ({ social, theme, children }) => {
             </div>
           </div>
         </div> */}
-        {children}
+        <div className={cx(horizontal && "flex flex-row w-full gap-10")}>
+          {children}
+        </div>
       </div>
     </footer>
   );
