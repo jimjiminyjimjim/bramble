@@ -9,9 +9,13 @@ const getContrastTextColour = (color) => {
 
     if (color.startsWith("#")) {
       const hex = color.replace("#", "");
-      const full = hex.length === 3
-        ? hex.split("").map((c) => c + c).join("")
-        : hex;
+      const full =
+        hex.length === 3
+          ? hex
+              .split("")
+              .map((c) => c + c)
+              .join("")
+          : hex;
       r = parseInt(full.slice(0, 2), 16);
       g = parseInt(full.slice(2, 4), 16);
       b = parseInt(full.slice(4, 6), 16);
@@ -34,54 +38,77 @@ const getContrastTextColour = (color) => {
   }
 };
 
-export function Mailchimp({ placeholder = "Enter your email", mailchimpFormCode, theme, ctaText, ctaColor }) {
+export function Mailchimp({
+  placeholder = "Enter your email",
+  mailchimpFormCode,
+  theme,
+  CTA,
+  ctaText,
+  ctaColor
+}) {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
 
-
   const colors = useTheme(theme);
 
+  console.log("colors", colors);
+
   const background = ctaColor || colors?.buttonColor || "#eeeeee";
-  const textColour = useMemo(() => getContrastTextColour(background), [background]);
-  
+  const textColour = useMemo(
+    () => getContrastTextColour(background),
+    [background]
+  );
+
   const { host, u, id, tags, honeypot } = useMemo(
     () => parseMailchimpEmbed(mailchimpFormCode) ?? {},
     [mailchimpFormCode]
   );
 
   const handleSubmit = async () => {
-    if (!email.includes("@")) { setError("Please enter a valid email"); return; }
+    if (!email.includes("@")) {
+      setError("Please enter a valid email");
+      return;
+    }
 
-    const url  = `https://${host}/subscribe/post?u=${u}&id=${id}`;
+    const url = `https://${host}/subscribe/post?u=${u}&id=${id}`;
     const data = new FormData();
 
     data.append("EMAIL", email);
     data.append("u", u);
     data.append("id", id);
 
-    if (tags)     data.append("tags", tags);
-    if (honeypot) data.append(honeypot, "");     // keeps spam-trap field happy
+    if (tags) data.append("tags", tags);
+    if (honeypot) data.append(honeypot, ""); // keeps spam-trap field happy
 
     try {
       await fetch(url, { method: "POST", mode: "no-cors", body: data });
-      setSubmitted(true); setError(""); setEmail("");
-    } catch(err) {
+      setSubmitted(true);
+      setError("");
+      setEmail("");
+    } catch (err) {
       console.error("Error submitting form", err);
       setError("Something went wrong – please try again.");
     }
   };
 
+  console.log("colors", colors);
 
   return (
     <div className="w-full mt-10">
       {/* Row: input is 3/4, button 1/4 (gap respected) */}
+      <h5
+        style={{ color: background }}
+        className="mt-8 text-center font-bold text-[18px] sm:text-start lg:text-[21px] mb-4"
+      >
+        {CTA}
+      </h5>
       <div className="flex h-12 gap-5">
         <input
           type="email"
           value={email}
           placeholder={placeholder}
-          onChange={e => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
           className="flex-[2_2_0%] rounded-full px-4 py-2 border border-gray-300 h-full"
         />
         <button
@@ -93,7 +120,9 @@ export function Mailchimp({ placeholder = "Enter your email", mailchimpFormCode,
         </button>
       </div>
 
-      {submitted && <p className="text-green-600 text-sm mt-2">Thanks! Check your inbox.</p>}
+      {submitted && (
+        <p className="text-green-600 text-sm mt-2">Thanks! Check your inbox.</p>
+      )}
       {error && <p className="text-red-600 text-sm mt-2">{error}</p>}
     </div>
   );

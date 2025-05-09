@@ -79,6 +79,10 @@ export const customComponents = [
     name: "Mailchimp Input",
     inputs: [
       {
+        name: "CTA",
+        defaultValue: "Sign up for our newsletter",
+      },
+      {
         name: "placeholder",
         defaultValue: "Please enter your email"
       },
@@ -165,40 +169,6 @@ export const customComponents = [
             type: "uiBlocks",
             defaultValue: []
           }
-          // {
-          //   name: "button",
-          //   type: "boolean",
-          // },
-          // {
-          //   name: "buttonText",
-          //   type: "text",
-          //   showIf: function (options) {
-          //     return options.get("button") === true;
-          //   },
-          // },
-          // {
-          //   name: "mailchimp",
-          //   type: "boolean",
-          //   showIf: function (options) {
-          //     return options.get("button") === true;
-          //   },
-          // },
-          // {
-          //   name: "formCode", type: "code",
-          //   showIf: function (options) {
-          //     return options.get("mailchimp") === true;
-          //   }
-          // },
-          // {
-          //   name: "href",
-          //   type: "string",
-          //   showIf: function (options) {
-          //     return (
-          //       options.get("button") === true &&
-          //       !options.get("mailchimp") === false
-          //     );
-          //   },
-          // },
         ]
       }
     ]
@@ -711,3 +681,9 @@ export const customComponents = [
     ]
   }
 ];
+
+
+export const componentMetadata = customComponents.map(({ name, inputs }) => ({
+  name,
+  inputs
+}));
