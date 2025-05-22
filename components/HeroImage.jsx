@@ -15,10 +15,10 @@ export const HeroImage = ({ image, title, subtitle, children, alignment }) => {
           alignment === "right" && "justify-end",
         )}
       >
-        <div className="max-w-[80%]">
-          <h1 className="mb-5 text-5xl font-bold">{title}</h1>
-          <p className="mb-5">{subtitle}</p>
-          <div>{children}</div>
+        <div className="max-w-[60%] text-center">
+          <h1 className="mb-5 text-5xl font-bold leading-[1]">{title}</h1>
+          <h3 className="mb-5 text-2xl leading-[1]">{subtitle}</h3>
+          <div className="text-center lg:text-left mt-[20px]">{children}</div>
         </div>
       </div>
     </div>

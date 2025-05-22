@@ -27,7 +27,7 @@ export const AppFeatures = ({
 
   return (
     <section
-      className="py-8 lg:py-48"
+      className="py-8 lg:py-28"
       {...anchorTags(anchor)}
       style={{ backgroundColor: colors.primary }}
     >
@@ -55,7 +55,7 @@ export const AppFeatures = ({
           {features?.length < 5 ? (
             <>
               <div
-                className={`flex flex-col justify-between ${hideImage ? "items-center text-center" : ""}`}
+                className={`flex flex-col justify-center ${hideImage ? "items-center text-center" : ""}`}
               >
                 <div className="space-y-8">
                   {align === "left" && (
@@ -72,30 +72,34 @@ export const AppFeatures = ({
                     </div>
                   )}
                   {features?.map((feature, index) => (
-                    <div className="flex items-center gap-5" key={index}>
-                      <div className="inline-flex items-center justify-center rounded font-medium text-primary">
-                        {feature.image ? (
-                          <img
-                            src={feature.image}
-                            alt={feature.title}
-                            className="max-w-[80px]"
-                          />
-                        ) : (
-                          !hideImage && (
-                            <DynamicIcon
-                              iconName={feature.icon}
-                              color={colors?.primaryColour}
-                              size={25}
-                            />
-                          )
-                        )}
-                      </div>
-                      <div className="flex flex-col items-center justify-center ">
-                        {feature?.title && (
-                          <h4 className="text-2xl font-bold leading-tight">
-                            {feature?.title}
-                          </h4>
-                        )}
+                    <div
+                      className="flex items-start text-left gap-5"
+                      key={index}
+                    >
+                      <div className="flex flex-col items-start justify-center">
+                        <div className="flex-row flex gap-2 items-center justify-start">
+                          <div className="inline-flex items-center justify-center rounded font-medium text-primary">
+                            {feature.image ? (
+                              <img
+                                src={feature.image}
+                                alt={feature.title}
+                                className="max-w-[80px]"
+                              />
+                            ) : (
+                              <DynamicIcon
+                                iconName={feature.icon}
+                                color={colors?.primaryColour}
+                                size={25}
+                              />
+                            )}
+                          </div>
+
+                          {feature?.title && (
+                            <h4 className="text-2xl font-bold leading-tight">
+                              {feature?.title}
+                            </h4>
+                          )}
+                        </div>
                         {feature?.description && (
                           <p className="mt-1 text-base">
                             {feature?.description}

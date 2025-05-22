@@ -22,6 +22,7 @@ import { Testimonial } from "@/components/Testimonial";
 import { Download } from "@/components/Download";
 import { SignUp } from "@/components/SignUp";
 import { Popup } from "@/components/Popup";
+import { SoldOut } from "@/components/SoldOut";
 import { TextBlock } from "@/components/TextBlock";
 import { Topbar } from "@/components/Topbar";
 import { Carousel } from "@/components/CustomTabs";
@@ -67,6 +68,11 @@ export const customComponents = [
     canHaveChildren: true,
     inputs: [
       {
+        name: "logoOverride",
+        type: "file",
+        allowedFileTypes: ["jpeg", "jpg", "png", "svg"]
+      },
+      {
         name: "theme",
         type: "enum",
         enum: ["light", "dark", "white"],
@@ -79,8 +85,20 @@ export const customComponents = [
     name: "Mailchimp Input",
     inputs: [
       {
+        name: "stack",
+        type: "enum",
+        enum: ["column", "row"],
+        defaultValue: "row"
+      },
+      {
+        name: "alignment",
+        type: "enum",
+        enum: ["left", "center"],
+        defaultValue: "center"
+      },
+      {
         name: "CTA",
-        defaultValue: "Sign up for our newsletter",
+        defaultValue: "Sign up for our newsletter"
       },
       {
         name: "placeholder",
@@ -177,7 +195,7 @@ export const customComponents = [
     component: Hero,
     name: "Hero",
     canHaveChildren: true,
-    noWrap: true,
+    // noWrap: true,
     inputs: [
       {
         name: "theme",
@@ -579,9 +597,47 @@ export const customComponents = [
         enum: ["light", "dark", "white"],
         defaultValue: "light"
       },
+      { name: "colour", type: "color" },
       { name: "mailchimpForm", type: "boolean" },
       { name: "formCode", type: "code" },
       { name: "ctaText", type: "string", defaultValue: "Click Me" }
+    ]
+  },
+  {
+    component: SoldOut,
+    name: "SoldOut",
+    canHaveChildren: true,
+    /** To receieve Builder props inside your custom component: by default false  */
+    shouldReceiveBuilderProps: {
+      /** To access builder's Blocks relative to your parent */
+      builderBlock: true
+    },
+    inputs: [
+      {
+        name: "theme",
+        type: "enum",
+        enum: ["light", "dark", "white"],
+        defaultValue: "light"
+      },
+      { name: "colour", type: "color" },
+      { name: "mailchimpForm", type: "boolean" },
+      { name: "formCode", type: "code" },
+      { name: "ctaText", type: "string", defaultValue: "Click Me" },
+      {
+        name: "ctaBody",
+        type: "longText",
+        defaultValue: "This is some text that describes the popup"
+      },
+      {
+        name: "ctaPopupTitle",
+        type: "longText",
+        defaultValue: "This is some text that describes the popup"
+      },
+      {
+        name: "ctaPopupBody",
+        type: "longText",
+        defaultValue: "This is some text that describes the popup"
+      }
     ]
   },
   {
@@ -663,7 +719,65 @@ export const customComponents = [
         defaultValue: "light"
       },
       { name: "anchor", type: "string" },
-      { name: "title", type: "string" }
+      { name: "title", type: "string", defaultValue: "Testimonials" },
+      {
+        name: "testimonials",
+        type: "list",
+        subFields: [
+          {
+            name: "name",
+            type: "string",
+            defaultValue: "Bob Budskin"
+          },
+          {
+            name: "qualification",
+            type: "string",
+            defaultValue: "Teacher"
+          },
+          {
+            name: "quote",
+            type: "longText",
+            defaultValue:
+              "My son loves his PixelPatrol. It’s like a friend that helps him make smart choices online."
+          },
+          {
+            name: "rating",
+            type: "enum",
+            enum: [
+              {
+                label: "1 star",
+                value: "1"
+              },
+              {
+                label: "2 stars",
+                value: "2"
+              },
+              {
+                label: "3 stars",
+                value: "3"
+              },
+              {
+                label: "4 stars",
+                value: "4"
+              },
+              {
+                label: "5 stars",
+                value: "5"
+              }
+            ]
+          },
+          {
+            name: "icon",
+            type: "string",
+            defaultValue: "AiOutlineCheckCircle"
+          },
+          {
+            name: "image",
+            type: "file",
+            allowedFileTypes: ["jpeg", "jpg", "png", "svg"]
+          }
+        ]
+      }
     ]
   },
   {
@@ -681,7 +795,6 @@ export const customComponents = [
     ]
   }
 ];
-
 
 export const componentMetadata = customComponents.map(({ name, inputs }) => ({
   name,

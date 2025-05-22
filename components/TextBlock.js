@@ -34,7 +34,7 @@ export function TextBlock({
       <div className="container">
         <div className="text-center">
           <h2
-            className="text-2xl font-bold lg:text-4xl"
+            className="text-2xl font-bold lg:text-5xl leading-[1]"
             style={{ color: colors.dark }}
           >
             {title}

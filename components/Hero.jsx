@@ -27,7 +27,6 @@ export const Hero = ({
         fullScreen ? "min-h-screen" : "h-auto"
       )}
     >
-      {/* Background image (fills component, object-cover) */}
       {backgroundImage && (
         <img
           src={backgroundImage}
@@ -72,7 +71,7 @@ export const Hero = ({
               {description}
             </p>
 
-            <div className="text-center lg:text-left mt-[20px]">{children}</div>
+            <div className="text-center lg:text-left my-[20px]">{children}</div>
 
             {downloads === "Show App Store" && (
               <div className="mt-16 flex justify-center gap-4 sm:justify-start">

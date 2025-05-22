@@ -7,6 +7,7 @@ import { anchorTags } from "@/helpers/anchorTags";
 import { useSiteData } from "@/helpers/siteData";
 import { useTheme } from "@/helpers/theme";
 import cx from "classix";
+
 const MenuItems = ({ items, onClick }) => (
   <>
     {items?.map((item, index) => (
@@ -17,7 +18,7 @@ const MenuItems = ({ items, onClick }) => (
   </>
 );
 
-export const Topbar = ({ children,  theme }) => {
+export const Topbar = ({ logoOverride, children, theme }) => {
   const siteData = useSiteData();
   const [drawerOpened, setDrawerOpened] = useState(false);
   const [atTop, setAtTop] = useState(true);
@@ -64,22 +65,31 @@ export const Topbar = ({ children,  theme }) => {
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  height: "100%",
+                  height: "100%"
                 }}
               >
-                <ReactSVG
-                  src={siteData.logo}
-                  beforeInjection={(svg) => {
-                    svg.querySelectorAll("[fill]").forEach((element) => {
-                      siteData.logoRecolour && element.removeAttribute("fill");
-                    });
-                    svg.setAttribute(
-                      "style",
-                      `width: 100%; height: auto; object-fit: cover; ${siteData.logoRecolour ? `fill: ${siteData.primaryColour}` : null}`
-                    );
-                  }}
-                  className="w-full h-auto"
-                />
+                {logoOverride ? (
+                  <img
+                    src={logoOverride}
+                    alt="Logo"
+                    className="w-full h-auto object-cover"
+                  />
+                ) : (
+                  <ReactSVG
+                    src={siteData.logo}
+                    beforeInjection={(svg) => {
+                      svg.querySelectorAll("[fill]").forEach((element) => {
+                        siteData.logoRecolour &&
+                          element.removeAttribute("fill");
+                      });
+                      svg.setAttribute(
+                        "style",
+                        `width: 100%; height: auto; object-fit: cover; ${siteData.logoRecolour ? `fill: ${siteData.primaryColour}` : null}`
+                      );
+                    }}
+                    className="w-full h-auto"
+                  />
+                )}
               </a>
             </Navbar.Start>
 

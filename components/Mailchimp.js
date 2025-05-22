@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import { useTheme } from "@/helpers/theme";
 import { parseMailchimpEmbed } from "@/helpers/mailchimpParser";
-
+import cx from "classix";
 const getContrastTextColour = (color) => {
   // Accept hex, short-hex or rgb() — fall back to black.
   try {
@@ -44,7 +44,9 @@ export function Mailchimp({
   theme,
   CTA,
   ctaText,
-  ctaColor
+  ctaColor,
+  alignment = "left",
+  stack = "column"
 }) {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -52,7 +54,7 @@ export function Mailchimp({
 
   const colors = useTheme(theme);
 
-  console.log("colors", colors);
+  console.log("alignment", alignment);
 
   const background = ctaColor || colors?.buttonColor || "#eeeeee";
   const textColour = useMemo(
@@ -92,24 +94,22 @@ export function Mailchimp({
     }
   };
 
-  console.log("colors", colors);
-
   return (
-    <div className="w-full mt-10">
+    <div className={cx("w-full max-w-600 flex", stack === "column" ? "flex-col max-w-[400px]" : "flex-row", alignment === "center" && "mx-auto")}>
       {/* Row: input is 3/4, button 1/4 (gap respected) */}
       <h5
         style={{ color: background }}
-        className="mt-8 text-center font-bold text-[18px] sm:text-start lg:text-[21px] mb-4"
+        className={cx("font-bold text-[18px] sm:text-start lg:text-[21px] mb-4", alignment === "center" ? "text-center" : "text-left")}
       >
         {CTA}
       </h5>
-      <div className="flex h-12 gap-5">
+      <div className={cx("flex gap-5", stack === "column" ? "flex-col" : "flex-row", alignment === "center" ? "text-center" : "text-left")}>
         <input
           type="email"
           value={email}
           placeholder={placeholder}
           onChange={(e) => setEmail(e.target.value)}
-          className="flex-[2_2_0%] rounded-full px-4 py-2 border border-gray-300 h-full"
+          className="flex-[2_2_0%] rounded-full px-4 py-2 border border-gray-300 h-full text-center"
         />
         <button
           onClick={handleSubmit}
