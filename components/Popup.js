@@ -27,6 +27,7 @@ const MailchimpFormEmbed = ({ embedHtml, siteData, onFormSubmit }) => {
           .then(() => {
             console.log("Form successfully submitted");
             sendGTMEvent({ event: 'popupFormSubmit' })
+            sendGTMEvent({ event: 'popupFormSubmit2' })
             onFormSubmit("success");
           })
           .catch((error) => {
