@@ -26,6 +26,7 @@ const MailchimpFormEmbed = ({ embedHtml, siteData, onFormSubmit }) => {
         })
           .then(() => {
             console.log("Form successfully submitted");
+            sendGTMEvent({ event: 'popupFormSubmit' })
             onFormSubmit("success");
           })
           .catch((error) => {
@@ -68,7 +69,6 @@ export function Popup({
   const handleFormSubmit = (status) => {
     setFormStatus(status);
     if (status === "success") {
-      sendGTMEvent({ event: 'popupFormSubmit' })
       setTimeout(() => {
         document.getElementById("my_modal_3").close();
         setFormStatus(null);
