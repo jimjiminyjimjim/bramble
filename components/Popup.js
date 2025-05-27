@@ -25,7 +25,7 @@ const MailchimpFormEmbed = ({ embedHtml, siteData, onFormSubmit }) => {
           mode: "no-cors",
         })
           .then(() => {
-            console.log("Form successfully submitted");
+            console.log("Form successfully submitted 2");
             sendGTMEvent({ event: 'popupFormSubmit' })
             sendGTMEvent({ event: 'popupFormSubmit2' })
             onFormSubmit("success");
