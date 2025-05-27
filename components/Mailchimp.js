@@ -90,7 +90,7 @@ export function Mailchimp({
       setSubmitted(true);
       setError("");
       setEmail("");
-      sendGTMEvent({ event: 'mailchimpSubmit', value: email })
+      sendGTMEvent({ event: 'mailchimpInputSubmit', value: email })
     } catch (err) {
       console.error("Error submitting form", err);
       setError("Something went wrong – please try again.");
