@@ -1,12 +1,11 @@
 "use client";
-import { Button, Drawer, Menu, Navbar } from "react-daisyui";
-import { Menu as MenuIcon } from "lucide-react";
-import { useEffect, useState } from "react";
-import { ReactSVG } from "react-svg";
 import { anchorTags } from "@/helpers/anchorTags";
 import { useSiteData } from "@/helpers/siteData";
 import { useTheme } from "@/helpers/theme";
 import cx from "classix";
+import { useEffect, useState } from "react";
+import { Menu, Navbar } from "react-daisyui";
+import { ReactSVG } from "react-svg";
 
 const MenuItems = ({ items, onClick }) => (
   <>

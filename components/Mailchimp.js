@@ -2,6 +2,8 @@ import { useState, useMemo } from "react";
 import { useTheme } from "@/helpers/theme";
 import { parseMailchimpEmbed } from "@/helpers/mailchimpParser";
 import cx from "classix";
+import { sendGTMEvent } from '@next/third-parties/google'
+
 const getContrastTextColour = (color) => {
   // Accept hex, short-hex or rgb() — fall back to black.
   try {
@@ -88,6 +90,7 @@ export function Mailchimp({
       setSubmitted(true);
       setError("");
       setEmail("");
+      sendGTMEvent({ event: 'mailchimpSubmit', value: email })
     } catch (err) {
       console.error("Error submitting form", err);
       setError("Something went wrong – please try again.");
