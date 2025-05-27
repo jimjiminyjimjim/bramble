@@ -2,6 +2,7 @@ import { fetchOneEntry, subscribeToEditor } from "@builder.io/sdk-react";
 import { useEffect, useState, useRef, useContext } from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { useTheme } from "@/helpers/theme";
+import { sendGTMEvent } from '@next/third-parties/google'
 
 const MailchimpFormEmbed = ({ embedHtml, siteData, onFormSubmit }) => {
   const formRef = useRef(null);
@@ -67,6 +68,7 @@ export function Popup({
   const handleFormSubmit = (status) => {
     setFormStatus(status);
     if (status === "success") {
+      sendGTMEvent({ event: 'popupFormSubmit' })
       setTimeout(() => {
         document.getElementById("my_modal_3").close();
         setFormStatus(null);
@@ -90,7 +92,10 @@ export function Popup({
       {textLink ? (
         <a
           href="#"
-          onClick={() => document.getElementById("my_modal_3").showModal()}
+          onClick={() => {
+            sendGTMEvent({ event: 'showPopup' })
+            document.getElementById("my_modal_3").showModal()
+          }}
         >
           {ctaText}
         </a>
