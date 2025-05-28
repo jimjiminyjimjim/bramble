@@ -1,12 +1,10 @@
-import avatar1Img from "@/assets/images/avatar/1.png";
-import avatar2Img from "@/assets/images/avatar/2.png";
-import avatar3Img from "@/assets/images/avatar/3.png";
 import worldMapImg from "@/assets/images/landing/world-map.png";
 import { ChevronLeftIcon, ChevronRightIcon, StarIcon } from "lucide-react";
 import { Navigation, Autoplay, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useTheme } from "@/helpers/theme";
 import { anchorTags } from "@/helpers/anchorTags";
+import cx from "classix";
 
 import "swiper/css";
 
@@ -24,11 +22,13 @@ export const Testimonial = ({ title, testimonials, theme, anchor }) => {
         style={{ backgroundImage: `url(${worldMapImg})` }}
       ></div>
       <div className="relative z-10">
-        <div className="text-center">
-          <h2 className="text-4xl font-semibold">{title}</h2>
-        </div>
+        {title && (
+          <div className="text-center">
+            <h2 className="text-4xl font-semibold">{title}</h2>
+          </div>
+        )}
         <Swiper
-          className="mt-16"
+          className={cx(testimonials.length > 1 && "mt-16")}
           spaceBetween={50}
           loop
           autoplay={{
