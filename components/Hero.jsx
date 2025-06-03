@@ -6,25 +6,44 @@ import playstoreImg from "@/assets/images/logo/playstore.png";
 import { useTheme } from "@/helpers/theme";
 import cx from "classix";
 
+const paddingClasses = {
+  none: "py-0", // No padding on the y-axis
+  small: "py-4 md:py-6 lg:py-8", // Small padding increasing on larger screens
+  medium: "py-8 md:py-10 lg:py-12", // Medium padding increasing on larger screens
+  large: "py-12 md:py-16 lg:py-20" // Large padding increasing on larger screens
+};
+
+
 export const Hero = ({
   title,
   subtitle,
   description,
   downloads,
   image,
-  backgroundImage,   // <— new
+  backgroundImage, // <— new
   theme,
   children,
   bounce,
-  fullScreen
+  fullScreen,
+  backgroundColor = null,
+  backgroundOpacity = 0.6,
+  imageOpacity = 1,
+  imageMaxHeight = "550px",
+  imageConstraint = "contain",
+  margin = "medium"
 }) => {
+
+  console.log("imageMaxHeight", imageMaxHeight);
+
   const colors = useTheme(theme);
+  const sectionPaddingClass = paddingClasses[margin] || "";
 
   return (
     <section
       className={cx(
-        "relative overflow-hidden py-8 lg:py-24 flex flex-1",
-        fullScreen ? "min-h-screen" : "h-auto"
+        "relative overflow-hidden flex flex-1",
+        fullScreen ? "min-h-screen" : "h-auto",
+        sectionPaddingClass
       )}
     >
       {backgroundImage && (
@@ -33,18 +52,21 @@ export const Hero = ({
           alt=""
           aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover z-0"
+          style={{ opacity: backgroundOpacity }}
         />
       )}
 
       {/* Optional color/gradient overlay */}
       <div
         className="absolute inset-0 z-0"
-        style={{ backgroundColor: colors?.primary, opacity: 0.6 }}
+        style={{
+          backgroundColor
+        }}
       />
 
       {/* Foreground content */}
       <div className="container relative z-10">
-        <div className="mt-16 grid items-center gap-12 lg:grid-cols-2 xl:gap-12">
+        <div className="grid items-center gap-12 lg:grid-cols-2 xl:gap-12">
           {/* Text column */}
           <div className="order-1">
             <h1
@@ -85,12 +107,18 @@ export const Hero = ({
             )}
           </div>
 
-          {/* Image column */}
-          <div className="relative order-2 flex justify-center">
+          <div
+            className="relative order-2 flex justify-center"
+            style={{ maxHeight: imageMaxHeight, height: imageMaxHeight, width: "100%" }}
+          >
             <img
               src={image || mobile1Img.src}
               alt="Hero"
-              className={cx(bounce && "bounce-animation", "h-[550px]")}
+              className={cx(
+                bounce && "bounce-animation",
+                "h-full w-full"
+              )}
+              style={{ opacity: imageOpacity, objectFit: imageConstraint }}
             />
           </div>
         </div>

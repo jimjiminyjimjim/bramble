@@ -10,6 +10,7 @@ import { cx } from "classix";
 export const Stats = ({ title, theme, subtitle, stats = [], children }) => {
   const colors = useTheme(theme);
 
+  console.log("Stats colors", colors);
   /* ───────────────────────── refs for every <h3> ─────────────────────────── */
   const heads = useRef([]);
   heads.current = []; // reset on each render so indices stay in sync

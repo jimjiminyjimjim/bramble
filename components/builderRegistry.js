@@ -211,6 +211,12 @@ export const customComponents = [
           "daisyAi - Advancing You Towards Efficiency, Convenience, and Innovation"
       },
       {
+        name: "margin",
+        type: "enum",
+        enum: ["none", "small", "medium", "large"],
+        defaultValue: "light"
+      },
+      {
         name: "subtitle",
         type: "string",
         defaultValue:
@@ -227,10 +233,23 @@ export const customComponents = [
         type: "file",
         allowedFileTypes: ["jpeg", "jpg", "png", "svg"]
       },
+      { name: "imageOpacity", type: "number", defaultValue: 1 },
+      { name: "imageMaxHeight", type: "string", defaultValue: "550px", helperText: "must include px or %" },
+      {
+        name: "imageConstraint",
+        type: "enum",
+        enum: ["cover", "contain"]
+      },
       {
         name: "backgroundImage",
         type: "file",
         allowedFileTypes: ["jpeg", "jpg", "svg"]
+      },
+      { name: "backgroundOpacity", type: "number", defaultValue: 0.6 },
+      {
+        name: "backgroundColor",
+        type: "color",
+        defaultValue: "#ffffff"
       },
       {
         name: "downloads",

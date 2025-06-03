@@ -1,17 +1,13 @@
+import { customComponents } from "@/components/builderRegistry";
+import Layout from "@/components/Layout";
 import {
   Content,
   fetchOneEntry,
   getBuilderSearchParams,
-  isPreviewing,
+  isPreviewing
 } from "@builder.io/sdk-react";
-import { customComponents } from "@/components/builderRegistry";
-import Layout from "@/components/Layout";
-import Head from 'next/head';
-import { Metadata } from 'next'
 
-const PUBLIC_API_KEY = process.env.NEXT_PUBLIC_BUILDER_API_KEY
-
-
+const PUBLIC_API_KEY = process.env.NEXT_PUBLIC_BUILDER_API_KEY;
 
 export async function generateMetadata(props) {
   const params = await props.params;
@@ -19,21 +15,18 @@ export async function generateMetadata(props) {
 
   const urlPath = "/" + (params.slug?.join("/") || "");
 
-  console.log("urlPath", urlPath);
-
-  console.log("searchParams", searchParams);
   const content = await fetchOneEntry({
-    options: {...getBuilderSearchParams(searchParams), enrich: true},
+    options: { ...getBuilderSearchParams(searchParams), enrich: true },
     apiKey: PUBLIC_API_KEY,
     model: "page",
     includeRefs: true,
-    userAttributes: { urlPath },
+    userAttributes: { urlPath }
   });
 
   return {
     title: `${content?.data?.title} - ${content?.data?.description}`,
     descirption: content?.data?.description
-  }
+  };
 }
 
 export default async function Page(props) {
@@ -42,19 +35,19 @@ export default async function Page(props) {
 
   const urlPath = "/" + (params.slug?.join("/") || "");
 
-  console.log("urlPath", urlPath);
-
   const content = await fetchOneEntry({
     options: getBuilderSearchParams(searchParams),
     apiKey: PUBLIC_API_KEY,
     model: "page",
-    userAttributes: { urlPath },
+    userAttributes: { urlPath }
   });
 
   const siteData = await fetchOneEntry({
     apiKey: PUBLIC_API_KEY,
-    model: "site-data",
+    model: "site-data"
   });
+
+  console.log("siteData", siteData);
 
   const canShowContent = content || isPreviewing(searchParams);
 
@@ -70,15 +63,14 @@ export default async function Page(props) {
   return (
     <>
       <Layout siteData={siteData.data}>
-      <Content
-        content={content}
-        apiKey={PUBLIC_API_KEY}
-        model="page"
-        customComponents={customComponents}
-        context={siteData.data}
-      />
-    </Layout>
+        <Content
+          content={content}
+          apiKey={PUBLIC_API_KEY}
+          model="page"
+          customComponents={customComponents}
+          context={siteData.data}
+        />
+      </Layout>
     </>
-   
   );
 }
