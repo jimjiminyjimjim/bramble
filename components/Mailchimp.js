@@ -2,7 +2,8 @@ import { useState, useMemo } from "react";
 import { useTheme } from "@/helpers/theme";
 import { parseMailchimpEmbed } from "@/helpers/mailchimpParser";
 import cx from "classix";
-import { sendGTMEvent } from '@next/third-parties/google'
+import { sendGTMEvent } from "@next/third-parties/google";
+import { useSearchParams } from "next/navigation";
 
 const getContrastTextColour = (color) => {
   // Accept hex, short-hex or rgb() — fall back to black.
@@ -53,10 +54,13 @@ export function Mailchimp({
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+  const searchParams = useSearchParams();
+
+  const initialSource = searchParams.get("utm_source") || "";
+  const initialMedium = searchParams.get("utm_medium") || "";
+  const initialCampaign = searchParams.get("utm_campaign") || "";
 
   const colors = useTheme(theme);
-
-  console.log("alignment", alignment);
 
   const background = ctaColor || colors?.buttonColor || "#eeeeee";
   const textColour = useMemo(
@@ -90,7 +94,15 @@ export function Mailchimp({
       setSubmitted(true);
       setError("");
       setEmail("");
-      sendGTMEvent({ event: 'mailchimpInputSubmit', value: email })
+      sendGTMEvent({
+        event: "mailchimpInputSubmit",
+        value: {
+          email,
+          source: initialSource,
+          medium: initialMedium,
+          campaign: initialCampaign
+        }
+      });
     } catch (err) {
       console.error("Error submitting form", err);
       setError("Something went wrong – please try again.");
@@ -98,15 +110,30 @@ export function Mailchimp({
   };
 
   return (
-    <div className={cx("w-full max-w-600 flex", stack === "column" ? "flex-col max-w-[400px]" : "flex-row", alignment === "center" && "mx-auto")}>
+    <div
+      className={cx(
+        "w-full max-w-600 flex",
+        stack === "column" ? "flex-col max-w-[400px]" : "flex-row",
+        alignment === "center" && "mx-auto"
+      )}
+    >
       {/* Row: input is 3/4, button 1/4 (gap respected) */}
       <h5
         style={{ color: background }}
-        className={cx("font-bold text-[18px] sm:text-start lg:text-[21px] mb-4", alignment === "center" ? "text-center" : "text-left")}
+        className={cx(
+          "font-bold text-[18px] sm:text-start lg:text-[21px] mb-4",
+          alignment === "center" ? "text-center" : "text-left"
+        )}
       >
         {CTA}
       </h5>
-      <div className={cx("flex gap-5", stack === "column" ? "flex-col" : "flex-row", alignment === "center" ? "text-center" : "text-left")}>
+      <div
+        className={cx(
+          "flex gap-5",
+          stack === "column" ? "flex-col" : "flex-row",
+          alignment === "center" ? "text-center" : "text-left"
+        )}
+      >
         <input
           type="email"
           value={email}
