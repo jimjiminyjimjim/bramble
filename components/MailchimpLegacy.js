@@ -75,7 +75,7 @@ export function MailchimpLegacy({ mailchimpFormCode, theme, placeholder, CTA, ct
   };
 
   return (
-    <div className={cx("w-full max-w-600 flex", stack === "column" ? "flex-col max-w-[400px]" : "flex-row", alignment === "center" && "mx-auto")}>
+    <div id="mailchimp_legacy" className={cx("w-full max-w-600 flex", stack === "column" ? "flex-col max-w-[400px]" : "flex-row", alignment === "center" && "mx-auto")}>
       <h5 style={{ color: background }} className={cx("font-bold text-[18px] sm:text-start lg:text-[21px] mb-4", alignment === "center" ? "text-center" : "text-left")}>
         {CTA}
       </h5>
