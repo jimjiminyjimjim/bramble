@@ -97,7 +97,6 @@ export function Mailchimp({
       sendGTMEvent({
         event: "mailchimpInputSubmit",
         value: {
-          email,
           source: initialSource,
           medium: initialMedium,
           campaign: initialCampaign
