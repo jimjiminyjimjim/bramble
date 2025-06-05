@@ -1,6 +1,6 @@
 // components/Mailchimp.js
 import { MailchimpLegacy } from "./MailchimpLegacy";
-import { MailchimpModern } from "./MailchimpModern";
+import { MailchimpModern } from "./MailchimpModernAPI";
 
 export function Mailchimp(props) {
   const { mailchimpFormCode } = props;
