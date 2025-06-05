@@ -62,13 +62,13 @@ export default async function Page(props) {
 
   return (
     <>
-      <Layout siteData={siteData.data}>
+      <Layout siteData={siteData?.data}>
         <Content
           content={content}
           apiKey={PUBLIC_API_KEY}
           model="page"
           customComponents={customComponents}
-          context={siteData.data}
+          context={siteData?.data}
         />
       </Layout>
     </>

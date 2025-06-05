@@ -1,9 +1,9 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useTheme } from "@/helpers/theme";
 import { parseMailchimpEmbed } from "@/helpers/mailchimpParser";
 import cx from "classix";
 import { sendGTMEvent } from "@next/third-parties/google";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, usePathname } from "next/navigation";
 
 const getContrastTextColour = (color) => {
   // Accept hex, short-hex or rgb() — fall back to black.
@@ -43,9 +43,10 @@ const getContrastTextColour = (color) => {
 
 export function Mailchimp({
   placeholder = "Enter your email",
-  mailchimpFormCode,
+  // mailchimpFormCode,
   theme,
   CTA,
+  mailchimpTags,
   ctaText,
   ctaColor,
   alignment = "left",
@@ -55,6 +56,8 @@ export function Mailchimp({
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
   const searchParams = useSearchParams();
+  const pathName = usePathname();
+  const [pageTite, setPageTitle] = useState("");
 
   const initialSource = searchParams.get("utm_source") || "";
   const initialMedium = searchParams.get("utm_medium") || "";
@@ -68,10 +71,9 @@ export function Mailchimp({
     [background]
   );
 
-  const { host, u, id, tags, honeypot } = useMemo(
-    () => parseMailchimpEmbed(mailchimpFormCode) ?? {},
-    [mailchimpFormCode]
-  );
+  useEffect(() => {
+    setPageTitle(document?.title?.split("-")[0].trim() || "");
+  }, []);
 
   const handleSubmit = async () => {
     if (!email.includes("@")) {
@@ -79,21 +81,31 @@ export function Mailchimp({
       return;
     }
 
-    const url = `https://${host}/subscribe/post?u=${u}&id=${id}`;
-    const data = new FormData();
-
-    data.append("EMAIL", email);
-    data.append("u", u);
-    data.append("id", id);
-
-    if (tags) data.append("tags", tags);
-    if (honeypot) data.append(honeypot, ""); // keeps spam-trap field happy
-
     try {
-      await fetch(url, { method: "POST", mode: "no-cors", body: data });
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          email,
+          tags: [
+            pageTite,
+            ...(mailchimpTags?.split(",").map((tag) => tag.trim()) || []),
+            pathName
+          ],
+          utm_source: initialSource,
+          utm_medium: initialMedium,
+          utm_campaign: initialCampaign
+        })
+      });
+
+      if (!response.ok) throw new Error("Failed to subscribe");
+
       setSubmitted(true);
-      setError("");
       setEmail("");
+      setError("");
+
       sendGTMEvent({
         event: "mailchimpInputSubmit",
         value: {
@@ -103,8 +115,8 @@ export function Mailchimp({
         }
       });
     } catch (err) {
-      console.error("Error submitting form", err);
-      setError("Something went wrong – please try again.");
+      console.error(err);
+      setError("Something went wrong.");
     }
   };
 
@@ -116,7 +128,6 @@ export function Mailchimp({
         alignment === "center" && "mx-auto"
       )}
     >
-      {/* Row: input is 3/4, button 1/4 (gap respected) */}
       <h5
         style={{ color: background }}
         className={cx(

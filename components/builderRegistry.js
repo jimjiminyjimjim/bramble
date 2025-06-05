@@ -97,6 +97,10 @@ export const customComponents = [
         defaultValue: "center"
       },
       {
+        name: "mailchimpTags",
+        defaultValue: ""
+      },
+      {
         name: "CTA",
         defaultValue: "Sign up for our newsletter"
       },
