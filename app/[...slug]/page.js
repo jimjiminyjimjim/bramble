@@ -43,7 +43,7 @@ export default async function Page(props) {
   }
 
   return (
-    <Layout siteData={siteData.data}>
+    <Layout siteData={siteData?.data}>
       <Content
         content={content}
         apiKey={PUBLIC_API_KEY}

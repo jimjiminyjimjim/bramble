@@ -12,12 +12,21 @@ const getContrastTextColour = (color) => {
     let r, g, b;
     if (color.startsWith("#")) {
       const hex = color.replace("#", "");
-      const full = hex.length === 3 ? hex.split("").map((c) => c + c).join("") : hex;
+      const full =
+        hex.length === 3
+          ? hex
+              .split("")
+              .map((c) => c + c)
+              .join("")
+          : hex;
       r = parseInt(full.slice(0, 2), 16);
       g = parseInt(full.slice(2, 4), 16);
       b = parseInt(full.slice(4, 6), 16);
     } else if (color.startsWith("rgb")) {
-      [r, g, b] = color.replace(/[^\d,]/g, "").split(",").map((n) => parseInt(n, 10));
+      [r, g, b] = color
+        .replace(/[^\d,]/g, "")
+        .split(",")
+        .map((n) => parseInt(n, 10));
     } else {
       return "#000";
     }
@@ -56,7 +65,10 @@ export function MailchimpModern({
 
   const colors = useTheme(theme);
   const background = ctaColor || colors?.buttonColor || "#eeeeee";
-  const textColour = useMemo(() => getContrastTextColour(background), [background]);
+  const textColour = useMemo(
+    () => getContrastTextColour(background),
+    [background]
+  );
 
   const handleSubmit = async () => {
     if (!email.includes("@")) {
@@ -64,6 +76,11 @@ export function MailchimpModern({
       return;
     }
 
+    console.log("PATHNAME", [
+      pageTitle,
+      ...(mailchimpTags?.split(",").map((tag) => tag.trim()) || []),
+      `path:${pathName || "/"}`
+    ]);
     try {
       const response = await fetch("/api/subscribe", {
         method: "POST",
@@ -71,9 +88,9 @@ export function MailchimpModern({
         body: JSON.stringify({
           email,
           tags: [
-            pageTitle,
+            ...(pageTitle ? [pageTitle] : []),
             ...(mailchimpTags?.split(",").map((tag) => tag.trim()) || []),
-            pathName
+            `path:${pathName || "/"}`
           ],
           utm_source: initialSource,
           utm_medium: initialMedium,
@@ -141,7 +158,9 @@ export function MailchimpModern({
         </button>
       </div>
 
-      {submitted && <p className="text-green-600 text-sm mt-2">Thanks! Check your inbox.</p>}
+      {submitted && (
+        <p className="text-green-600 text-sm mt-2">Thanks! Check your inbox.</p>
+      )}
       {error && <p className="text-red-600 text-sm mt-2">{error}</p>}
     </div>
   );
