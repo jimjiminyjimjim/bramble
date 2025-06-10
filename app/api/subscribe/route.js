@@ -8,7 +8,9 @@ export async function POST(req) {
     tags = [],
     utm_source = "",
     utm_medium = "",
-    utm_campaign = ""
+    utm_campaign = "",
+    utm_content = "",
+    utm_term = ""
   } = body;
 
   if (!email || !email.includes("@")) {
@@ -37,7 +39,9 @@ export async function POST(req) {
         merge_fields: {
           SOURCE: utm_source,
           MEDIUM: utm_medium,
-          CAMPAIGN: utm_campaign
+          CAMPAIGN: utm_campaign,
+          CONTENT: utm_content,
+          TERMS: utm_term
         }
       })
     });

@@ -62,6 +62,8 @@ export function MailchimpModern({
   const initialSource = searchParams.get("utm_source") || "";
   const initialMedium = searchParams.get("utm_medium") || "";
   const initialCampaign = searchParams.get("utm_campaign") || "";
+  const campaignContent = searchParams.get("utm_content") || "";
+  const campaignTerms = searchParams.get("utm_term") || "";
 
   const colors = useTheme(theme);
   const background = ctaColor || colors?.buttonColor || "#eeeeee";
@@ -94,7 +96,9 @@ export function MailchimpModern({
           ],
           utm_source: initialSource,
           utm_medium: initialMedium,
-          utm_campaign: initialCampaign
+          utm_campaign: initialCampaign,
+          utm_content: campaignContent,
+          utm_term: campaignTerms
         })
       });
 

@@ -9,6 +9,34 @@ import Layout from "@/components/Layout";
 
 const PUBLIC_API_KEY = process.env.NEXT_PUBLIC_BUILDER_API_KEY
 
+
+export async function generateMetadata({ params, searchParams }) {
+    const { slug } = await params;
+    const {asyncSearchParams} = await searchParams;
+
+  const urlPath = "/" + (slug?.join("/") || "");
+
+
+  const content = await fetchOneEntry({
+    // options: {...getBuilderSearchParams(asyncSearchParams), enrich: true},
+    apiKey: process.env.NEXT_PUBLIC_BUILDER_API_KEY,
+    model: "page",
+    userAttributes: { urlPath },
+  });
+
+  console.log("content", content);
+
+  const title = content?.data?.title;
+  const description = content?.data?.description;
+
+  console.log("title", title, description);
+
+  return {
+    title
+  };
+}
+
+
 export default async function Page(props) {
   const params = await props.params;
   const searchParams = await props.searchParams;
@@ -49,7 +77,7 @@ export default async function Page(props) {
         apiKey={PUBLIC_API_KEY}
         model="page"
         customComponents={customComponents}
-        context={siteData.data}
+        context={siteData?.data}
       />
     </Layout>
   );
