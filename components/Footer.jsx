@@ -6,8 +6,6 @@ import cx from "classix";
 
 export const Footer = ({ social, horizontal, overlay, theme, children }) => {
   const colors = useTheme(theme);
-
-  console.log("THIS COLOUR", colors);
   const siteData = useSiteData();
   return (
     <footer

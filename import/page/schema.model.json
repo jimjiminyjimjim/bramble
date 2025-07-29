@@ -5,7 +5,7 @@
   "targetingSubset": [],
   "webhooks": [],
   "defaultTemplates": [],
-  "id": "613d64df27c54a6f9daf2f70c51da217",
+  "id": "8aebe8f81543461a95900378bd9962d9",
   "name": "page",
   "displayName": "",
   "kind": "page",
@@ -101,7 +101,7 @@
       "defaultCollapsed": false
     }
   ],
-  "examplePageUrl": "https://mendaracare.com/",
+  "examplePageUrl": "https://streakhealth.fit",
   "repeatable": false,
   "autoTracked": true,
   "singleton": false,
@@ -142,7 +142,7 @@
   "pathPrefix": "/",
   "hideFromUI": false,
   "enableIframeFormSubmissions": false,
-  "@originId": "c76733dc98e5b50e0b0d8e6310756f33f2cfb92fb76803939255a8361d40180e",
+  "@originId": "86ec51b4f0afa4c84a718a77ff4a88f6b47a94627e830eb5fef326d0241b123b",
   "previewIframeTimeoutInSeconds": 20,
   "requireTemplate": false,
   "lastUpdateBy": null

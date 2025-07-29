@@ -24,15 +24,14 @@ export async function generateMetadata({ params, searchParams }) {
     userAttributes: { urlPath },
   });
 
-  console.log("content", content);
-
   const title = content?.data?.title;
   const description = content?.data?.description;
 
   console.log("title", title, description);
 
   return {
-    title
+    title,
+    description
   };
 }
 

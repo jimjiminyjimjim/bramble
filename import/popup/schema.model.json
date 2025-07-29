@@ -5,7 +5,7 @@
   "targetingSubset": [],
   "webhooks": [],
   "defaultTemplates": [],
-  "id": "45d4fd51e4254051bdcafecb57308d52",
+  "id": "4c54dbfa26a64126b3986529e8859e7a",
   "name": "popup",
   "displayName": "Popup",
   "kind": "component",
@@ -117,7 +117,7 @@
   "previewIframeTimeoutInSeconds": 20,
   "requireTemplate": false,
   "lastUpdateBy": null,
-  "@originId": "e7b25855ac51a4e450924f86ad5c5f68761b11e84bf1ced4b752f13793608600",
+  "@originId": "083eda797aec7673278a270a3dadff61e5b2f48ee0061c3505d38962b405280f",
   "apiGenerated": true,
-  "createdDate": 1730812695342
+  "createdDate": 1741280240769
 }

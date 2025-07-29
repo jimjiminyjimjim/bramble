@@ -47,8 +47,6 @@ export default async function Page(props) {
     model: "site-data"
   });
 
-  console.log("siteData", siteData);
-
   const canShowContent = content || isPreviewing(searchParams);
 
   if (!canShowContent) {

@@ -1,0 +1,761 @@
+{
+  "createdDate": 1748876810308,
+  "id": "987aef03326749b69ce1e9d7f9ea2ce3",
+  "name": "31 - 50+ Landing page designs (Community)",
+  "modelId": "2ae424f0810d417090cbbc74725186b1",
+  "published": "published",
+  "meta": {
+    "lastPreviewUrl": "https://www.builder.my?builder.space=1b7e142479ce491d93f824fd954bb32e&builder.user.permissions=read%2Ccreate%2Cpublish%2CeditCode%2CeditDesigns%2Cadmin%2CeditLayouts%2CeditLayers%2CeditContentPriority%2CeditFolders&builder.user.role.name=Admin&builder.user.role.id=admin&builder.cachebust=true&builder.preview=figma-imports&builder.noCache=true&builder.allowTextEdit=true&__builder_editing__=true&builder.overrides.figma-imports=a068fbc443724a13b6bfc2ce0d96c9e1&builder.overrides.a068fbc443724a13b6bfc2ce0d96c9e1=a068fbc443724a13b6bfc2ce0d96c9e1&builder.options.locale=Default",
+    "figmaAirJsonDetails": {
+      "width": 1440
+    },
+    "fromFigma": true,
+    "importSource": "figma",
+    "vcpfigmaSelectionUUID": "0a5c5e06-83ce-4949-98b7-065176d7bb99",
+    "figmaSelectionImageUrl": "gs://builder-ai-completions/vcp-screenshot/TEMP/vcp-11247178c1a9437cbedaf660606c5e82-0.jpeg",
+    "vcpImportId": "vcp-11247178c1a9437cbedaf660606c5e82",
+    "importMode": "precise",
+    "kind": "component",
+    "importAttributes": {
+      "type": "precise"
+    },
+    "figmaMappingsId": null,
+    "hasLinks": false
+  },
+  "query": [],
+  "data": {
+    "cssCode": "",
+    "inputs": [],
+    "customFonts": [
+      {
+        "kind": "webfonts#webfont",
+        "variants": [
+          "100",
+          "100italic",
+          "300",
+          "300italic",
+          "regular",
+          "italic",
+          "700",
+          "700italic",
+          "900",
+          "900italic"
+        ],
+        "subsets": [
+          "latin",
+          "latin-ext"
+        ],
+        "menu": "https://fonts.gstatic.com/s/lato/v24/S6uyw4BMUTPHjxgwWw.ttf",
+        "files": {
+          "100": "https://fonts.gstatic.com/s/lato/v24/S6u8w4BMUTPHh30wWyWrFCbw7A.ttf",
+          "300": "https://fonts.gstatic.com/s/lato/v24/S6u9w4BMUTPHh7USew-FGC_p9dw.ttf",
+          "700": "https://fonts.gstatic.com/s/lato/v24/S6u9w4BMUTPHh6UVew-FGC_p9dw.ttf",
+          "900": "https://fonts.gstatic.com/s/lato/v24/S6u9w4BMUTPHh50Xew-FGC_p9dw.ttf",
+          "900italic": "https://fonts.gstatic.com/s/lato/v24/S6u_w4BMUTPHjxsI3wiPHA3s5dwt7w.ttf",
+          "300italic": "https://fonts.gstatic.com/s/lato/v24/S6u_w4BMUTPHjxsI9w2PHA3s5dwt7w.ttf",
+          "100italic": "https://fonts.gstatic.com/s/lato/v24/S6u-w4BMUTPHjxsIPy-vNiPg7MU0.ttf",
+          "italic": "https://fonts.gstatic.com/s/lato/v24/S6u8w4BMUTPHjxswWyWrFCbw7A.ttf",
+          "regular": "https://fonts.gstatic.com/s/lato/v24/S6uyw4BMUTPHvxk6XweuBCY.ttf",
+          "700italic": "https://fonts.gstatic.com/s/lato/v24/S6u_w4BMUTPHjxsI5wqPHA3s5dwt7w.ttf"
+        },
+        "category": "sans-serif",
+        "lastModified": "2023-05-02",
+        "family": "Lato",
+        "version": "v24"
+      }
+    ],
+    "blocks": [
+      {
+        "@type": "@builder.io/sdk:Element",
+        "@version": 2,
+        "layerName": "31",
+        "id": "builder-0a80097605ca6585108d9f7b82e9c5e3",
+        "meta": {
+          "fromJSX": true,
+          "id": "829:1142",
+          "type": "FRAME",
+          "name": "31",
+          "fromFigma": true,
+          "vcpImportId": "vcp-11247178c1a9437cbedaf660606c5e82",
+          "vcpFigmaSelectionUUID": "0a5c5e06-83ce-4949-98b7-065176d7bb99"
+        },
+        "children": [
+          {
+            "@type": "@builder.io/sdk:Element",
+            "@version": 2,
+            "layerName": "bg",
+            "id": "builder-607c9203bcf232c841179593624edfd0",
+            "meta": {
+              "fromJSX": true,
+              "id": "830:1448",
+              "type": "GROUP",
+              "name": "bg"
+            },
+            "component": {
+              "name": "Columns",
+              "options": {
+                "space": 0,
+                "columns": [
+                  {
+                    "width": 54.794520547945204,
+                    "blocks": [
+                      {
+                        "@type": "@builder.io/sdk:Element",
+                        "@version": 2,
+                        "id": "builder-dff2f969fdd743eca292c5ed89ffc9cc",
+                        "meta": {
+                          "fromJSX": true
+                        },
+                        "children": [
+                          {
+                            "@type": "@builder.io/sdk:Element",
+                            "@version": 2,
+                            "layerName": "Content",
+                            "id": "builder-b83513389cbb246331caa236e1a2ba43",
+                            "meta": {
+                              "fromJSX": true,
+                              "id": "830:1392",
+                              "type": "FRAME",
+                              "name": "Content"
+                            },
+                            "children": [
+                              {
+                                "@type": "@builder.io/sdk:Element",
+                                "@version": 2,
+                                "layerName": "We collaborate to build digital experience",
+                                "id": "builder-b1e6ea71317c0fe4c8add64e307d71b3",
+                                "meta": {
+                                  "fromJSX": true,
+                                  "id": "830:1419",
+                                  "type": "TEXT",
+                                  "name": "We collaborate to build digital experience"
+                                },
+                                "component": {
+                                  "name": "Text",
+                                  "options": {
+                                    "text": "We collaborate to build digital experience  "
+                                  }
+                                },
+                                "responsiveStyles": {
+                                  "large": {
+                                    "fontSize": "64px",
+                                    "fontWeight": "600",
+                                    "letterSpacing": "0.64px"
+                                  },
+                                  "medium": {
+                                    "maxWidth": "100%",
+                                    "fontSize": "40px"
+                                  }
+                                }
+                              },
+                              {
+                                "@type": "@builder.io/sdk:Element",
+                                "@version": 2,
+                                "layerName": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus imperdiet sed id elementum. Quam vel aliquam sit vulputate. Faucibus nec gravida ipsum pulvinar vel non.",
+                                "id": "builder-ec13195a1b1f5224dcb0e4ef6a6b7910",
+                                "meta": {
+                                  "fromJSX": true,
+                                  "id": "830:1434",
+                                  "type": "TEXT",
+                                  "name": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus imperdiet sed id elementum. Quam vel aliquam sit vulputate. Faucibus nec gravida ipsum pulvinar vel non."
+                                },
+                                "component": {
+                                  "name": "Text",
+                                  "options": {
+                                    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus imperdiet sed id elementum. Quam vel aliquam sit vulputate. Faucibus nec gravida ipsum pulvinar vel non."
+                                  }
+                                },
+                                "responsiveStyles": {
+                                  "large": {
+                                    "fontSize": "24px",
+                                    "fontWeight": "400",
+                                    "lineHeight": "32px",
+                                    "marginTop": "32px"
+                                  },
+                                  "medium": {
+                                    "maxWidth": "100%"
+                                  }
+                                }
+                              },
+                              {
+                                "@type": "@builder.io/sdk:Element",
+                                "@version": 2,
+                                "layerName": "Primary button",
+                                "id": "builder-313621f7714fcf6df976c8261e7fa0b6",
+                                "meta": {
+                                  "fromJSX": true,
+                                  "id": "876:958",
+                                  "type": "FRAME",
+                                  "name": "Primary button"
+                                },
+                                "children": [
+                                  {
+                                    "@type": "@builder.io/sdk:Element",
+                                    "@version": 2,
+                                    "layerName": "Contact us",
+                                    "id": "builder-841b9e72417cb5f5a3145ba6cde5680d",
+                                    "meta": {
+                                      "fromJSX": true,
+                                      "id": "876:959",
+                                      "type": "TEXT",
+                                      "name": "Contact us"
+                                    },
+                                    "component": {
+                                      "name": "Text",
+                                      "options": {
+                                        "text": "Get started"
+                                      }
+                                    }
+                                  }
+                                ],
+                                "responsiveStyles": {
+                                  "large": {
+                                    "borderRadius": "40px",
+                                    "backgroundColor": "rgba(51, 51, 51, 1)",
+                                    "alignSelf": "start",
+                                    "display": "flex",
+                                    "marginTop": "32px",
+                                    "paddingLeft": "56px",
+                                    "paddingRight": "56px",
+                                    "paddingTop": "24px",
+                                    "paddingBottom": "24px",
+                                    "alignItems": "start",
+                                    "gap": "10px",
+                                    "overflow": "hidden",
+                                    "fontSize": "22px",
+                                    "color": "rgba(255, 255, 255, 1)",
+                                    "fontWeight": "500",
+                                    "lineHeight": "0.82",
+                                    "justifyContent": "start"
+                                  },
+                                  "medium": {
+                                    "paddingLeft": "20px",
+                                    "paddingRight": "20px"
+                                  }
+                                }
+                              }
+                            ],
+                            "responsiveStyles": {
+                              "large": {
+                                "display": "flex",
+                                "marginLeft": "41px",
+                                "width": "495px",
+                                "maxWidth": "100%",
+                                "flexDirection": "column",
+                                "alignItems": "stretch",
+                                "fontFamily": "Lato, -apple-system, Roboto, Helvetica, sans-serif",
+                                "color": "rgba(51, 51, 51, 1)",
+                                "justifyContent": "start"
+                              },
+                              "medium": {
+                                "marginLeft": "0px"
+                              }
+                            }
+                          },
+                          {
+                            "@type": "@builder.io/sdk:Element",
+                            "@version": 2,
+                            "layerName": "Card",
+                            "id": "builder-739c82d67572292e38a6871f6aca1e6b",
+                            "meta": {
+                              "fromJSX": true,
+                              "id": "832:1498",
+                              "type": "FRAME",
+                              "name": "Card"
+                            },
+                            "children": [
+                              {
+                                "@type": "@builder.io/sdk:Element",
+                                "@version": 2,
+                                "id": "builder-15b69578b8a80f2ffb8e2e632f34a90c",
+                                "meta": {
+                                  "fromJSX": true,
+                                  "id": "831:1453",
+                                  "type": "FRAME",
+                                  "name": "Frame 14382"
+                                },
+                                "children": [
+                                  {
+                                    "@type": "@builder.io/sdk:Element",
+                                    "@version": 2,
+                                    "id": "builder-22980d706319e8dc6ba01f457c8d83de",
+                                    "meta": {
+                                      "fromJSX": true,
+                                      "id": "832:1459",
+                                      "type": "FRAME",
+                                      "name": "Frame 14385"
+                                    },
+                                    "children": [
+                                      {
+                                        "@type": "@builder.io/sdk:Element",
+                                        "@version": 2,
+                                        "id": "builder-0c1f2002546c102a8bf9dac23ebf7d43",
+                                        "meta": {
+                                          "fromJSX": true,
+                                          "id": "832:1458",
+                                          "type": "FRAME",
+                                          "name": "Frame 14384"
+                                        },
+                                        "children": [
+                                          {
+                                            "@type": "@builder.io/sdk:Element",
+                                            "@version": 2,
+                                            "id": "builder-06928246ad43bfab84bb9158f07f09b3",
+                                            "meta": {
+                                              "fromJSX": true,
+                                              "id": "832:1463",
+                                              "type": "FRAME",
+                                              "name": "Frame 14386"
+                                            },
+                                            "component": {
+                                              "name": "Image",
+                                              "options": {
+                                                "aspectRatio": 1,
+                                                "noWebp": true,
+                                                "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/a298e608d7d86ee4de52764b80deca3750cde31c?placeholderIfAbsent=true&apiKey=1b7e142479ce491d93f824fd954bb32e",
+                                                "backgroundSize": "contain"
+                                              }
+                                            },
+                                            "responsiveStyles": {
+                                              "large": {
+                                                "alignSelf": "stretch",
+                                                "position": "relative",
+                                                "display": "flex",
+                                                "marginTop": "auto",
+                                                "marginBottom": "auto",
+                                                "width": "48px"
+                                              }
+                                            }
+                                          }
+                                        ],
+                                        "responsiveStyles": {
+                                          "large": {
+                                            "display": "flex",
+                                            "width": "48px",
+                                            "alignItems": "center",
+                                            "gap": "40px 194px",
+                                            "justifyContent": "start"
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "@type": "@builder.io/sdk:Element",
+                                        "@version": 2,
+                                        "layerName": "Lorem ipsum dolor sit amet, consectetu adipiscing elit. Cursus imperdiet sed id.",
+                                        "id": "builder-61304c39b5d782397a4a818e2a904289",
+                                        "meta": {
+                                          "fromJSX": true,
+                                          "id": "832:1456",
+                                          "type": "TEXT",
+                                          "name": "Lorem ipsum dolor sit amet, consectetu adipiscing elit. Cursus imperdiet sed id."
+                                        },
+                                        "component": {
+                                          "name": "Text",
+                                          "options": {
+                                            "text": "Lorem ipsum dolor sit amet, consectetu adipiscing elit. Cursus imperdiet sed id."
+                                          }
+                                        },
+                                        "responsiveStyles": {
+                                          "large": {
+                                            "color": "rgba(51, 51, 51, 1)",
+                                            "fontSize": "16px",
+                                            "fontFamily": "Lato, -apple-system, Roboto, Helvetica, sans-serif",
+                                            "fontWeight": "300",
+                                            "lineHeight": "22px",
+                                            "marginTop": "32px"
+                                          }
+                                        }
+                                      }
+                                    ],
+                                    "responsiveStyles": {
+                                      "large": {
+                                        "display": "flex",
+                                        "width": "100%",
+                                        "maxWidth": "192px",
+                                        "flexDirection": "column",
+                                        "alignItems": "stretch",
+                                        "justifyContent": "start"
+                                      }
+                                    }
+                                  }
+                                ],
+                                "responsiveStyles": {
+                                  "large": {
+                                    "borderRadius": "32px",
+                                    "borderColor": "rgba(255, 255, 255, 1)",
+                                    "borderStyle": "solid",
+                                    "borderWidth": "2px",
+                                    "display": "flex",
+                                    "paddingLeft": "16px",
+                                    "paddingRight": "16px",
+                                    "paddingTop": "24px",
+                                    "paddingBottom": "24px",
+                                    "flexDirection": "column",
+                                    "alignItems": "stretch",
+                                    "justifyContent": "center",
+                                    "width": "224px"
+                                  }
+                                }
+                              },
+                              {
+                                "@type": "@builder.io/sdk:Element",
+                                "@version": 2,
+                                "id": "builder-40460a8301178dd254df46fbc8c60c67",
+                                "meta": {
+                                  "fromJSX": true,
+                                  "id": "832:1480",
+                                  "type": "FRAME",
+                                  "name": "Frame 14383"
+                                },
+                                "children": [
+                                  {
+                                    "@type": "@builder.io/sdk:Element",
+                                    "@version": 2,
+                                    "id": "builder-58adb7c4631725e994d2e90e4cbd2180",
+                                    "meta": {
+                                      "fromJSX": true,
+                                      "id": "832:1481",
+                                      "type": "FRAME",
+                                      "name": "Frame 14385"
+                                    },
+                                    "children": [
+                                      {
+                                        "@type": "@builder.io/sdk:Element",
+                                        "@version": 2,
+                                        "id": "builder-a1b7ebcaf5edc8a492471f4e3949a6ac",
+                                        "meta": {
+                                          "fromJSX": true,
+                                          "id": "832:1499",
+                                          "type": "FRAME",
+                                          "name": "Frame 14386"
+                                        },
+                                        "component": {
+                                          "name": "Image",
+                                          "options": {
+                                            "aspectRatio": 1,
+                                            "noWebp": true,
+                                            "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/bcd64b65ff1096a684b13106b6bb734e81d9943e?placeholderIfAbsent=true&apiKey=1b7e142479ce491d93f824fd954bb32e",
+                                            "backgroundSize": "contain"
+                                          }
+                                        },
+                                        "responsiveStyles": {
+                                          "large": {
+                                            "position": "relative",
+                                            "display": "flex",
+                                            "width": "48px"
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "@type": "@builder.io/sdk:Element",
+                                        "@version": 2,
+                                        "layerName": "Lorem ipsum dolor sit amet, consectetu adipiscing elit. Cursus imperdiet sed id.",
+                                        "id": "builder-c75f081c5ef71d7a467fcf43baf5eca5",
+                                        "meta": {
+                                          "fromJSX": true,
+                                          "id": "832:1486",
+                                          "type": "TEXT",
+                                          "name": "Lorem ipsum dolor sit amet, consectetu adipiscing elit. Cursus imperdiet sed id."
+                                        },
+                                        "component": {
+                                          "name": "Text",
+                                          "options": {
+                                            "text": "Lorem ipsum dolor sit amet, consectetu adipiscing elit. Cursus imperdiet sed id."
+                                          }
+                                        },
+                                        "responsiveStyles": {
+                                          "large": {
+                                            "marginTop": "32px"
+                                          }
+                                        }
+                                      }
+                                    ],
+                                    "responsiveStyles": {
+                                      "large": {
+                                        "display": "flex",
+                                        "maxWidth": "100%",
+                                        "width": "192px",
+                                        "flexDirection": "column",
+                                        "alignItems": "stretch",
+                                        "justifyContent": "start"
+                                      }
+                                    }
+                                  }
+                                ],
+                                "responsiveStyles": {
+                                  "large": {
+                                    "borderRadius": "32px",
+                                    "borderColor": "rgba(255, 255, 255, 1)",
+                                    "borderStyle": "solid",
+                                    "borderWidth": "2px",
+                                    "display": "flex",
+                                    "paddingLeft": "16px",
+                                    "paddingRight": "16px",
+                                    "paddingTop": "24px",
+                                    "paddingBottom": "24px",
+                                    "flexDirection": "column",
+                                    "alignItems": "stretch",
+                                    "fontFamily": "Lato, -apple-system, Roboto, Helvetica, sans-serif",
+                                    "fontSize": "16px",
+                                    "color": "rgba(51, 51, 51, 1)",
+                                    "fontWeight": "300",
+                                    "lineHeight": "22px",
+                                    "justifyContent": "center",
+                                    "width": "224px"
+                                  }
+                                }
+                              },
+                              {
+                                "@type": "@builder.io/sdk:Element",
+                                "@version": 2,
+                                "id": "builder-6badbb3f19a0cf90590a7c613aac2edf",
+                                "meta": {
+                                  "fromJSX": true,
+                                  "id": "832:1489",
+                                  "type": "FRAME",
+                                  "name": "Frame 14384"
+                                },
+                                "children": [
+                                  {
+                                    "@type": "@builder.io/sdk:Element",
+                                    "@version": 2,
+                                    "id": "builder-573de73d760aa16f88975ef078122634",
+                                    "meta": {
+                                      "fromJSX": true,
+                                      "id": "832:1490",
+                                      "type": "FRAME",
+                                      "name": "Frame 14385"
+                                    },
+                                    "children": [
+                                      {
+                                        "@type": "@builder.io/sdk:Element",
+                                        "@version": 2,
+                                        "id": "builder-01b7aaa5985e712df3ef5773f8882018",
+                                        "meta": {
+                                          "fromJSX": true,
+                                          "id": "832:1491",
+                                          "type": "FRAME",
+                                          "name": "Frame 14384"
+                                        },
+                                        "children": [
+                                          {
+                                            "@type": "@builder.io/sdk:Element",
+                                            "@version": 2,
+                                            "id": "builder-d4b5118b1d1aa2b289d8addfdd90b73f",
+                                            "meta": {
+                                              "fromJSX": true,
+                                              "id": "832:1492",
+                                              "type": "FRAME",
+                                              "name": "Frame 14386"
+                                            },
+                                            "component": {
+                                              "name": "Image",
+                                              "options": {
+                                                "aspectRatio": 1,
+                                                "noWebp": true,
+                                                "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/949e0b03f9cecdd43366a3e27c88d16f400a8fb4?placeholderIfAbsent=true&apiKey=1b7e142479ce491d93f824fd954bb32e",
+                                                "backgroundSize": "contain"
+                                              }
+                                            },
+                                            "responsiveStyles": {
+                                              "large": {
+                                                "alignSelf": "stretch",
+                                                "position": "relative",
+                                                "display": "flex",
+                                                "marginTop": "auto",
+                                                "marginBottom": "auto",
+                                                "width": "48px"
+                                              }
+                                            }
+                                          }
+                                        ],
+                                        "responsiveStyles": {
+                                          "large": {
+                                            "display": "flex",
+                                            "width": "48px",
+                                            "alignItems": "center",
+                                            "gap": "40px 194px",
+                                            "justifyContent": "start"
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "@type": "@builder.io/sdk:Element",
+                                        "@version": 2,
+                                        "layerName": "Lorem ipsum dolor sit amet, consectetu adipiscing elit. Cursus imperdiet sed id.",
+                                        "id": "builder-a87fab82fcbddb0771451f9a2a3aa8d2",
+                                        "meta": {
+                                          "fromJSX": true,
+                                          "id": "832:1495",
+                                          "type": "TEXT",
+                                          "name": "Lorem ipsum dolor sit amet, consectetu adipiscing elit. Cursus imperdiet sed id."
+                                        },
+                                        "component": {
+                                          "name": "Text",
+                                          "options": {
+                                            "text": "Lorem ipsum dolor sit amet, consectetu adipiscing elit. Cursus imperdiet sed id."
+                                          }
+                                        },
+                                        "responsiveStyles": {
+                                          "large": {
+                                            "color": "rgba(51, 51, 51, 1)",
+                                            "fontSize": "16px",
+                                            "fontFamily": "Lato, -apple-system, Roboto, Helvetica, sans-serif",
+                                            "fontWeight": "300",
+                                            "lineHeight": "22px",
+                                            "marginTop": "32px"
+                                          }
+                                        }
+                                      }
+                                    ],
+                                    "responsiveStyles": {
+                                      "large": {
+                                        "display": "flex",
+                                        "width": "100%",
+                                        "maxWidth": "192px",
+                                        "flexDirection": "column",
+                                        "alignItems": "stretch",
+                                        "justifyContent": "start"
+                                      }
+                                    }
+                                  }
+                                ],
+                                "responsiveStyles": {
+                                  "large": {
+                                    "borderRadius": "32px",
+                                    "borderColor": "rgba(255, 255, 255, 1)",
+                                    "borderStyle": "solid",
+                                    "borderWidth": "2px",
+                                    "display": "flex",
+                                    "paddingLeft": "16px",
+                                    "paddingRight": "16px",
+                                    "paddingTop": "24px",
+                                    "paddingBottom": "24px",
+                                    "flexDirection": "column",
+                                    "alignItems": "stretch",
+                                    "justifyContent": "center",
+                                    "width": "224px"
+                                  }
+                                }
+                              }
+                            ],
+                            "responsiveStyles": {
+                              "large": {
+                                "display": "flex",
+                                "marginTop": "88px",
+                                "alignItems": "start",
+                                "gap": "0px",
+                                "justifyContent": "start",
+                                "flexWrap": "wrap"
+                              },
+                              "medium": {
+                                "marginTop": "40px"
+                              }
+                            }
+                          }
+                        ],
+                        "responsiveStyles": {
+                          "large": {
+                            "zIndex": "10",
+                            "display": "flex",
+                            "marginTop": "93px",
+                            "marginRight": "-29px",
+                            "width": "100%",
+                            "flexDirection": "column",
+                            "alignItems": "stretch"
+                          },
+                          "medium": {
+                            "maxWidth": "100%",
+                            "marginTop": "40px"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "width": 45.20547945205479,
+                    "blocks": [
+                      {
+                        "@type": "@builder.io/sdk:Element",
+                        "@version": 2,
+                        "layerName": "hero image",
+                        "id": "builder-cc442e9a0cd48e076184c8297c97c7e8",
+                        "meta": {
+                          "fromJSX": true,
+                          "id": "831:1452",
+                          "type": "GROUP",
+                          "name": "hero image"
+                        },
+                        "component": {
+                          "name": "Image",
+                          "options": {
+                            "aspectRatio": 1.269,
+                            "noWebp": false,
+                            "image": "https://cdn.builder.io/api/v1/image/assets/TEMP/65a8e84a67e3cb5e4f523023784de44398802e0f?placeholderIfAbsent=true&apiKey=1b7e142479ce491d93f824fd954bb32e",
+                            "backgroundSize": "contain"
+                          }
+                        },
+                        "responsiveStyles": {
+                          "large": {
+                            "borderRadius": "0px 0px 0px 0px",
+                            "position": "relative",
+                            "display": "flex"
+                          },
+                          "medium": {
+                            "maxWidth": "100%",
+                            "marginTop": "40px"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            "responsiveStyles": {
+              "large": {
+                "width": "100%",
+                "paddingLeft": "72px",
+                "paddingRight": "72px",
+                "paddingTop": "80px",
+                "paddingBottom": "80px"
+              },
+              "medium": {
+                "maxWidth": "100%",
+                "paddingLeft": "20px",
+                "paddingRight": "20px"
+              }
+            }
+          }
+        ],
+        "responsiveStyles": {
+          "large": {
+            "backgroundColor": "rgba(255, 255, 255, 1)",
+            "display": "flex",
+            "flexDirection": "column",
+            "overflow": "hidden",
+            "alignItems": "stretch"
+          }
+        }
+      }
+    ],
+    "state": {
+      "deviceSize": "large",
+      "location": {
+        "path": "",
+        "query": {}
+      }
+    }
+  },
+  "variations": {},
+  "lastUpdated": 1748877357542,
+  "firstPublished": 1748877357526,
+  "testRatio": 1,
+  "createdBy": "OM3ONtDpZbZmjA0FKahYHqnkAWI3",
+  "lastUpdatedBy": "OM3ONtDpZbZmjA0FKahYHqnkAWI3",
+  "folders": [],
+  "rev": "7d5fmmp7j5",
+  "@originOrg": "1b7e142479ce491d93f824fd954bb32e",
+  "@originContentId": "a068fbc443724a13b6bfc2ce0d96c9e1",
+  "@originModelId": "0bacfec8858b4cfd9e168fbbc1373440"
+}

@@ -26,6 +26,8 @@ import { SoldOut } from "@/components/SoldOut";
 import { TextBlock } from "@/components/TextBlock";
 import { Topbar } from "@/components/Topbar";
 import { Carousel } from "@/components/CustomTabs";
+import { CustomImage } from "@/components/CustomImage";
+import { Pill } from "@/components/Pill";
 
 import { TandCs } from "@/components/TandCs";
 
@@ -238,7 +240,12 @@ export const customComponents = [
         allowedFileTypes: ["jpeg", "jpg", "png", "svg"]
       },
       { name: "imageOpacity", type: "number", defaultValue: 1 },
-      { name: "imageMaxHeight", type: "string", defaultValue: "550px", helperText: "must include px or %" },
+      {
+        name: "imageMaxHeight",
+        type: "string",
+        defaultValue: "550px",
+        helperText: "must include px or %"
+      },
       {
         name: "imageConstraint",
         type: "enum",
@@ -325,6 +332,12 @@ export const customComponents = [
       // },
       { name: "alignment", type: "enum", enum: ["left", "center", "right"] },
       {
+        name: "textSize",
+        type: "enum",
+        enum: ["small", "medium", "large"],
+        defaultValue: "medium"
+      },
+      {
         name: "image",
         type: "file",
         allowedFileTypes: ["jpeg", "jpg", "png", "svg"],
@@ -343,7 +356,21 @@ export const customComponents = [
         defaultValue:
           "daisyAi - Advancing You Towards Efficiency, Convenience, and Innovation"
       },
-
+      {
+        name: "useGradientText",
+        type: "boolean",
+        defaultValue: false
+      },
+      {
+        name: "gradientColor1",
+        type: "color",
+        defaultValue: "#3B82F6"
+      },
+      {
+        name: "gradientColor2",
+        type: "color",
+        defaultValue: "#8B5CF6"
+      },
       {
         name: "subtitle",
         type: "string",
@@ -573,6 +600,20 @@ export const customComponents = [
       },
       { name: "anchor", type: "string" },
       {
+        name: "margin",
+        type: "enum",
+        enum: ["none", "small", "medium", "large"],
+        defaultValue: "medium",
+        helperText: "Controls the spacing around the component"
+      },
+      {
+        name: "size",
+        type: "enum",
+        enum: ["small", "medium", "large"],
+        defaultValue: "medium",
+        helperText: "Controls the overall text size of the component"
+      },
+      {
         name: "title",
         type: "string",
         defaultValue: "Organize your tasks. Set priorities. Boost Productivity"
@@ -587,6 +628,12 @@ export const customComponents = [
         name: "stats",
         type: "list",
         subFields: [
+          {
+            name: "alignment",
+            type: "enum",
+            enum: ["center", "left"],
+            defaultValue: "center"
+          },
           {
             name: "title",
             type: "string",
@@ -607,6 +654,11 @@ export const customComponents = [
             name: "icon",
             type: "string",
             defaultValue: "AiOutlineCheckCircle"
+          },
+          {
+            name: "iconColor",
+            type: "color",
+            defaultValue: "#3B82F6"
           }
         ]
       }
@@ -628,9 +680,36 @@ export const customComponents = [
         enum: ["light", "dark", "white"],
         defaultValue: "light"
       },
-      { name: "colour", type: "color" },
-      { name: "mailchimpForm", type: "boolean" },
-      { name: "formCode", type: "code" },
+      { name: "buttonColor", type: "color", defaultValue: "#3B82F6" },
+      { name: "icon", type: "string" },
+      {
+        name: "iconPosition",
+        type: "enum",
+        enum: ["left", "right"],
+        defaultValue: "left",
+        showIf: "options.icon"
+      },
+      { name: "mailchimpForm", type: "boolean", defaultValue: false, helperText: "Use modern Mailchimp form instead of embed code" },
+      {
+        name: "includeNameField",
+        type: "boolean",
+        defaultValue: false,
+        showIf: "options.get('mailchimpForm') === false",
+        helperText: "Include a name field in the Mailchimp form"
+      },
+      {
+        name: "mailchimpTags",
+        type: "string",
+        defaultValue: "",
+        showIf: "options.get('mailchimpForm') === false",
+        helperText: "Comma-separated tags for Mailchimp (e.g., popup,newsletter)"
+      },
+      { 
+        name: "formCode", 
+        type: "code", 
+        showIf: "options.get('mailchimpForm') !== false",
+        helperText: "HTML embed code (only shown when not using Mailchimp form)"
+      },
       { name: "ctaText", type: "string", defaultValue: "Click Me" }
     ]
   },
@@ -823,6 +902,125 @@ export const customComponents = [
       },
       { name: "anchor", type: "string" },
       { name: "title", type: "string" }
+    ]
+  },
+  {
+    component: CustomImage,
+    name: "Image", // This overrides the default Builder.io Image component
+    override: true,
+    inputs: [
+      {
+        name: "image",
+        type: "file",
+        allowedFileTypes: ["jpeg", "jpg", "png", "svg", "webp"],
+        required: true
+      },
+      {
+        name: "alt",
+        type: "string",
+        defaultValue: "",
+        helperText: "Alt text for accessibility"
+      },
+      {
+        name: "alignment",
+        type: "enum",
+        enum: ["left", "center", "right"],
+        defaultValue: "center",
+        helperText: "Image alignment"
+      },
+      {
+        name: "maxWidth",
+        type: "number",
+        helperText: "Maximum width in pixels (optional)"
+      },
+      {
+        name: "aspectRatio",
+        type: "number",
+        min: 0.1,
+        max: 5,
+        step: 0.1,
+        defaultValue: 1,
+        helperText: "Aspect ratio (width/height). 1 = square, 1.77 = 16:9, 0.75 = 3:4"
+      },
+      {
+        name: "fitContent",
+        type: "boolean",
+        defaultValue: false,
+        helperText: "Fit image to content container"
+      },
+      {
+        name: "lazy",
+        type: "boolean",
+        defaultValue: true,
+        helperText: "Enable lazy loading"
+      },
+      {
+        name: "lockAspectRatio",
+        type: "boolean",
+        defaultValue: false,
+        helperText: "Lock aspect ratio when resizing"
+      }
+    ]
+  },
+  {
+    component: Pill,
+    name: "Pill",
+    inputs: [
+      {
+        name: "text",
+        type: "string",
+        defaultValue: "Pill Text",
+        helperText: "Text content for the pill"
+      },
+      {
+        name: "size",
+        type: "enum",
+        enum: ["small", "medium", "large"],
+        defaultValue: "medium",
+        helperText: "Size of the pill"
+      },
+      {
+        name: "alignment",
+        type: "enum",
+        enum: ["left", "center", "right"],
+        defaultValue: "center",
+        helperText: "Alignment of the pill"
+      },
+      {
+        name: "cornerStyle",
+        type: "enum",
+        enum: ["rounded", "square"],
+        defaultValue: "rounded",
+        helperText: "Corner style of the pill"
+      },
+      {
+        name: "aspectRatio",
+        type: "number",
+        min: 0.1,
+        max: 5,
+        step: 0.1,
+        defaultValue: 1,
+        helperText: "Aspect ratio (width/height). 1 = square, 2 = wide rectangle, 0.5 = tall rectangle"
+      },
+      {
+        name: "margin",
+        type: "enum",
+        enum: ["none", "small", "medium", "large"],
+        defaultValue: "none",
+        helperText: "Vertical margin (top and bottom)"
+      },
+      {
+        name: "backgroundColor",
+        type: "color",
+        defaultValue: "#3B82F6",
+        helperText: "Background color of the pill"
+      },
+      {
+        name: "textColor",
+        type: "color",
+        defaultValue: "#FFFFFF",
+        helperText: "Text color of the pill"
+      }
     ]
   }
 ];

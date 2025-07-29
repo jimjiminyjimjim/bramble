@@ -23,8 +23,6 @@ export default async function RootLayout({ children }) {
     "+"
   )}&family=${displayFont.replace(" ", "+")}&display=swap`;
 
-  console.log("NEXT_PUBLIC_GTM", process.env.NEXT_PUBLIC_GTM);
-
   return (
     <html lang="en" data-theme="cupcake" className="min-h-screen">
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM} />

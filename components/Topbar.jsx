@@ -42,7 +42,6 @@ export const Topbar = ({ logoOverride, children, theme }) => {
     }
   }, []);
 
-  console.log("siteData", siteData);
   return (
     <>
       <div

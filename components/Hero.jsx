@@ -33,7 +33,6 @@ export const Hero = ({
   margin = "medium"
 }) => {
 
-  console.log("imageMaxHeight", imageMaxHeight);
 
   const colors = useTheme(theme);
   const sectionPaddingClass = paddingClasses[margin] || "";

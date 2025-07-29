@@ -6,8 +6,6 @@ import { useContext } from "react";
 export const useTheme = (theme) => {
   const context = useContext(Context);
 
-  console.log("useTheme context", context);
-
   const themeColors = {
     light: {
       primary: context.primaryTint,

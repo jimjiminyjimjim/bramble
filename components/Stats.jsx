@@ -1,61 +1,69 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import fitty from "fitty";
-
 import { DynamicIcon } from "@/components/Icon";
 import { useTheme } from "@/helpers/theme";
 import { cx } from "classix";
 
-export const Stats = ({ title, theme, subtitle, stats = [], children }) => {
+export const Stats = ({ title, theme, subtitle, stats = [], alignment = "center", children, isChildComponent = false, margin = "medium", size = "medium" }) => {
   const colors = useTheme(theme);
 
-  console.log("Stats colors", colors);
-  /* ───────────────────────── refs for every <h3> ─────────────────────────── */
-  const heads = useRef([]);
-  heads.current = []; // reset on each render so indices stay in sync
+  // Define text size classes based on the size prop
+  const getTextSizes = (sizeType) => {
+    switch (sizeType) {
+      case "small":
+        return {
+          mainTitle: isChildComponent ? "text-sm lg:text-lg" : "text-base lg:text-3xl",
+          mainSubtitle: isChildComponent ? "text-xs lg:text-sm" : "text-xs lg:text-base",
+          statTitle: "text-xs lg:text-lg",
+          statDescription: "text-xs lg:text-sm"
+        };
+      case "large":
+        return {
+          mainTitle: isChildComponent ? "text-lg lg:text-3xl" : "text-xl lg:text-6xl",
+          mainSubtitle: isChildComponent ? "text-xs lg:text-lg" : "text-xs lg:text-2xl",
+          statTitle: "text-xs lg:text-2xl",
+          statDescription: "text-xs lg:text-lg"
+        };
+      default: // medium
+        return {
+          mainTitle: isChildComponent ? "text-base lg:text-2xl" : "text-lg lg:text-5xl",
+          mainSubtitle: isChildComponent ? "text-xs lg:text-base" : "text-xs lg:text-xl",
+          statTitle: "text-xs lg:text-xl",
+          statDescription: "text-xs lg:text-base"
+        };
+    }
+  };
 
-  /* ───────────────────── fit headings & equalise size ────────────────────── */
-  useEffect(() => {
-    if (!heads.current.length) return;
+  const textSizes = getTextSizes(size);
 
-    // 1) run fitty on each heading
-    const instances = heads.current.map((el) =>
-      fitty(el, {
-        minSize: 24,           // keep things readable
-        maxSize: 48,           // matches your “text-4xl” default
-        multiLine: true,
-        observeMutations: false,
-      })
-    );
-
-    // 2) after fitty settles, find the smallest size
-    const equalise = () => {
-      const sizes = heads.current.map((el) =>
-        parseFloat(getComputedStyle(el).fontSize)
-      );
-      const smallest = Math.min(...sizes);
-
-      // 3) force that size onto every heading
-      heads.current.forEach((el) => (el.style.fontSize = `${smallest}px`));
-    };
-
-    // first run (next frame so fitty has updated)
-    requestAnimationFrame(equalise);
-
-    // keep them in sync whenever fitty re-fires (e.g. on resize)
-    heads.current.forEach((el) =>
-      el.addEventListener("fit", equalise, { passive: true })
-    );
-
-    // cleanup
-    return () => {
-      instances.forEach((ins) => ins.unsubscribe());
-      heads.current.forEach((el) =>
-        el.removeEventListener("fit", equalise)
-      );
-    };
-  }, [stats]);
+  // Define margin/padding classes based on the margin prop
+  const getMarginClasses = (marginSize) => {
+    if (isChildComponent) {
+      // For child components, use smaller spacing
+      switch (marginSize) {
+        case "none":
+          return "py-0 pb-1";
+        case "small":
+          return "py-2";
+        case "large":
+          return "py-8";
+        default: // medium
+          return "py-4";
+      }
+    } else {
+      // For standalone components, use larger spacing
+      switch (marginSize) {
+        case "none":
+          return "py-0 pb-5";
+        case "small":
+          return "pt-5 pb-10";
+        case "large":
+          return "pt-20 pb-40";
+        default: // medium
+          return "pt-10 pb-20";
+      }
+    }
+  };
 
   /* ────────────────────────────── render ─────────────────────────────────── */
   // choose grid columns dynamically so 2–3 items stay centred
@@ -70,17 +78,23 @@ export const Stats = ({ title, theme, subtitle, stats = [], children }) => {
 
   return (
     <section style={{ backgroundColor: colors.primary }} className="w-full">
-      <div className={cx("container pt-10 pb-20")}>
+      <div className={cx("container", getMarginClasses(margin))}>
         {/* heading block */}
         <div className="text-center">
           <h2
-            className="text-xl font-semibold lg:text-5xl"
+            className={cx(
+              "font-semibold",
+              textSizes.mainTitle
+            )}
             style={{ color: colors.text.title }}
           >
             {title}
           </h2>
           <p
-            className="mt-4 text-base lg:text-xl"
+            className={cx(
+              isChildComponent ? "mt-2" : "mt-4",
+              textSizes.mainSubtitle
+            )}
             style={{ color: colors.text.body }}
           >
             {subtitle}
@@ -90,51 +104,56 @@ export const Stats = ({ title, theme, subtitle, stats = [], children }) => {
         {/* stats grid */}
         <div
           className={cx(
-            "mt-8 grid grid-cols-2 gap-20 text-center",
+            isChildComponent ? "mt-4 flex flex-col md:grid md:grid-cols-2 gap-8 items-center" : "mt-8 flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-20 items-center",
             mdCols,
             "justify-center"
           )}
         >
-          {stats.map((stat, index) => (
-            <div key={index} className="flex flex-col">
-              {/* image / icon */}
-              <div className="rounded p-3 transition-all">
-                {stat.image ? (
-                  <img
-                    src={stat.image}
-                    alt=""
-                    className="max-h-[150px] mx-auto"
-                  />
-                ) : (
-                  <DynamicIcon
-                    iconName="AiFillCloseCircle"
-                    className="size-8 text-primary"
-                    size={32}
-                  />
-                )}
+          {stats.map((stat, index) => {
+            const statAlignment = stat.alignment || "center";
+            return (
+              <div key={index} className="flex flex-row items-center space-x-3 text-left w-auto md:w-full">
+                {/* image / icon */}
+                <div className="rounded p-3 transition-all flex-shrink-0 w-[74px] flex justify-center">
+                  {stat.image ? (
+                    <img
+                      src={stat.image}
+                      alt=""
+                      className="max-h-[50px] max-w-[50px]"
+                    />
+                  ) : (
+                    <DynamicIcon
+                      iconName={stat.icon || "AiFillCloseCircle"}
+                      className="size-8"
+                      size={32}
+                      style={{ color: stat.iconColor || "#3B82F6" }}
+                    />
+                  )}
+                </div>
+
+                {/* text content */}
+                <div className="flex-1 min-w-0">
+                  {/* title */}
+                  <h3
+                    className={cx("font-semibold leading-tight", textSizes.statTitle)}
+                    style={{
+                      color: colors.text.title,
+                    }}
+                  >
+                    {stat.title}
+                  </h3>
+
+                  {/* description */}
+                  <p
+                    className={cx("mt-1", textSizes.statDescription)}
+                    style={{ color: colors.text.body }}
+                  >
+                    {stat.description}
+                  </p>
+                </div>
               </div>
-
-              {/* title that auto-fits, then equalises */}
-              <h3
-                ref={(el) => el && (heads.current[index] = el)}
-                className="mt-3 font-semibold leading-tight"
-                style={{
-                  color: colors.text.title,
-                  maxHeight: "2.3em", // ≈ two lines for lh ~1.15
-                }}
-              >
-                {stat.title}
-              </h3>
-
-              {/* description */}
-              <p
-                className="mt-1 text-base"
-                style={{ color: colors.text.body }}
-              >
-                {stat.description}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {children}

@@ -1,6 +1,8 @@
 import { fetchOneEntry, subscribeToEditor } from "@builder.io/sdk-react";
 import { useEffect, useState, useRef, useContext } from "react";
+import { useSearchParams, usePathname } from "next/navigation";
 import { AiFillCloseCircle } from "react-icons/ai";
+import { DynamicIcon } from "@/components/Icon";
 import { useTheme } from "@/helpers/theme";
 import { sendGTMEvent } from '@next/third-parties/google'
 
@@ -47,6 +49,158 @@ const MailchimpFormEmbed = ({ embedHtml, siteData, onFormSubmit }) => {
   return <div ref={formRef} dangerouslySetInnerHTML={{ __html: embedHtml }} />;
 };
 
+const MailchimpForm = ({ includeNameField, mailchimpTags, onFormSubmit, buttonColor, ctaText, icon, iconPosition }) => {
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [honeypot, setHoneypot] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState("");
+  
+  const searchParams = useSearchParams();
+  const pathName = usePathname();
+  
+  // Get UTM parameters
+  const initialSource = searchParams?.get("utm_source") || "";
+  const initialMedium = searchParams?.get("utm_medium") || "";
+  const initialCampaign = searchParams?.get("utm_campaign") || "";
+  const campaignContent = searchParams?.get("utm_content") || "";
+  const campaignTerms = searchParams?.get("utm_term") || "";
+  const pageTitle = document?.title || "";
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (honeypot) {
+      // If the honeypot is filled, silently fail (bot detected)
+      onFormSubmit("success");
+      setEmail("");
+      setName("");
+      setError("");
+      return;
+    }
+    
+    if (!email.includes("@")) {
+      setError("Please enter a valid email");
+      return;
+    }
+
+    setIsSubmitting(true);
+    setError("");
+
+    try {
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          name: includeNameField ? name : undefined,
+          tags: [
+            ...(pageTitle ? [pageTitle] : []),
+            ...(mailchimpTags?.split(",").map((tag) => tag.trim()) || []),
+            `path:${pathName || "/"}`
+          ],
+          utm_source: initialSource,
+          utm_medium: initialMedium,
+          utm_campaign: initialCampaign,
+          utm_content: campaignContent,
+          utm_term: campaignTerms
+        })
+      });
+
+      if (!response.ok) throw new Error("Failed to subscribe");
+
+      setEmail("");
+      setName("");
+      setError("");
+      
+      sendGTMEvent({
+        event: "popupMailchimpSubmit",
+        email,
+        ...(includeNameField && name && { name })
+      });
+
+      onFormSubmit("success");
+    } catch (error) {
+      console.error("Subscription error:", error);
+      setError("Failed to subscribe. Please try again.");
+      onFormSubmit("error");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4">
+      {/* Honeypot field - hidden from users */}
+      <input
+        type="text"
+        value={honeypot}
+        onChange={(e) => setHoneypot(e.target.value)}
+        style={{
+          position: "absolute",
+          left: "-9999px",
+          top: "-9999px",
+          opacity: 0,
+          pointerEvents: "none"
+        }}
+        tabIndex={-1}
+        autoComplete="off"
+      />
+      
+      {includeNameField && (
+        <div>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Enter your name"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
+          />
+        </div>
+      )}
+      
+      <div>
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Enter your email"
+          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          required
+        />
+      </div>
+      
+      {error && (
+        <p className="text-red-500 text-sm">{error}</p>
+      )}
+      
+      <button
+        type="submit"
+        disabled={isSubmitting}
+        className={`btn w-full font-bold transform transition-all duration-200 hover:scale-105 active:scale-95 ${icon && icon.trim() ? 'flex items-center justify-center gap-2' : ''}`}
+        style={{
+          backgroundColor: buttonColor || "#3B82F6",
+          color: "#FFFFFF",
+          borderColor: buttonColor || "#3B82F6",
+        }}
+      >
+        {icon && icon.trim() && iconPosition === "left" && (
+          <span className="animate-pulse" style={{ animationDuration: '1s' }}>
+            <DynamicIcon iconName={icon} size={16} className="font-bold" />
+          </span>
+        )}
+        {isSubmitting ? "Subscribing..." : (ctaText || "Subscribe")}
+        {icon && icon.trim() && iconPosition === "right" && (
+          <span className="animate-pulse" style={{ animationDuration: '1s' }}>
+            <DynamicIcon iconName={icon} size={16} className="font-bold" />
+          </span>
+        )}
+      </button>
+    </form>
+  );
+};
+
 function toCamelCase(text) {
   return text
     .toLowerCase() // Convert the text to lowercase
@@ -60,6 +214,12 @@ export function Popup({
   ctaText,
   theme,
   textLink,
+  buttonColor = "#3B82F6",
+  icon = "",
+  iconPosition = "left",
+  mailchimpForm = false,
+  includeNameField = false,
+  mailchimpTags = "",
 }) {
   const colors = useTheme(theme);
   const [content, setContent] = useState(null);
@@ -89,7 +249,7 @@ export function Popup({
   if (!content) return null;
 
   return (
-    <>
+    <div className="inline-block">
       {textLink ? (
         <a
           href="#"
@@ -102,14 +262,25 @@ export function Popup({
         </a>
       ) : (
         <button
-          className={`btn`}
+          className={`btn font-bold ${icon && icon.trim() ? 'flex items-center gap-2' : ''} transform transition-all duration-200 hover:scale-105 active:scale-95`}
           style={{
-            backgroundColor: colors?.button.dark,
+            backgroundColor: buttonColor,
             color: "#FFFFFF",
+            borderColor: buttonColor,
           }}
           onClick={() => document.getElementById("my_modal_3").showModal()}
         >
+          {icon && icon.trim() && iconPosition === "left" && (
+            <span className="animate-pulse" style={{ animationDuration: '1s' }}>
+              <DynamicIcon iconName={icon} size={16} className="font-bold" />
+            </span>
+          )}
           {ctaText}
+          {icon && icon.trim() && iconPosition === "right" && (
+            <span className="animate-pulse" style={{ animationDuration: '1s' }}>
+              <DynamicIcon iconName={icon} size={16} className="font-bold" />
+            </span>
+          )}
         </button>
       )}
 
@@ -129,6 +300,16 @@ export function Popup({
             {children}
             {formStatus === "success" ? (
               <p>Thank you for your submission!</p>
+            ) : !mailchimpForm ? (
+              <MailchimpForm
+                includeNameField={includeNameField}
+                mailchimpTags={mailchimpTags}
+                onFormSubmit={handleFormSubmit}
+                buttonColor={buttonColor}
+                ctaText={ctaText}
+                icon={icon}
+                iconPosition={iconPosition}
+              />
             ) : (
               formCode && (
                 <MailchimpFormEmbed
@@ -143,6 +324,6 @@ export function Popup({
           </div>
         </div>
       </dialog>
-    </>
+    </div>
   );
 }

@@ -48,6 +48,7 @@ export function MailchimpModern({
   stack = "column"
 }) {
   const [email, setEmail] = useState("");
+  const [honeypot, setHoneypot] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
   const [pageTitle, setPageTitle] = useState("");
@@ -73,6 +74,13 @@ export function MailchimpModern({
   );
 
   const handleSubmit = async () => {
+    if (honeypot) {
+      // If the honeypot is filled, silently fail (bot detected)
+      setSubmitted(true);
+      setEmail("");
+      setError("");
+      return;
+    }
     if (!email.includes("@")) {
       setError("Please enter a valid email");
       return;
@@ -146,6 +154,23 @@ export function MailchimpModern({
           alignment === "center" ? "text-center" : "text-left"
         )}
       >
+        {/* Honeypot field for bots, visually hidden for humans */}
+        <input
+          type="text"
+          name="title"
+          value={honeypot}
+          onChange={(e) => setHoneypot(e.target.value)}
+          tabIndex="-1"
+          autoComplete="off"
+          style={{
+            position: "absolute",
+            left: "-9999px",
+            opacity: 0,
+            height: 0,
+            width: 0,
+            overflow: "hidden"
+          }}
+        />
         <input
           type="email"
           value={email}
