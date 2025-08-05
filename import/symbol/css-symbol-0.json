@@ -1,11 +1,11 @@
 {
   "query": [],
   "folders": [],
-  "id": "e184959e587c4c6d9f03f0dee46b7c6a",
+  "id": "6fd885298a1a4340b7e98cf5503f6d5c",
   "name": "CSS Symbol",
   "published": "published",
   "createdDate": 1729596303586,
-  "modelId": "ff93d697250444f28d653f75e1cdf009",
+  "modelId": "4fd38025a33f4c388f1a34637957e914",
   "data": {
     "state": {
       "deviceSize": "large",
@@ -42,7 +42,7 @@
   "testRatio": 1,
   "createdBy": "dcNxI5zabAdsqPRZxnbPU4eFr6H2",
   "lastUpdatedBy": "dcNxI5zabAdsqPRZxnbPU4eFr6H2",
-  "rev": "1327qboyxdpa",
+  "rev": "9z2eigsmrdo",
   "@originOrg": "1b7e142479ce491d93f824fd954bb32e",
   "@originContentId": "965041e2ddb9cef92ea536a57e939605f949df5ae450f3f6698aa86f103b89ec",
   "@originModelId": "f639eb138b01d55b5c82f313d13f041fff8dd3c0908de2e4fc354e66ba872699"

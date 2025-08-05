@@ -28,6 +28,7 @@ import { Topbar } from "@/components/Topbar";
 import { Carousel } from "@/components/CustomTabs";
 import { CustomImage } from "@/components/CustomImage";
 import { Pill } from "@/components/Pill";
+import { Button } from "@/components/Button";
 
 import { TandCs } from "@/components/TandCs";
 
@@ -689,7 +690,12 @@ export const customComponents = [
         defaultValue: "left",
         showIf: "options.icon"
       },
-      { name: "mailchimpForm", type: "boolean", defaultValue: false, helperText: "Use modern Mailchimp form instead of embed code" },
+      {
+        name: "mailchimpForm",
+        type: "boolean",
+        defaultValue: false,
+        helperText: "Use modern Mailchimp form instead of embed code"
+      },
       {
         name: "includeNameField",
         type: "boolean",
@@ -702,11 +708,12 @@ export const customComponents = [
         type: "string",
         defaultValue: "",
         showIf: "options.get('mailchimpForm') === false",
-        helperText: "Comma-separated tags for Mailchimp (e.g., popup,newsletter)"
+        helperText:
+          "Comma-separated tags for Mailchimp (e.g., popup,newsletter)"
       },
-      { 
-        name: "formCode", 
-        type: "code", 
+      {
+        name: "formCode",
+        type: "code",
         showIf: "options.get('mailchimpForm') !== false",
         helperText: "HTML embed code (only shown when not using Mailchimp form)"
       },
@@ -940,7 +947,8 @@ export const customComponents = [
         max: 5,
         step: 0.1,
         defaultValue: 1,
-        helperText: "Aspect ratio (width/height). 1 = square, 1.77 = 16:9, 0.75 = 3:4"
+        helperText:
+          "Aspect ratio (width/height). 1 = square, 1.77 = 16:9, 0.75 = 3:4"
       },
       {
         name: "fitContent",
@@ -1000,7 +1008,8 @@ export const customComponents = [
         max: 5,
         step: 0.1,
         defaultValue: 1,
-        helperText: "Aspect ratio (width/height). 1 = square, 2 = wide rectangle, 0.5 = tall rectangle"
+        helperText:
+          "Aspect ratio (width/height). 1 = square, 2 = wide rectangle, 0.5 = tall rectangle"
       },
       {
         name: "margin",
@@ -1020,6 +1029,58 @@ export const customComponents = [
         type: "color",
         defaultValue: "#FFFFFF",
         helperText: "Text color of the pill"
+      }
+    ]
+  },
+  {
+    component: Button,
+    name: "Core:Button",
+    override: true,
+    noWrap: true,
+    inputs: [
+      {
+        name: "backgroundColor",
+        type: "color",
+        defaultValue: "#3B82F6",
+        helperText: "Background color of the button"
+      },
+      {
+        name: "textColor",
+        type: "color",
+        defaultValue: "#FFFFFF",
+        helperText: "Text color of the button"
+      },
+      {
+        name: "rounded",
+        type: "boolean",
+        defaultValue: true,
+        helperText: "Whether the button should have rounded corners"
+      },
+      {
+        name: "maxWidth",
+        type: "string",
+        defaultValue: "500px",
+        helperText:
+          "Maximum width of the button (e.g., '200px', '100%', 'auto')"
+      },
+      {
+        name: "size",
+        type: "string",
+        enum: ["small", "medium", "large"],
+        defaultValue: "medium",
+        helperText: "Size of the button"
+      },
+      {
+        name: "disabled",
+        type: "boolean",
+        defaultValue: false,
+        helperText: "Whether the button is disabled"
+      },
+      {
+        name: "text",
+        type: "string",
+        defaultValue: "Click Me",
+        helperText: "Button text content"
       }
     ]
   }
