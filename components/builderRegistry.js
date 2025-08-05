@@ -776,8 +776,45 @@ export const customComponents = [
         enum: ["light", "dark", "white"],
         defaultValue: "light"
       },
-      { name: "title", type: "string" },
-      { name: "anchor", type: "string" }
+      { name: "title", type: "string", defaultValue: "App Inquiries?" },
+      { 
+        name: "subtitle", 
+        type: "string", 
+        defaultValue: "Unlocking Answers: Your Guide to AI Mobile App Queries." 
+      },
+      { name: "anchor", type: "string" },
+      {
+        name: "faqs",
+        type: "list",
+        defaultValue: [
+          {
+            question: "What is this product?",
+            answer: "This is a comprehensive solution designed to help you achieve your goals efficiently and effectively."
+          },
+          {
+            question: "How does it work?",
+            answer: "Our product uses advanced technology to streamline your workflow and provide you with the tools you need to succeed."
+          },
+          {
+            question: "Is there a free trial?",
+            answer: "Yes, we offer a 14-day free trial so you can experience all the features before making a commitment."
+          }
+        ],
+        subFields: [
+          {
+            name: "question",
+            type: "string",
+            defaultValue: "Frequently Asked Question",
+            helperText: "The question text"
+          },
+          {
+            name: "answer",
+            type: "longText",
+            defaultValue: "This is the answer to the frequently asked question. You can provide detailed information here.",
+            helperText: "The answer text (supports multiple lines)"
+          }
+        ]
+      }
     ]
   },
   {
