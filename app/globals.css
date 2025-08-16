@@ -22,9 +22,9 @@ p {
   font-family: var(--font-body);
 }
 
-/* .builder-block{
-  z-index: 1;
-} */
+.builder-block{
+padding:0 !important
+}
 
 html, body{
   background: white !important;
@@ -68,5 +68,40 @@ a{
     -webkit-transform: translateY(-8px);
     transform: translateY(-8px);
   }
+}
+
+/* Rich text content styling for Builder.io text blocks */
+.rich-text-content ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.rich-text-content ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.rich-text-content li {
+  margin-bottom: 0.5rem;
+}
+
+.rich-text-content ul ul {
+  list-style-type: circle;
+  margin-bottom: 0.5rem;
+}
+
+.rich-text-content ol ol {
+  list-style-type: lower-alpha;
+  margin-bottom: 0.5rem;
+}
+
+.rich-text-content ul ul ul {
+  list-style-type: square;
+}
+
+.rich-text-content ol ol ol {
+  list-style-type: lower-roman;
 }
 

@@ -11,7 +11,6 @@ export const FeatureGrid = ({
   description,
   features,
   integrations,
-  hideImage,
   anchor,
   image,
   theme,
@@ -38,35 +37,41 @@ export const FeatureGrid = ({
             {description}
           </h4>
         </div>
-        <div
-          className={`${
-            features?.length < 5 && hideImage
-              ? "flex flex-col justify-center"
-              : "grid gap-16 lg:grid-cols-2 xl:gap-24"
-          }`}
-        >
-          {features?.map((feature, index) => (
-            <div className="flex items-start gap-5 flex-col" key={index}>
-              <div className="w-full aspect-[4/3] overflow-hidden">
-        {feature.image ? (
-          <img
-            src={feature.image}
-            alt={feature.title}
-            className="w-full h-full object-cover"
-          />
-        ) : (
-          !hideImage && (
-            <DynamicIcon
-              iconName={feature.icon}
-              color={colors?.primaryColour}
-              size={25}
+        {image && (
+          <div className="w-full max-w-md mx-auto mb-8 lg:mb-16">
+            <img
+              src={image}
+              alt={heading || "Feature image"}
+              className="w-full h-auto object-cover rounded-lg"
             />
-          )
+          </div>
         )}
-      </div>
-              <div>
-              <h3 className="text-2xl font-semibold">{feature.title}</h3>
-              <p className="mt-2 text-base">{feature.description}</p>
+        <div className="grid gap-16 lg:grid-cols-2 xl:gap-24">
+          {features?.map((feature, index) => (
+            <div key={index}>
+              {feature.image && (
+                <div className="w-full aspect-[4/3] overflow-hidden mb-4">
+                  <img
+                    src={feature.image}
+                    alt={feature.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              )}
+              <div className="flex items-start gap-3">
+                {feature.icon && (
+                  <div className="flex-shrink-0 mt-1">
+                    <DynamicIcon
+                      iconName={feature.icon}
+                      color={colors?.primaryColour}
+                      size={24}
+                    />
+                  </div>
+                )}
+                <div>
+                  <h3 className="text-2xl font-semibold mb-2">{feature.title}</h3>
+                  <p className="text-base">{feature.description}</p>
+                </div>
               </div>
             </div>
           ))}

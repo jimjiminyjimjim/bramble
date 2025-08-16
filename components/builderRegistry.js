@@ -9,7 +9,9 @@ import { OnePager } from "@/components/OnePager";
 import { Stats } from "@/components/Stats";
 import { Feature } from "@/components/Feature";
 import { AppFeatures } from "@/components/AppFeatures";
+import { FeaturesList } from "@/components/v2/FeaturesList";
 import { FeatureGrid } from "@/components/FeatureGrid";
+import { FeatureGridNew } from "@/components/v2/FeatureGridNew";
 
 import { Screenshots } from "@/components/Screenshots";
 
@@ -24,20 +26,55 @@ import { SignUp } from "@/components/SignUp";
 import { Popup } from "@/components/Popup";
 import { SoldOut } from "@/components/SoldOut";
 import { TextBlock } from "@/components/TextBlock";
+import { TextBlockNew } from "@/components/v2/TextBlockNew";
 import { Topbar } from "@/components/Topbar";
+import { TopbarNew } from "@/components/v2/TopbarNew";
 import { Carousel } from "@/components/CustomTabs";
-import { CustomImage } from "@/components/CustomImage";
+import { CustomImage } from "@/components/v2/CustomImage";
 import { Pill } from "@/components/Pill";
 import { Button } from "@/components/Button";
+import { Section } from "@/components/v2/Section";
 
 import { TandCs } from "@/components/TandCs";
 
 import { Mailchimp } from "@/components/Mailchimp";
 
 // this array can contain as many custom components as you want
+
+// register('editor.settings', {
+//   customInsertMenu: true
+// });
+
+// register('insertMenu', {
+//   name: 'Main Blocks',
+//   priority: 1,
+//   items: [
+//     { name: 'Hero', item: 'Hero' }
+//   ],
+// })
+
+// register('insertMenu', {
+//   name: 'Layout Actions',
+//   priority: 2,
+//     { name: 'Hero', item: 'Hero' }
+//   ],
+// })
+
+register("insertMenu", {
+  name: "V2",
+  priority: 2,
+  items: [
+    { name: "FeaturesList", item: "FeaturesList" },
+    { name: "Section Spacing", item: "Core:Section" },
+    { name: "TextBlockNew", item: "TextBlockNew" },
+    { name: "FeatureGridNew", item: "FeatureGridNew" }
+  ]
+});
+
 export const customComponents = [
   {
     component: Carousel,
+    image: "https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/images.svg",
     name: "Carousel",
     /** To accept children in your custom component and by default it is false */
     canHaveChildren: true,
@@ -84,8 +121,34 @@ export const customComponents = [
     ]
   },
   {
+    component: TopbarNew,
+    name: "v2: Topbar New",
+    canHaveChildren: true,
+    shouldReceiveBuilderProps: {
+      builderBlock: true,
+      builderContext: true,
+      builderComponents: true,
+      builderLinkComponent: true
+    },
+    inputs: [
+      {
+        name: "logo",
+        type: "uiBlocks",
+        defaultValue: []
+      },
+      {
+        name: "theme",
+        type: "enum",
+        enum: ["light", "dark", "white"],
+        defaultValue: "light"
+      }
+    ]
+  },
+  {
     component: Mailchimp,
     name: "Mailchimp Input",
+    images:
+      "https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/input-cursor-text.svg",
     inputs: [
       {
         name: "stack",
@@ -317,6 +380,7 @@ export const customComponents = [
     component: TextBlock,
     name: "TextBlock",
     canHaveChildren: true,
+    noWrap: true,
     shouldReceiveBuilderProps: {
       builderBlock: true
     },
@@ -332,6 +396,13 @@ export const customComponents = [
       //   ]
       // },
       { name: "alignment", type: "enum", enum: ["left", "center", "right"] },
+      {
+        name: "verticalAlignment",
+        type: "enum",
+        enum: ["top", "middle", "bottom"],
+        defaultValue: "middle",
+        helperText: "Vertical alignment of the content within the section"
+      },
       {
         name: "textSize",
         type: "enum",
@@ -352,6 +423,12 @@ export const customComponents = [
         defaultValue: "light"
       },
       {
+        name: "textColor",
+        type: "color",
+        helperText:
+          "Custom text color (overrides theme). Subtitle and body always use this color, title uses this unless gradient is enabled."
+      },
+      {
         name: "title",
         type: "string",
         defaultValue:
@@ -365,12 +442,14 @@ export const customComponents = [
       {
         name: "gradientColor1",
         type: "color",
-        defaultValue: "#3B82F6"
+        defaultValue: "#3B82F6",
+        showIf: "options.get('useGradientText') === true"
       },
       {
         name: "gradientColor2",
         type: "color",
-        defaultValue: "#8B5CF6"
+        defaultValue: "#8B5CF6",
+        showIf: "options.get('useGradientText') === true"
       },
       {
         name: "subtitle",
@@ -383,6 +462,94 @@ export const customComponents = [
         type: "richText",
         defaultValue:
           "Empower Your Mobile Journey with WrapAi, the Next-Generation App that Puts the Power of Performance Right in the Palm of Your Hand"
+      },
+      {
+        name: "noPadding",
+        type: "boolean",
+        defaultValue: true,
+        helperText: "Remove surrounding padding/margins from the component"
+      }
+    ]
+  },
+  {
+    component: TextBlockNew,
+    name: "TextBlockNew",
+    canHaveChildren: true,
+    noWrap: true,
+    shouldReceiveBuilderProps: {
+      builderBlock: true
+    },
+    inputs: [
+      // {
+      //   name: "columnTest",
+      //   type: "list",
+      //   subFields: [
+      //     {
+      //       name: "children",
+      //       type: "uiBlocks"
+      //     }
+      //   ]
+      // },
+      { name: "alignment", type: "enum", enum: ["left", "center", "right"] },
+      {
+        name: "verticalAlignment",
+        type: "enum",
+        enum: ["top", "middle", "bottom"],
+        defaultValue: "middle",
+        helperText: "Vertical alignment of the content within the section"
+      },
+      {
+        name: "textSize",
+        type: "enum",
+        enum: ["small", "medium-small", "medium", "large"],
+        defaultValue: "medium"
+      },
+      {
+        name: "textColor",
+        type: "color",
+        helperText:
+          "Custom text color (overrides theme). Subtitle and body always use this color, title uses this unless gradient is enabled."
+      },
+      {
+        name: "title",
+        type: "string",
+        defaultValue:
+          "daisyAi - Advancing You Towards Efficiency, Convenience, and Innovation"
+      },
+      {
+        name: "useGradientText",
+        type: "boolean",
+        defaultValue: false
+      },
+      {
+        name: "gradientColor1",
+        type: "color",
+        defaultValue: "#3B82F6",
+        showIf: "options.get('useGradientText') === true"
+      },
+      {
+        name: "gradientColor2",
+        type: "color",
+        defaultValue: "#8B5CF6",
+        showIf: "options.get('useGradientText') === true"
+      },
+      {
+        name: "subtitle",
+        type: "string",
+        defaultValue:
+          "daisyAi - Advancing You Towards Efficiency, Convenience, and Innovation"
+      },
+      {
+        name: "body",
+        type: "richText",
+        defaultValue:
+          "Empower Your Mobile Journey with WrapAi, the Next-Generation App that Puts the Power of Performance Right in the Palm of Your Hand"
+      },
+      {
+        name: "noPadding",
+        type: "boolean",
+        defaultValue: true,
+        helperText: "Remove surrounding padding/margins from the component"
       }
     ]
   },
@@ -465,6 +632,7 @@ export const customComponents = [
     component: AppFeatures,
     name: "AppFeatures",
     canHaveChildren: true,
+    image: "https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/list-check.svg",
     inputs: [
       {
         name: "theme",
@@ -490,8 +658,64 @@ export const customComponents = [
         allowedFileTypes: ["jpeg", "jpg", "png", "svg"]
       },
       {
-        name: "hideImage",
-        type: "boolean"
+        name: "imageScale",
+        type: "range", // 👈 slider in the Builder editor
+        min: 0,
+        max: 100,
+        defaultValue: 0,
+        helperText: "0 = fit width, 100 = fill panel"
+      },
+      {
+        name: "iconColor",
+        type: "color",
+        defaultValue: "#3B82F6"
+      },
+      {
+        name: "align",
+        type: "enum",
+        enum: ["left", "center", "right"],
+        defaultValue: "center"
+      },
+      {
+        name: "features",
+        type: "list",
+        subFields: [
+          {
+            name: "title",
+            type: "string",
+            defaultValue: "Real-time Data Processing"
+          },
+          {
+            name: "description",
+            type: "string",
+            defaultValue:
+              "Swift processing of data for instant insights and responses. Ensure up-to-date information and analysis in real-time."
+          },
+          {
+            name: "icon",
+            type: "string",
+            defaultValue: "AiOutlineCheckCircle"
+          },
+          {
+            name: "image",
+            type: "file",
+            allowedFileTypes: ["jpeg", "jpg", "png", "svg"]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    component: FeaturesList,
+    name: "FeaturesList",
+    canHaveChildren: true,
+    image: "https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/list-ul.svg",
+    inputs: [
+      { name: "anchor", type: "string" },
+      {
+        name: "iconColor",
+        type: "color",
+        defaultValue: "#3B82F6"
       },
       {
         name: "align",
@@ -532,6 +756,7 @@ export const customComponents = [
     component: FeatureGrid,
     name: "FeatureGrid",
     canHaveChildren: true,
+    image: "https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/grid-fill.svg",
     inputs: [
       {
         name: "theme",
@@ -557,9 +782,41 @@ export const customComponents = [
         allowedFileTypes: ["jpeg", "jpg", "png", "svg"]
       },
       {
-        name: "hideImage",
-        type: "boolean"
-      },
+        name: "features",
+        type: "list",
+        subFields: [
+          {
+            name: "title",
+            type: "string",
+            defaultValue: "Real-time Data Processing"
+          },
+          {
+            name: "description",
+            type: "string",
+            defaultValue:
+              "Swift processing of data for instant insights and responses. Ensure up-to-date information and analysis in real-time."
+          },
+          {
+            name: "icon",
+            type: "string",
+            defaultValue: "AiOutlineCheckCircle"
+          },
+          {
+            name: "image",
+            type: "file",
+            allowedFileTypes: ["jpeg", "jpg", "png", "svg"]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    component: FeatureGridNew,
+    name: "FeatureGridNew",
+    canHaveChildren: true,
+    image: "https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/grid-fill.svg",
+    inputs: [
+      { name: "anchor", type: "string" },
       {
         name: "features",
         type: "list",
@@ -592,6 +849,7 @@ export const customComponents = [
   {
     component: Stats,
     name: "Stats",
+    image: "https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/card-text.svg",
     inputs: [
       {
         name: "theme",
@@ -669,6 +927,8 @@ export const customComponents = [
     component: Popup,
     name: "Popup",
     canHaveChildren: true,
+    image:
+      "https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/window-stack.svg",
     /** To receieve Builder props inside your custom component: by default false  */
     shouldReceiveBuilderProps: {
       /** To access builder's Blocks relative to your parent */
@@ -777,27 +1037,37 @@ export const customComponents = [
         defaultValue: "light"
       },
       { name: "title", type: "string", defaultValue: "App Inquiries?" },
-      { 
-        name: "subtitle", 
-        type: "string", 
-        defaultValue: "Unlocking Answers: Your Guide to AI Mobile App Queries." 
+      {
+        name: "subtitle",
+        type: "string",
+        defaultValue: "Unlocking Answers: Your Guide to AI Mobile App Queries."
       },
       { name: "anchor", type: "string" },
+      {
+        name: "expandable",
+        type: "boolean",
+        defaultValue: true,
+        helperText:
+          "Whether FAQs can be expanded/collapsed or always show full content"
+      },
       {
         name: "faqs",
         type: "list",
         defaultValue: [
           {
             question: "What is this product?",
-            answer: "This is a comprehensive solution designed to help you achieve your goals efficiently and effectively."
+            answer:
+              "This is a comprehensive solution designed to help you achieve your goals efficiently and effectively."
           },
           {
             question: "How does it work?",
-            answer: "Our product uses advanced technology to streamline your workflow and provide you with the tools you need to succeed."
+            answer:
+              "Our product uses advanced technology to streamline your workflow and provide you with the tools you need to succeed."
           },
           {
             question: "Is there a free trial?",
-            answer: "Yes, we offer a 14-day free trial so you can experience all the features before making a commitment."
+            answer:
+              "Yes, we offer a 14-day free trial so you can experience all the features before making a commitment."
           }
         ],
         subFields: [
@@ -810,7 +1080,8 @@ export const customComponents = [
           {
             name: "answer",
             type: "longText",
-            defaultValue: "This is the answer to the frequently asked question. You can provide detailed information here.",
+            defaultValue:
+              "This is the answer to the frequently asked question. You can provide detailed information here.",
             helperText: "The answer text (supports multiple lines)"
           }
         ]
@@ -952,6 +1223,10 @@ export const customComponents = [
     component: CustomImage,
     name: "Image", // This overrides the default Builder.io Image component
     override: true,
+    noWrap: true,
+    shouldReceiveBuilderProps: {
+      builderBlock: true
+    },
     inputs: [
       {
         name: "image",
@@ -1120,6 +1395,82 @@ export const customComponents = [
         helperText: "Button text content"
       }
     ]
+  },
+  {
+    component: Section,
+    name: "Core:Section",
+    override: true,
+    canHaveChildren: true,
+    noWrap: true,
+    shouldReceiveBuilderProps: {
+      builderBlock: true,
+      builderContext: true,
+      builderComponents: true,
+      builderLinkComponent: true
+    },
+    inputs: [
+      {
+        name: "anchorLink",
+        type: "string",
+        defaultValue: "",
+        helperText: "Anchor link for the section"
+      },
+      {
+        name: "verticalMargin",
+        type: "enum",
+        enum: ["none", "small", "medium", "large"],
+        defaultValue: "medium",
+        helperText:
+          "Controls the vertical spacing (top and bottom) around the section"
+      },
+      {
+        name: "horizontalMargin",
+        type: "enum",
+        enum: ["none", "small", "medium", "large"],
+        defaultValue: "medium",
+        helperText:
+          "Controls the horizontal spacing (left and right) around the section"
+      },
+      {
+        name: "verticalAlignment",
+        type: "enum",
+        enum: ["top", "center", "bottom", "stretch"],
+        defaultValue: "top",
+        helperText:
+          "Controls the vertical alignment of content within the section"
+      },
+      {
+        name: "backgroundColor",
+        type: "color",
+        helperText: "Background color for the section"
+      },
+      {
+        name: "fillWidth",
+        type: "boolean",
+        defaultValue: true,
+        helperText: "Make the section fill the full width of the container"
+      },
+      {
+        name: "fillHeight",
+        type: "boolean",
+        defaultValue: false,
+        helperText:
+          "Make the section fill the full height of its parent container"
+      },
+      {
+        name: "contentMaxWidth",
+        type: "string",
+        defaultValue: "1400px",
+        helperText:
+          "Maximum width of the content within the section (e.g., '1200px', '800px')"
+      },
+      {
+        name: "lazyLoad",
+        type: "boolean",
+        defaultValue: false,
+        helperText: "Enable lazy loading for the section content"
+      }
+    ]
   }
 ];
 
@@ -1127,3 +1478,8 @@ export const componentMetadata = customComponents.map(({ name, inputs }) => ({
   name,
   inputs
 }));
+
+// Register all custom components with Builder.io
+customComponents.forEach((componentConfig) => {
+  register("component", componentConfig);
+});

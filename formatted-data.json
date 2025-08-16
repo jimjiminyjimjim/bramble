@@ -1,0 +1,40 @@
+{
+  "siteData": {
+    "logo": "https://cdn.builder.io/api/v1/image/assets%2F4326c237495b421698d98079e65c9e17%2F35ad2793c5f1492da7837d4f1f884ff6",
+    "logoRecolour": false,
+    "lightBackground": "#958cc4",
+    "googleFontHeading": "Poppins",
+    "textColour": "rgba(25, 28, 65, 1)",
+    "googleFontBody": "Didact Gothic",
+    "primaryTint": "rgba(250, 246, 240, 1)",
+    "secondaryColour": "rgba(251, 218, 203, 1)",
+    "googleFontbody": "Didact Gothic",
+    "primaryColour": "rgba(251, 218, 203, 1)",
+    "secondaryTint": "rgba(187, 196, 252, 1)"
+  },
+  "content": {
+    "createdDate": 1754991254554,
+    "id": "c0349e21100642a5ba38d62c6662921e",
+    "name": "Redesign for WTP",
+    "modelId": "c76733dc98e5b50e0b0d8e6310756f33f2cfb92fb76803939255a8361d40180e",
+    "published": "published",
+    "meta": {
+      "lastPreviewUrl": "http://localhost:3000/?builder.space=4326c237495b421698d98079e65c9e17&builder.user.permissions=read%2Ccreate%2Cpublish%2CeditCode%2CeditDesigns%2Cadmin%2CeditLayouts%2CeditLayers%2CeditContentPriority%2CeditFolders%2CeditProjects%2CmodifyMcpServers%2CmodifyProjectSettings%2CconnectCodeRepository%2CcreateProjects%2CindexDesignSystems&builder.user.role.name=Admin&builder.user.role.id=admin&builder.cachebust=true&builder.preview=page&builder.noCache=true&builder.allowTextEdit=true&__builder_editing__=true&builder.overrides.page=c0349e21100642a5ba38d62c6662921e&builder.overrides.c0349e21100642a5ba38d62c6662921e=c0349e21100642a5ba38d62c6662921e&builder.options.locale=Default",
+      "kind": "page",
+      "hasLinks": true,
+      "originalContentId": "5dafdd2a2ba746749bb9b5d6cbcb3523",
+      "winningTest": null
+    },
+    "query": [
+      {
+        "@type": "@builder.io/core:Query",
+        "property": "urlPath",
+        "operator": "is",
+        "value": ["/", "/early-access", "/pilot"]
+      }
+    ],
+    "data": {
+      "jsCode": "Object.assign(state, {\n  location: {\n    path: \"\",\n    query: {},\n  },\n  deviceSize: \"large\",\n}"
+    }
+  }
+}

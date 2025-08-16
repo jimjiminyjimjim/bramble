@@ -6,7 +6,8 @@ export const FAQ = ({
   title = "App Inquiries?", 
   subtitle = "Unlocking Answers: Your Guide to AI Mobile App Queries.",
   theme = "light", 
-  anchor, 
+  anchor,
+  expandable = true,
   faqs = [
     {
       question: "What is this product?",
@@ -24,10 +25,6 @@ export const FAQ = ({
 }) => {
   const colors = useTheme(theme);
 
-  // Split FAQs into two columns for better layout
-  const midpoint = Math.ceil(faqs.length / 2);
-  const leftColumnFaqs = faqs.slice(0, midpoint);
-  const rightColumnFaqs = faqs.slice(midpoint);
 
   return (
     <section 
@@ -51,56 +48,51 @@ export const FAQ = ({
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
+        <div className="mt-12 max-w-4xl mx-auto">
           <div className="space-y-6">
-            {leftColumnFaqs.map((faq, index) => (
-              <Collapse 
-                key={index} 
-                icon={"plus"} 
-                className="border"
-                style={{ borderColor: `${colors.text.body}20` }}
-              >
-                <Collapse.Title 
-                  className="text-xl font-medium"
-                  style={{ color: colors.text.title }}
+            {faqs.map((faq, index) => (
+              expandable ? (
+                <Collapse 
+                  key={index} 
+                  icon={"arrow"} 
+                  className="border"
+                  style={{ borderColor: `${colors.text.body}20` }}
                 >
-                  {faq.question}
-                </Collapse.Title>
-                <Collapse.Content>
+                  <Collapse.Title 
+                    className="text-2xl font-medium"
+                    style={{ color: colors.text.title }}
+                  >
+                    {faq.question}
+                  </Collapse.Title>
+                  <Collapse.Content>
+                    <p 
+                      className="text-lg"
+                      style={{ color: colors.text.body }}
+                    >
+                      {faq.answer}
+                    </p>
+                  </Collapse.Content>
+                </Collapse>
+              ) : (
+                <div 
+                  key={index} 
+                  className="border p-6 rounded-lg"
+                  style={{ borderColor: `${colors.text.body}20` }}
+                >
+                  <h3 
+                    className="text-2xl font-medium mb-4"
+                    style={{ color: colors.text.title }}
+                  >
+                    {faq.question}
+                  </h3>
                   <p 
-                    className="text-base"
+                    className="text-lg"
                     style={{ color: colors.text.body }}
                   >
                     {faq.answer}
                   </p>
-                </Collapse.Content>
-              </Collapse>
-            ))}
-          </div>
-
-          <div className="space-y-6">
-            {rightColumnFaqs.map((faq, index) => (
-              <Collapse 
-                key={index + leftColumnFaqs.length} 
-                icon={"plus"} 
-                className="border"
-                style={{ borderColor: `${colors.text.body}20` }}
-              >
-                <Collapse.Title 
-                  className="text-xl font-medium"
-                  style={{ color: colors.text.title }}
-                >
-                  {faq.question}
-                </Collapse.Title>
-                <Collapse.Content>
-                  <p 
-                    className="text-base"
-                    style={{ color: colors.text.body }}
-                  >
-                    {faq.answer}
-                  </p>
-                </Collapse.Content>
-              </Collapse>
+                </div>
+              )
             ))}
           </div>
         </div>
