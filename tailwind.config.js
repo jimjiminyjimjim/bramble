@@ -11,13 +11,16 @@ module.exports = {
   darkMode: ["class", '[data-theme="dark"]'],
   theme: {
     fontSize: {
+      xs: "0.75rem",
       sm: "0.8rem",
       base: "1.1rem",
       lg: "1.5rem",
+      xl: "1.25rem",
       "2xl": "1.563rem",
       "3xl": "1.953rem",
       "4xl": "2.441rem",
-      "5xl": "3.052rem"
+      "5xl": "3.052rem",
+      "6xl": "3.815rem"
     },
     screens: {
       sm: "640px",

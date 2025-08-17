@@ -56,7 +56,7 @@ export function TextBlock({
     switch (size) {
       case "small":
         return {
-          title: "text-lg font-bold lg:text-2xl",
+          title: "text-xl font-bold lg:text-2xl",
           subtitle: "mt-2 text-sm",
           body: "mt-2 text-xs font-body",
           childGap: "gap-2",
@@ -77,7 +77,7 @@ export function TextBlock({
         };
       default: // medium
         return {
-          title: "text-2xl font-bold lg:text-5xl",
+          title: "text-3xl font-bold lg:text-5xl",
           subtitle: "mt-4 text-lg",
           body: "mt-4 text-base font-body",
           childGap: "gap-4",
@@ -152,13 +152,13 @@ export function TextBlock({
         </h2>
         <p 
           className={`${textSizes.subtitle} ${isCentered ? 'text-center' : 'text-left'}`}
-          style={{ color: finalTextColor }}
+          style={{ color: colors.dark }}
         >
           {subtitle}
         </p>
         <div
           className={`rich-text-content ${textSizes.body} ${isCentered ? 'text-center' : 'text-left'}`}
-          style={{ color: finalTextColor }}
+          style={{ color: colors.dark }}
           dangerouslySetInnerHTML={{ __html: body }}
         />
         <div className={`flex flex-col ${textSizes.childGap} ${textSizes.childMarginTop} ${isCentered ? 'items-center' : ''}`}>
@@ -211,7 +211,7 @@ export function TextBlock({
             {subtitle && (
               <p 
                 className={textSizes.subtitle}
-                style={{ color: finalTextColor }}
+                style={{ color: colors.dark }}
               >
                 {subtitle}
               </p>
@@ -219,7 +219,7 @@ export function TextBlock({
             {body && (
               <div
                 className={`rich-text-content ${textSizes.body} ${alignment === 'center' ? 'max-w-[800px] mx-auto' : 'max-w-[800px]'}`}
-                style={{ color: finalTextColor }}
+                style={{ color: colors.dark }}
                 dangerouslySetInnerHTML={{ __html: body }}
               />
             )}

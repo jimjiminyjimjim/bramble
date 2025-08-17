@@ -23,6 +23,7 @@ export function Section({
     maxWidth: maxWidth,
     sectionMaxWidth: _sectionMaxWidth,
     contentMaxWidth: _contentMaxWidth,
+    anchorLink: _anchorLink,
     lazyLoad: _lazyLoad,
     builderBlock: _builderBlock,
     builderContext: _builderContext,

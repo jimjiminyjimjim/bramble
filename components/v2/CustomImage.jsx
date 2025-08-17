@@ -6,6 +6,7 @@ export function CustomImage({
   alt = "",
   maxWidth,
   alignment = "center",
+  verticalAlignment = "center",
   fitContent = false,
   className = "",
   builderBlock,
@@ -30,15 +31,36 @@ export function CustomImage({
     if (fitContent) {
       return ""; // No flex when fitting content container
     }
+    
+    let horizontalAlign = "";
     switch (alignment) {
       case "left":
-        return "flex justify-start";
+        horizontalAlign = "justify-start";
+        break;
       case "right":
-        return "flex justify-end";
+        horizontalAlign = "justify-end";
+        break;
       case "center":
       default:
-        return "flex justify-center";
+        horizontalAlign = "justify-center";
+        break;
     }
+    
+    let verticalAlign = "";
+    switch (verticalAlignment) {
+      case "top":
+        verticalAlign = "items-start";
+        break;
+      case "bottom":
+        verticalAlign = "items-end";
+        break;
+      case "center":
+      default:
+        verticalAlign = "items-center";
+        break;
+    }
+    
+    return `flex ${horizontalAlign} ${verticalAlign}`;
   };
 
   const getContainerClasses = () => {

@@ -18,22 +18,21 @@ export function TextBlockNew({
   useGradientText = false,
   gradientColor1 = "#3B82F6",
   gradientColor2 = "#8B5CF6",
-  textColor,
+  textColor = "#000000",
+  subtitleBodyColor = "#000000",
   noPadding = true
 }) {
-  
   // Determine the text color to use (custom color overrides theme)
-  const finalTextColor = textColor || "#000000";
-  
+
   // Define vertical alignment classes
   const getVerticalAlignmentClasses = (vAlign) => {
     switch (vAlign) {
       case "top":
-        return "justify-start items-start";
+        return "justify-start";
       case "bottom":
-        return "justify-end items-end";
+        return "justify-end";
       default: // middle
-        return "justify-center items-center";
+        return "justify-center";
     }
   };
 
@@ -53,7 +52,7 @@ export function TextBlockNew({
     switch (size) {
       case "small":
         return {
-          title: "text-lg font-bold lg:text-2xl",
+          title: "text-xl font-bold lg:text-2xl",
           subtitle: "mt-2 text-sm",
           body: "mt-2 text-sm font-body",
           childGap: "gap-2",
@@ -62,11 +61,11 @@ export function TextBlockNew({
         };
       case "medium-small":
         return {
-          title: "text-xl font-bold lg:text-3xl",
+          title: "text-2xl font-bold lg:text-3xl",
           subtitle: "mt-3 text-base",
           body: "mt-3 text-base font-body",
           childGap: "gap-3",
-          childMarginTop: "mt-3",
+          childMarginTop: "mt-2",
           titleStyle: { ...gradientStyle }
         };
       case "large":
@@ -75,7 +74,7 @@ export function TextBlockNew({
           subtitle: "mt-6 text-3xl",
           body: "mt-6 text-xl font-body",
           childGap: "gap-6",
-          childMarginTop: "mt-6",
+          childMarginTop: "mt-2",
           titleStyle: {
             fontSize: "clamp(3rem, 8vw, 6rem)",
             ...gradientStyle
@@ -83,7 +82,7 @@ export function TextBlockNew({
         };
       default: // medium
         return {
-          title: "text-2xl font-bold lg:text-5xl",
+          title: "text-3xl font-bold lg:text-5xl",
           subtitle: "mt-4 text-lg",
           body: "mt-4 text-lg font-body",
           childGap: "gap-4",
@@ -96,11 +95,13 @@ export function TextBlockNew({
   const textSizes = getTextSizes(textSize);
 
   // Get Builder.io selection attributes
-  const builderAttributes = builderBlock ? {
-    'builder-id': builderBlock.id,
-    'builder-model': builderBlock.model,
-    'data-builder-component': 'TextBlock'
-  } : {};
+  const builderAttributes = builderBlock
+    ? {
+        "builder-id": builderBlock.id,
+        "builder-model": builderBlock.model,
+        "data-builder-component": "TextBlock"
+      }
+    : {};
 
   const childrenWithProps = React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
@@ -119,11 +120,14 @@ export function TextBlockNew({
   // Wrap children to center Popup components
   const wrappedChildren = React.Children.map(childrenWithProps, (child) => {
     if (
-      React.isValidElement(child) 
+      React.isValidElement(child)
       // (child.type?.name === "Popup" || child.props?.component === "Popup")
     ) {
       return (
-        <div key={child.key} className={`text-center ${textSizes.childMarginTop}`}>
+        <div
+          key={child.key}
+          className={`text-center ${textSizes.childMarginTop}`}
+        >
           {child}
         </div>
       );
@@ -131,21 +135,24 @@ export function TextBlockNew({
     return child;
   });
 
-
   return (
     <section
-      className={`${noPadding ? '' : 'py-8 lg:py-22 min-h-[400px]'} flex flex-col ${noPadding ? '' : 'h-full'}`}
+      className={`${noPadding ? "" : "py-8 lg:py-22 min-h-[400px]"} flex flex-col ${noPadding ? "" : "h-full"}`}
       {...builderAttributes}
       {...anchorTags(anchor)}
       // style={{ backgroundColor: colors?.primary }}
     >
-      <div className={`${noPadding ? '' : 'container flex-1'} flex flex-col ${verticalClasses}`}>
-        <div className={`${alignment === 'center' ? 'text-center' : alignment === 'right' ? 'text-right' : 'text-left'}`}>
+      <div
+        className={`${noPadding ? "" : "container flex-1"} flex flex-col ${verticalClasses}`}
+      >
+        <div
+          className={`${alignment === "center" ? "text-center" : alignment === "right" ? "text-right" : "text-left"}`}
+        >
           {title && (
             <h2
               className={`${textSizes.title} leading-tight`}
               style={{
-                color: useGradientText ? "transparent" : finalTextColor,
+                color: useGradientText ? "transparent" : textColor,
                 ...textSizes.titleStyle
               }}
             >
@@ -153,21 +160,27 @@ export function TextBlockNew({
             </h2>
           )}
           {subtitle && (
-            <p 
+            <h3
               className={textSizes.subtitle}
-              style={{ color: finalTextColor }}
+              style={{
+                color: subtitleBodyColor
+              }}
             >
               {subtitle}
-            </p>
+            </h3>
           )}
           {body && (
             <div
-              className={`rich-text-content ${textSizes.body} ${alignment === 'center' ? 'max-w-[800px] mx-auto' : 'max-w-[800px]'}`}
-              style={{ color: finalTextColor }}
+              style={{
+                color: subtitleBodyColor
+              }}
+              className={`rich-text-content ${textSizes.body} ${alignment === "center" ? "max-w-[800px] mx-auto" : "max-w-[800px]"}`}
               dangerouslySetInnerHTML={{ __html: body }}
             />
           )}
-          <div className={`flex flex-col ${alignment === 'center' ? 'justify-center items-center' : alignment === 'right' ? 'items-end' : 'items-start'} ${textSizes.childGap} ${textSizes.childMarginTop}`}>
+          <div
+            className={`flex flex-col ${alignment === "center" ? "justify-center items-center" : alignment === "right" ? "items-end" : "items-start"} ${textSizes.childGap} ${textSizes.childMarginTop}`}
+          >
             {wrappedChildren}
           </div>
         </div>

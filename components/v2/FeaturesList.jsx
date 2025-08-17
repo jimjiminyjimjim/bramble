@@ -15,7 +15,7 @@ export const FeaturesList = ({
 
   const renderCenterLayout = () => (
     <div className="text-center">
-      <div className="grid gap-8 lg:grid-cols-2 xl:gap-12">
+      <div className="grid gap-8 lg:grid-cols-4 xl:gap-12">
         {features?.map((feature, index) => (
           <div
             className="flex flex-col items-center text-center"

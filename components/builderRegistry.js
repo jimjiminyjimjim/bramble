@@ -17,6 +17,7 @@ import { Screenshots } from "@/components/Screenshots";
 
 import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
+import { FooterNew } from "@/components/v2/FooterNew";
 import { MinFooter } from "@/components/MinFooter";
 
 import { Works } from "@/components/Works";
@@ -64,10 +65,12 @@ register("insertMenu", {
   name: "V2",
   priority: 2,
   items: [
-    { name: "FeaturesList", item: "FeaturesList" },
-    { name: "Section Spacing", item: "Core:Section" },
-    { name: "TextBlockNew", item: "TextBlockNew" },
-    { name: "FeatureGridNew", item: "FeatureGridNew" }
+    { name: "Navigation", item: "v2: Topbar New" },
+    { name: "Section & Spacing", item: "Core:Section" },
+    { name: "Text Block", item: "TextBlockNew" },
+    { name: "Features List", item: "FeaturesList" },
+    { name: "Features Grid", item: "FeatureGridNew" },
+    { name: "v2: Footer", item: "Footer" }
   ]
 });
 
@@ -124,6 +127,8 @@ export const customComponents = [
     component: TopbarNew,
     name: "v2: Topbar New",
     canHaveChildren: true,
+    noWrap: true,
+    canReceiveBuilderProps: true,
     shouldReceiveBuilderProps: {
       builderBlock: true,
       builderContext: true,
@@ -141,6 +146,38 @@ export const customComponents = [
         type: "enum",
         enum: ["light", "dark", "white"],
         defaultValue: "light"
+      },
+      {
+        name: "maxWidth",
+        type: "number",
+        helperText: "Maximum width in pixels (optional)",
+        defaultValue: 1400
+      },
+      {
+        name: "backgroundColor",
+        type: "color",
+        helperText: "Custom background color (overrides theme color)"
+      },
+      {
+        name: "navItems",
+        type: "list",
+        defaultValue: [{ blocks: [] }],
+        subFields: [
+          {
+            name: "name",
+            type: "string",
+            defaultValue: "Nav Item 1"
+          },
+          {
+            name: "url",
+            type: "string"
+          },
+          {
+            name: "external",
+            type: "boolean",
+            defaultValue: false
+          }
+        ]
       }
     ]
   },
@@ -508,7 +545,12 @@ export const customComponents = [
         name: "textColor",
         type: "color",
         helperText:
-          "Custom text color (overrides theme). Subtitle and body always use this color, title uses this unless gradient is enabled."
+          "Custom heading color (overrides theme). Only applies to title when gradient is disabled."
+      },
+      {
+        name: "subtitleBodyColor",
+        type: "color",
+        helperText: "Custom color for subtitle and body text (overrides theme)."
       },
       {
         name: "title",
@@ -1105,6 +1147,23 @@ export const customComponents = [
       { name: "horizontal", type: "boolean" }
     ]
   },
+    {
+    component: FooterNew,
+    name: "v2: Footer",
+    canHaveChildren: true,
+    inputs: [
+      {
+        name: "theme",
+        type: "enum",
+        enum: ["light", "dark", "white"],
+        defaultValue: "light"
+      },
+      { name: "anchor", type: "string" },
+      { name: "title", type: "string" },
+      { name: "overlay", type: "boolean" },
+      { name: "horizontal", type: "boolean" }
+    ]
+  },
   {
     component: MinFooter,
     name: "MinFooter",
@@ -1245,7 +1304,14 @@ export const customComponents = [
         type: "enum",
         enum: ["left", "center", "right"],
         defaultValue: "center",
-        helperText: "Image alignment"
+        helperText: "Horizontal image alignment"
+      },
+      {
+        name: "verticalAlignment",
+        type: "enum",
+        enum: ["top", "center", "bottom"],
+        defaultValue: "center",
+        helperText: "Vertical image alignment"
       },
       {
         name: "maxWidth",
@@ -1381,6 +1447,12 @@ export const customComponents = [
         enum: ["small", "medium", "large"],
         defaultValue: "medium",
         helperText: "Size of the button"
+      },
+      {
+        name: "url",
+        type: "string",
+        defaultValue: "",
+        helperText: "URL for the button (if applicable)"
       },
       {
         name: "disabled",

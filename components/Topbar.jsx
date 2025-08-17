@@ -7,11 +7,20 @@ import { useEffect, useState } from "react";
 import { Menu, Navbar } from "react-daisyui";
 import { ReactSVG } from "react-svg";
 
-const MenuItems = ({ items, onClick }) => (
+const MenuItems = ({ items, onClick, isDesktop = false }) => (
   <>
     {items?.map((item, index) => (
-      <Menu.Item key={index} className="font-medium" onClick={onClick}>
-        <a href={`#${anchorTags(item).id}`}>{item}</a>
+      <Menu.Item 
+        key={index} 
+        className={cx("font-medium", isDesktop ? "!text-lg" : "")} 
+        onClick={onClick}
+      >
+        <a 
+          href={`#${anchorTags(item).id}`}
+          className={isDesktop ? "!text-lg" : ""}
+        >
+          {item}
+        </a>
       </Menu.Item>
     ))}
   </>
@@ -92,10 +101,19 @@ export const Topbar = ({ logoOverride, children, theme }) => {
             </Navbar.Start>
 
             <Navbar.End className="w-full">
-              <Menu horizontal size="sm" className="gap-2 px-1 items-center">
-                <MenuItems items={sectionIds} />
-              </Menu>
-              <div className="ml-auto">{children}</div>
+              <div className="flex items-center w-full justify-end">
+                <div className="hidden md:block">
+                  <Menu horizontal size="sm" className="gap-2 px-1 items-center">
+                    <MenuItems items={sectionIds} isDesktop={true} />
+                  </Menu>
+                </div>
+                <div className="md:hidden">
+                  <Menu horizontal size="sm" className="gap-2 px-1 items-center">
+                    <MenuItems items={sectionIds} />
+                  </Menu>
+                </div>
+                {children && <div className="ml-2">{children}</div>}
+              </div>
             </Navbar.End>
           </Navbar>
         </div>

@@ -39,6 +39,21 @@ export const Button = ({
   // Use text prop from Builder.io or fallback to children
   const buttonContent = text || children || "Click Me";
 
+  // Handle click events - navigate to URL if provided
+  const handleClick = (e) => {
+    if (onClick) {
+      onClick(e);
+    }
+    
+    if (link && !disabled) {
+      if (openLinkInNewTab) {
+        window.open(link, '_blank', 'noopener,noreferrer');
+      } else {
+        window.location.href = link;
+      }
+    }
+  };
+
   // Filter out any remaining Builder.io props that shouldn't be on DOM elements
   const {
     builderBlock,
@@ -51,7 +66,7 @@ export const Button = ({
   return (
     <button
       type={type === "button" || type === "submit" || type === "reset" ? type : "button"}
-      onClick={onClick}
+      onClick={handleClick}
       disabled={disabled}
       className={cx(
         // Base styles
