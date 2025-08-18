@@ -3,18 +3,22 @@ import { useTheme } from "@/helpers/theme";
 import { useScrollDirection } from "@/hooks/useScrollDirection";
 import cx from "classix";
 import { useEffect, useState } from "react";
-import { Menu, Navbar } from "react-daisyui";
+import { Navbar } from "react-daisyui";
 import { Blocks } from "@builder.io/sdk-react";
+import { usePathname } from "next/navigation";
 
-const MenuItems = ({ items, onClick, isMobile = false }) => (
+const MenuItems = ({ items, onClick, isMobile = false, pathname }) => (
   <>
     {items?.map((item, index) => {
       console.log("Menu Item:", item);
+      const isActive = pathname === item.url || (pathname === '/' && item.url === '/');
       return (
-      <Menu.Item
+      <li
         key={index}
         className={cx(
-          "font-medium !bg-transparent",
+          "font-medium bg-transparent",
+          "hover:font-bold",
+          "active:font-bold",
           isMobile
             ? "text-lg py-2 border-b border-gray-200 last:border-b-0"
             : "!text-lg"
@@ -24,11 +28,14 @@ const MenuItems = ({ items, onClick, isMobile = false }) => (
         <a
           href={item.url}
           target={item.external ? "_blank" : "_self"}
-          className={isMobile ? "w-full text-center text-lg" : "!text-lg"}
+          className={cx(
+            isMobile ? "w-full text-center text-lg" : "!text-lg",
+            isActive && "font-bold"
+          )}
         >
           {item.name}
         </a>
-      </Menu.Item>
+      </li>
     )})}
   </>
 );
@@ -48,6 +55,7 @@ export const TopbarNew = ({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { scrollDirection, isAtTop } = useScrollDirection();
   const colors = useTheme(theme);
+  const pathname = usePathname();
 
   console.log("navItems", navItems);
 
@@ -126,9 +134,9 @@ export const TopbarNew = ({
             <Navbar.End className="w-full">
               {/* Desktop Menu */}
               <div className="hidden md:flex items-center w-full justify-end">
-                <Menu horizontal size="sm" className="gap-2 px-1 items-center">
-                  <MenuItems items={navItems} />
-                </Menu>
+                <ul className="gap-6 px-1 items-center flex flex-row">
+                  <MenuItems items={navItems} pathname={pathname} />
+                </ul>
                 {children && <div className="ml-10">{children}</div>}
               </div>
 
@@ -185,13 +193,14 @@ export const TopbarNew = ({
             style={{ backgroundColor: backgroundColor || colors?.primary || "white" }}
           >
             <div className="container pt-4 pb-4 flex-1 flex flex-col">
-              <Menu className="space-y-0 flex-1">
+              <ul className="space-y-0 flex-1">
                 <MenuItems
                   items={navItems}
                   onClick={closeMobileMenu}
                   isMobile={true}
+                  pathname={pathname}
                 />
-              </Menu>
+              </ul>
 
               {/* Children in mobile menu */}
               {children && (
