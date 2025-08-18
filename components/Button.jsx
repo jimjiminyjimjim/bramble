@@ -51,9 +51,15 @@ export const Button = ({
     // Use url prop first, fallback to legacy link prop
     const targetUrl = url || link;
 
-    // Send GTM event before any link navigation
+    // Call external onClick if provided
+    if (onClick) {
+      onClick(e);
+    }
+
     if (targetUrl && !disabled) {
-      // Get UTM parameters from URL or sessionStorage
+      e.preventDefault();
+
+      // Send GTM event before any link navigation
       const urlParams = new URLSearchParams(window.location.search);
       const initialSource =
         urlParams.get("utm_source") ||
@@ -76,34 +82,28 @@ export const Button = ({
           campaign: initialCampaign
         }
       });
-    }
 
-    // Call external onClick if provided
-    if (onClick) {
-      onClick(e);
-    }
-
-    if (targetUrl && !disabled) {
-      e.preventDefault();
-
-      switch (linkType) {
-        case "external":
-          window.open(targetUrl, "_blank", "noopener,noreferrer");
-          break;
-        case "scrollTo":
-          // Add # if not present for scrollTo
-          const scrollTarget = targetUrl.startsWith("#")
-            ? targetUrl
-            : `#${targetUrl}`;
-          document
-            .querySelector(scrollTarget)
-            ?.scrollIntoView({ behavior: "smooth" });
-          break;
-        case "internal":
-        default:
-          router.push(targetUrl);
-          break;
-      }
+      // Add delay to allow GTM event to be sent before navigation
+      setTimeout(() => {
+        switch (linkType) {
+          case "external":
+            window.open(targetUrl, "_blank", "noopener,noreferrer");
+            break;
+          case "scrollTo":
+            // Add # if not present for scrollTo
+            const scrollTarget = targetUrl.startsWith("#")
+              ? targetUrl
+              : `#${targetUrl}`;
+            document
+              .querySelector(scrollTarget)
+              ?.scrollIntoView({ behavior: "smooth" });
+            break;
+          case "internal":
+          default:
+            router.push(targetUrl);
+            break;
+        }
+      }, 100); // 100ms delay to allow GTM event to be sent
     }
   };
 
