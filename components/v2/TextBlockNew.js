@@ -2,6 +2,7 @@ import { anchorTags } from "@/helpers/anchorTags";
 import React from "react";
 import { useTheme } from "@/helpers/theme";
 import { Blocks, BuilderBlock } from "@builder.io/sdk-react";
+import { useRouter } from "next/navigation";
 
 export function TextBlockNew({
   children,
@@ -20,10 +21,34 @@ export function TextBlockNew({
   gradientColor2 = "#8B5CF6",
   textColor = "#000000",
   subtitleBodyColor = "#000000",
-  noPadding = true
+  noPadding = true,
+  url = "",
+  linkType = "internal"
 }) {
-  // Determine the text color to use (custom color overrides theme)
-
+  const router = useRouter();
+  
+  // Handle title click navigation
+  const handleTitleClick = (e) => {
+    if (!url) return;
+    
+    e.preventDefault();
+    
+    switch (linkType) {
+      case "external":
+        window.open(url, '_blank', 'noopener,noreferrer');
+        break;
+      case "scrollTo":
+        // Add # if not present for scrollTo
+        const scrollTarget = url.startsWith('#') ? url : `#${url}`;
+        document.querySelector(scrollTarget)?.scrollIntoView({ behavior: 'smooth' });
+        break;
+      case "internal":
+      default:
+        router.push(url);
+        break;
+    }
+  };
+  
   // Define vertical alignment classes
   const getVerticalAlignmentClasses = (vAlign) => {
     switch (vAlign) {
@@ -150,11 +175,12 @@ export function TextBlockNew({
         >
           {title && (
             <h2
-              className={`${textSizes.title} leading-tight`}
+              className={`${textSizes.title} leading-tight ${url ? 'cursor-pointer hover:opacity-80 transition-opacity duration-200' : ''}`}
               style={{
                 color: useGradientText ? "transparent" : textColor,
                 ...textSizes.titleStyle
               }}
+              onClick={url ? handleTitleClick : undefined}
             >
               {title}
             </h2>

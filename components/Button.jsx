@@ -1,26 +1,33 @@
 "use client";
 
 import { cx } from "classix";
-import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { sendGTMEvent } from "@next/third-parties/google";
 
-export const Button = ({ 
+export const Button = ({
   children,
   text, // Builder.io sends button text as 'text' prop
-  backgroundColor = "#3B82F6", 
-  textColor = "#FFFFFF", 
-  rounded = true, 
+  backgroundColor = "#3B82F6",
+  textColor = "#FFFFFF",
+  rounded = true,
   maxWidth = "500px",
   className = "",
-  onClick,
+  tagManagerEvent,
+  onClick, // External onClick prop
   type = "button",
   disabled = false,
   size = "medium",
+
+  // Link navigation props
+  url, // Builder.io URL prop
+  linkType = "internal", // internal, external, or scrollTo
+
   // Filter out Builder.io specific props
   openLinkInNewTab,
   link,
-  ...props 
+  ...props
 }) => {
-  // Inject CSS to override Builder.io wrapper styles only
+  const router = useRouter();
 
   // Define size classes
   const getSizeClasses = (sizeType) => {
@@ -41,15 +48,61 @@ export const Button = ({
 
   // Handle click events - navigate to URL if provided
   const handleClick = (e) => {
+    // Use url prop first, fallback to legacy link prop
+    const targetUrl = url || link;
+
+    // Send GTM event before any link navigation
+    if (targetUrl && !disabled) {
+      // Get UTM parameters from URL or sessionStorage
+      const urlParams = new URLSearchParams(window.location.search);
+      const initialSource =
+        urlParams.get("utm_source") ||
+        sessionStorage.getItem("utm_source") ||
+        "";
+      const initialMedium =
+        urlParams.get("utm_medium") ||
+        sessionStorage.getItem("utm_medium") ||
+        "";
+      const initialCampaign =
+        urlParams.get("utm_campaign") ||
+        sessionStorage.getItem("utm_campaign") ||
+        "";
+
+      sendGTMEvent({
+        event: tagManagerEvent,
+        value: {
+          source: initialSource,
+          medium: initialMedium,
+          campaign: initialCampaign
+        }
+      });
+    }
+
+    // Call external onClick if provided
     if (onClick) {
       onClick(e);
     }
-    
-    if (link && !disabled) {
-      if (openLinkInNewTab) {
-        window.open(link, '_blank', 'noopener,noreferrer');
-      } else {
-        window.location.href = link;
+
+    if (targetUrl && !disabled) {
+      e.preventDefault();
+
+      switch (linkType) {
+        case "external":
+          window.open(targetUrl, "_blank", "noopener,noreferrer");
+          break;
+        case "scrollTo":
+          // Add # if not present for scrollTo
+          const scrollTarget = targetUrl.startsWith("#")
+            ? targetUrl
+            : `#${targetUrl}`;
+          document
+            .querySelector(scrollTarget)
+            ?.scrollIntoView({ behavior: "smooth" });
+          break;
+        case "internal":
+        default:
+          router.push(targetUrl);
+          break;
       }
     }
   };
@@ -65,7 +118,11 @@ export const Button = ({
 
   return (
     <button
-      type={type === "button" || type === "submit" || type === "reset" ? type : "button"}
+      type={
+        type === "button" || type === "submit" || type === "reset"
+          ? type
+          : "button"
+      }
       onClick={handleClick}
       disabled={disabled}
       className={cx(
@@ -75,19 +132,19 @@ export const Button = ({
         "focus:outline-none focus:ring-2 focus:ring-offset-2",
         "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100",
         "border cursor-pointer",
-        
+
         // Centering styles
         "mx-auto block",
-        
+
         // Size styles
         sizeClasses,
-        
+
         // Rounded styles - use rounded-full for true rounded
         rounded ? "rounded-full" : "rounded-none",
-        
+
         // Text alignment
         "text-center",
-        
+
         // Custom className
         className
       )}

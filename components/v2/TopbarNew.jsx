@@ -14,7 +14,7 @@ const MenuItems = ({ items, onClick, isMobile = false }) => (
       <Menu.Item
         key={index}
         className={cx(
-          "font-medium",
+          "font-medium !bg-transparent",
           isMobile
             ? "text-lg py-2 border-b border-gray-200 last:border-b-0"
             : "!text-lg"
@@ -129,7 +129,7 @@ export const TopbarNew = ({
                 <Menu horizontal size="sm" className="gap-2 px-1 items-center">
                   <MenuItems items={navItems} />
                 </Menu>
-                {children && <div className="ml-2">{children}</div>}
+                {children && <div className="ml-10">{children}</div>}
               </div>
 
               {/* Mobile Menu Button */}

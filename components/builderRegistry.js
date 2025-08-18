@@ -173,9 +173,11 @@ export const customComponents = [
             type: "string"
           },
           {
-            name: "external",
-            type: "boolean",
-            defaultValue: false
+            name: "linkType",
+            type: "enum",
+            enum: ["internal", "external", "scrollTo"],
+            defaultValue: "internal",
+            helperText: "External will open new window"
           }
         ]
       }
@@ -592,6 +594,19 @@ export const customComponents = [
         type: "boolean",
         defaultValue: true,
         helperText: "Remove surrounding padding/margins from the component"
+      },
+      {
+        name: "url",
+        type: "string",
+        defaultValue: "",
+        helperText: "URL for clickable title (if applicable)"
+      },
+      {
+        name: "linkType",
+        type: "enum",
+        enum: ["internal", "external", "scrollTo"],
+        defaultValue: "internal",
+        helperText: "External will open new window, scrollTo adds # prefix"
       }
     ]
   },
@@ -1147,7 +1162,7 @@ export const customComponents = [
       { name: "horizontal", type: "boolean" }
     ]
   },
-    {
+  {
     component: FooterNew,
     name: "v2: Footer",
     canHaveChildren: true,
@@ -1453,6 +1468,19 @@ export const customComponents = [
         type: "string",
         defaultValue: "",
         helperText: "URL for the button (if applicable)"
+      },
+      {
+        name: "linkType",
+        type: "enum",
+        enum: ["internal", "external", "scrollTo"],
+        defaultValue: "internal",
+        helperText: "External will open new window"
+      },
+      {
+        name: "tagManagerEvent",
+        type: "string",
+        defaultValue: "buttonClick",
+        helperText: "Event name for Google Tag Manager"
       },
       {
         name: "disabled",
