@@ -6,12 +6,14 @@ import { useEffect, useState } from "react";
 import { Navbar } from "react-daisyui";
 import { Blocks } from "@builder.io/sdk-react";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 const MenuItems = ({ items, onClick, isMobile = false, pathname }) => (
   <>
     {items?.map((item, index) => {
       console.log("Menu Item:", item);
       const isActive = pathname === item.url || (pathname === '/' && item.url === '/');
+      const isExternal = item.linkType === "external";
       return (
       <li
         key={index}
@@ -25,16 +27,29 @@ const MenuItems = ({ items, onClick, isMobile = false, pathname }) => (
         )}
         onClick={onClick}
       >
-        <a
-          href={item.url}
-          target={item.external ? "_blank" : "_self"}
-          className={cx(
-            isMobile ? "w-full text-center text-lg" : "!text-lg",
-            isActive && "font-bold"
-          )}
-        >
-          {item.name}
-        </a>
+        {isExternal ? (
+          <a
+            href={item.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cx(
+              isMobile ? "w-full text-center text-lg" : "!text-lg",
+              isActive && "font-bold"
+            )}
+          >
+            {item.name}
+          </a>
+        ) : (
+          <Link
+            href={item.url || "/"}
+            className={cx(
+              isMobile ? "w-full text-center text-lg" : "!text-lg",
+              isActive && "font-bold"
+            )}
+          >
+            {item.name}
+          </Link>
+        )}
       </li>
     )})}
   </>
@@ -42,6 +57,7 @@ const MenuItems = ({ items, onClick, isMobile = false, pathname }) => (
 
 export const TopbarNew = ({
   logo,
+  logoUrl = "/",
   navItems,
   children,
   theme,
@@ -109,7 +125,7 @@ export const TopbarNew = ({
             style={{ maxWidth: maxWidth }}
           >
             <Navbar.Start className="gap-2 flex items-center">
-              <a href="#" className="min-w-0 flex items-center">
+              <Link href={logoUrl} className="min-w-0 flex items-center">
                 <div
                   style={{
                     height: "36px",
@@ -128,7 +144,7 @@ export const TopbarNew = ({
                     blocks={logo}
                   />
                 </div>
-              </a>
+              </Link>
             </Navbar.Start>
 
             <Navbar.End className="w-full">
@@ -141,12 +157,13 @@ export const TopbarNew = ({
               </div>
 
               {/* Mobile Menu Button */}
-              <div className="md:hidden flex items-center w-full justify-end relative z-50">
-                <button
-                  onClick={toggleMobileMenu}
-                  className="p-2 w-10 h-10 flex flex-col justify-center items-center"
-                  aria-label="Toggle mobile menu"
-                >
+              {navItems && navItems.length > 0 && (
+                <div className="md:hidden flex items-center w-full justify-end relative z-50">
+                  <button
+                    onClick={toggleMobileMenu}
+                    className="p-2 w-10 h-10 flex flex-col justify-center items-center"
+                    aria-label="Toggle mobile menu"
+                  >
                   <div className="w-6 h-5 relative flex flex-col justify-center items-center">
                     {/* Top line */}
                     <span
@@ -173,6 +190,7 @@ export const TopbarNew = ({
                   </div>
                 </button>
               </div>
+              )}
             </Navbar.End>
           </Navbar>
         </div>

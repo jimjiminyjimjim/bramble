@@ -1,3 +1,4 @@
+'use client'
 import { anchorTags } from "@/helpers/anchorTags";
 import React from "react";
 import { useTheme } from "@/helpers/theme";
@@ -119,14 +120,12 @@ export function TextBlockNew({
 
   const textSizes = getTextSizes(textSize);
 
-  // Get Builder.io selection attributes
-  const builderAttributes = builderBlock
-    ? {
-        "builder-id": builderBlock.id,
-        "builder-model": builderBlock.model,
-        "data-builder-component": "TextBlock"
-      }
-    : {};
+  // Get Builder.io selection attributes - always provide consistent attributes for hydration
+  const builderAttributes = {
+    "builder-id": builderBlock?.id || "",
+    "builder-model": builderBlock?.model || "",
+    "data-builder-component": "TextBlock"
+  };
 
   const childrenWithProps = React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
@@ -161,7 +160,7 @@ export function TextBlockNew({
   });
 
   return (
-    <section
+    <div
       className={`${noPadding ? "" : "py-8 lg:py-22 min-h-[400px]"} flex flex-col ${noPadding ? "" : "h-full"}`}
       {...builderAttributes}
       {...anchorTags(anchor)}
@@ -211,6 +210,6 @@ export function TextBlockNew({
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

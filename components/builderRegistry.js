@@ -25,6 +25,7 @@ import { Testimonial } from "@/components/Testimonial";
 import { Download } from "@/components/Download";
 import { SignUp } from "@/components/SignUp";
 import { Popup } from "@/components/Popup";
+import { PopupNew } from "@/components/v2/PopupNew";
 import { SoldOut } from "@/components/SoldOut";
 import { TextBlock } from "@/components/TextBlock";
 import { TextBlockNew } from "@/components/v2/TextBlockNew";
@@ -67,10 +68,11 @@ register("insertMenu", {
   items: [
     { name: "Navigation", item: "v2: Topbar New" },
     { name: "Section & Spacing", item: "Core:Section" },
-    { name: "Text Block", item: "TextBlockNew" },
+    { name: "Text Block v2", item: "TextBlockNew" },
     { name: "Features List", item: "FeaturesList" },
     { name: "Features Grid", item: "FeatureGridNew" },
-    { name: "v2: Footer", item: "Footer" }
+    { name: "v2: Footer", item: "Footer" },
+    { name: "v2: Popup", item: "v2: Popup" }
   ]
 });
 
@@ -140,6 +142,12 @@ export const customComponents = [
         name: "logo",
         type: "uiBlocks",
         defaultValue: []
+      },
+      {
+        name: "logoUrl",
+        type: "string",
+        defaultValue: "/",
+        helperText: "URL for the logo link (defaults to home page)"
       },
       {
         name: "theme",
@@ -989,7 +997,10 @@ export const customComponents = [
     /** To receieve Builder props inside your custom component: by default false  */
     shouldReceiveBuilderProps: {
       /** To access builder's Blocks relative to your parent */
-      builderBlock: true
+      builderBlock: true,
+      builderContext: true,
+      builderComponents: true,
+      builderLinkComponent: true
     },
     inputs: [
       {
@@ -999,6 +1010,14 @@ export const customComponents = [
         defaultValue: "light"
       },
       { name: "buttonColor", type: "color", defaultValue: "#3B82F6" },
+      { name: "textColor", type: "color", defaultValue: "#FFFFFF" },
+      {
+        name: "size",
+        type: "enum",
+        enum: ["small", "medium", "large"],
+        defaultValue: "medium",
+        helperText: "Size of the button"
+      },
       { name: "icon", type: "string" },
       {
         name: "iconPosition",
@@ -1034,7 +1053,48 @@ export const customComponents = [
         showIf: "options.get('mailchimpForm') !== false",
         helperText: "HTML embed code (only shown when not using Mailchimp form)"
       },
-      { name: "ctaText", type: "string", defaultValue: "Click Me" }
+      { name: "ctaText", type: "string", defaultValue: "Click Me" },
+      { name: "popupTitle", type: "string", defaultValue: "Subscribe" }
+    ]
+  },
+  {
+    component: PopupNew,
+    name: "v2: Popup",
+    canHaveChildren: true,
+    canReceiveBuilderProps: true,
+    shouldReceiveBuilderProps: {
+      builderBlock: true,
+      builderContext: true,
+      builderComponents: true,
+      builderLinkComponent: true
+    },
+    image:
+      "https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/window-stack.svg",
+    inputs: [
+      {
+        name: "column1",
+        type: "uiBlocks",
+        defaultValue: []
+      },
+      { name: "ctaText", type: "string" },
+      { name: "textLink", type: "boolean"},
+      { name: "buttonColor", type: "color", defaultValue: "#3B82F6" },
+      { name: "textColor", type: "color", defaultValue: "#FFFFFF" },
+      {
+        name: "size",
+        type: "enum",
+        enum: ["small", "medium", "large"],
+        defaultValue: "medium",
+        helperText: "Size of the button"
+      },
+      { name: "icon", type: "string" },
+      {
+        name: "iconPosition",
+        type: "enum",
+        enum: ["left", "right"],
+        defaultValue: "left",
+        showIf: "options.icon"
+      }
     ]
   },
   {

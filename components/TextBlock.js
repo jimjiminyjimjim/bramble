@@ -1,3 +1,4 @@
+'use client'
 import { anchorTags } from "@/helpers/anchorTags";
 import React from "react";
 import { useTheme } from "@/helpers/theme";

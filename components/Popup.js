@@ -4,7 +4,7 @@ import { useSearchParams, usePathname } from "next/navigation";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { DynamicIcon } from "@/components/Icon";
 import { useTheme } from "@/helpers/theme";
-import { sendGTMEvent } from '@next/third-parties/google'
+import { sendGTMEvent } from "@next/third-parties/google";
 
 const MailchimpFormEmbed = ({ embedHtml, siteData, onFormSubmit }) => {
   const formRef = useRef(null);
@@ -24,12 +24,12 @@ const MailchimpFormEmbed = ({ embedHtml, siteData, onFormSubmit }) => {
         fetch(form.action, {
           method: form.method,
           body: formData,
-          mode: "no-cors",
+          mode: "no-cors"
         })
           .then(() => {
             console.log("Form successfully submitted 2");
-            sendGTMEvent({ event: 'popupFormSubmit' })
-            sendGTMEvent({ event: 'popupFormSubmit2' })
+            sendGTMEvent({ event: "popupFormSubmit" });
+            sendGTMEvent({ event: "popupFormSubmit2" });
             onFormSubmit("success");
           })
           .catch((error) => {
@@ -49,16 +49,26 @@ const MailchimpFormEmbed = ({ embedHtml, siteData, onFormSubmit }) => {
   return <div ref={formRef} dangerouslySetInnerHTML={{ __html: embedHtml }} />;
 };
 
-const MailchimpForm = ({ includeNameField, mailchimpTags, onFormSubmit, buttonColor, ctaText, icon, iconPosition }) => {
+const MailchimpForm = ({
+  includeNameField,
+  mailchimpTags,
+  onFormSubmit,
+  buttonColor,
+  textColor,
+  ctaText,
+  icon,
+  iconPosition,
+  size
+}) => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [honeypot, setHoneypot] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
-  
+
   const searchParams = useSearchParams();
   const pathName = usePathname();
-  
+
   // Get UTM parameters
   const initialSource = searchParams?.get("utm_source") || "";
   const initialMedium = searchParams?.get("utm_medium") || "";
@@ -67,9 +77,23 @@ const MailchimpForm = ({ includeNameField, mailchimpTags, onFormSubmit, buttonCo
   const campaignTerms = searchParams?.get("utm_term") || "";
   const pageTitle = document?.title || "";
 
+  // Define size classes (same as Button component)
+  const getSizeClasses = (sizeType) => {
+    switch (sizeType) {
+      case "small":
+        return "px-4 py-2 text-sm";
+      case "large":
+        return "px-8 py-4 text-lg";
+      default: // medium
+        return "px-6 py-3 text-base";
+    }
+  };
+
+  const sizeClasses = getSizeClasses(size);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (honeypot) {
       // If the honeypot is filled, silently fail (bot detected)
       onFormSubmit("success");
@@ -78,7 +102,7 @@ const MailchimpForm = ({ includeNameField, mailchimpTags, onFormSubmit, buttonCo
       setError("");
       return;
     }
-    
+
     if (!email.includes("@")) {
       setError("Please enter a valid email");
       return;
@@ -112,7 +136,7 @@ const MailchimpForm = ({ includeNameField, mailchimpTags, onFormSubmit, buttonCo
       setEmail("");
       setName("");
       setError("");
-      
+
       sendGTMEvent({
         event: "popupMailchimpSubmit",
         email,
@@ -146,7 +170,7 @@ const MailchimpForm = ({ includeNameField, mailchimpTags, onFormSubmit, buttonCo
         tabIndex={-1}
         autoComplete="off"
       />
-      
+
       {includeNameField && (
         <div>
           <input
@@ -159,7 +183,7 @@ const MailchimpForm = ({ includeNameField, mailchimpTags, onFormSubmit, buttonCo
           />
         </div>
       )}
-      
+
       <div>
         <input
           type="email"
@@ -170,29 +194,27 @@ const MailchimpForm = ({ includeNameField, mailchimpTags, onFormSubmit, buttonCo
           required
         />
       </div>
-      
-      {error && (
-        <p className="text-red-500 text-sm">{error}</p>
-      )}
-      
+
+      {error && <p className="text-red-500 text-sm">{error}</p>}
+
       <button
         type="submit"
         disabled={isSubmitting}
-        className={`btn w-full font-bold transform transition-all duration-200 hover:scale-105 active:scale-95 ${icon && icon.trim() ? 'flex items-center justify-center gap-2' : ''}`}
+        className={`w-full font-semibold transition-all duration-200 ease-in-out hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 border cursor-pointer rounded-full text-center ${sizeClasses} ${icon && icon.trim() ? "flex items-center justify-center gap-2" : ""}`}
         style={{
-          backgroundColor: buttonColor || "#3B82F6",
-          color: "#FFFFFF",
-          borderColor: buttonColor || "#3B82F6",
+          backgroundColor: isSubmitting ? "#9CA3AF" : buttonColor || "#3B82F6",
+          color: textColor || "#FFFFFF",
+          borderColor: isSubmitting ? "#9CA3AF" : buttonColor || "#3B82F6"
         }}
       >
         {icon && icon.trim() && iconPosition === "left" && (
-          <span className="animate-pulse" style={{ animationDuration: '1s' }}>
+          <span className="animate-pulse" style={{ animationDuration: "1s" }}>
             <DynamicIcon iconName={icon} size={16} className="font-bold" />
           </span>
         )}
-        {isSubmitting ? "Subscribing..." : (ctaText || "Subscribe")}
+        {isSubmitting ? "Subscribing..." : ctaText || "Subscribe"}
         {icon && icon.trim() && iconPosition === "right" && (
-          <span className="animate-pulse" style={{ animationDuration: '1s' }}>
+          <span className="animate-pulse" style={{ animationDuration: "1s" }}>
             <DynamicIcon iconName={icon} size={16} className="font-bold" />
           </span>
         )}
@@ -212,18 +234,35 @@ export function Popup({
   formCode,
   siteData,
   ctaText,
+  popupTitle,
   theme,
   textLink,
   buttonColor = "#3B82F6",
+  textColor = "#FFFFFF",
+  size = "medium",
   icon = "",
   iconPosition = "left",
   mailchimpForm = false,
   includeNameField = false,
-  mailchimpTags = "",
+  mailchimpTags = ""
 }) {
   const colors = useTheme(theme);
   const [content, setContent] = useState(null);
   const [formStatus, setFormStatus] = useState(null);
+
+  // Define size classes (same as Button component)
+  const getSizeClasses = (sizeType) => {
+    switch (sizeType) {
+      case "small":
+        return "px-4 py-2 text-sm";
+      case "large":
+        return "px-8 py-4 text-lg";
+      default: // medium
+        return "px-6 py-3 text-base";
+    }
+  };
+
+  const sizeClasses = getSizeClasses(size);
 
   // const modalName = toCamelCase(ctaText || "");
 
@@ -236,7 +275,7 @@ export function Popup({
       }, 2000);
     }
   };
-  
+
   useEffect(() => {
     setContent(true);
   }, []);
@@ -244,6 +283,13 @@ export function Popup({
   const closeModal = () => {
     const modal = document.getElementById("my_modal_3");
     modal.close();
+  };
+
+  const handleBackdropClick = (e) => {
+    // Only close if clicking directly on the dialog backdrop, not on any child elements
+    if (e.target === e.currentTarget) {
+      closeModal();
+    }
   };
 
   if (!content) return null;
@@ -254,50 +300,56 @@ export function Popup({
         <a
           href="#"
           onClick={() => {
-            sendGTMEvent({ event: 'showPopup' })
-            document.getElementById("my_modal_3").showModal()
+            sendGTMEvent({ event: "showPopup" });
+            document.getElementById("my_modal_3").showModal();
           }}
         >
           {ctaText}
         </a>
       ) : (
         <button
-          className={`btn font-bold ${icon && icon.trim() ? 'flex items-center gap-2' : ''} transform transition-all duration-200 hover:scale-105 active:scale-95`}
+          className={`font-semibold transition-all duration-200 ease-in-out hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 border cursor-pointer rounded-full text-center ${sizeClasses} ${icon && icon.trim() ? "flex items-center gap-2" : ""}`}
           style={{
             backgroundColor: buttonColor,
-            color: "#FFFFFF",
-            borderColor: buttonColor,
+            color: textColor,
+            borderColor: buttonColor
           }}
           onClick={() => document.getElementById("my_modal_3").showModal()}
         >
           {icon && icon.trim() && iconPosition === "left" && (
-            <span className="animate-pulse" style={{ animationDuration: '1s' }}>
+            <span className="animate-pulse" style={{ animationDuration: "1s" }}>
               <DynamicIcon iconName={icon} size={16} className="font-bold" />
             </span>
           )}
           {ctaText}
           {icon && icon.trim() && iconPosition === "right" && (
-            <span className="animate-pulse" style={{ animationDuration: '1s' }}>
+            <span className="animate-pulse" style={{ animationDuration: "1s" }}>
               <DynamicIcon iconName={icon} size={16} className="font-bold" />
             </span>
           )}
         </button>
       )}
 
-      <dialog id="my_modal_3" className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box bg-white">
-          <h3 className="text-xl font-semibold lg:text-3xl">{ctaText}</h3>
-
-          <form method="dialog">
-            <button
-              className="btn btn-sm btn-circle btn-black absolute right-2 top-2"
-              onClick={closeModal}
-            >
-              ✕
-            </button>
-          </form>
+      <dialog
+        id="my_modal_3"
+        className="modal modal-bottom sm:modal-middle"
+        onClick={handleBackdropClick}
+      >
+        <div
+          className="modal-box bg-white"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <h3 className="text-xl font-semibold lg:text-3xl">{popupTitle}</h3>
+          {children}
+          {/* <form method="dialog"> */}
+          <button
+            className="btn btn-sm btn-circle btn-black absolute right-0 top-2 bg-transparent text-2xl"
+            onClick={closeModal}
+          >
+            ✕
+          </button>
+          {/* </form> */}
           <div className="text-black">
-            {children}
             {formStatus === "success" ? (
               <p>Thank you for your submission!</p>
             ) : !mailchimpForm ? (
@@ -306,6 +358,8 @@ export function Popup({
                 mailchimpTags={mailchimpTags}
                 onFormSubmit={handleFormSubmit}
                 buttonColor={buttonColor}
+                textColor={textColor}
+                size={size}
                 ctaText={ctaText}
                 icon={icon}
                 iconPosition={iconPosition}
