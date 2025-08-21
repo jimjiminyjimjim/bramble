@@ -60,7 +60,10 @@ export function PopupNew({
             color: textColor,
             borderColor: buttonColor
           }}
-          onClick={() => modalRef.current?.showModal()}
+          onClick={() => {
+            sendGTMEvent({ event: "showPopup" });
+            modalRef.current?.showModal();
+          }}
         >
           {icon && icon.trim() && iconPosition === "left" && (
             <span className="animate-pulse" style={{ animationDuration: "1s" }}>
@@ -85,14 +88,14 @@ export function PopupNew({
           className="modal-box bg-white p-10"
           onClick={(e) => e.stopPropagation()}
         >
-            <Blocks
-              blocks={props.column1}
-              path="component.options.column1"
-              parent={props.builderBlock.id}
-              registeredComponents={props.builderComponents}
-              context={props.builderContext}
-              linkComponent={props.builderLinkComponent}
-            />
+          <Blocks
+            blocks={props.column1}
+            path="component.options.column1"
+            parent={props.builderBlock.id}
+            registeredComponents={props.builderComponents}
+            context={props.builderContext}
+            linkComponent={props.builderLinkComponent}
+          />
           <button
             className="btn btn-sm btn-circle btn-black absolute right-0 top-2 bg-transparent text-2xl"
             onClick={closeModal}
