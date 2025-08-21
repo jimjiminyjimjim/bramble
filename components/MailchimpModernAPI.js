@@ -110,7 +110,10 @@ export function MailchimpModern({
         })
       });
 
-      if (!response.ok) throw new Error("Failed to subscribe");
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error?.title || "Failed to subscribe");
+      }
 
       setSubmitted(true);
       setEmail("");
@@ -126,7 +129,11 @@ export function MailchimpModern({
       });
     } catch (err) {
       console.error(err);
-      setError("Something went wrong.");
+      if (err.message === "Member Exists") {
+        setError("Sorry there was a problem signing up. Please try a different email");
+      } else {
+        setError("Sorry there was a problem signing up. Please try a different email");
+      }
     }
   };
 
@@ -188,7 +195,7 @@ export function MailchimpModern({
       </div>
 
       {submitted && (
-        <p className="text-green-600 text-sm mt-2">Thanks! Check your inbox.</p>
+        <p className="text-green-600 text-sm mt-2">Thank you for signing up.</p>
       )}
       {error && <p className="text-red-600 text-sm mt-2">{error}</p>}
     </div>

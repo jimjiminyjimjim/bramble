@@ -5,7 +5,8 @@
       "Bash(npm run build:*)",
       "Bash(git checkout:*)",
       "Bash(yarn lint)",
-      "Bash(npm run lint)"
+      "Bash(npm run lint)",
+      "Bash(lsof:*)"
     ],
     "deny": [],
     "ask": [],
