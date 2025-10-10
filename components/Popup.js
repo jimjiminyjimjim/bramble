@@ -8,8 +8,15 @@ import { sendGTMEvent } from "@next/third-parties/google";
 
 const MailchimpFormEmbed = ({ embedHtml, siteData, onFormSubmit }) => {
   const formRef = useRef(null);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isClient) return;
+
     // Find the form inside the rendered HTML
     const form = formRef.current?.querySelector("form");
 
@@ -44,7 +51,12 @@ const MailchimpFormEmbed = ({ embedHtml, siteData, onFormSubmit }) => {
       // Cleanup the event listener when the component is unmounted
       return () => form.removeEventListener("submit", handleFormSubmit);
     }
-  }, [embedHtml, onFormSubmit]);
+  }, [isClient, embedHtml, onFormSubmit]);
+
+  // Only render the embed HTML on the client to avoid hydration mismatch
+  if (!isClient) {
+    return <div ref={formRef} className="min-h-[200px]" />;
+  }
 
   return <div ref={formRef} dangerouslySetInnerHTML={{ __html: embedHtml }} />;
 };

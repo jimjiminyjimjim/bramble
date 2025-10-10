@@ -1094,6 +1094,13 @@ export const customComponents = [
         defaultValue: "medium",
         helperText: "Size of the button"
       },
+      {
+        name: "width",
+        type: "enum",
+        enum: ["small", "medium", "large"],
+        defaultValue: "medium",
+        helperText: "Width of the popup modal"
+      },
       { name: "icon", type: "string" },
       {
         name: "iconPosition",

@@ -17,6 +17,7 @@ export default async function RootLayout({ children }) {
 
   const bodyFont = siteData?.data?.googleFontbody || "Roboto";
   const displayFont = siteData?.data?.googleFontHeading || "Roboto";
+  const siteBackground = siteData?.data?.siteBackground;
 
   const googleFontsUrl = `https://fonts.googleapis.com/css2?family=${bodyFont.replace(
     " ",
@@ -35,6 +36,7 @@ export default async function RootLayout({ children }) {
               --font-display: '${displayFont}', sans-serif;
               position: relative;
             }
+            ${siteBackground ? `body { background-color: ${siteBackground}; }` : ''}
           `}
         </style>
         {children}

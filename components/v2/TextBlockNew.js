@@ -4,6 +4,7 @@ import React from "react";
 import { useTheme } from "@/helpers/theme";
 import { Blocks, BuilderBlock } from "@builder.io/sdk-react";
 import { useRouter } from "next/navigation";
+import { ClientHtmlContent } from "../ClientHtmlContent";
 
 export function TextBlockNew({
   children,
@@ -195,12 +196,12 @@ export function TextBlockNew({
             </h3>
           )}
           {body && (
-            <div
+            <ClientHtmlContent
+              html={body}
+              className={`rich-text-content ${textSizes.body} ${alignment === "center" ? "max-w-[800px] mx-auto" : "max-w-[800px]"}`}
               style={{
                 color: subtitleBodyColor
               }}
-              className={`rich-text-content ${textSizes.body} ${alignment === "center" ? "max-w-[800px] mx-auto" : "max-w-[800px]"}`}
-              dangerouslySetInnerHTML={{ __html: body }}
             />
           )}
           <div

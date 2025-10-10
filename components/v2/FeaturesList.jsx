@@ -30,6 +30,13 @@ export const FeaturesList = ({
     }
   };
 
+  // Container heights for consistent text alignment
+  const containerHeightMap = {
+    small: "h-[80px]",
+    medium: "h-[160px]",
+    large: "h-[240px]"
+  };
+
   // Size mappings for icons
   const iconSizeMap = {
     small: {
@@ -58,12 +65,12 @@ export const FeaturesList = ({
             className="flex flex-col items-center text-center"
             key={index}
           >
-            <div className="mb-4 inline-flex items-center justify-center rounded font-medium text-primary">
+            <div className={`mb-4 inline-flex items-center justify-center rounded font-medium text-primary ${containerHeightMap[size]}`}>
               {feature.image ? (
                 <img
                   src={feature.image}
                   alt={feature.title}
-                  className={imageSizeMap[size].center}
+                  className={`${imageSizeMap[size].center} max-h-full object-contain`}
                 />
               ) : (
                 <DynamicIcon

@@ -1,7 +1,7 @@
 import React from "react";
 
-export function Section({ 
-  children, 
+export function Section({
+  children,
   verticalMargin = "medium",
   horizontalMargin = "medium",
   verticalAlignment = "top",
@@ -10,11 +10,12 @@ export function Section({
   sectionMaxWidth,
   contentMaxWidth = "1400px",
   lazyLoad = false,
+  anchorLink,
   builderBlock,
   builderContext,
   builderComponents,
   builderLinkComponent,
-  ...props 
+  ...props
 }) {
   // Filter out custom props that shouldn't be passed to DOM
   const {
@@ -119,7 +120,8 @@ export function Section({
   const containerStyle = fillWidth ? { maxWidth: contentMaxWidth}  : {  };
 
   return (
-    <section 
+    <section
+      {...(anchorLink && { id: anchorLink })}
       className={'h-full'}
       style={{
         backgroundColor,

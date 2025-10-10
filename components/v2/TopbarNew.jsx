@@ -8,52 +8,80 @@ import { Blocks } from "@builder.io/sdk-react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-const MenuItems = ({ items, onClick, isMobile = false, pathname }) => (
-  <>
-    {items?.map((item, index) => {
-      console.log("Menu Item:", item);
-      const isActive = pathname === item.url || (pathname === '/' && item.url === '/');
-      const isExternal = item.linkType === "external";
-      return (
-      <li
-        key={index}
-        className={cx(
-          "font-medium bg-transparent",
-          "hover:font-bold",
-          "active:font-bold",
-          isMobile
-            ? "text-lg py-2 border-b border-gray-200 last:border-b-0"
-            : "!text-lg"
-        )}
-        onClick={onClick}
-      >
-        {isExternal ? (
-          <a
-            href={item.url}
-            target="_blank"
-            rel="noopener noreferrer"
+const MenuItems = ({ items, onClick, isMobile = false, pathname }) => {
+  const handleAnchorClick = (e, url) => {
+    e.preventDefault();
+    const targetId = url.startsWith('#') ? url.slice(1) : url;
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (onClick) onClick();
+    }
+  };
+
+  return (
+    <>
+      {items?.map((item, index) => {
+        console.log("Menu Item:", item);
+        const isActive = pathname === item.url || (pathname === '/' && item.url === '/');
+        const isExternal = item.linkType === "external";
+
+        // Check if it's an anchor link (doesn't start with / or http)
+        const isAnchor = !isExternal && item.url && !item.url.startsWith('/') && !item.url.startsWith('http');
+
+        return (
+          <li
+            key={index}
             className={cx(
-              isMobile ? "w-full text-center text-lg" : "!text-lg",
-              isActive && "font-bold"
+              "font-medium bg-transparent",
+              "hover:font-bold",
+              "active:font-bold",
+              isMobile
+                ? "text-lg py-2 border-b border-gray-200 last:border-b-0"
+                : "!text-lg"
             )}
+            onClick={!isAnchor ? onClick : undefined}
           >
-            {item.name}
-          </a>
-        ) : (
-          <Link
-            href={item.url || "/"}
-            className={cx(
-              isMobile ? "w-full text-center text-lg" : "!text-lg",
-              isActive && "font-bold"
+            {isExternal ? (
+              <a
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cx(
+                  isMobile ? "w-full text-center text-lg" : "!text-lg",
+                  isActive && "font-bold"
+                )}
+              >
+                {item.name}
+              </a>
+            ) : isAnchor ? (
+              <a
+                href={`#${item.url.startsWith('#') ? item.url.slice(1) : item.url}`}
+                onClick={(e) => handleAnchorClick(e, item.url)}
+                className={cx(
+                  isMobile ? "w-full text-center text-lg" : "!text-lg",
+                  isActive && "font-bold"
+                )}
+              >
+                {item.name}
+              </a>
+            ) : (
+              <Link
+                href={item.url || "/"}
+                className={cx(
+                  isMobile ? "w-full text-center text-lg" : "!text-lg",
+                  isActive && "font-bold"
+                )}
+              >
+                {item.name}
+              </Link>
             )}
-          >
-            {item.name}
-          </Link>
-        )}
-      </li>
-    )})}
-  </>
-);
+          </li>
+        );
+      })}
+    </>
+  );
+};
 
 export const TopbarNew = ({
   logo,

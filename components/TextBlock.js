@@ -3,6 +3,7 @@ import { anchorTags } from "@/helpers/anchorTags";
 import React from "react";
 import { useTheme } from "@/helpers/theme";
 import { Blocks, BuilderBlock } from "@builder.io/sdk-react";
+import { ClientHtmlContent } from "./ClientHtmlContent";
 
 export function TextBlock({
   children,
@@ -157,10 +158,10 @@ export function TextBlock({
         >
           {subtitle}
         </p>
-        <div
+        <ClientHtmlContent
+          html={body}
           className={`rich-text-content ${textSizes.body} ${isCentered ? 'text-center' : 'text-left'}`}
           style={{ color: colors.dark }}
-          dangerouslySetInnerHTML={{ __html: body }}
         />
         <div className={`flex flex-col ${textSizes.childGap} ${textSizes.childMarginTop} ${isCentered ? 'items-center' : ''}`}>
           {wrappedChildren}
@@ -218,10 +219,10 @@ export function TextBlock({
               </p>
             )}
             {body && (
-              <div
+              <ClientHtmlContent
+                html={body}
                 className={`rich-text-content ${textSizes.body} ${alignment === 'center' ? 'max-w-[800px] mx-auto' : 'max-w-[800px]'}`}
                 style={{ color: colors.dark }}
-                dangerouslySetInnerHTML={{ __html: body }}
               />
             )}
             <div className={`flex flex-col ${alignment === 'center' ? 'justify-center items-center' : alignment === 'right' ? 'items-end' : 'items-start'} ${textSizes.childGap} ${textSizes.childMarginTop}`}>

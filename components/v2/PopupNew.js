@@ -12,9 +12,12 @@ export function PopupNew({
   icon,
   iconPosition,
   size = "medium",
+  width = "medium",
   rounded = true,
   ...props
 }) {
+
+  console.log("PopupNew width:", width);
   const modalRef = useRef(null);
 
   const getSizeClasses = (sizeType) => {
@@ -28,7 +31,19 @@ export function PopupNew({
     }
   };
 
+  const getWidthStyle = (widthType) => {
+    switch (widthType) {
+      case "small":
+        return "400px";
+      case "large":
+        return "900px";
+      default: // medium
+        return "600px";
+    }
+  };
+
   const sizeClasses = getSizeClasses(size);
+  const widthStyle = getWidthStyle(width);
 
   const closeModal = () => {
     modalRef.current?.close();
@@ -87,6 +102,7 @@ export function PopupNew({
       >
         <div
           className="modal-box bg-white p-10"
+          style={{ width: widthStyle, maxWidth: widthStyle }}
           onClick={(e) => e.stopPropagation()}
         >
           <Blocks
