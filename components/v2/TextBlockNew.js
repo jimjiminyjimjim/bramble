@@ -174,7 +174,7 @@ export function TextBlockNew({
         >
           {title && (
             <h2
-              className={`${textSizes.title} leading-tight ${url ? 'cursor-pointer hover:opacity-80 transition-opacity duration-200' : ''}`}
+              className={`${textSizes.title} leading-none ${url ? 'cursor-pointer hover:opacity-80 transition-opacity duration-200' : ''}`}
               style={{
                 color: useGradientText ? "transparent" : textColor,
                 ...textSizes.titleStyle

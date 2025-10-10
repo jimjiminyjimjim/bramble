@@ -1,11 +1,9 @@
 {
-  "query": [],
-  "folders": [],
-  "id": "6fd885298a1a4340b7e98cf5503f6d5c",
-  "name": "CSS Symbol",
-  "published": "published",
+  "@originContentId": "965041e2ddb9cef92ea536a57e939605f949df5ae450f3f6698aa86f103b89ec",
+  "@originModelId": "f639eb138b01d55b5c82f313d13f041fff8dd3c0908de2e4fc354e66ba872699",
+  "@originOrg": "1b7e142479ce491d93f824fd954bb32e",
+  "createdBy": "dcNxI5zabAdsqPRZxnbPU4eFr6H2",
   "createdDate": 1729596303586,
-  "modelId": "4fd38025a33f4c388f1a34637957e914",
   "data": {
     "state": {
       "deviceSize": "large",
@@ -37,13 +35,15 @@
       }
     ]
   },
-  "meta": {},
-  "variations": {},
-  "testRatio": 1,
-  "createdBy": "dcNxI5zabAdsqPRZxnbPU4eFr6H2",
+  "folders": [],
+  "id": "ed064886617f4512a582c6d317db4ac1",
   "lastUpdatedBy": "dcNxI5zabAdsqPRZxnbPU4eFr6H2",
-  "rev": "9z2eigsmrdo",
-  "@originOrg": "1b7e142479ce491d93f824fd954bb32e",
-  "@originContentId": "965041e2ddb9cef92ea536a57e939605f949df5ae450f3f6698aa86f103b89ec",
-  "@originModelId": "f639eb138b01d55b5c82f313d13f041fff8dd3c0908de2e4fc354e66ba872699"
+  "meta": {},
+  "modelId": "6124e82b145f4519a8b31eff031bda06",
+  "name": "CSS Symbol",
+  "published": "published",
+  "query": [],
+  "rev": "t0aw44qut2g",
+  "testRatio": 1,
+  "variations": {}
 }

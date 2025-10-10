@@ -10,13 +10,50 @@ export const FeaturesList = ({
   anchor,
   iconColor,
   theme,
+  size = "medium",
   children
 }) => {
 
-  const renderCenterLayout = () => (
-    <div className="text-center">
-      <div className="grid gap-8 lg:grid-cols-4 xl:gap-12">
-        {features?.map((feature, index) => (
+  // Size mappings for images
+  const imageSizeMap = {
+    small: {
+      center: "max-w-[80px]",
+      side: "max-w-[50px]"
+    },
+    medium: {
+      center: "max-w-[160px]",
+      side: "max-w-[110px]"
+    },
+    large: {
+      center: "max-w-[240px]",
+      side: "max-w-[180px]"
+    }
+  };
+
+  // Size mappings for icons
+  const iconSizeMap = {
+    small: {
+      center: 30,
+      side: 20
+    },
+    medium: {
+      center: 50,
+      side: 30
+    },
+    large: {
+      center: 70,
+      side: 45
+    }
+  };
+
+  const renderCenterLayout = () => {
+    const featureCount = features?.length || 0;
+    const gridCols = featureCount < 4 ? `lg:grid-cols-${featureCount}` : 'lg:grid-cols-4';
+
+    return (
+      <div className="text-center">
+        <div className={`grid gap-8 ${gridCols} xl:gap-12 justify-center mx-auto max-w-fit`}>
+          {features?.map((feature, index) => (
           <div
             className="flex flex-col items-center text-center"
             key={index}
@@ -26,12 +63,12 @@ export const FeaturesList = ({
                 <img
                   src={feature.image}
                   alt={feature.title}
-                  className="max-w-[80px]"
+                  className={imageSizeMap[size].center}
                 />
               ) : (
                 <DynamicIcon
                   iconName={feature.icon}
-                  size={40}
+                  size={iconSizeMap[size].center}
                   style={{ color: iconColor }}
                 />
               )}
@@ -47,11 +84,12 @@ export const FeaturesList = ({
               </p>
             )}
           </div>
-        ))}
+          ))}
+        </div>
+        {children && <div className="mt-8">{children}</div>}
       </div>
-      {children && <div className="mt-8">{children}</div>}
-    </div>
-  );
+    );
+  };
 
   const renderLeftLayout = () => (
     <div className="flex flex-col justify-center">
@@ -63,12 +101,12 @@ export const FeaturesList = ({
                 <img
                   src={feature.image}
                   alt={feature.title}
-                  className="max-w-[60px]"
+                  className={imageSizeMap[size].side}
                 />
               ) : (
                 <DynamicIcon
                   iconName={feature.icon}
-                  size={25}
+                  size={iconSizeMap[size].side}
                   style={{ color: iconColor  }}
                 />
               )}
@@ -102,12 +140,12 @@ export const FeaturesList = ({
                 <img
                   src={feature.image}
                   alt={feature.title}
-                  className="max-w-[60px]"
+                  className={imageSizeMap[size].side}
                 />
               ) : (
                 <DynamicIcon
                   iconName={feature.icon}
-                  size={25}
+                  size={iconSizeMap[size].side}
                   style={{ color: iconColor  }}
                 />
               )}

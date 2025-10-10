@@ -12,6 +12,7 @@ export function PopupNew({
   icon,
   iconPosition,
   size = "medium",
+  rounded = true,
   ...props
 }) {
   const modalRef = useRef(null);
@@ -54,7 +55,7 @@ export function PopupNew({
         </a>
       ) : (
         <button
-          className={`font-semibold transition-all duration-200 ease-in-out hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 border cursor-pointer rounded-full text-center ${sizeClasses} ${icon && icon.trim() ? "flex items-center gap-2" : ""}`}
+          className={`font-semibold transition-all duration-200 ease-in-out hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 border cursor-pointer text-center ${rounded ? "rounded-full" : "rounded-none"} ${sizeClasses} ${icon && icon.trim() ? "flex items-center gap-2" : ""}`}
           style={{
             backgroundColor: buttonColor,
             color: textColor,

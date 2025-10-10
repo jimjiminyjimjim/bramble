@@ -789,6 +789,13 @@ export const customComponents = [
         defaultValue: "center"
       },
       {
+        name: "size",
+        type: "enum",
+        enum: ["small", "medium", "large"],
+        defaultValue: "medium",
+        helperText: "Size of feature images and icons"
+      },
+      {
         name: "features",
         type: "list",
         subFields: [
@@ -1094,6 +1101,12 @@ export const customComponents = [
         enum: ["left", "right"],
         defaultValue: "left",
         showIf: "options.icon"
+      },
+      {
+        name: "rounded",
+        type: "boolean",
+        defaultValue: true,
+        helperText: "Use rounded corners for the button"
       }
     ]
   },

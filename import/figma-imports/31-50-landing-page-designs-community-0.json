@@ -1,34 +1,31 @@
 {
+  "createdBy": "OM3ONtDpZbZmjA0FKahYHqnkAWI3",
   "createdDate": 1748876810308,
-  "id": "2e022c3dc0be4e84be1fcb3282583472",
-  "name": "31 - 50+ Landing page designs (Community)",
-  "modelId": "643e92da7315478499b4a5f8cdaad0c3",
-  "published": "published",
-  "meta": {
-    "lastPreviewUrl": "https://www.builder.my?builder.space=1b7e142479ce491d93f824fd954bb32e&builder.user.permissions=read%2Ccreate%2Cpublish%2CeditCode%2CeditDesigns%2Cadmin%2CeditLayouts%2CeditLayers%2CeditContentPriority%2CeditFolders&builder.user.role.name=Admin&builder.user.role.id=admin&builder.cachebust=true&builder.preview=figma-imports&builder.noCache=true&builder.allowTextEdit=true&__builder_editing__=true&builder.overrides.figma-imports=a068fbc443724a13b6bfc2ce0d96c9e1&builder.overrides.a068fbc443724a13b6bfc2ce0d96c9e1=a068fbc443724a13b6bfc2ce0d96c9e1&builder.options.locale=Default",
-    "figmaAirJsonDetails": {
-      "width": 1440
-    },
-    "fromFigma": true,
-    "importSource": "figma",
-    "vcpfigmaSelectionUUID": "0a5c5e06-83ce-4949-98b7-065176d7bb99",
-    "figmaSelectionImageUrl": "gs://builder-ai-completions/vcp-screenshot/TEMP/vcp-11247178c1a9437cbedaf660606c5e82-0.jpeg",
-    "vcpImportId": "vcp-11247178c1a9437cbedaf660606c5e82",
-    "importMode": "precise",
-    "kind": "component",
-    "importAttributes": {
-      "type": "precise"
-    },
-    "figmaMappingsId": null,
-    "hasLinks": false
-  },
-  "query": [],
   "data": {
     "cssCode": "",
-    "inputs": [],
     "customFonts": [
       {
+        "category": "sans-serif",
+        "family": "Lato",
+        "files": {
+          "100": "https://fonts.gstatic.com/s/lato/v24/S6u8w4BMUTPHh30wWyWrFCbw7A.ttf",
+          "300": "https://fonts.gstatic.com/s/lato/v24/S6u9w4BMUTPHh7USew-FGC_p9dw.ttf",
+          "700": "https://fonts.gstatic.com/s/lato/v24/S6u9w4BMUTPHh6UVew-FGC_p9dw.ttf",
+          "900": "https://fonts.gstatic.com/s/lato/v24/S6u9w4BMUTPHh50Xew-FGC_p9dw.ttf",
+          "100italic": "https://fonts.gstatic.com/s/lato/v24/S6u-w4BMUTPHjxsIPy-vNiPg7MU0.ttf",
+          "300italic": "https://fonts.gstatic.com/s/lato/v24/S6u_w4BMUTPHjxsI9w2PHA3s5dwt7w.ttf",
+          "700italic": "https://fonts.gstatic.com/s/lato/v24/S6u_w4BMUTPHjxsI5wqPHA3s5dwt7w.ttf",
+          "900italic": "https://fonts.gstatic.com/s/lato/v24/S6u_w4BMUTPHjxsI3wiPHA3s5dwt7w.ttf",
+          "italic": "https://fonts.gstatic.com/s/lato/v24/S6u8w4BMUTPHjxswWyWrFCbw7A.ttf",
+          "regular": "https://fonts.gstatic.com/s/lato/v24/S6uyw4BMUTPHvxk6XweuBCY.ttf"
+        },
         "kind": "webfonts#webfont",
+        "lastModified": "2023-05-02",
+        "menu": "https://fonts.gstatic.com/s/lato/v24/S6uyw4BMUTPHjxgwWw.ttf",
+        "subsets": [
+          "latin",
+          "latin-ext"
+        ],
         "variants": [
           "100",
           "100italic",
@@ -41,29 +38,10 @@
           "900",
           "900italic"
         ],
-        "subsets": [
-          "latin",
-          "latin-ext"
-        ],
-        "menu": "https://fonts.gstatic.com/s/lato/v24/S6uyw4BMUTPHjxgwWw.ttf",
-        "files": {
-          "100": "https://fonts.gstatic.com/s/lato/v24/S6u8w4BMUTPHh30wWyWrFCbw7A.ttf",
-          "300": "https://fonts.gstatic.com/s/lato/v24/S6u9w4BMUTPHh7USew-FGC_p9dw.ttf",
-          "700": "https://fonts.gstatic.com/s/lato/v24/S6u9w4BMUTPHh6UVew-FGC_p9dw.ttf",
-          "900": "https://fonts.gstatic.com/s/lato/v24/S6u9w4BMUTPHh50Xew-FGC_p9dw.ttf",
-          "900italic": "https://fonts.gstatic.com/s/lato/v24/S6u_w4BMUTPHjxsI3wiPHA3s5dwt7w.ttf",
-          "300italic": "https://fonts.gstatic.com/s/lato/v24/S6u_w4BMUTPHjxsI9w2PHA3s5dwt7w.ttf",
-          "100italic": "https://fonts.gstatic.com/s/lato/v24/S6u-w4BMUTPHjxsIPy-vNiPg7MU0.ttf",
-          "italic": "https://fonts.gstatic.com/s/lato/v24/S6u8w4BMUTPHjxswWyWrFCbw7A.ttf",
-          "regular": "https://fonts.gstatic.com/s/lato/v24/S6uyw4BMUTPHvxk6XweuBCY.ttf",
-          "700italic": "https://fonts.gstatic.com/s/lato/v24/S6u_w4BMUTPHjxsI5wqPHA3s5dwt7w.ttf"
-        },
-        "category": "sans-serif",
-        "lastModified": "2023-05-02",
-        "family": "Lato",
         "version": "v24"
       }
     ],
+    "inputs": [],
     "blocks": [
       {
         "@type": "@builder.io/sdk:Element",
@@ -747,14 +725,36 @@
       }
     }
   },
+  "folders": [],
+  "id": "6d1776e371424c04b71e27dcf4ca5b49",
+  "lastUpdatedBy": "OM3ONtDpZbZmjA0FKahYHqnkAWI3",
+  "meta": {
+    "figmaAirJsonDetails": {
+      "width": 1440
+    },
+    "figmaMappingsId": null,
+    "figmaSelectionImageUrl": "gs://builder-ai-completions/vcp-screenshot/TEMP/vcp-11247178c1a9437cbedaf660606c5e82-0.jpeg",
+    "fromFigma": true,
+    "hasLinks": false,
+    "importAttributes": {
+      "type": "precise"
+    },
+    "importMode": "precise",
+    "importSource": "figma",
+    "kind": "component",
+    "lastPreviewUrl": "https://www.builder.my?builder.space=1b7e142479ce491d93f824fd954bb32e&builder.user.permissions=read%2Ccreate%2Cpublish%2CeditCode%2CeditDesigns%2Cadmin%2CeditLayouts%2CeditLayers%2CeditContentPriority%2CeditFolders&builder.user.role.name=Admin&builder.user.role.id=admin&builder.cachebust=true&builder.preview=figma-imports&builder.noCache=true&builder.allowTextEdit=true&__builder_editing__=true&builder.overrides.figma-imports=a068fbc443724a13b6bfc2ce0d96c9e1&builder.overrides.a068fbc443724a13b6bfc2ce0d96c9e1=a068fbc443724a13b6bfc2ce0d96c9e1&builder.options.locale=Default",
+    "vcpImportId": "vcp-11247178c1a9437cbedaf660606c5e82",
+    "vcpfigmaSelectionUUID": "0a5c5e06-83ce-4949-98b7-065176d7bb99"
+  },
+  "modelId": "24a9c33250b441c084d6b4c8f25f6511",
+  "name": "31 - 50+ Landing page designs (Community)",
+  "published": "published",
+  "query": [],
+  "testRatio": 1,
   "variations": {},
   "lastUpdated": 1748877357542,
   "firstPublished": 1748877357526,
-  "testRatio": 1,
-  "createdBy": "OM3ONtDpZbZmjA0FKahYHqnkAWI3",
-  "lastUpdatedBy": "OM3ONtDpZbZmjA0FKahYHqnkAWI3",
-  "folders": [],
-  "rev": "xclkeg0u72o",
+  "rev": "xx3sykd5h2",
   "@originOrg": "1b7e142479ce491d93f824fd954bb32e",
   "@originContentId": "a068fbc443724a13b6bfc2ce0d96c9e1",
   "@originModelId": "0bacfec8858b4cfd9e168fbbc1373440"
