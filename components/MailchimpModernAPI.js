@@ -99,6 +99,7 @@ export function MailchimpModern({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email,
+          honeypot, // Send honeypot to server for bot detection
           tags: [
             ...(pageTitle ? [pageTitle] : []),
             ...(mailchimpTags?.split(",").map((tag) => tag.trim()) || []),

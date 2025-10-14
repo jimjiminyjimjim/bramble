@@ -9,26 +9,27 @@ const aj = arcjet({
   rules: [
     // Shield protects your app from common attacks e.g. SQL injection
     shield({ mode: "LIVE" }),
-    // Create a bot detection rule
+    // Create a bot detection rule - only block VERIFIED bots (known bad actors)
+    // This allows legitimate users from corporate networks through
     detectBot({
-      mode: "LIVE", // Blocks requests. Use "DRY_RUN" to log only
-      // Block all bots except the following
+      mode: "LIVE",
+      block: ["AUTOMATED"], // Only block automated/verified bad bots
       allow: [
-        "CATEGORY:SEARCH_ENGINE", // Google, Bing, etc
+        "CATEGORY:SEARCH_ENGINE",
         "CATEGORY:SOCIAL",
         "CATEGORY:META",
         "CATEGORY:AI",
         "CATEGORY:ADVERTISING",
-        "CATEGORY:MONITOR", // Uptime monitoring services
-        "CATEGORY:PREVIEW" // Link previews e.g. Slack, Discord
+        "CATEGORY:MONITOR",
+        "CATEGORY:PREVIEW"
       ]
     }),
-    // Create a token bucket rate limit. Other algorithms are supported.
+    // More lenient rate limiting - allows bursts but prevents abuse
     tokenBucket({
       mode: "LIVE",
-      refillRate: 5, // Refill 5 tokens per interval
-      interval: 10, // Refill every 10 seconds
-      capacity: 10 // Bucket capacity of 10 tokens
+      refillRate: 10, // Refill 10 tokens per interval
+      interval: 60, // Refill every 60 seconds (1 minute)
+      capacity: 20 // Bucket capacity of 20 tokens
     })
   ]
 });
@@ -39,36 +40,50 @@ export async function POST(req) {
 
   const decision = await aj.protect(req, { requested: 5 }); // Deduct 5 tokens from the bucket
   console.log("Arcjet decision", decision);
+  console.log("Arcjet IP info:", {
+    isHosting: decision.ip.isHosting(),
+    isProxy: decision.ip.isProxy(),
+    isVpn: decision.ip.isVpn(),
+  });
 
+  // Only block if rate limited or shield triggered
+  // Bot detection with "AUTOMATED" block only triggers on verified bad bots
   if (decision.isDenied()) {
+    console.error("Arcjet DENIED:", decision.reason);
     if (decision.reason.isRateLimit()) {
       return NextResponse.json(
-        { error: "Too Many Requests", reason: decision.reason },
+        { error: "Too many requests. Please try again later." },
         { status: 429 }
       );
     } else if (decision.reason.isBot()) {
+      console.log("Bot detected and blocked:", decision.reason);
       return NextResponse.json(
-        { error: "No bots allowed", reason: decision.reason },
+        { error: "Request blocked" },
+        { status: 403 }
+      );
+    } else if (decision.reason.isShield()) {
+      console.log("Shield blocked malicious request:", decision.reason);
+      return NextResponse.json(
+        { error: "Request blocked" },
         { status: 403 }
       );
     } else {
       return NextResponse.json(
-        { error: "Forbidden", reason: decision.reason },
+        { error: "Request blocked" },
         { status: 403 }
       );
     }
   }
 
-  // Requests from hosting IPs are likely from bots, so they can usually be
-  // blocked. However, consider your use case - if this is an API endpoint
-  // then hosting IPs might be legitimate.
-  // https://docs.arcjet.com/blueprints/vpn-proxy-detection
-  if (decision.ip.isHosting()) {
-    return NextResponse.json(
-      { error: "Forbidden", reason: decision.reason },
-      { status: 403 }
-    );
-  }
+  // DISABLED: Hosting IP check can block legitimate corporate networks
+  // Uncomment if you want to block hosting providers
+  // if (decision.ip.isHosting()) {
+  //   console.warn("Blocked hosting IP:", decision.ip);
+  //   return NextResponse.json(
+  //     { error: "Forbidden", reason: "Hosting IP detected" },
+  //     { status: 403 }
+  //   );
+  // }
 
   // Paid Arcjet accounts include additional verification checks using IP data.
   // Verification isn't always possible, so we recommend checking the decision
@@ -90,8 +105,15 @@ export async function POST(req) {
     utm_medium = "",
     utm_campaign = "",
     utm_content = "",
-    utm_term = ""
+    utm_term = "",
+    honeypot = "" // Client-side honeypot field
   } = body;
+
+  // Honeypot check - bots typically fill this hidden field
+  if (honeypot && honeypot.length > 0) {
+    console.log("Honeypot triggered - bot detected");
+    return NextResponse.json({ success: true }, { status: 200 }); // Silently succeed
+  }
 
   if (!email || !email.includes("@")) {
     return NextResponse.json({ error: "Invalid email" }, { status: 400 });
