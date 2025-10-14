@@ -45,7 +45,9 @@ export function MailchimpModern({
   ctaText,
   ctaColor,
   alignment = "left",
-  stack = "column"
+  stack = "column",
+  rounded = true,
+  maxWidth
 }) {
   const [email, setEmail] = useState("");
   const [honeypot, setHoneypot] = useState("");
@@ -140,10 +142,14 @@ export function MailchimpModern({
   return (
     <div
       className={cx(
-        "w-full max-w-600 flex",
-        stack === "column" ? "flex-col max-w-[400px]" : "flex-row",
+        "flex",
+        stack === "column" ? "flex-col" : "flex-row",
         alignment === "center" && "mx-auto"
       )}
+      style={{
+        width: "100%",
+        ...(maxWidth ? { maxWidth: `${maxWidth}px` } : {})
+      }}
     >
       <h5
         style={{ color: background }}
@@ -156,7 +162,7 @@ export function MailchimpModern({
       </h5>
       <div
         className={cx(
-          "flex gap-5",
+          "flex gap-5 w-full",
           stack === "column" ? "flex-col" : "flex-row",
           alignment === "center" ? "text-center" : "text-left"
         )}
@@ -183,11 +189,19 @@ export function MailchimpModern({
           value={email}
           placeholder={placeholder}
           onChange={(e) => setEmail(e.target.value)}
-          className="flex-[2_2_0%] rounded-full px-4 py-2 border border-gray-300 h-full text-center"
+          className={cx(
+            "px-4 py-3 border border-gray-300 text-center min-h-[48px]",
+            stack === "column" ? "w-full" : "flex-[3_3_0%]",
+            rounded ? "rounded-full" : "rounded-none"
+          )}
         />
         <button
           onClick={handleSubmit}
-          className="flex-[1_1_0%] btn h-full m-0"
+          className={cx(
+            "btn m-0 min-h-[48px]",
+            stack === "column" ? "w-full" : "flex-[1_1_0%]",
+            rounded ? "rounded-full" : "rounded-none"
+          )}
           style={{ backgroundColor: background, color: textColour }}
         >
           {ctaText}

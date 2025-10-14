@@ -194,6 +194,7 @@ export const customComponents = [
   {
     component: Mailchimp,
     name: "Mailchimp Input",
+    noWrap: true,
     images:
       "https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/input-cursor-text.svg",
     inputs: [
@@ -231,7 +232,18 @@ export const customComponents = [
         defaultValue: "Thank you for signing up!"
       },
       { name: "mailchimpFormCode", type: "code" },
-      { name: "ctaText", type: "string", defaultValue: "Click Me" }
+      { name: "ctaText", type: "string", defaultValue: "Click Me" },
+      {
+        name: "rounded",
+        type: "boolean",
+        defaultValue: true,
+        helperText: "Use rounded corners for input and button"
+      },
+      {
+        name: "maxWidth",
+        type: "number",
+        helperText: "Maximum width in pixels (optional)"
+      }
     ]
   },
   {

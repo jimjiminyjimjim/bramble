@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { anchorTags } from "@/helpers/anchorTags";
 import React from "react";
 import { useTheme } from "@/helpers/theme";
@@ -28,21 +28,23 @@ export function TextBlockNew({
   linkType = "internal"
 }) {
   const router = useRouter();
-  
+
   // Handle title click navigation
   const handleTitleClick = (e) => {
     if (!url) return;
-    
+
     e.preventDefault();
-    
+
     switch (linkType) {
       case "external":
-        window.open(url, '_blank', 'noopener,noreferrer');
+        window.open(url, "_blank", "noopener,noreferrer");
         break;
       case "scrollTo":
         // Add # if not present for scrollTo
-        const scrollTarget = url.startsWith('#') ? url : `#${url}`;
-        document.querySelector(scrollTarget)?.scrollIntoView({ behavior: 'smooth' });
+        const scrollTarget = url.startsWith("#") ? url : `#${url}`;
+        document
+          .querySelector(scrollTarget)
+          ?.scrollIntoView({ behavior: "smooth" });
         break;
       case "internal":
       default:
@@ -50,7 +52,7 @@ export function TextBlockNew({
         break;
     }
   };
-  
+
   // Define vertical alignment classes
   const getVerticalAlignmentClasses = (vAlign) => {
     switch (vAlign) {
@@ -142,23 +144,23 @@ export function TextBlockNew({
     return child;
   });
 
-  // Wrap children to center Popup components
-  const wrappedChildren = React.Children.map(childrenWithProps, (child) => {
-    if (
-      React.isValidElement(child)
-      // (child.type?.name === "Popup" || child.props?.component === "Popup")
-    ) {
-      return (
-        <div
-          key={child.key}
-          className={`text-center ${textSizes.childMarginTop}`}
-        >
-          {child}
-        </div>
-      );
-    }
-    return child;
-  });
+  // // Wrap children to center Popup components
+  // const wrappedChildren = React.Children.map(childrenWithProps, (child) => {
+  //   if (
+  //     React.isValidElement(child)
+  //     // (child.type?.name === "Popup" || child.props?.component === "Popup")
+  //   ) {
+  //     return (
+  //       <div
+  //         key={child.key}
+  //         className={`text-center ${textSizes.childMarginTop} w-full`}
+  //       >
+  //         {child}
+  //       </div>
+  //     );
+  //   }
+  //   return child;
+  // });
 
   return (
     <div
@@ -175,7 +177,7 @@ export function TextBlockNew({
         >
           {title && (
             <h2
-              className={`${textSizes.title} leading-none ${url ? 'cursor-pointer hover:opacity-80 transition-opacity duration-200' : ''}`}
+              className={`${textSizes.title} leading-none ${url ? "cursor-pointer hover:opacity-80 transition-opacity duration-200" : ""}`}
               style={{
                 color: useGradientText ? "transparent" : textColor,
                 ...textSizes.titleStyle
@@ -205,9 +207,9 @@ export function TextBlockNew({
             />
           )}
           <div
-            className={`flex flex-col ${alignment === "center" ? "justify-center items-center" : alignment === "right" ? "items-end" : "items-start"} ${textSizes.childGap} ${textSizes.childMarginTop}`}
+            className={`flex flex-col w-full ${alignment === "center" ? "justify-center items-center" : alignment === "right" ? "items-end" : "items-start"} ${textSizes.childGap} ${textSizes.childMarginTop}`}
           >
-            {wrappedChildren}
+            {children}
           </div>
         </div>
       </div>
