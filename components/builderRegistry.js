@@ -167,6 +167,11 @@ export const customComponents = [
         helperText: "Custom background color (overrides theme color)"
       },
       {
+        name: "textColor",
+        type: "color",
+        helperText: "Custom text color (overrides theme color)"
+      },
+      {
         name: "navItems",
         type: "list",
         defaultValue: [{ blocks: [] }],

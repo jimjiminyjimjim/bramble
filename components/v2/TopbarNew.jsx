@@ -8,7 +8,7 @@ import { Blocks } from "@builder.io/sdk-react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-const MenuItems = ({ items, onClick, isMobile = false, pathname }) => {
+const MenuItems = ({ items, onClick, isMobile = false, pathname, textColor }) => {
   const handleAnchorClick = (e, url) => {
     e.preventDefault();
     const targetId = url.startsWith('#') ? url.slice(1) : url;
@@ -47,6 +47,7 @@ const MenuItems = ({ items, onClick, isMobile = false, pathname }) => {
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
+                style={{ color: textColor }}
                 className={cx(
                   isMobile ? "w-full text-center text-lg" : "!text-lg",
                   isActive && "font-bold"
@@ -58,6 +59,7 @@ const MenuItems = ({ items, onClick, isMobile = false, pathname }) => {
               <a
                 href={`#${item.url.startsWith('#') ? item.url.slice(1) : item.url}`}
                 onClick={(e) => handleAnchorClick(e, item.url)}
+                style={{ color: textColor }}
                 className={cx(
                   isMobile ? "w-full text-center text-lg" : "!text-lg",
                   isActive && "font-bold"
@@ -68,6 +70,7 @@ const MenuItems = ({ items, onClick, isMobile = false, pathname }) => {
             ) : (
               <Link
                 href={item.url || "/"}
+                style={{ color: textColor }}
                 className={cx(
                   isMobile ? "w-full text-center text-lg" : "!text-lg",
                   isActive && "font-bold"
@@ -90,6 +93,7 @@ export const TopbarNew = ({
   children,
   theme,
   backgroundColor,
+  textColor,
   builderBlock,
   builderComponents,
   builderContext,
@@ -137,7 +141,7 @@ export const TopbarNew = ({
     <>
       {/* Spacer to push content below fixed topbar */}
       <div className="h-[80px] lg:h-[100px]" />
-      
+
       <div
         {...builderAttributes}
         style={{
@@ -145,9 +149,9 @@ export const TopbarNew = ({
           transform: isVisible ? "translateY(0)" : "translateY(-100%)",
           transition: "transform 0.3s ease-in-out"
         }}
-        className="inset-x-0 top-0 !z-50 fixed w-full h-[80px] lg:h-[100px]"
+        className="inset-x-0 top-0 !z-50 fixed w-full min-h-[80px] lg:min-h-[100px]"
       >
-        <div className="flex items-center  py-4">
+        <div className="flex items-center py-4">
           <Navbar
             className="w-full flex items-center mx-auto !px-6"
             style={{ maxWidth: maxWidth }}
@@ -156,12 +160,13 @@ export const TopbarNew = ({
               <Link href={logoUrl} className="min-w-0 flex items-center">
                 <div
                   style={{
-                    height: "36px",
-                    minHeight: "36px",
+                    height: "auto",
+                    maxHeight: "70px",
                     width: "auto",
                     display: "flex",
                     alignItems: "center"
                   }}
+                  className="lg:!max-h-[90px]"
                 >
                   <Blocks
                     parent={builderBlock.id}
@@ -179,7 +184,7 @@ export const TopbarNew = ({
               {/* Desktop Menu */}
               <div className="hidden md:flex items-center w-full justify-end">
                 <ul className="gap-6 px-1 items-center flex flex-row">
-                  <MenuItems items={navItems} pathname={pathname} />
+                  <MenuItems items={navItems} pathname={pathname} textColor={textColor} />
                 </ul>
                 {children && <div className="ml-10">{children}</div>}
               </div>
@@ -189,6 +194,7 @@ export const TopbarNew = ({
                 <div className="md:hidden flex items-center w-full justify-end relative z-50">
                   <button
                     onClick={toggleMobileMenu}
+                    style={{ color: textColor }}
                     className="p-2 w-10 h-10 flex flex-col justify-center items-center"
                     aria-label="Toggle mobile menu"
                   >
@@ -245,6 +251,7 @@ export const TopbarNew = ({
                   onClick={closeMobileMenu}
                   isMobile={true}
                   pathname={pathname}
+                  textColor={textColor}
                 />
               </ul>
 
