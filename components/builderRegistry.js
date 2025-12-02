@@ -289,17 +289,6 @@ export const customComponents = [
             defaultValue: "Best option for personal use"
           },
           {
-            name: "features",
-            type: "list",
-            subFields: [
-              {
-                name: "description",
-                type: "string",
-                defaultValue: "Individual configuration"
-              }
-            ]
-          },
-          {
             name: "blocks",
             type: "uiBlocks",
             defaultValue: []

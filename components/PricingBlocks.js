@@ -7,7 +7,6 @@ export const PricingBlocks = ({
   price,
   period,
   description,
-  features,
   blocks,
   builderBlock,
   builderComponents,
@@ -16,7 +15,7 @@ export const PricingBlocks = ({
 }) => {
   return (
     <div
-      className="w-full flex flex-col p-6
+      className="w-full h-full flex flex-col p-6
       text-center bg-white rounded-xl border shadow
       dark:bg-gray-800 dark:text-white"
     >
@@ -47,36 +46,17 @@ export const PricingBlocks = ({
           )}
         </div>
       )}
-      {features?.length && (
-        <ul role="list" className="mb-8 space-y-4 text-left">
-          {features.map((feature, idx) => (
-            <li key={idx} className="flex items-center space-x-3">
-              <svg
-                className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  clipRule="evenodd"
-                ></path>
-              </svg>
-              <p className="text-base">{feature?.description}</p>
-            </li>
-          ))}
-        </ul>
-      )}
 
-      <Blocks
-        parent={builderBlock.id}
-        path="component.options.blocks"
-        registeredComponents={builderComponents}
-        context={builderContext}
-        linkComponent={builderLinkComponent}
-        blocks={blocks}
-      />
+      <div className="flex-1 flex flex-col">
+        <Blocks
+          parent={builderBlock.id}
+          path="component.options.blocks"
+          registeredComponents={builderComponents}
+          context={builderContext}
+          linkComponent={builderLinkComponent}
+          blocks={blocks}
+        />
+      </div>
     </div>
   );
 };
