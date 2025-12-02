@@ -51,63 +51,57 @@ export const Button = ({
     // Use url prop first, fallback to legacy link prop
     const targetUrl = url || link;
 
+    // Send GTM event only if tagManagerEvent has a value and there's a URL
+    if (targetUrl && !disabled && tagManagerEvent && tagManagerEvent.trim() !== "") {
+      const urlParams = new URLSearchParams(window.location.search);
+      const initialSource =
+        urlParams.get("utm_source") ||
+        sessionStorage.getItem("utm_source") ||
+        "";
+      const initialMedium =
+        urlParams.get("utm_medium") ||
+        sessionStorage.getItem("utm_medium") ||
+        "";
+      const initialCampaign =
+        urlParams.get("utm_campaign") ||
+        sessionStorage.getItem("utm_campaign") ||
+        "";
+
+      sendGTMEvent({
+        event: tagManagerEvent,
+        value: {
+          source: initialSource,
+          medium: initialMedium,
+          campaign: initialCampaign
+        }
+      });
+    }
+
     // Call external onClick if provided
     if (onClick) {
       onClick(e);
     }
 
-    if (!disabled) {
-      // Always send GTM event for all clicks (if tagManagerEvent is provided)
-      if (tagManagerEvent) {
-        const urlParams = new URLSearchParams(window.location.search);
-        const initialSource =
-          urlParams.get("utm_source") ||
-          sessionStorage.getItem("utm_source") ||
-          "";
-        const initialMedium =
-          urlParams.get("utm_medium") ||
-          sessionStorage.getItem("utm_medium") ||
-          "";
-        const initialCampaign =
-          urlParams.get("utm_campaign") ||
-          sessionStorage.getItem("utm_campaign") ||
-          "";
+    if (targetUrl && !disabled) {
+      e.preventDefault();
 
-        sendGTMEvent({
-          event: tagManagerEvent,
-          value: {
-            source: initialSource,
-            medium: initialMedium,
-            campaign: initialCampaign
-          }
-        });
-      }
-
-      // Handle URL navigation if provided
-      if (targetUrl) {
-        e.preventDefault();
-
-        // Add delay to allow GTM event to be sent before navigation
-        setTimeout(() => {
-          switch (linkType) {
-            case "external":
-              window.open(targetUrl, "_blank", "noopener,noreferrer");
-              break;
-            case "scrollTo":
-              // Add # if not present for scrollTo
-              const scrollTarget = targetUrl.startsWith("#")
-                ? targetUrl
-                : `#${targetUrl}`;
-              document
-                .querySelector(scrollTarget)
-                ?.scrollIntoView({ behavior: "smooth" });
-              break;
-            case "internal":
-            default:
-              router.push(targetUrl);
-              break;
-          }
-        }, 100); // 100ms delay to allow GTM event to be sent
+      switch (linkType) {
+        case "external":
+          window.open(targetUrl, "_blank", "noopener,noreferrer");
+          break;
+        case "scrollTo":
+          // Add # if not present for scrollTo
+          const scrollTarget = targetUrl.startsWith("#")
+            ? targetUrl
+            : `#${targetUrl}`;
+          document
+            .querySelector(scrollTarget)
+            ?.scrollIntoView({ behavior: "smooth" });
+          break;
+        case "internal":
+        default:
+          router.push(targetUrl);
+          break;
       }
     }
   };

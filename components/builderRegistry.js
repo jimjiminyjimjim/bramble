@@ -1621,8 +1621,8 @@ export const customComponents = [
       {
         name: "tagManagerEvent",
         type: "string",
-        defaultValue: "buttonClick",
-        helperText: "Event name for Google Tag Manager"
+        defaultValue: "",
+        helperText: "Event name for Google Tag Manager (leave blank to disable)"
       },
       {
         name: "disabled",
