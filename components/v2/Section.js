@@ -5,6 +5,7 @@ export function Section({
   verticalMargin = "medium",
   horizontalMargin = "medium",
   verticalAlignment = "top",
+  gap = "medium",
   backgroundColor,
   backgroundImage,
   aspectRatio = "fluid",
@@ -37,6 +38,7 @@ export function Section({
     verticalMargin: _verticalMargin,
     horizontalMargin: _horizontalMargin,
     verticalAlignment: _verticalAlignment,
+    gap: _gap,
     backgroundImage: _backgroundImage,
     aspectRatio: _aspectRatio,
     rounded: _rounded,
@@ -79,14 +81,18 @@ export function Section({
   const horizontalMarginClasses = getHorizontalMarginClasses(horizontalMargin);
 
   // Define gap classes for spacing between children (not above first child)
-  const getGapClasses = (marginSize) => {
-    switch (marginSize) {
+  const getGapClasses = (gapSize) => {
+    switch (gapSize) {
       case "none":
         return "flex flex-col";
       case "small":
         return "flex flex-col gap-3 lg:gap-4";
       case "large":
         return "flex flex-col gap-8 lg:gap-12";
+      case "xlarge":
+        return "flex flex-col gap-12 lg:gap-16";
+      case "xxlarge":
+        return "flex flex-col gap-16 lg:gap-24";
       default: // medium
         return "flex flex-col gap-6 lg:gap-8";
     }
@@ -108,7 +114,7 @@ export function Section({
     }
   };
 
-  const gapClasses = getGapClasses(verticalMargin);
+  const gapClasses = getGapClasses(gap);
   const alignmentClasses = getVerticalAlignmentClasses(verticalAlignment);
 
   // Get Builder.io selection attributes

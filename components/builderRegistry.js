@@ -71,7 +71,7 @@ register("insertMenu", {
     { name: "Text Block v2", item: "TextBlockNew" },
     { name: "Features List", item: "FeaturesList" },
     { name: "Features Grid", item: "FeatureGridNew" },
-    { name: "v2: Footer", item: "Footer" },
+    { name: "v2: Footer", item: "v2: Footer" },
     { name: "v2: Popup", item: "v2: Popup" },
     { name: "v2: Pricing Blocks", item: "v2: Pricing Blocks" }
 
@@ -535,7 +535,7 @@ export const customComponents = [
       {
         name: "textSize",
         type: "enum",
-        enum: ["small", "medium-small", "medium", "large"],
+        enum: ["small", "medium-small", "medium", "large", "xlarge"],
         defaultValue: "medium"
       },
       {
@@ -547,7 +547,7 @@ export const customComponents = [
       {
         name: "subtitleBodyColor",
         type: "color",
-        helperText: "Custom color for subtitle and body text (overrides theme)."
+        helperText: "Custom color for subtitle text (overrides theme)."
       },
       {
         name: "title",
@@ -589,6 +589,11 @@ export const customComponents = [
         type: "boolean",
         defaultValue: true,
         helperText: "Remove surrounding padding/margins from the component"
+      },
+      {
+        name: "maxWidth",
+        type: "number",
+        helperText: "Maximum width in pixels for text content (optional)"
       },
       {
         name: "url",
@@ -876,6 +881,35 @@ export const customComponents = [
     image: "https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/grid-fill.svg",
     inputs: [
       { name: "anchor", type: "string" },
+      {
+        name: "size",
+        type: "enum",
+        enum: ["small", "medium", "large"],
+        defaultValue: "medium",
+        helperText: "Size of feature icons"
+      },
+      {
+        name: "align",
+        type: "enum",
+        enum: ["left", "center", "right"],
+        defaultValue: "left",
+        helperText: "Position of icons relative to text"
+      },
+      {
+        name: "textColor",
+        type: "color",
+        helperText: "Custom text color for titles and descriptions"
+      },
+      {
+        name: "iconColor",
+        type: "color",
+        helperText: "Custom color for feature icons"
+      },
+      {
+        name: "maxWidth",
+        type: "number",
+        helperText: "Maximum width in pixels for text content (optional)"
+      },
       {
         name: "features",
         type: "list",
@@ -1235,10 +1269,51 @@ export const customComponents = [
     canHaveChildren: true,
     inputs: [
       {
-        name: "theme",
-        type: "enum",
-        enum: ["light", "dark", "white"],
-        defaultValue: "light"
+        name: "logo",
+        type: "file",
+        allowedFileTypes: ["jpeg", "jpg", "png", "svg"],
+        helperText: "Custom logo for the footer (optional, defaults to site logo)"
+      },
+      {
+        name: "backgroundColor",
+        type: "color",
+        helperText: "Background color for the footer"
+      },
+      {
+        name: "textColor",
+        type: "color",
+        defaultValue: "#ffffff",
+        helperText: "Text color for footer content and social icon backgrounds"
+      },
+      {
+        name: "copyright",
+        type: "string",
+        defaultValue: "",
+        helperText: "Copyright message (e.g., '© 2024 Company Name. All rights reserved')"
+      },
+      {
+        name: "tiktokUrl",
+        type: "string",
+        defaultValue: "",
+        helperText: "TikTok profile URL (icon will appear if URL is provided)"
+      },
+      {
+        name: "instagramUrl",
+        type: "string",
+        defaultValue: "",
+        helperText: "Instagram profile URL (icon will appear if URL is provided)"
+      },
+      {
+        name: "facebookUrl",
+        type: "string",
+        defaultValue: "",
+        helperText: "Facebook page URL (icon will appear if URL is provided)"
+      },
+      {
+        name: "twitterUrl",
+        type: "string",
+        defaultValue: "",
+        helperText: "Twitter/X profile URL (icon will appear if URL is provided)"
       },
       { name: "anchor", type: "string" },
       { name: "title", type: "string" },
@@ -1605,6 +1680,14 @@ export const customComponents = [
         defaultValue: "top",
         helperText:
           "Controls the vertical alignment of content within the section"
+      },
+      {
+        name: "gap",
+        type: "enum",
+        enum: ["none", "small", "medium", "large", "xlarge", "xxlarge"],
+        defaultValue: "medium",
+        helperText:
+          "Controls the spacing between items within the section"
       },
       {
         name: "backgroundColor",

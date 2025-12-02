@@ -6,7 +6,9 @@
       "Bash(git checkout:*)",
       "Bash(yarn lint)",
       "Bash(npm run lint)",
-      "Bash(lsof:*)"
+      "Bash(lsof:*)",
+      "Bash(kill:*)",
+      "Bash(yarn dev:*)"
     ],
     "deny": [],
     "ask": [],

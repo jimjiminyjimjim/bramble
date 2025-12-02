@@ -25,9 +25,22 @@ export function TextBlockNew({
   subtitleBodyColor = "#000000",
   noPadding = true,
   url = "",
-  linkType = "internal"
+  linkType = "internal",
+  maxWidth
 }) {
   const router = useRouter();
+
+  // Helper function to check if rich text content is effectively empty
+  const isEmptyRichText = (content) => {
+    if (!content) return true;
+    // Strip common empty patterns like <p><br /></p>, <p></p>, whitespace
+    const stripped = content
+      .replace(/<p>\s*<br\s*\/?>\s*<\/p>/gi, '')
+      .replace(/<p>\s*<\/p>/gi, '')
+      .replace(/\s+/g, '')
+      .trim();
+    return stripped === '';
+  };
 
   // Handle title click navigation
   const handleTitleClick = (e) => {
@@ -98,6 +111,15 @@ export function TextBlockNew({
           titleStyle: { ...gradientStyle }
         };
       case "large":
+        return {
+          title: "text-4xl font-bold lg:text-6xl",
+          subtitle: "mt-5 text-xl",
+          body: "mt-5 text-xl font-body",
+          childGap: "gap-5",
+          childMarginTop: "mt-3",
+          titleStyle: { ...gradientStyle }
+        };
+      case "xlarge":
         return {
           title: "text-4xl font-bold lg:text-6xl",
           subtitle: "mt-6 text-3xl",
@@ -173,11 +195,12 @@ export function TextBlockNew({
         className={`${noPadding ? "" : "container flex-1"} flex flex-col ${verticalClasses}`}
       >
         <div
-          className={`${alignment === "center" ? "text-center" : alignment === "right" ? "text-right" : "text-left"}`}
+          className={`${alignment === "center" ? "text-center" : alignment === "right" ? "text-right" : "text-left"} ${alignment === "center" && maxWidth ? "mx-auto" : ""}`}
+          style={maxWidth ? { maxWidth: `${maxWidth}px` } : {}}
         >
           {title && (
             <h2
-              className={`${textSizes.title} leading-none ${url ? "cursor-pointer hover:opacity-80 transition-opacity duration-200" : ""}`}
+              className={`${textSizes.title} leading-tight ${url ? "cursor-pointer hover:opacity-80 transition-opacity duration-200" : ""}`}
               style={{
                 color: useGradientText ? "transparent" : textColor,
                 ...textSizes.titleStyle
@@ -197,20 +220,19 @@ export function TextBlockNew({
               {subtitle}
             </h3>
           )}
-          {body && (
+          {body && !isEmptyRichText(body) && (
             <ClientHtmlContent
               html={body}
-              className={`rich-text-content ${textSizes.body} ${alignment === "center" ? "max-w-[800px] mx-auto" : "max-w-[800px]"}`}
-              style={{
-                color: subtitleBodyColor
-              }}
+              className={`rich-text-content ${textSizes.body} ${alignment === "center" && !maxWidth ? "max-w-[800px] mx-auto" : !maxWidth ? "max-w-[800px]" : ""}`}
             />
           )}
-          <div
-            className={`flex flex-col w-full ${alignment === "center" ? "justify-center items-center" : alignment === "right" ? "items-end" : "items-start"} ${textSizes.childGap} ${textSizes.childMarginTop}`}
-          >
-            {children}
-          </div>
+          {children && (
+            <div
+              className={`flex flex-col w-full ${alignment === "center" ? "justify-center items-center" : alignment === "right" ? "items-end" : "items-start"} ${textSizes.childGap} ${textSizes.childMarginTop}`}
+            >
+              {children}
+            </div>
+          )}
         </div>
       </div>
     </div>

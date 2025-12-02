@@ -1,93 +1,129 @@
-import MailchimpSingup from "@/components/MailchimpSignup";
-import { useTheme } from "@/helpers/theme";
 import { useSiteData } from "@/helpers/siteData";
 import { ReactSVG } from "react-svg";
 import cx from "classix";
+import { FaTiktok, FaInstagram, FaFacebook, FaTwitter } from "react-icons/fa";
 
-export const FooterNew = ({ social, horizontal, overlay, theme, children }) => {
-  const colors = useTheme(theme);
+export const FooterNew = ({
+  logo,
+  backgroundColor,
+  textColor,
+  copyright,
+  tiktokUrl,
+  instagramUrl,
+  facebookUrl,
+  twitterUrl,
+  horizontal,
+  overlay,
+  children
+}) => {
   const siteData = useSiteData();
+
+  // Use custom logo if provided, otherwise fall back to siteData logo
+  const logoSrc = logo || siteData.logo;
+
+  // Collect social links that have URLs
+  const socialLinks = [
+    { url: tiktokUrl, icon: FaTiktok, label: "TikTok" },
+    { url: instagramUrl, icon: FaInstagram, label: "Instagram" },
+    { url: facebookUrl, icon: FaFacebook, label: "Facebook" },
+    { url: twitterUrl, icon: FaTwitter, label: "Twitter" }
+  ].filter(link => link.url && link.url.trim() !== "");
+
   return (
     <footer
       className={cx("text-neutral-content",  overlay && "transparent relative lg:absolute bottom-[20px] max-w-[1600px] left-0 right-0 mx-auto")}
-      style={{ backgroundColor: !overlay && colors.dark }}
+      style={{
+        backgroundColor: backgroundColor,
+        color: textColor || "#ffffff"
+      }}
     >
       <div className={cx("container", !overlay && "py-12")}>
-        {!overlay && (
-          <ReactSVG
-            src={siteData.logo}
-            beforeInjection={(svg) => {
-              svg.querySelectorAll("[fill]").forEach((element) => {
-                element.removeAttribute("fill");
-              });
-              svg.setAttribute(
-                "style",
-                `width: 100px; height: auto; fill: white !important;`
-              );
-            }}
-          />
-        )}
-        <div
-          className={cx(
-            !overlay && "mt-8 ",
-            "flex flex-wrap items-center justify-between gap-6"
-          )}
-        >
-          {social && (
-            <div className="inline-flex gap-3">
-              {social?.map((item, index) => (
-                <div className="cursor-pointer rounded border border-base-content/10 p-2 transition-all hover:bg-base-content/10">
-                  <FacebookIcon size={16} />
-                </div>
-              ))}
-            </div>
-          )}
-
-          {/* <MailchimpSingup /> */}
-        </div>
-
-        {/* <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-          <div className="flex flex-col gap-5">
-            <h2 className="text-xl font-medium">Features</h2>
-            <div className="space-y-2">
-              <div>
-                <a
-                  className="text-base transition-all duration-500 hover:text-primary"
-                  href="#"
-                >
-                  Overview
-                </a>
-              </div>
-              <div>
-                <a
-                  className="text-base transition-all duration-500 hover:text-primary"
-                  href="#"
-                >
-                  Automation
-                </a>
-              </div>
-              <div>
-                <a
-                  className="text-base transition-all duration-500 hover:text-primary"
-                  href="#"
-                >
-                  Intelligent Personalization
-                </a>
-              </div>
-              <div>
-                <a
-                  className="text-base transition-all duration-500 hover:text-primary"
-                  href="#"
-                >
-                  Predictive Analytics
-                </a>
-              </div>
-            </div>
+        {/* Logo at top left */}
+        {logoSrc && (
+          <div className="mb-8">
+            {logoSrc.endsWith && logoSrc.endsWith('.svg') ? (
+              <ReactSVG
+                src={logoSrc}
+                beforeInjection={(svg) => {
+                  // Set all fills to text color
+                  svg.querySelectorAll("*").forEach((element) => {
+                    if (element.hasAttribute("fill") && element.getAttribute("fill") !== "none") {
+                      element.setAttribute("fill", textColor || "#ffffff");
+                    }
+                    if (element.hasAttribute("stroke") && element.getAttribute("stroke") !== "none") {
+                      element.setAttribute("stroke", textColor || "#ffffff");
+                    }
+                  });
+                  svg.setAttribute(
+                    "style",
+                    `width: 100px; height: auto;`
+                  );
+                }}
+              />
+            ) : (
+              <div
+                style={{
+                  width: '100px',
+                  height: '40px',
+                  backgroundColor: textColor || "#ffffff",
+                  maskImage: `url(${logoSrc})`,
+                  WebkitMaskImage: `url(${logoSrc})`,
+                  maskSize: 'contain',
+                  WebkitMaskSize: 'contain',
+                  maskRepeat: 'no-repeat',
+                  WebkitMaskRepeat: 'no-repeat',
+                  maskPosition: 'left center',
+                  WebkitMaskPosition: 'left center'
+                }}
+              />
+            )}
           </div>
-        </div> */}
-        <div className={cx(horizontal && "flex flex-row w-full gap-10")}>
+        )}
+
+        {/* Children content area */}
+        <div className={cx(horizontal && "flex flex-row w-full gap-10", !overlay && "mt-8")}>
           {children}
         </div>
+
+        {/* Footer bottom - Copyright and Social Icons */}
+        {(copyright || socialLinks.length > 0) && (
+          <div
+            className="mt-8 flex flex-wrap items-center justify-between gap-6 border-t pt-6"
+            style={{ borderColor: `${textColor || "#ffffff"}20` }}
+          >
+            {/* Copyright - bottom left */}
+            <div className="text-sm opacity-70">
+              {copyright || `© ${new Date().getFullYear()} All rights reserved`}
+            </div>
+
+            {/* Social Icons - bottom right */}
+            {socialLinks.length > 0 && (
+              <div className="inline-flex gap-3">
+                {socialLinks.map((link, index) => {
+                  const Icon = link.icon;
+                  return (
+                    <a
+                      key={index}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={link.label}
+                      className="cursor-pointer rounded-full p-2 transition-all hover:opacity-80"
+                      style={{
+                        backgroundColor: textColor || "#ffffff"
+                      }}
+                    >
+                      <Icon
+                        size={18}
+                        style={{ color: backgroundColor || "#000000" }}
+                      />
+                    </a>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </footer>
   );
