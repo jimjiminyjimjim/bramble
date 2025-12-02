@@ -72,7 +72,9 @@ register("insertMenu", {
     { name: "Features List", item: "FeaturesList" },
     { name: "Features Grid", item: "FeatureGridNew" },
     { name: "v2: Footer", item: "Footer" },
-    { name: "v2: Popup", item: "v2: Popup" }
+    { name: "v2: Popup", item: "v2: Popup" },
+    { name: "v2: Pricing Blocks", item: "v2: Pricing Blocks" }
+
   ]
 });
 
@@ -252,7 +254,7 @@ export const customComponents = [
     ]
   },
   {
-    name: "Pricing Blocks",
+    name: "v2: Pricing Blocks",
     component: PricingBlocks,
     canHaveChildren: true,
     shouldReceiveBuilderProps: {
@@ -262,26 +264,7 @@ export const customComponents = [
       builderLinkComponent: true
     },
     inputs: [
-      { name: "anchor", type: "string" },
-      {
-        name: "theme",
-        type: "enum",
-        enum: ["light", "dark", "white"],
-        defaultValue: "light"
-      },
-      { name: "title", type: "string" },
-      {
-        name: "subtitle",
-        type: "string",
-        defaultValue: "Best option for personal use"
-      },
-      { name: "description", type: "string" },
-      {
-        name: "pricingBlocks",
-        type: "list",
-        defaultValue: [{ blocks: [] }],
-        subFields: [
-          {
+       {
             name: "image",
             type: "file",
             allowedFileTypes: ["jpeg", "jpg", "png", "svg"]
@@ -321,8 +304,6 @@ export const customComponents = [
             type: "uiBlocks",
             defaultValue: []
           }
-        ]
-      }
     ]
   },
   {
@@ -1640,6 +1621,25 @@ export const customComponents = [
         name: "backgroundColor",
         type: "color",
         helperText: "Background color for the section"
+      },
+      {
+        name: "backgroundImage",
+        type: "file",
+        allowedFileTypes: ["jpeg", "jpg", "png", "svg", "webp"],
+        helperText: "Background image for the section"
+      },
+      {
+        name: "aspectRatio",
+        type: "enum",
+        enum: ["fluid", "3:2", "16:9"],
+        defaultValue: "fluid",
+        helperText: "Aspect ratio for the section (fluid = no fixed ratio)"
+      },
+      {
+        name: "rounded",
+        type: "boolean",
+        defaultValue: false,
+        helperText: "Apply rounded corners to the section"
       },
       {
         name: "fillWidth",
