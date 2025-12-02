@@ -9,6 +9,7 @@ export function Section({
   backgroundImage,
   aspectRatio = "fluid",
   rounded = false,
+  roundedSize = "1rem",
   fillWidth = true,
   sectionMaxWidth,
   contentMaxWidth = "1400px",
@@ -39,6 +40,7 @@ export function Section({
     backgroundImage: _backgroundImage,
     aspectRatio: _aspectRatio,
     rounded: _rounded,
+    roundedSize: _roundedSize,
     ...safeProps
   } = props;
   // Define vertical margin classes
@@ -154,7 +156,7 @@ export function Section({
       width: '100%'
     }),
     ...(rounded && {
-      borderRadius: '1rem',
+      borderRadius: roundedSize,
       overflow: 'hidden'
     })
   };

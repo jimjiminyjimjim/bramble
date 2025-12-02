@@ -1642,6 +1642,13 @@ export const customComponents = [
         helperText: "Apply rounded corners to the section"
       },
       {
+        name: "roundedSize",
+        type: "string",
+        defaultValue: "1rem",
+        helperText: "Border radius size (e.g., '1rem', '8px', '2rem')",
+        showIf: "options.get('rounded') === true"
+      },
+      {
         name: "fillWidth",
         type: "boolean",
         defaultValue: true,
