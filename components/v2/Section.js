@@ -172,14 +172,15 @@ export function Section({
     return (
       <section
         {...(anchorLink && { id: anchorLink })}
+        className="section-with-aspect-ratio"
         style={sectionStyle}
         {...builderAttributes}
         {...(lazyLoad && { 'data-lazy': 'true' })}
         {...safeProps}
       >
-        <div style={{ paddingBottom: aspectRatioPadding, position: 'relative' }}>
+        <div className="aspect-ratio-wrapper" style={{ paddingBottom: aspectRatioPadding, position: 'relative' }}>
           <div
-            className={containerClasses}
+            className={`${containerClasses} aspect-ratio-content`}
             style={{
               ...containerStyle,
               position: 'absolute',

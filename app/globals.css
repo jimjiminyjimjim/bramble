@@ -104,3 +104,25 @@ padding:0 !important
   list-style-type: lower-roman;
 }
 
+/* Builder.io columns gap on mobile/tablet */
+@media (max-width: 991px) {
+  .builder-columns {
+    gap: 1.5rem;
+  }
+}
+
+/* Remove aspect ratio constraint on mobile for Section component */
+@media (max-width: 991px) {
+  .section-with-aspect-ratio .aspect-ratio-wrapper {
+    padding-bottom: 0 !important;
+    position: static !important;
+  }
+
+  .section-with-aspect-ratio .aspect-ratio-content {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+  }
+}
