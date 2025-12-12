@@ -9,7 +9,9 @@
       "Bash(lsof:*)",
       "Bash(kill:*)",
       "Bash(yarn dev:*)",
-      "Bash(yarn build:*)"
+      "Bash(yarn build:*)",
+      "Bash(npm view:*)",
+      "WebSearch"
     ],
     "deny": [],
     "ask": [],

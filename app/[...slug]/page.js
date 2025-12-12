@@ -11,8 +11,8 @@ const PUBLIC_API_KEY = process.env.NEXT_PUBLIC_BUILDER_API_KEY
 
 
 export async function generateMetadata({ params, searchParams }) {
-    const { slug } = await params;
-    const {asyncSearchParams} = await searchParams;
+  const { slug } = await params;
+  const awaitedSearchParams = await searchParams;
 
   const urlPath = "/" + (slug?.join("/") || "");
 
