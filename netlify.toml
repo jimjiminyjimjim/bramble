@@ -4,7 +4,7 @@
 
 [build.environment]
   # Force Node 18 - Node 20's undici has known issues with diagnostics_channel
-  NODE_VERSION = "18.19.0"
+  NODE_VERSION = "22"
 
 [functions]
   # Use Node 18 for functions too

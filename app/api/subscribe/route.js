@@ -111,6 +111,18 @@ export async function POST(req) {
 
   const API_KEY = process.env.MAILCHIMP_API_KEY;
   const LIST_ID = process.env.MAILCHIMP_LIST_ID;
+
+  // Validate env vars before using them
+  if (!API_KEY || !LIST_ID) {
+    console.error("Missing MAILCHIMP_API_KEY or MAILCHIMP_LIST_ID env vars");
+    return NextResponse.json({ error: "Server configuration error" }, { status: 500 });
+  }
+
+  if (!API_KEY.includes("-")) {
+    console.error("Invalid MAILCHIMP_API_KEY format - missing datacenter suffix");
+    return NextResponse.json({ error: "Server configuration error" }, { status: 500 });
+  }
+
   const DATACENTER = API_KEY.split("-")[1]; // e.g. "us14"
 
   const url = `https://${DATACENTER}.api.mailchimp.com/3.0/lists/${LIST_ID}/members/${Buffer.from(
