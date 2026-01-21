@@ -1,12 +1,14 @@
 {
-  "@originContentId": "f92a73106ee0cecffd91022cf982faba6b23105171ed14c9ab695b55b761c9fd",
-  "@originModelId": "c339362bce74f3acba03234e5f6191965fa473ec9deb887c1d5e235be47d86a9",
-  "@originOrg": "1b7e142479ce491d93f824fd954bb32e",
-  "createdBy": "dcNxI5zabAdsqPRZxnbPU4eFr6H2",
+  "query": [],
+  "folders": [],
+  "id": "ef17e20545824c33a4826d589e6cf5db",
+  "name": "CSS Global",
+  "published": "published",
   "createdDate": 1729595774456,
+  "modelId": "1434f952482144588085e9070c4d8b2e",
   "data": {
-    "cssCode": "/*\n* Custom CSS styles\n*\n* Global by default, but use `&` to scope to just this content, e.g.\n*\n*   & .foo {\n*     color: 'red'\n*   }\n*/\n\n* {\n    background-color: 'blue';\n}",
     "inputs": [],
+    "cssCode": "/*\n* Custom CSS styles\n*\n* Global by default, but use `&` to scope to just this content, e.g.\n*\n*   & .foo {\n*     color: 'red'\n*   }\n*/\n\n* {\n    background-color: 'blue';\n}",
     "state": {
       "deviceSize": "large",
       "location": {
@@ -16,20 +18,18 @@
     },
     "blocks": []
   },
-  "firstPublished": 1729595868329,
-  "folders": [],
-  "id": "c2accda6e48a45479bab63d2cccdb2c2",
-  "lastUpdated": 1729595868338,
-  "lastUpdatedBy": "dcNxI5zabAdsqPRZxnbPU4eFr6H2",
   "meta": {
     "kind": "component",
     "lastPreviewUrl": ""
   },
-  "modelId": "a58c6317a3e44dc18942f908a1695b7b",
-  "name": "CSS Global",
-  "published": "published",
-  "query": [],
-  "rev": "2u8u9gotjy",
+  "variations": {},
+  "lastUpdated": 1729595868338,
+  "firstPublished": 1729595868329,
   "testRatio": 1,
-  "variations": {}
+  "createdBy": "dcNxI5zabAdsqPRZxnbPU4eFr6H2",
+  "lastUpdatedBy": "dcNxI5zabAdsqPRZxnbPU4eFr6H2",
+  "rev": "ajubz8wnxf",
+  "@originOrg": "78e83bccf80d4dd5981595b9dc8f5296",
+  "@originContentId": "efa3ae50959d0b30e14cc2041b588d1946de34504d80057993121df658e763af",
+  "@originModelId": "881a8bfe34baa2ac18200345c342d067dd58f073cd95502aa09bdfdb2b14c2d6"
 }

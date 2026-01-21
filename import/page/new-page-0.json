@@ -1,0 +1,1299 @@
+{
+  "createdBy": "dcNxI5zabAdsqPRZxnbPU4eFr6H2",
+  "createdDate": 1764690244396,
+  "data": {
+    "description": "Continuous, personalised support throughout your pregnancy.",
+    "themeId": false,
+    "title": "Macha - Your AI Midwife",
+    "blocks": [
+      {
+        "@type": "@builder.io/sdk:Element",
+        "@version": 2,
+        "id": "builder-e8064334d1014bbbaae78e6841a9e322",
+        "meta": {
+          "previousId": "builder-4b3e8b6449a94b6fa78e9309a4e897f0"
+        },
+        "component": {
+          "name": "v2: Topbar New",
+          "options": {
+            "logo": [
+              {
+                "@type": "@builder.io/sdk:Element",
+                "@version": 2,
+                "id": "builder-6e4f694ecee64d61987be59a8f384db0",
+                "component": {
+                  "name": "Image",
+                  "options": {
+                    "alt": "",
+                    "alignment": "center",
+                    "verticalAlignment": "center",
+                    "aspectRatio": 1,
+                    "fitContent": false,
+                    "lazy": true,
+                    "lockAspectRatio": false,
+                    "image": "https://cdn.builder.io/api/v1/image/assets%2F78e83bccf80d4dd5981595b9dc8f5296%2F2878e17f190043579e262bc8f4163881",
+                    "maxWidth": 200
+                  },
+                  "isRSC": null
+                },
+                "responsiveStyles": {
+                  "large": {
+                    "position": "relative",
+                    "width": "100%"
+                  }
+                }
+              }
+            ],
+            "logoUrl": "/",
+            "theme": "light",
+            "maxWidth": 1400,
+            "navItems": [],
+            "backgroundColor": "rgba(221, 232, 185, 1)"
+          },
+          "isRSC": null
+        },
+        "children": [
+          {
+            "@type": "@builder.io/sdk:Element",
+            "@version": 2,
+            "id": "builder-8651e510d1db438dabfedae910d42289",
+            "meta": {
+              "previousId": "builder-d08175049ead449891b0b6329dfcf9dc"
+            },
+            "component": {
+              "name": "Core:Button",
+              "options": {
+                "backgroundColor": "rgba(65, 117, 5, 1)",
+                "textColor": "#FFFFFF",
+                "rounded": true,
+                "maxWidth": "500px",
+                "size": "medium",
+                "url": "pricing",
+                "linkType": "scrollTo",
+                "tagManagerEvent": "",
+                "disabled": false,
+                "text": "Start Free Trial"
+              },
+              "isRSC": null
+            }
+          }
+        ]
+      },
+      {
+        "@type": "@builder.io/sdk:Element",
+        "@version": 2,
+        "id": "builder-69b1ef22a9aa4f1da5a2e4ebaaf9f974",
+        "meta": {
+          "previousId": "builder-de0b0c0bb98045a0b5a1abf5da54bab2"
+        },
+        "component": {
+          "name": "Core:Section",
+          "options": {
+            "anchorLink": "",
+            "verticalMargin": "large",
+            "horizontalMargin": "none",
+            "verticalAlignment": "center",
+            "fillWidth": true,
+            "fillHeight": false,
+            "contentMaxWidth": "",
+            "lazyLoad": false,
+            "backgroundImage": "https://cdn.builder.io/api/v1/image/assets%2F78e83bccf80d4dd5981595b9dc8f5296%2F10408010f20a4491ae8b86e0a32caaf8",
+            "aspectRatio": "16:9"
+          },
+          "isRSC": null
+        },
+        "children": [
+          {
+            "@type": "@builder.io/sdk:Element",
+            "@version": 2,
+            "id": "builder-b8d791661ff949e5bebf03bce02a4dff",
+            "meta": {
+              "previousId": "builder-60c83ffd915445d187fa64576a0dca6a"
+            },
+            "component": {
+              "name": "TextBlockNew",
+              "options": {
+                "verticalAlignment": "middle",
+                "textSize": "large",
+                "title": "Continuous, personalised support throughout your pregnancy",
+                "useGradientText": false,
+                "gradientColor1": "#3B82F6",
+                "gradientColor2": "#8B5CF6",
+                "subtitle": "Clear, consistent guidance - informed by midwives, powered by AI.",
+                "body": "<p><br></p>",
+                "noPadding": true,
+                "url": "",
+                "linkType": "internal",
+                "alignment": "center",
+                "textColor": "rgba(255, 255, 255, 1)",
+                "subtitleBodyColor": "rgba(255, 255, 255, 1)",
+                "maxWidth": 1000
+              },
+              "isRSC": null
+            },
+            "children": [
+              {
+                "@type": "@builder.io/sdk:Element",
+                "@version": 2,
+                "id": "builder-3bbe4cf57c5749ae933a0ed84a877a85",
+                "meta": {
+                  "previousId": "builder-c8171d9a9bad41ab89643dfda05287e4"
+                },
+                "component": {
+                  "name": "Core:Button",
+                  "options": {
+                    "backgroundColor": "rgba(65, 117, 5, 1)",
+                    "textColor": "#FFFFFF",
+                    "rounded": true,
+                    "maxWidth": "300px",
+                    "size": "medium",
+                    "url": "pricing",
+                    "linkType": "scrollTo",
+                    "tagManagerEvent": "",
+                    "disabled": false,
+                    "text": "Start Free Trial"
+                  },
+                  "isRSC": null
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "@type": "@builder.io/sdk:Element",
+        "@version": 2,
+        "id": "builder-7c19c2ff50584599ad4319087b8aeaa9",
+        "meta": {
+          "previousId": "builder-6c3c409a60de4fac86addeb7776255ac"
+        },
+        "component": {
+          "name": "Core:Section",
+          "options": {
+            "maxWidth": 1200,
+            "lazyLoad": false,
+            "verticalMargin": "large",
+            "horizontalMargin": "medium",
+            "backgroundColor": "#f7e6d8"
+          },
+          "isRSC": null
+        },
+        "children": [
+          {
+            "@type": "@builder.io/sdk:Element",
+            "@version": 2,
+            "layerName": "TextBlockNew",
+            "id": "builder-57aaa35991fe4a0094681e75c1033473",
+            "meta": {
+              "previousId": "builder-e5b5674fde4d4d6fa68aabc371e48c9b"
+            },
+            "component": {
+              "name": "TextBlockNew",
+              "options": {
+                "verticalAlignment": "middle",
+                "textSize": "medium",
+                "title": "You shouldn’t have to navigate pregnancy alone.",
+                "useGradientText": false,
+                "gradientColor1": "#3B82F6",
+                "gradientColor2": "#8B5CF6",
+                "subtitle": "Macha is with you every day - through every question, every symptom, and every change.",
+                "body": "",
+                "noPadding": true,
+                "url": "",
+                "linkType": "internal",
+                "alignment": "center",
+                "textColor": "rgba(56, 56, 56, 1)",
+                "subtitleBodyColor": "#4a4a4a",
+                "maxWidth": 900
+              },
+              "isRSC": null
+            }
+          }
+        ],
+        "responsiveStyles": {
+          "large": {
+            "paddingLeft": "20px",
+            "paddingRight": "20px",
+            "paddingTop": "20px",
+            "paddingBottom": "20px",
+            "marginTop": "0px",
+            "minHeight": "100px"
+          }
+        }
+      },
+      {
+        "@type": "@builder.io/sdk:Element",
+        "@version": 2,
+        "id": "builder-a15b423993cd4180aa5cc3513353539e",
+        "meta": {
+          "previousId": "builder-9fd034f1f9af4abfbfae2f55a6b0c4bb"
+        },
+        "component": {
+          "name": "Core:Section",
+          "options": {
+            "anchorLink": "",
+            "verticalMargin": "small",
+            "horizontalMargin": "large",
+            "verticalAlignment": "top",
+            "fillWidth": true,
+            "fillHeight": false,
+            "contentMaxWidth": "1200px",
+            "lazyLoad": false,
+            "backgroundColor": "rgba(221, 232, 185, 1)"
+          },
+          "isRSC": null
+        },
+        "children": [
+          {
+            "@type": "@builder.io/sdk:Element",
+            "@version": 2,
+            "id": "builder-eb9583865ecc4ca7b88aa00001f77978",
+            "meta": {
+              "previousId": "builder-907aa80f23e14ba1b196efaf02534dce"
+            },
+            "component": {
+              "name": "Columns",
+              "options": {
+                "columns": [
+                  {
+                    "blocks": [
+                      {
+                        "@type": "@builder.io/sdk:Element",
+                        "@version": 2,
+                        "id": "builder-fc8bcb58c7654ff7baf494ffbed3cfb8",
+                        "component": {
+                          "name": "Core:Section",
+                          "options": {
+                            "anchorLink": "",
+                            "verticalMargin": "medium",
+                            "horizontalMargin": "large",
+                            "verticalAlignment": "center",
+                            "aspectRatio": "fluid",
+                            "fillWidth": true,
+                            "fillHeight": false,
+                            "contentMaxWidth": "1400px",
+                            "lazyLoad": false,
+                            "rounded": false
+                          },
+                          "isRSC": null
+                        },
+                        "children": [
+                          {
+                            "@type": "@builder.io/sdk:Element",
+                            "@version": 2,
+                            "id": "builder-3d623f58f4e34b8bacdd6c5175e00d70",
+                            "meta": {
+                              "previousId": "builder-f4a9a102277f4af19fe48777bfc36235"
+                            },
+                            "component": {
+                              "name": "TextBlockNew",
+                              "options": {
+                                "verticalAlignment": "middle",
+                                "textSize": "medium",
+                                "title": "One consistent companion for your whole pregnancy",
+                                "useGradientText": false,
+                                "gradientColor1": "#3B82F6",
+                                "gradientColor2": "#8B5CF6",
+                                "subtitle": "No repeating yourself and no gaps between appointments - just continuous, personalised support from start to finish.",
+                                "body": "",
+                                "noPadding": true,
+                                "url": "",
+                                "linkType": "internal",
+                                "textColor": "rgba(65, 117, 5, 1)"
+                              },
+                              "isRSC": null
+                            },
+                            "responsiveStyles": {
+                              "large": {
+                                "position": "relative"
+                              }
+                            }
+                          },
+                          {
+                            "@type": "@builder.io/sdk:Element",
+                            "@version": 2,
+                            "id": "builder-fed6f464b641438388a9dec5d5cc2e4e",
+                            "meta": {
+                              "previousId": "builder-c3e352657141425bb49733e56a9d1dcc"
+                            },
+                            "component": {
+                              "name": "FeaturesList",
+                              "options": {
+                                "iconColor": "#155e14",
+                                "align": "left",
+                                "size": "large",
+                                "features": [
+                                  {
+                                    "title": "Ask anything, anytime",
+                                    "description": "Get clear, evidence-based guidance when you need it - no waiting, no judgement.",
+                                    "icon": "AiOutlineCheckCircle"
+                                  },
+                                  {
+                                    "title": "Care personalised to you",
+                                    "description": "Every pregnancy is different. Macha adapts to your history, stage, symptoms and patterns.",
+                                    "icon": "AiOutlineCheckCircle"
+                                  },
+                                  {
+                                    "title": "Spot patterns early",
+                                    "description": "Recognise changes and trends sooner - so you can have more informed conversations with your midwife.",
+                                    "icon": "AiOutlineCheckCircle"
+                                  },
+                                  {
+                                    "title": "Your pregnancy record, in one place",
+                                    "description": "Track symptoms, questions and important details - so nothing gets lost between appointments.",
+                                    "icon": "AiOutlineCheckCircle"
+                                  }
+                                ]
+                              },
+                              "isRSC": null
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "blocks": [
+                      {
+                        "@type": "@builder.io/sdk:Element",
+                        "@version": 2,
+                        "id": "builder-56cc6f3acaad45528ea353ef6f603209",
+                        "component": {
+                          "name": "Image",
+                          "options": {
+                            "alt": "",
+                            "alignment": "center",
+                            "verticalAlignment": "center",
+                            "aspectRatio": 1,
+                            "fitContent": false,
+                            "lazy": true,
+                            "lockAspectRatio": false,
+                            "image": "https://cdn.builder.io/api/v1/image/assets%2F78e83bccf80d4dd5981595b9dc8f5296%2F48f7be171e9047cda2d7abfdf3badc27",
+                            "maxWidth": 300
+                          },
+                          "isRSC": null
+                        },
+                        "responsiveStyles": {
+                          "large": {
+                            "position": "relative",
+                            "width": "100%"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "space": 0,
+                "stackColumnsAt": "tablet",
+                "reverseColumnsWhenStacked": false
+              },
+              "isRSC": true
+            }
+          }
+        ]
+      },
+      {
+        "@type": "@builder.io/sdk:Element",
+        "@version": 2,
+        "id": "builder-4aca44987b56436e8364c7285092904f",
+        "component": {
+          "name": "Core:Section",
+          "options": {
+            "anchorLink": "",
+            "verticalMargin": "medium",
+            "horizontalMargin": "large",
+            "verticalAlignment": "center",
+            "aspectRatio": "fluid",
+            "rounded": false,
+            "roundedSize": "1rem",
+            "fillWidth": true,
+            "fillHeight": false,
+            "contentMaxWidth": "1200px",
+            "lazyLoad": false,
+            "backgroundColor": "#f7e6d8"
+          },
+          "isRSC": null
+        },
+        "children": [
+          {
+            "@type": "@builder.io/sdk:Element",
+            "@version": 2,
+            "id": "builder-6ca56031329649d2b93ccf6b0fe9068c",
+            "meta": {
+              "previousId": "builder-e0ab4f5bbb874baea3afce23e5db2e37"
+            },
+            "component": {
+              "name": "TextBlockNew",
+              "options": {
+                "verticalAlignment": "middle",
+                "textSize": "medium",
+                "title": "Why women love Macha",
+                "useGradientText": false,
+                "gradientColor1": "#3B82F6",
+                "gradientColor2": "#8B5CF6",
+                "subtitle": "",
+                "body": "",
+                "noPadding": true,
+                "url": "",
+                "linkType": "internal",
+                "alignment": "center",
+                "textColor": "rgba(74, 74, 74, 1)",
+                "subtitleBodyColor": "#4a4a4a"
+              },
+              "isRSC": null
+            }
+          },
+          {
+            "@type": "@builder.io/sdk:Element",
+            "@version": 2,
+            "id": "builder-1ba8ec64bd324b98bc6d06b94644598d",
+            "component": {
+              "name": "FeatureGridNew",
+              "options": {
+                "features": [
+                  {
+                    "title": "Less stress and uncertainty",
+                    "description": "",
+                    "icon": "AiOutlineCheckCircle"
+                  },
+                  {
+                    "title": "More confidence between appointments",
+                    "description": "",
+                    "icon": "AiOutlineCheckCircle"
+                  },
+                  {
+                    "title": "Guidance that reflects your pregnancy",
+                    "description": "",
+                    "icon": "AiOutlineCheckCircle"
+                  },
+                  {
+                    "title": "Trusted and midwife-informed",
+                    "description": "",
+                    "icon": "AiOutlineCheckCircle"
+                  }
+                ],
+                "size": "large",
+                "align": "center",
+                "textColor": "rgba(74, 74, 74, 1)",
+                "iconColor": "rgba(78, 129, 43, 1)"
+              },
+              "isRSC": null
+            }
+          }
+        ]
+      },
+      {
+        "@type": "@builder.io/sdk:Element",
+        "@version": 2,
+        "id": "builder-4a031f7ac09b4257ade2165bf341d449",
+        "meta": {
+          "previousId": "builder-9c4756c405a94de58d2788ca07729177"
+        },
+        "component": {
+          "name": "Core:Section",
+          "options": {
+            "anchorLink": "",
+            "verticalMargin": "medium",
+            "horizontalMargin": "medium",
+            "verticalAlignment": "top",
+            "fillWidth": true,
+            "fillHeight": false,
+            "contentMaxWidth": "1400px",
+            "lazyLoad": false,
+            "backgroundColor": "#dde8b9",
+            "rounded": false
+          },
+          "isRSC": null
+        },
+        "children": [
+          {
+            "@type": "@builder.io/sdk:Element",
+            "@version": 2,
+            "id": "builder-e0ab4f5bbb874baea3afce23e5db2e37",
+            "meta": {
+              "previousId": "builder-70a45721aa4f4d74982b5a634754a171"
+            },
+            "component": {
+              "name": "TextBlockNew",
+              "options": {
+                "verticalAlignment": "middle",
+                "textSize": "medium",
+                "title": "Trusted and clinically informed",
+                "useGradientText": false,
+                "gradientColor1": "#3B82F6",
+                "gradientColor2": "#8B5CF6",
+                "subtitle": "Macha is built on trusted NHS and NICE guidelines and reviewed by midwifery experts.",
+                "body": "<p><br /></p>\n",
+                "noPadding": true,
+                "url": "",
+                "linkType": "internal",
+                "alignment": "center",
+                "textColor": "rgba(74, 74, 74, 1)",
+                "subtitleBodyColor": "#4a4a4a"
+              },
+              "isRSC": null
+            }
+          },
+          {
+            "@type": "@builder.io/sdk:Element",
+            "@version": 2,
+            "id": "builder-61a7055e7e724f23a546446cfffdf61e",
+            "meta": {
+              "previousId": "builder-0ce51820d2124c81958c7853274ad963"
+            },
+            "component": {
+              "name": "Columns",
+              "options": {
+                "columns": [
+                  {
+                    "blocks": [
+                      {
+                        "@type": "@builder.io/sdk:Element",
+                        "@version": 2,
+                        "id": "builder-5ef2ce2a6bd2433b9a4fdc826a547b5b",
+                        "component": {
+                          "name": "Core:Section",
+                          "options": {
+                            "anchorLink": "",
+                            "verticalMargin": "medium",
+                            "horizontalMargin": "large",
+                            "verticalAlignment": "top",
+                            "fillWidth": true,
+                            "fillHeight": false,
+                            "contentMaxWidth": "1400px",
+                            "lazyLoad": false,
+                            "backgroundColor": "rgba(255, 255, 255, 1)",
+                            "rounded": true
+                          },
+                          "isRSC": null
+                        },
+                        "children": [
+                          {
+                            "@type": "@builder.io/sdk:Element",
+                            "@version": 2,
+                            "id": "builder-70a45721aa4f4d74982b5a634754a171",
+                            "component": {
+                              "name": "TextBlockNew",
+                              "options": {
+                                "verticalAlignment": "middle",
+                                "textSize": "medium-small",
+                                "title": "“Macha filled the gaps between my midwife appointments. I got answers straight away and felt confident at each check-up.\"",
+                                "useGradientText": false,
+                                "gradientColor1": "#3B82F6",
+                                "gradientColor2": "#8B5CF6",
+                                "subtitle": "Sara, First time mum",
+                                "body": "<p><br></p>",
+                                "noPadding": true,
+                                "url": "",
+                                "linkType": "internal",
+                                "alignment": "center",
+                                "textColor": "rgba(74, 74, 74, 1)",
+                                "subtitleBodyColor": "rgba(65, 117, 5, 1)"
+                              },
+                              "isRSC": null
+                            }
+                          }
+                        ],
+                        "responsiveStyles": {
+                          "large": {
+                            "position": "relative"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "blocks": [
+                      {
+                        "@type": "@builder.io/sdk:Element",
+                        "@version": 2,
+                        "id": "builder-60a98a1318394baab09ef80754f09659",
+                        "component": {
+                          "name": "Core:Section",
+                          "options": {
+                            "anchorLink": "",
+                            "verticalMargin": "medium",
+                            "horizontalMargin": "large",
+                            "verticalAlignment": "top",
+                            "fillWidth": true,
+                            "fillHeight": false,
+                            "contentMaxWidth": "1400px",
+                            "lazyLoad": false,
+                            "backgroundColor": "rgba(255, 255, 255, 1)",
+                            "rounded": true
+                          },
+                          "isRSC": null
+                        },
+                        "children": [
+                          {
+                            "@type": "@builder.io/sdk:Element",
+                            "@version": 2,
+                            "id": "builder-643e7db34bee4616a87eb72abe8dbfeb",
+                            "meta": {
+                              "previousId": "builder-e75eda568fe5460e8debb22b11ca2168"
+                            },
+                            "component": {
+                              "name": "TextBlockNew",
+                              "options": {
+                                "verticalAlignment": "middle",
+                                "textSize": "medium-small",
+                                "title": "\"It helped me understand what was normal for my pregnancy. I knew exactly what to raise with my midwife.”",
+                                "useGradientText": false,
+                                "gradientColor1": "#3B82F6",
+                                "gradientColor2": "#8B5CF6",
+                                "subtitle": "Adeola, First time mum",
+                                "body": "<p><br></p>",
+                                "noPadding": true,
+                                "url": "",
+                                "linkType": "internal",
+                                "alignment": "center",
+                                "textColor": "rgba(74, 74, 74, 1)",
+                                "subtitleBodyColor": "rgba(65, 117, 5, 1)"
+                              },
+                              "isRSC": null
+                            }
+                          }
+                        ],
+                        "responsiveStyles": {
+                          "large": {
+                            "position": "relative"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "blocks": [
+                      {
+                        "@type": "@builder.io/sdk:Element",
+                        "@version": 2,
+                        "id": "builder-f74708bcc8794a5aa6bd014fee87f429",
+                        "component": {
+                          "name": "Core:Section",
+                          "options": {
+                            "anchorLink": "",
+                            "verticalMargin": "medium",
+                            "horizontalMargin": "large",
+                            "verticalAlignment": "top",
+                            "fillWidth": true,
+                            "fillHeight": false,
+                            "contentMaxWidth": "1400px",
+                            "lazyLoad": false,
+                            "backgroundColor": "rgba(255, 255, 255, 1)",
+                            "rounded": true
+                          },
+                          "isRSC": null
+                        },
+                        "children": [
+                          {
+                            "@type": "@builder.io/sdk:Element",
+                            "@version": 2,
+                            "id": "builder-299c44d9214d40f7b14445fa772b16eb",
+                            "meta": {
+                              "previousId": "builder-ed6c34a7f32145b98540ed3aa9492ae2"
+                            },
+                            "component": {
+                              "name": "TextBlockNew",
+                              "options": {
+                                "verticalAlignment": "middle",
+                                "textSize": "medium-small",
+                                "title": "“I wish I’d had this in my previous pregnancies. It made such a difference having one consistent source of support.”",
+                                "useGradientText": false,
+                                "gradientColor1": "#3B82F6",
+                                "gradientColor2": "#8B5CF6",
+                                "subtitle": "Jo, Mum of two",
+                                "body": "<p><br></p>",
+                                "noPadding": true,
+                                "url": "",
+                                "linkType": "internal",
+                                "alignment": "center",
+                                "textColor": "rgba(74, 74, 74, 1)",
+                                "subtitleBodyColor": "rgba(65, 117, 5, 1)"
+                              },
+                              "isRSC": null
+                            }
+                          }
+                        ],
+                        "responsiveStyles": {
+                          "large": {
+                            "position": "relative"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "space": 80,
+                "stackColumnsAt": "tablet",
+                "reverseColumnsWhenStacked": false
+              },
+              "isRSC": true
+            }
+          }
+        ]
+      },
+      {
+        "@type": "@builder.io/sdk:Element",
+        "@version": 2,
+        "id": "builder-f8ff87399d8443e3af50529e3c1ca573",
+        "component": {
+          "name": "Core:Section",
+          "options": {
+            "anchorLink": "pricing",
+            "verticalMargin": "medium",
+            "horizontalMargin": "medium",
+            "verticalAlignment": "top",
+            "gap": "medium",
+            "aspectRatio": "fluid",
+            "rounded": false,
+            "roundedSize": "1rem",
+            "fillWidth": true,
+            "fillHeight": false,
+            "contentMaxWidth": "1400px",
+            "lazyLoad": false,
+            "backgroundColor": "#f7e6d8"
+          },
+          "isRSC": null
+        },
+        "children": [
+          {
+            "@type": "@builder.io/sdk:Element",
+            "@version": 2,
+            "id": "builder-d83d049be9804cf9aa57eb2ed9b39fa7",
+            "meta": {
+              "previousId": "builder-8588be640987499c9929c2ad9cbb1859"
+            },
+            "component": {
+              "name": "TextBlockNew",
+              "options": {
+                "verticalAlignment": "middle",
+                "textSize": "medium",
+                "title": "Simple pricing. Full support. Choose the plan that fits your journey.",
+                "useGradientText": false,
+                "gradientColor1": "#3B82F6",
+                "gradientColor2": "#8B5CF6",
+                "subtitle": "Join thousands of women using Macha for daily pregnancy support.",
+                "body": "",
+                "noPadding": true,
+                "url": "",
+                "linkType": "internal",
+                "alignment": "center",
+                "textColor": "rgba(65, 117, 5, 1)",
+                "maxWidth": 900
+              },
+              "isRSC": null
+            }
+          },
+          {
+            "@type": "@builder.io/sdk:Element",
+            "@version": 2,
+            "id": "builder-1adaab7c94934013bdba9614ab241fe0",
+            "component": {
+              "name": "Core:Section",
+              "options": {
+                "anchorLink": "",
+                "verticalMargin": "none",
+                "horizontalMargin": "medium",
+                "verticalAlignment": "top",
+                "gap": "medium",
+                "aspectRatio": "fluid",
+                "rounded": false,
+                "roundedSize": "1rem",
+                "fillWidth": true,
+                "fillHeight": false,
+                "contentMaxWidth": "800px",
+                "lazyLoad": false
+              },
+              "isRSC": null
+            },
+            "children": [
+              {
+                "@type": "@builder.io/sdk:Element",
+                "@version": 2,
+                "id": "builder-a6583b2538e741af91a3fd611e9d8909",
+                "component": {
+                  "name": "Columns",
+                  "options": {
+                    "columns": [
+                      {
+                        "blocks": [
+                          {
+                            "@type": "@builder.io/sdk:Element",
+                            "@version": 2,
+                            "id": "builder-0cae785634844862b5c01299dabfef6a",
+                            "component": {
+                              "name": "v2: Pricing Blocks",
+                              "options": {
+                                "title": "Monthly plan",
+                                "price": "£10",
+                                "description": "",
+                                "blocks": [
+                                  {
+                                    "@type": "@builder.io/sdk:Element",
+                                    "@version": 2,
+                                    "id": "builder-f660e8062de24905b393b65d6ea5871a",
+                                    "component": {
+                                      "name": "Core:Section",
+                                      "options": {
+                                        "anchorLink": "",
+                                        "verticalMargin": "none",
+                                        "horizontalMargin": "medium",
+                                        "verticalAlignment": "center",
+                                        "aspectRatio": "fluid",
+                                        "rounded": false,
+                                        "roundedSize": "1rem",
+                                        "fillWidth": true,
+                                        "fillHeight": false,
+                                        "contentMaxWidth": "1400px",
+                                        "lazyLoad": false,
+                                        "gap": "small"
+                                      },
+                                      "isRSC": null
+                                    },
+                                    "children": [
+                                      {
+                                        "@type": "@builder.io/sdk:Element",
+                                        "@version": 2,
+                                        "id": "builder-1cff82d6fc034938992e34017ccca012",
+                                        "component": {
+                                          "name": "TextBlockNew",
+                                          "options": {
+                                            "verticalAlignment": "middle",
+                                            "textSize": "medium-small",
+                                            "title": "",
+                                            "useGradientText": false,
+                                            "gradientColor1": "#3B82F6",
+                                            "gradientColor2": "#8B5CF6",
+                                            "subtitle": "",
+                                            "body": "<p>Includes a free 2-week trial.</p><p>You won’t be charged today.</p>",
+                                            "noPadding": true,
+                                            "url": "",
+                                            "linkType": "internal",
+                                            "alignment": "center"
+                                          },
+                                          "isRSC": null
+                                        },
+                                        "responsiveStyles": {
+                                          "large": {
+                                            "position": "relative"
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "@type": "@builder.io/sdk:Element",
+                                        "@version": 2,
+                                        "id": "builder-7893ff8341544dd19011da86b873e7a9",
+                                        "component": {
+                                          "name": "Core:Button",
+                                          "options": {
+                                            "backgroundColor": "rgba(65, 117, 5, 1)",
+                                            "textColor": "#FFFFFF",
+                                            "rounded": true,
+                                            "maxWidth": "500px",
+                                            "size": "medium",
+                                            "url": "https://p25yjjmtqao.typeform.com/macha",
+                                            "linkType": "external",
+                                            "tagManagerEvent": "buttonClick",
+                                            "disabled": false,
+                                            "text": "Start your free trial"
+                                          },
+                                          "isRSC": null
+                                        }
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "period": "per month",
+                                "features": [
+                                  {
+                                    "description": "Individual configuration"
+                                  },
+                                  {
+                                    "description": "Individual configuration"
+                                  },
+                                  {
+                                    "description": "Individual configuration"
+                                  }
+                                ]
+                              },
+                              "isRSC": null
+                            },
+                            "responsiveStyles": {
+                              "large": {
+                                "position": "relative"
+                              }
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "blocks": [
+                          {
+                            "@type": "@builder.io/sdk:Element",
+                            "@version": 2,
+                            "id": "builder-deff96e2dd2e4306bc43783fa4f27428",
+                            "meta": {
+                              "previousId": "builder-ef687f9676384760a52949095aea0213"
+                            },
+                            "component": {
+                              "name": "v2: Pricing Blocks",
+                              "options": {
+                                "title": "All four trimesters",
+                                "price": "£79",
+                                "description": "",
+                                "blocks": [
+                                  {
+                                    "@type": "@builder.io/sdk:Element",
+                                    "@version": 2,
+                                    "id": "builder-6045bbedc3d74373bdef605c0538777f",
+                                    "component": {
+                                      "name": "Core:Section",
+                                      "options": {
+                                        "anchorLink": "",
+                                        "verticalMargin": "none",
+                                        "horizontalMargin": "medium",
+                                        "verticalAlignment": "center",
+                                        "aspectRatio": "fluid",
+                                        "rounded": false,
+                                        "roundedSize": "1rem",
+                                        "fillWidth": true,
+                                        "fillHeight": false,
+                                        "contentMaxWidth": "1400px",
+                                        "lazyLoad": false,
+                                        "gap": "small"
+                                      },
+                                      "isRSC": null
+                                    },
+                                    "children": [
+                                      {
+                                        "@type": "@builder.io/sdk:Element",
+                                        "@version": 2,
+                                        "id": "builder-b9480e9f016d483ca3c813cdd68b6d7d",
+                                        "component": {
+                                          "name": "TextBlockNew",
+                                          "options": {
+                                            "verticalAlignment": "middle",
+                                            "textSize": "medium-small",
+                                            "title": "",
+                                            "useGradientText": false,
+                                            "gradientColor1": "#3B82F6",
+                                            "gradientColor2": "#8B5CF6",
+                                            "subtitle": "",
+                                            "body": "<p>Includes a free 2-week trial.</p><p>You won’t be charged today.</p>",
+                                            "noPadding": true,
+                                            "url": "",
+                                            "linkType": "internal",
+                                            "alignment": "center"
+                                          },
+                                          "isRSC": null
+                                        },
+                                        "responsiveStyles": {
+                                          "large": {
+                                            "position": "relative"
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "@type": "@builder.io/sdk:Element",
+                                        "@version": 2,
+                                        "id": "builder-2d238a5465d243f0b59bd40ce078f99e",
+                                        "component": {
+                                          "name": "Core:Button",
+                                          "options": {
+                                            "backgroundColor": "rgba(65, 117, 5, 1)",
+                                            "textColor": "#FFFFFF",
+                                            "rounded": true,
+                                            "maxWidth": "500px",
+                                            "size": "medium",
+                                            "url": "https://p25yjjmtqao.typeform.com/macha",
+                                            "linkType": "external",
+                                            "tagManagerEvent": "buttonClick",
+                                            "disabled": false,
+                                            "text": "Start your free trial"
+                                          },
+                                          "isRSC": null
+                                        }
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "period": "one-off",
+                                "features": [
+                                  {
+                                    "description": "Individual configuration"
+                                  },
+                                  {
+                                    "description": "Individual configuration"
+                                  },
+                                  {
+                                    "description": "Individual configuration"
+                                  }
+                                ]
+                              },
+                              "isRSC": null
+                            },
+                            "responsiveStyles": {
+                              "large": {
+                                "position": "relative"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "space": 78,
+                    "stackColumnsAt": "tablet",
+                    "reverseColumnsWhenStacked": false
+                  },
+                  "isRSC": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "@type": "@builder.io/sdk:Element",
+        "@version": 2,
+        "id": "builder-c4b30ffc52914260b3d9d60283c4b2cd",
+        "component": {
+          "name": "v2: Footer",
+          "options": {
+            "copyright": "@2025 Macha Limited",
+            "tiktokUrl": "Tiktok",
+            "instagramUrl": "inatagram",
+            "facebookUrl": "facebok",
+            "twitterUrl": "twitter",
+            "theme": "dark",
+            "backgroundColor": "rgba(63, 63, 51, 1)",
+            "logo": "https://cdn.builder.io/api/v1/image/assets%2F78e83bccf80d4dd5981595b9dc8f5296%2F8e2908efb31841658eb8b428ce8e8537",
+            "textColor": "rgba(255, 255, 255, 1)"
+          },
+          "isRSC": null
+        },
+        "children": [
+          {
+            "@type": "@builder.io/sdk:Element",
+            "@version": 2,
+            "id": "builder-e6a01570e71f4a4a9c3aff09933a0108",
+            "meta": {
+              "previousId": "builder-4cba5727fc0c493a8070e0a875f01934"
+            },
+            "component": {
+              "name": "Columns",
+              "options": {
+                "space": 0,
+                "columns": [
+                  {
+                    "blocks": [
+                      {
+                        "@type": "@builder.io/sdk:Element",
+                        "@version": 2,
+                        "id": "builder-e4ce59061bd946b38a8c5c1e786c61e6",
+                        "component": {
+                          "name": "TextBlockNew",
+                          "options": {
+                            "verticalAlignment": "middle",
+                            "textSize": "medium",
+                            "title": "",
+                            "useGradientText": false,
+                            "gradientColor1": "#3B82F6",
+                            "gradientColor2": "#8B5CF6",
+                            "subtitle": "",
+                            "body": "<p><strong style=\"font-size: 14px; color: rgb(255, 255, 255);\">Macha is not a substitute for clinical care. </strong><span style=\"font-size: 14px; color: rgb(255, 255, 255);\">We help you understand what’s normal, when to seek care, and what questions to ask - but we don’t diagnose.</span></p>",
+                            "noPadding": true,
+                            "url": "",
+                            "linkType": "internal"
+                          },
+                          "isRSC": null
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "blocks": []
+                  },
+                  {
+                    "blocks": [
+                      {
+                        "@type": "@builder.io/sdk:Element",
+                        "@version": 2,
+                        "id": "builder-bb76820ef9e441f6be23fa0e2ed49a57",
+                        "component": {
+                          "name": "Core:Section",
+                          "options": {
+                            "anchorLink": "",
+                            "verticalMargin": "none",
+                            "horizontalMargin": "none",
+                            "verticalAlignment": "top",
+                            "gap": "none",
+                            "aspectRatio": "fluid",
+                            "rounded": false,
+                            "roundedSize": "1rem",
+                            "fillWidth": true,
+                            "fillHeight": false,
+                            "contentMaxWidth": "1400px",
+                            "lazyLoad": false
+                          },
+                          "isRSC": null
+                        },
+                        "children": [
+                          {
+                            "@type": "@builder.io/sdk:Element",
+                            "@version": 2,
+                            "id": "builder-617ad8a54953487baafdd5a7569a69a2",
+                            "component": {
+                              "name": "TextBlockNew",
+                              "options": {
+                                "verticalAlignment": "middle",
+                                "textSize": "small",
+                                "title": "",
+                                "useGradientText": false,
+                                "gradientColor1": "#3B82F6",
+                                "gradientColor2": "#8B5CF6",
+                                "subtitle": "",
+                                "body": "<p><strong>Company</strong></p>",
+                                "noPadding": true,
+                                "url": "",
+                                "linkType": "internal"
+                              },
+                              "isRSC": null
+                            }
+                          },
+                          {
+                            "@type": "@builder.io/sdk:Element",
+                            "@version": 2,
+                            "id": "builder-d46a8c324f024d25a971c69391fdd3e0",
+                            "meta": {
+                              "previousId": "builder-21195923eaff436e8b0b89f91d96fe6d"
+                            },
+                            "component": {
+                              "name": "TandCs",
+                              "options": {
+                                "ctaText": "Privacy Policy"
+                              },
+                              "isRSC": null
+                            },
+                            "children": [
+                              {
+                                "@type": "@builder.io/sdk:Element",
+                                "@version": 2,
+                                "id": "builder-40d81a7118524cb3ab55cd38f004a6b2",
+                                "meta": {
+                                  "previousId": "builder-5a6c7c485849469097ecfc5cd76a5af0"
+                                },
+                                "component": {
+                                  "name": "Text",
+                                  "options": {
+                                    "text": "<p>This website is owned and operated by Nesta Mission Studio — full details are available below. This privacy policy explains how Mission Studio uses personal information collected via this site. We are committed to protecting your privacy and take all reasonable precautions to safeguard personal information.</p><p>1. What kind of information do we collect?</p><ul><li>Sign-up details: If you register or sign up for <span style=\"font-size: 14px;\">Macha</span>, we might ask for personal information such as your name and contact details (including email address).</li><li>Feedback and surveys: We may ask you for feedback on the test version of Manu-match] via a survey. We may also reach out to you directly, for additional feedback or to participate in a trial.</li></ul><p>2. What do we do with the information we collect, and what is our legal basis for this?</p><ul><li>Sign-up details: We use your details to provide access to a waitlist and test version of <span style=\"font-size: 14px;\">Macha</span>, as well as surveys. Our legal basis for collecting and processing your information in this way is your consent. You have the right to withdraw your consent at any time, as described in the “Marketing” section below. Our mailing list sign-ups are managed through MailChimp, which complies with GDPR. This ensures that your information is stored and managed in line with privacy regulations.</li><li>Third-party processors: We may use third-party platforms and processors to deliver newsletters, process applications, event registrations, and manage requests related to your data and contact preferences. Our use of third-party processors is based on our legitimate interest in leveraging technology for efficiency. To protect your data, we enter into legally binding agreements with these third parties, requiring them to maintain appropriate technical and organisational safeguards.</li><li>Feedback and surveys: If you agree to give us feedback directly or complete a survey, we use this information to improve our test version of Manu-Match and our related activities.</li><li>General processing: We may also use your information to analyse and improve our services, customise content to your preferences, notify you of relevant updates, prevent fraud, and protect users.</li></ul><p>Whenever possible, we anonymize or minimise the data retained for our business analysis purposes. For all types of information collected, please ensure that the details you provide are accurate and up to date. If you provide information about someone else, please make sure to get their consent first.</p><p>3. How long will we keep your information?</p><ul><li>General principle: We keep personal information only for as long as necessary to fulfil the purpose for which it was collected. We will securely delete data once it is no longer needed for that purpose.</li><li>Consent records: We keep records of consent, and any withdrawal of consent, on file for as long as we use your data in line with that consent and for 6 years afterward.</li><li>Research: Research data will be retained according to Mission Studio’s needs and any external research requirements. Data is reviewed every 5 years to assess its continued value, and wherever possible, data is anonymized or pseudonymized.</li></ul><p>4. Marketing</p><p>If you sign up for our mailing list, we will use your details to keep you informed about the latest news and information relating to the test version of Manu-Match. We may also request feedback, including through our annual audience survey.</p><p>MailChimp manages our mailing list and ensures GDPR compliance. We gather statistics on email opens and clicks to monitor and improve our offerings. If you wish to unsubscribe from marketing communications, you can do so at any time by clicking the unsubscribe link in our emails.</p><p>5. Who else has access to your information?</p><p>We may share your information with partners or companies who help us operate this site and related activities. This may include companies that assist with product delivery and other initiatives. Some of these entities may process your information outside the UK; however, we ensure that any transfer of your data is protected by appropriate safeguards.</p><p>6. Security</p><p>We take steps to protect your personal information and minimise unauthorised access. If you have an account with a password, please keep it secure and do not share it.</p><p>7. Contacting us, exercising your rights, and complaints</p><p>You have the right to know what information we hold about you, correct any inaccuracies, request deletion, restrict processing, object to our use of your information, or object to automated decision-making. To exercise these rights, please contact us at missionstudio@nesta.org.uk or write to us at 58 Victoria Embankment, London EC4Y 0DS UK.</p><p>If you are dissatisfied with how your request or complaint is handled, you may contact the Information Commissioner.</p><p>8. Changes to the privacy policy</p><p>We may change this privacy policy from time to time. Please review the policy periodically for the latest information on our privacy practices.</p><p>Nesta, a company limited by guarantee registered in England and Wales with company number 7706036 and charity number 1144091. Registered as a charity in Scotland number SC042833.&nbsp;</p><p>Registered office: 58 Victoria Embankment, London, EC4Y 0DS&nbsp;</p>"
+                                  },
+                                  "isRSC": null
+                                },
+                                "responsiveStyles": {
+                                  "large": {
+                                    "lineHeight": "normal",
+                                    "height": "auto"
+                                  }
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "@type": "@builder.io/sdk:Element",
+                            "@version": 2,
+                            "id": "builder-24719ee8ffae4570970dfc12ce0fd9ef",
+                            "meta": {
+                              "previousId": "builder-18d12c4961e24aeba561f69978809f1f"
+                            },
+                            "component": {
+                              "name": "TandCs",
+                              "options": {
+                                "ctaText": "Terms & Conditions"
+                              },
+                              "isRSC": null
+                            },
+                            "children": [
+                              {
+                                "@type": "@builder.io/sdk:Element",
+                                "@version": 2,
+                                "id": "builder-148c9f0d4e7f4d079850a23edb742cb9",
+                                "meta": {
+                                  "previousId": "builder-4c88b34dbe12479ca7e9e24f446d9d18"
+                                },
+                                "component": {
+                                  "name": "Text",
+                                  "options": {
+                                    "text": "<p>The purpose of this website is to showcase a test version of Macha to potential users (\"Users\") and enable users to explore the intended product, its use cases and benefits.&nbsp;</p><p><br></p><p>This website is owned and operated by Nesta Mission Studio. You can find our full details below. Use of the site is subject to these Terms. Our Privacy Notice explains how we use personal information which we may collect via the site. If you don’t agree with these Terms or our Privacy Policy, please don’t use this site.</p><p><br></p><p>The information, materials, and logos on this site belong to Mission Studio. We make no representation or warranty about the content, including in relation to non-infringement of intellectual property rights.</p><p><br></p><p>The purpose of the content on the site is to provide and collect&nbsp;information only. Mission Studio will not be liable for any decisions that you make as a result of reviewing the content or signing up to our waitlist. Mission Studio cannot compensate you for any loss you may suffer as a result of:</p><ul><li>Actions you take based on anything you read on these pages;</li><li>Any mistake or inaccuracy in the content on our website;</li><li>Any parts of our website being unavailable or inaccessible;</li><li>Your use of any organisation’s website that you can access from our website (including any purchase from that organisation and any use they make of the personal data you provide to them);</li><li>The downloading of any material from our website.</li></ul><p><br></p><p>Mission Studio will not exclude any liability we may have in the unlikely event we have been fraudulent or negligent and as a result we cause death or personal injury in connection with this website.</p><p><br></p><p>When using the site, you must not use this site to:</p><ul><li>Post, share, or transmit material that is unlawful or infringes anyone else’s rights;</li><li>Use the site for any commercial purpose not related to the Manu-match or its services;</li><li>Engage in any activity that is abusive, defamatory, or obscene or that harasses, distresses, or restricts anyone else’s use and enjoyment of the site or otherwise damages our reputation;</li><li>Transmit software viruses or code designed to interrupt, destroy, or compromise the integrity of computer software, hardware, or telecommunications equipment.</li></ul><p><br></p><p>You must:</p><ul><li>Act lawfully, ethically, and in good faith and comply with these Terms;</li><li>Act with common sense, integrity, and treat others with respect;</li><li>Not lie, misrepresent something or someone, or pretend to be someone else;</li><li>Be polite and respectful when you communicate or interact with others.</li></ul><p><br></p><p>As permitted by law, you shall release, defend (at Mission Studio’s option), indemnify, and hold Mission Studio harmless from and against any claims, liabilities, damages, losses, and expenses, including, without limitation, all reasonable legal and professional fees, arising from or in any way connected with: (a) your breach of these Terms, (b) your improper use of the website, (This indemnity shall only apply if and to the extent that the claims, liabilities, damages, losses, and expenses have been caused by your breach of obligations under these Terms.</p><p><br></p><p>The information on this site is subject to change from time to time, and we can't guarantee that it will always be accurate or up-to-date. We are not responsible for the content of external sites to which you may link from this site. We don’t guarantee that the site will always be available or free from errors or viruses. You are responsible for installing virus-checking software to protect your hardware. As far as legally possible, we and our partners exclude all liability for any loss or damage suffered as a result of using or accessing our site, whether direct or indirect, and however arising, including any loss of data or damage caused by downloading content from our site.</p><p><br></p><p>These Terms may be varied from time to time. If you use the site after any change has been made, you will be deemed to have accepted the change.&nbsp;</p><p><br></p><p>Mailing List</p><p><br></p><p>If you subscribe to our mailing list, it is managed by Mailchimp. For more information, please refer to our Privacy Notice and Mailchimp's privacy policy.</p><p><br></p><p>These Terms are governed by English law, and the courts of England and Wales will have jurisdiction over any dispute arising from them.</p><p><br></p><p>Nesta, a company limited by guarantee registered in England and Wales with company number 7706036 and charity number 1144091. Registered as a charity in Scotland number SC042833.</p><p><br></p><p>Registered office: 58 Victoria Embankment, London EC4Y 0DS.</p>"
+                                  },
+                                  "isRSC": null
+                                },
+                                "responsiveStyles": {
+                                  "large": {
+                                    "lineHeight": "normal",
+                                    "height": "auto"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "stackColumnsAt": "tablet"
+              },
+              "isRSC": null
+            }
+          }
+        ]
+      }
+    ],
+    "url": "/",
+    "state": {
+      "deviceSize": "large",
+      "location": {
+        "path": "",
+        "query": {}
+      }
+    }
+  },
+  "folders": [],
+  "id": "17d17e8278b84aeea0f27f78519111eb",
+  "lastUpdated": 1764785417937,
+  "lastUpdatedBy": "dcNxI5zabAdsqPRZxnbPU4eFr6H2",
+  "meta": {
+    "componentsUsed": {
+      "FeatureGridNew": 1,
+      "FeaturesList": 1,
+      "TandCs": 2,
+      "TextBlockNew": 13,
+      "v2: Footer": 1,
+      "v2: Pricing Blocks": 2,
+      "v2: Topbar New": 1
+    },
+    "hasAutosaves": false,
+    "hasLinks": false,
+    "kind": "page",
+    "lastPreviewUrl": "http://localhost:3000/?builder.space=78e83bccf80d4dd5981595b9dc8f5296&builder.user.permissions=read%2Ccreate%2Cpublish%2CeditCode%2CeditDesigns%2Cadmin%2CeditLayouts%2CeditLayers%2CeditContentPriority%2CeditFolders%2CeditProjects%2CmodifyMcpServers%2CmodifyWorkflowIntegrations%2CmodifyProjectSettings%2CconnectCodeRepository%2CcreateProjects%2CindexDesignSystems&builder.user.role.name=Admin&builder.user.role.id=admin&builder.cachebust=true&builder.preview=page&builder.noCache=true&builder.allowTextEdit=true&__builder_editing__=true&builder.overrides.page=4fd38c2dd9124a659e981f1aee973aae&builder.overrides.4fd38c2dd9124a659e981f1aee973aae=4fd38c2dd9124a659e981f1aee973aae&builder.overrides.page:/=4fd38c2dd9124a659e981f1aee973aae&builder.options.locale=Default"
+  },
+  "modelId": "bd71165088e341ca96a0b417dcc3d6cb",
+  "name": "New Page",
+  "published": "published",
+  "query": [
+    {
+      "@type": "@builder.io/core:Query",
+      "operator": "is",
+      "property": "urlPath",
+      "value": "/"
+    }
+  ],
+  "testRatio": 1,
+  "variations": {},
+  "firstPublished": 1764694594396,
+  "screenshot": "https://cdn.builder.io/api/v1/image/assets%2F78e83bccf80d4dd5981595b9dc8f5296%2F9bcb1f0a1874456092ad23c77a982b4e",
+  "rev": "mu8lvv5nhqb",
+  "@originOrg": "78e83bccf80d4dd5981595b9dc8f5296",
+  "@originContentId": "4fd38c2dd9124a659e981f1aee973aae",
+  "@originModelId": "8d0e2b124dbc3a712dc5af233d261ce162922b1b6e2b1522323ca3738d43d8e3"
+}

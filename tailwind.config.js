@@ -41,8 +41,8 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        body: ["var(--font-body)"],
-        display: ["var(--font-display)"]
+        body: ["var(--font-libre-franklin)", "sans-serif"],
+        display: ["var(--font-libre-franklin)", "sans-serif"]
       },
       colors: {
         "my-gradient":

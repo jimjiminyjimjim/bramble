@@ -5,7 +5,7 @@
   "targetingSubset": [],
   "webhooks": [],
   "defaultTemplates": [],
-  "id": "c8e9c53b15344f07b3f65575ed64e2a2",
+  "id": "bd71165088e341ca96a0b417dcc3d6cb",
   "name": "page",
   "displayName": "",
   "kind": "page",
@@ -101,7 +101,7 @@
       "defaultCollapsed": false
     }
   ],
-  "examplePageUrl": "https://streakhealth.fit",
+  "examplePageUrl": "https://machacare.com/",
   "repeatable": false,
   "autoTracked": true,
   "singleton": false,
@@ -142,7 +142,7 @@
   "pathPrefix": "/",
   "hideFromUI": false,
   "enableIframeFormSubmissions": false,
-  "@originId": "86ec51b4f0afa4c84a718a77ff4a88f6b47a94627e830eb5fef326d0241b123b",
+  "@originId": "8d0e2b124dbc3a712dc5af233d261ce162922b1b6e2b1522323ca3738d43d8e3",
   "previewIframeTimeoutInSeconds": 20,
   "requireTemplate": false,
   "lastUpdateBy": null

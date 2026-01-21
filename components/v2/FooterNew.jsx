@@ -61,20 +61,10 @@ export const FooterNew = ({
                 }}
               />
             ) : (
-              <div
-                style={{
-                  width: '100px',
-                  height: '40px',
-                  backgroundColor: textColor || "#ffffff",
-                  maskImage: `url(${logoSrc})`,
-                  WebkitMaskImage: `url(${logoSrc})`,
-                  maskSize: 'contain',
-                  WebkitMaskSize: 'contain',
-                  maskRepeat: 'no-repeat',
-                  WebkitMaskRepeat: 'no-repeat',
-                  maskPosition: 'left center',
-                  WebkitMaskPosition: 'left center'
-                }}
+              <img
+                src={logoSrc}
+                alt="Logo"
+                style={{ width: "100px", height: "auto" }}
               />
             )}
           </div>

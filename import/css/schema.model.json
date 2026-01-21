@@ -5,7 +5,7 @@
   "targetingSubset": [],
   "webhooks": [],
   "defaultTemplates": [],
-  "id": "a58c6317a3e44dc18942f908a1695b7b",
+  "id": "1434f952482144588085e9070c4d8b2e",
   "name": "css",
   "displayName": "CSS",
   "kind": "component",
@@ -87,7 +87,7 @@
   "previewIframeTimeoutInSeconds": 20,
   "requireTemplate": false,
   "lastUpdateBy": null,
-  "@originId": "c339362bce74f3acba03234e5f6191965fa473ec9deb887c1d5e235be47d86a9",
+  "@originId": "881a8bfe34baa2ac18200345c342d067dd58f073cd95502aa09bdfdb2b14c2d6",
   "apiGenerated": true,
-  "createdDate": 1741280240851
+  "createdDate": 1730992851277
 }

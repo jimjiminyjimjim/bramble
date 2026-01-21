@@ -73,9 +73,9 @@ MAILCHIMP_LIST_ID=           # Mailchimp list ID
 - Additional models for CSS, symbols, and imports
 
 ### Typography and Fonts
-- Dynamic Google Fonts loading based on site-data configuration
-- CSS custom properties for body and display fonts
-- Font families configurable through Builder.io site-data
+- Uses Libre Franklin font via Next.js font optimization
+- CSS custom property `--font-libre-franklin` applied globally
+- Configured in `app/layout.js` and referenced in Tailwind config
 
 ### Security Features
 - Arcjet integration for bot protection and rate limiting
@@ -84,6 +84,8 @@ MAILCHIMP_LIST_ID=           # Mailchimp list ID
 - Request validation and sanitization
 
 ## Development Workflow
+
+**Important**: Do not start the dev server - the user always runs their own.
 
 When adding new components:
 1. Create component in `/components` directory

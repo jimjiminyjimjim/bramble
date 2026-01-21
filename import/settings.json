@@ -10,9 +10,6 @@
     "useDefaultStyles": false,
     "allowMarginEditing": false,
     "absoluteMode": false,
-    "attribution": [
-      "social-media"
-    ],
     "allowBuiltInComponents": true,
     "componentsOnlyMode": false,
     "customComponents": [
@@ -53,37 +50,45 @@
       "Stats",
       "AppFeatures",
       "Screenshots",
-      "SqlTable",
       "Carousel",
       "TandCs",
-      "Mailchimp Input",
+      "TitleBlock",
+      "Chain",
+      "ImageBlock",
+      "BlikeButton",
+      "HeroContent",
       "FeatureGrid",
-      "SoldOut"
-    ],
-    "visualEditorAiStyleInspirationURL": "https://www.builder.my/p/1b7e142479ce491d93f824fd954bb32e/a068fbc443724a13b6bfc2ce0d96c9e1"
+      "Mailchimp Input",
+      "SoldOut",
+      "v2: Topbar New",
+      "TextBlockNew",
+      "FeaturesList",
+      "FeatureGridNew",
+      "Pill",
+      "v2: Pricing Blocks",
+      "v2: Footer2"
+    ]
   },
   "type": "space",
-  "siteUrl": "https://streakhealth.fit",
-  "name": "Streak",
+  "siteUrl": "https://machacare.com",
+  "name": "Macha",
   "loadPlugins": [],
-  "id": "1b7e142479ce491d93f824fd954bb32e",
+  "id": "78e83bccf80d4dd5981595b9dc8f5296",
   "@version": 7,
   "cloneInfo": {
     "contentIdMap": {
-      "0284e068fb979a21049fc69bcaf55a89c7eda1f2763b12a375408e73bf7cf91a": "93632f65dea14cfb95c6e9667824d3fd",
-      "738bee28a422411f96b76e8f1fc19a75": "74a2bc8ec0ba467388d9e2e7bd5cc6eb",
-      "965041e2ddb9cef92ea536a57e939605f949df5ae450f3f6698aa86f103b89ec": "ed064886617f4512a582c6d317db4ac1",
-      "a068fbc443724a13b6bfc2ce0d96c9e1": "6d1776e371424c04b71e27dcf4ca5b49",
-      "e089515ee62391ca6a5514c548d14c889c12bc4078d1fc30823e1fe83f1b81ea": "b8d1ab5e01274e0c906c5c3483288c07",
-      "f92a73106ee0cecffd91022cf982faba6b23105171ed14c9ab695b55b761c9fd": "c2accda6e48a45479bab63d2cccdb2c2"
+      "efa3ae50959d0b30e14cc2041b588d1946de34504d80057993121df658e763af": "ef17e20545824c33a4826d589e6cf5db",
+      "cd94cf86f1a46207bf3d0af785e2320cf62bfce414033bc307e7b6af81c313a4": "c9b6668ac40b47268fc81e2de7a01a69",
+      "d558cafe946a77483d054f6bd11b40046eaa269a2f30b6f1ea1f3eb1d81a657e": "3ba0061e24ee48fcbde51df1d37c0882",
+      "6acbdb02bd87245f2e68f6d083fb32d69b33dd0ec6eb0cebdb392cfcaf244042": "da1fb527eded4d12bc1a3c7dc0d3398e",
+      "4fd38c2dd9124a659e981f1aee973aae": "17d17e8278b84aeea0f27f78519111eb"
     },
     "modelIdMap": {
-      "23934902bac3b3f517724b2dcf7e39d64ec8fe5addac0f4d754b75e880d8da11": "6fee4e1b054640c5ac91f642cfc00de7",
-      "86ec51b4f0afa4c84a718a77ff4a88f6b47a94627e830eb5fef326d0241b123b": "c8e9c53b15344f07b3f65575ed64e2a2",
-      "f639eb138b01d55b5c82f313d13f041fff8dd3c0908de2e4fc354e66ba872699": "6124e82b145f4519a8b31eff031bda06",
-      "0bacfec8858b4cfd9e168fbbc1373440": "24a9c33250b441c084d6b4c8f25f6511",
-      "083eda797aec7673278a270a3dadff61e5b2f48ee0061c3505d38962b405280f": "5760010e01754deeb1282d85243dd18d",
-      "c339362bce74f3acba03234e5f6191965fa473ec9deb887c1d5e235be47d86a9": "a58c6317a3e44dc18942f908a1695b7b"
+      "881a8bfe34baa2ac18200345c342d067dd58f073cd95502aa09bdfdb2b14c2d6": "1434f952482144588085e9070c4d8b2e",
+      "68539b6953ad202d85305df9424f982611886069579ac257643f84517df6810a": "d5d57c30294b4724bdbf752d791f9d23",
+      "297b63e0be24551487445a0dbb0becac70bdec5ea328d2b1624eecde6d61203b": "4c8bdd4374b449bf942cd8cef4fa56fc",
+      "aeb4fc8cf6747716b1a0e0a76820b03bc7c865344fea319843e181b32983afe9": "4c06c5c7d3a44f928a0a39302b4b90a0",
+      "8d0e2b124dbc3a712dc5af233d261ce162922b1b6e2b1522323ca3738d43d8e3": "bd71165088e341ca96a0b417dcc3d6cb"
     }
   }
 }
