@@ -20,27 +20,16 @@ export function ConversationBubble({
       {...(builderBlock?.id ? { "builder-id": builderBlock.id } : {})}
     >
       {/* Question Bubble */}
-      <div className="relative">
-        <div
-          className="w-full rounded-2xl px-6 py-5 md:px-8 md:py-6"
-          style={{ backgroundColor: questionBackgroundColor }}
+      <div
+        className="w-full rounded-2xl px-6 py-5 md:px-8 md:py-6"
+        style={{ backgroundColor: questionBackgroundColor }}
+      >
+        <p
+          className="text-lg md:text-xl lg:text-2xl font-semibold text-center"
+          style={{ color: questionTextColor }}
         >
-          <p
-            className="text-lg md:text-xl lg:text-2xl font-semibold text-center"
-            style={{ color: questionTextColor }}
-          >
-            {question}
-          </p>
-        </div>
-        {/* Speech bubble tail - right side for questioner */}
-        <div
-          className="absolute right-8 bottom-0 translate-y-full w-0 h-0"
-          style={{
-            borderLeft: "12px solid transparent",
-            borderRight: "12px solid transparent",
-            borderTop: `14px solid ${questionBackgroundColor}`,
-          }}
-        />
+          {question}
+        </p>
       </div>
 
       {/* Answer Section */}

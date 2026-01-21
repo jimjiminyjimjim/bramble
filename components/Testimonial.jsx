@@ -6,7 +6,7 @@ import { anchorTags } from "@/helpers/anchorTags";
 
 import "swiper/css";
 
-export const Testimonial = ({ testimonials, anchor, backgroundColor, children }) => {
+export const Testimonial = ({ testimonials, anchor, backgroundColor, quoteColor, starColor, nameColor, children }) => {
   return (
     <section
       className="py-8 relative"
@@ -53,16 +53,28 @@ export const Testimonial = ({ testimonials, anchor, backgroundColor, children })
                       {Array.from({ length: rating }, (_, i) => (
                         <StarIcon
                           key={i}
-                          className="fill-orange-400 text-orange-400"
+                          className="fill-current"
+                          style={{ color: starColor || "#fb923c" }}
                           size={20}
                         />
                       ))}
                     </div>
-                    <p className="mt-4 inline-block max-w-[600px] text-center text-lg">
+                    <p
+                      className="mt-4 inline-block max-w-[600px] text-center text-lg"
+                      style={{ color: quoteColor }}
+                    >
                       {quote}
                     </p>
-                    <p className="mt-8 text-lg font-medium">{name}</p>
-                    <p className="text-sm text-base-content/70">
+                    <p
+                      className="mt-8 text-lg font-medium"
+                      style={{ color: nameColor }}
+                    >
+                      {name}
+                    </p>
+                    <p
+                      className="text-sm"
+                      style={{ color: nameColor, opacity: 0.7 }}
+                    >
                       {qualification}
                     </p>
                   </div>

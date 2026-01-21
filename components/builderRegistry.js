@@ -1418,6 +1418,24 @@ export const customComponents = [
         defaultValue: "#ffffff"
       },
       {
+        name: "quoteColor",
+        type: "color",
+        defaultValue: "#000000",
+        helperText: "Text color for the quote"
+      },
+      {
+        name: "starColor",
+        type: "color",
+        defaultValue: "#fb923c",
+        helperText: "Color for the star ratings"
+      },
+      {
+        name: "nameColor",
+        type: "color",
+        defaultValue: "#000000",
+        helperText: "Text color for name and qualification"
+      },
+      {
         name: "testimonials",
         type: "list",
         subFields: [
