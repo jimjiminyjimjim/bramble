@@ -8,7 +8,7 @@ export const useTheme = (theme) => {
 
   const themeColors = {
     light: {
-      primary: context.primaryTint,
+      primary: context?.primaryTint,
       secondary: context?.secondaryTint,
       bold: context?.primaryColour,
       dark: context?.textColour,
@@ -23,7 +23,7 @@ export const useTheme = (theme) => {
       }
     },
     dark: {
-      primary: context.primaryColour,
+      primary: context?.primaryColour,
       secondary: context?.secondaryColour,
       background: context?.primaryColour,
       text: {
@@ -37,7 +37,7 @@ export const useTheme = (theme) => {
       }
     },
     white: {
-      primary: context.primaryColor,
+      primary: context?.primaryColor,
       secondary: context?.secondaryColor,
       background: context?.primaryColour,
       text: {

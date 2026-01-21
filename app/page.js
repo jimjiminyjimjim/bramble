@@ -1,5 +1,6 @@
 import { customComponents } from "@/components/builderRegistry";
 import Layout from "@/components/Layout";
+import { BuilderSection } from "@/components/BuilderSection";
 import {
   Content,
   fetchOneEntry,
@@ -59,16 +60,16 @@ export default async function Page(props) {
   }
 
   return (
-    <>
-      <Layout siteData={siteData?.data}>
-        <Content
-          content={content}
-          apiKey={PUBLIC_API_KEY}
-          model="page"
-          customComponents={customComponents}
-          context={siteData?.data}
-        />
-      </Layout>
-    </>
+    <Layout siteData={siteData?.data}>
+      <BuilderSection model="navbar" searchParams={searchParams} />
+      <Content
+        content={content}
+        apiKey={PUBLIC_API_KEY}
+        model="page"
+        customComponents={customComponents}
+        context={siteData?.data}
+      />
+      <BuilderSection model="footer" searchParams={searchParams} />
+    </Layout>
   );
 }

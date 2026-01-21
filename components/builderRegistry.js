@@ -33,6 +33,7 @@ import { Topbar } from "@/components/Topbar";
 import { TopbarNew } from "@/components/v2/TopbarNew";
 import { Carousel } from "@/components/CustomTabs";
 import { CustomImage } from "@/components/v2/CustomImage";
+import { ConversationBubble } from "@/components/v2/ConversationBubble";
 import { Pill } from "@/components/Pill";
 import { Button } from "@/components/Button";
 import { Section } from "@/components/v2/Section";
@@ -73,8 +74,10 @@ register("insertMenu", {
     { name: "Features Grid", item: "FeatureGridNew" },
     { name: "v2: Footer", item: "v2: Footer" },
     { name: "v2: Popup", item: "v2: Popup" },
-    { name: "v2: Pricing Blocks", item: "v2: Pricing Blocks" }
-
+    { name: "v2: Pricing Blocks", item: "v2: Pricing Blocks" },
+    { name: "Testimonial", item: "Testimonial" },
+    { name: "Conversation Bubble", item: "v2: Conversation Bubble" },
+    { name: "Mailchimp Input", item: "Mailchimp Input" }
   ]
 });
 
@@ -132,30 +135,12 @@ export const customComponents = [
     name: "v2: Topbar New",
     canHaveChildren: true,
     noWrap: true,
-    canReceiveBuilderProps: true,
-    shouldReceiveBuilderProps: {
-      builderBlock: true,
-      builderContext: true,
-      builderComponents: true,
-      builderLinkComponent: true
-    },
     inputs: [
-      {
-        name: "logo",
-        type: "uiBlocks",
-        defaultValue: []
-      },
       {
         name: "logoUrl",
         type: "string",
         defaultValue: "/",
         helperText: "URL for the logo link (defaults to home page)"
-      },
-      {
-        name: "theme",
-        type: "enum",
-        enum: ["light", "dark", "white"],
-        defaultValue: "light"
       },
       {
         name: "maxWidth",
@@ -166,33 +151,37 @@ export const customComponents = [
       {
         name: "backgroundColor",
         type: "color",
-        helperText: "Custom background color (overrides theme color)"
+        defaultValue: "#FFFFFF",
+        helperText: "Background color for the navbar"
       },
       {
         name: "textColor",
         type: "color",
-        helperText: "Custom text color (overrides theme color)"
+        defaultValue: "#000000",
+        helperText: "Text color for menu items"
       },
       {
         name: "navItems",
         type: "list",
-        defaultValue: [{ blocks: [] }],
+        defaultValue: [],
         subFields: [
           {
-            name: "name",
+            name: "label",
             type: "string",
-            defaultValue: "Nav Item 1"
+            defaultValue: "Menu Item",
+            helperText: "Display text for the menu item"
           },
           {
             name: "url",
-            type: "string"
+            type: "string",
+            helperText: "Path (e.g., /about) or anchor (e.g., #features)"
           },
           {
             name: "linkType",
             type: "enum",
-            enum: ["internal", "external", "scrollTo"],
+            enum: ["internal", "external"],
             defaultValue: "internal",
-            helperText: "External will open new window"
+            helperText: "Internal = same site, External = opens new tab"
           }
         ]
       }
@@ -1350,17 +1339,84 @@ export const customComponents = [
     ]
   },
   {
-    component: Testimonial,
-    name: "Testimonial",
+    component: ConversationBubble,
+    name: "v2: Conversation Bubble",
+    noWrap: true,
+    image: "https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/chat-quote.svg",
+    shouldReceiveBuilderProps: {
+      builderBlock: true,
+      builderContext: true,
+      builderComponents: true,
+      builderLinkComponent: true
+    },
     inputs: [
       {
-        name: "theme",
-        type: "enum",
-        enum: ["light", "dark", "white"],
-        defaultValue: "light"
+        name: "question",
+        type: "string",
+        defaultValue: "What's your question?",
+        helperText: "The question text displayed in the top bubble"
       },
+      {
+        name: "answer",
+        type: "longText",
+        defaultValue: "This is the answer to the question.",
+        helperText: "The answer text displayed in the response bubble"
+      },
+      {
+        name: "profileImage",
+        type: "file",
+        allowedFileTypes: ["jpeg", "jpg", "png", "svg", "webp"],
+        helperText: "Profile image for the responder"
+      },
+      {
+        name: "profileName",
+        type: "string",
+        defaultValue: "Name",
+        helperText: "Name of the person responding"
+      },
+      {
+        name: "profileHandle",
+        type: "string",
+        defaultValue: "",
+        helperText: "Optional handle (e.g., @brambleclub)"
+      },
+      {
+        name: "questionBackgroundColor",
+        type: "color",
+        defaultValue: "#FFFFFF",
+        helperText: "Background color for the question bubble"
+      },
+      {
+        name: "questionTextColor",
+        type: "color",
+        defaultValue: "#1a1a2e",
+        helperText: "Text color for the question"
+      },
+      {
+        name: "answerBackgroundColor",
+        type: "color",
+        defaultValue: "#7C6AE8",
+        helperText: "Background color for the answer bubble"
+      },
+      {
+        name: "answerTextColor",
+        type: "color",
+        defaultValue: "#FFFFFF",
+        helperText: "Text color for the answer"
+      }
+    ]
+  },
+  {
+    component: Testimonial,
+    name: "Testimonial",
+    canHaveChildren: true,
+    inputs: [
       { name: "anchor", type: "string" },
-      { name: "title", type: "string", defaultValue: "Testimonials" },
+      {
+        name: "backgroundColor",
+        type: "color",
+        defaultValue: "#ffffff"
+      },
       {
         name: "testimonials",
         type: "list",

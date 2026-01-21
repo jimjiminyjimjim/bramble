@@ -1,12 +1,11 @@
 "use client";
-import { useTheme } from "@/helpers/theme";
 import { useScrollDirection } from "@/hooks/useScrollDirection";
 import cx from "classix";
 import { useEffect, useState } from "react";
 import { Navbar } from "react-daisyui";
-import { Blocks } from "@builder.io/sdk-react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import brambleLogo from "@/assets/images/logo/bramble-logo.webp";
 
 const MenuItems = ({ items, onClick, isMobile = false, pathname, textColor }) => {
   const handleAnchorClick = (e, url) => {
@@ -22,7 +21,8 @@ const MenuItems = ({ items, onClick, isMobile = false, pathname, textColor }) =>
   return (
     <>
       {items?.map((item, index) => {
-        console.log("Menu Item:", item);
+        // Support both 'label' (Builder.io section) and 'name' (legacy)
+        const displayText = item.label || item.name;
         const isActive = pathname === item.url || (pathname === '/' && item.url === '/');
         const isExternal = item.linkType === "external";
 
@@ -53,7 +53,7 @@ const MenuItems = ({ items, onClick, isMobile = false, pathname, textColor }) =>
                   isActive && "font-bold"
                 )}
               >
-                {item.name}
+                {displayText}
               </a>
             ) : isAnchor ? (
               <a
@@ -65,7 +65,7 @@ const MenuItems = ({ items, onClick, isMobile = false, pathname, textColor }) =>
                   isActive && "font-bold"
                 )}
               >
-                {item.name}
+                {displayText}
               </a>
             ) : (
               <Link
@@ -76,7 +76,7 @@ const MenuItems = ({ items, onClick, isMobile = false, pathname, textColor }) =>
                   isActive && "font-bold"
                 )}
               >
-                {item.name}
+                {displayText}
               </Link>
             )}
           </li>
@@ -87,25 +87,17 @@ const MenuItems = ({ items, onClick, isMobile = false, pathname, textColor }) =>
 };
 
 export const TopbarNew = ({
-  logo,
   logoUrl = "/",
   navItems,
   children,
-  theme,
-  backgroundColor,
-  textColor,
+  backgroundColor = "#FFFFFF",
+  textColor = "#000000",
   builderBlock,
-  builderComponents,
-  builderContext,
-  builderLinkComponent,
   maxWidth,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { scrollDirection, isAtTop } = useScrollDirection();
-  const colors = useTheme(theme);
   const pathname = usePathname();
-
-  console.log("navItems", navItems);
 
 
   const toggleMobileMenu = () => {
@@ -145,7 +137,7 @@ export const TopbarNew = ({
       <div
         {...builderAttributes}
         style={{
-          backgroundColor: backgroundColor || colors?.primary,
+          backgroundColor: backgroundColor,
           transform: isVisible ? "translateY(0)" : "translateY(-100%)",
           transition: "transform 0.3s ease-in-out"
         }}
@@ -158,39 +150,32 @@ export const TopbarNew = ({
           >
             <Navbar.Start className="gap-2 flex items-center">
               <Link href={logoUrl} className="min-w-0 flex items-center">
-                <div
-                  style={{
-                    height: "auto",
-                    maxHeight: "70px",
-                    width: "auto",
-                    display: "flex",
-                    alignItems: "center"
-                  }}
-                  className="lg:!max-h-[90px]"
-                >
-                  <Blocks
-                    parent={builderBlock.id}
-                    path="component.options.logo"
-                    registeredComponents={builderComponents}
-                    context={builderContext}
-                    linkComponent={builderLinkComponent}
-                    blocks={logo}
-                  />
-                </div>
+                <img
+                  src={brambleLogo.src}
+                  alt="Bramble"
+                  className="h-[50px] lg:h-[60px] w-auto"
+                />
               </Link>
             </Navbar.Start>
 
             <Navbar.End className="w-full">
               {/* Desktop Menu */}
-              <div className="hidden md:flex items-center w-full justify-end">
-                <ul className="gap-6 px-1 items-center flex flex-row">
-                  <MenuItems items={navItems} pathname={pathname} textColor={textColor} />
-                </ul>
-                {children && <div className="ml-10">{children}</div>}
+              <div className="hidden md:flex items-center w-full justify-end gap-6">
+                {navItems && navItems.length > 0 && (
+                  <ul className="gap-6 px-1 items-center flex flex-row">
+                    <MenuItems items={navItems} pathname={pathname} textColor={textColor} />
+                  </ul>
+                )}
+                {/* Children slot - drag Builder.io components here */}
+                {children && (
+                  <div className="flex items-center gap-4">
+                    {children}
+                  </div>
+                )}
               </div>
 
               {/* Mobile Menu Button */}
-              {navItems && navItems.length > 0 && (
+              {(navItems?.length > 0 || children) && (
                 <div className="md:hidden flex items-center w-full justify-end relative z-50">
                   <button
                     onClick={toggleMobileMenu}
@@ -242,7 +227,7 @@ export const TopbarNew = ({
           {/* Menu Content */}
           <div
             className="relative bg-white w-full h-full shadow-lg flex flex-col"
-            style={{ backgroundColor: backgroundColor || colors?.primary || "white" }}
+            style={{ backgroundColor: backgroundColor }}
           >
             <div className="container pt-4 pb-4 flex-1 flex flex-col">
               <ul className="space-y-0 flex-1">

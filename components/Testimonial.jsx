@@ -2,33 +2,29 @@ import worldMapImg from "@/assets/images/landing/world-map.png";
 import { ChevronLeftIcon, ChevronRightIcon, StarIcon } from "lucide-react";
 import { Navigation, Autoplay, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useTheme } from "@/helpers/theme";
 import { anchorTags } from "@/helpers/anchorTags";
-import cx from "classix";
 
 import "swiper/css";
 
-export const Testimonial = ({ title, testimonials, theme, anchor }) => {
-  const colors = useTheme(theme);
-
+export const Testimonial = ({ testimonials, anchor, backgroundColor, children }) => {
   return (
     <section
       className="py-8 relative"
       {...anchorTags(anchor)}
-      style={{ backgroundColor: colors.primary }}
+      style={{ backgroundColor: backgroundColor || "#ffffff" }}
     >
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20 dark:opacity-50"
         style={{ backgroundImage: `url(${worldMapImg})` }}
       ></div>
       <div className="relative z-10">
-        {title && (
-          <div className="text-center">
-            <h2 className="text-4xl font-semibold">{title}</h2>
+        {children && (
+          <div className="mb-8">
+            {children}
           </div>
         )}
         <Swiper
-          className={cx(testimonials.length > 1 && "mt-16")}
+          className={testimonials.length > 1 ? "mt-16" : ""}
           spaceBetween={50}
           loop
           autoplay={{
@@ -42,7 +38,7 @@ export const Testimonial = ({ title, testimonials, theme, anchor }) => {
           slidesPerView={1}
         >
           {testimonials.map(
-            ({ quote, name, qualification, rating, icon, image }, index) => {
+            ({ quote, name, qualification, rating, image }, index) => {
               return (
                 <SwiperSlide key={index}>
                   <div className="text-center">

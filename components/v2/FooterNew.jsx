@@ -1,4 +1,3 @@
-import { useSiteData } from "@/helpers/siteData";
 import { ReactSVG } from "react-svg";
 import cx from "classix";
 import { FaTiktok, FaInstagram, FaFacebook, FaTwitter } from "react-icons/fa";
@@ -16,10 +15,7 @@ export const FooterNew = ({
   overlay,
   children
 }) => {
-  const siteData = useSiteData();
-
-  // Use custom logo if provided, otherwise fall back to siteData logo
-  const logoSrc = logo || siteData.logo;
+  const logoSrc = logo;
 
   // Collect social links that have URLs
   const socialLinks = [
@@ -83,7 +79,7 @@ export const FooterNew = ({
           >
             {/* Copyright - bottom left */}
             <div className="text-sm opacity-70">
-              {copyright || `© ${new Date().getFullYear()} All rights reserved`}
+              © {copyright || "All rights reserved"} {new Date().getFullYear()}
             </div>
 
             {/* Social Icons - bottom right */}

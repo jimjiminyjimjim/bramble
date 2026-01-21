@@ -11,7 +11,11 @@
       "Bash(yarn dev:*)",
       "Bash(yarn build:*)",
       "Bash(npm view:*)",
-      "WebSearch"
+      "WebSearch",
+      "Bash(xargs -I {} git show {}:scripts/index.js)",
+      "Bash(git remote:*)",
+      "Bash(git push:*)",
+      "WebFetch(domain:www.bramble.club)"
     ],
     "deny": [],
     "ask": [],
