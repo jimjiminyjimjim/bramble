@@ -1,30 +1,18 @@
 import MailchimpSingup from "@/components/MailchimpSignup";
-import { useTheme } from "@/helpers/theme";
-import { useSiteData } from "@/helpers/siteData";
-import { ReactSVG } from "react-svg";
 import cx from "classix";
 
-export const Footer = ({ social, horizontal, overlay, theme, children }) => {
-  const colors = useTheme(theme);
-  const siteData = useSiteData();
+export const Footer = ({ social, horizontal, overlay, logo, backgroundColor = "#000000", children }) => {
   return (
     <footer
       className={cx("text-neutral-content",  overlay && "transparent relative lg:absolute bottom-[20px] max-w-[1600px] left-0 right-0 mx-auto")}
-      style={{ backgroundColor: !overlay && colors.dark }}
+      style={{ backgroundColor: !overlay ? backgroundColor : undefined }}
     >
       <div className={cx("container", !overlay && "py-12")}>
-        {!overlay && (
-          <ReactSVG
-            src={siteData.logo}
-            beforeInjection={(svg) => {
-              svg.querySelectorAll("[fill]").forEach((element) => {
-                element.removeAttribute("fill");
-              });
-              svg.setAttribute(
-                "style",
-                `width: 100px; height: auto; fill: white !important;`
-              );
-            }}
+        {!overlay && logo && (
+          <img
+            src={logo}
+            alt="Logo"
+            style={{ width: "100px", height: "auto" }}
           />
         )}
         <div

@@ -1,5 +1,4 @@
 import { customComponents } from "@/components/builderRegistry";
-import Layout from "@/components/Layout";
 import { BuilderSection } from "@/components/BuilderSection";
 import {
   Content,
@@ -43,11 +42,6 @@ export default async function Page(props) {
     userAttributes: { urlPath }
   });
 
-  const siteData = await fetchOneEntry({
-    apiKey: PUBLIC_API_KEY,
-    model: "site-data"
-  });
-
   const canShowContent = content || isPreviewing(searchParams);
 
   if (!canShowContent) {
@@ -60,16 +54,15 @@ export default async function Page(props) {
   }
 
   return (
-    <Layout siteData={siteData?.data}>
+    <>
       <BuilderSection model="navbar" searchParams={searchParams} />
       <Content
         content={content}
         apiKey={PUBLIC_API_KEY}
         model="page"
         customComponents={customComponents}
-        context={siteData?.data}
       />
       <BuilderSection model="footer" searchParams={searchParams} />
-    </Layout>
+    </>
   );
 }

@@ -15,7 +15,13 @@
       "Bash(xargs -I {} git show {}:scripts/index.js)",
       "Bash(git remote:*)",
       "Bash(git push:*)",
-      "WebFetch(domain:www.bramble.club)"
+      "WebFetch(domain:www.bramble.club)",
+      "Bash(yarn add:*)",
+      "Bash(node scripts/generate-favicon.js:*)",
+      "Bash(yarn remove:*)",
+      "mcp__memory-bank__list_projects",
+      "mcp__memory-bank__memory_bank_write",
+      "mcp__memory-bank__list_project_files"
     ],
     "deny": [],
     "ask": [],

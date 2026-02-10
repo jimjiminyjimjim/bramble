@@ -1,21 +1,18 @@
 "use client";
 import { anchorTags } from "@/helpers/anchorTags";
-import { useSiteData } from "@/helpers/siteData";
-import { useTheme } from "@/helpers/theme";
 import cx from "classix";
 import { useEffect, useState } from "react";
 import { Menu, Navbar } from "react-daisyui";
-import { ReactSVG } from "react-svg";
 
 const MenuItems = ({ items, onClick, isDesktop = false }) => (
   <>
     {items?.map((item, index) => (
-      <Menu.Item 
-        key={index} 
-        className={cx("font-medium", isDesktop ? "!text-lg" : "")} 
+      <Menu.Item
+        key={index}
+        className={cx("font-medium", isDesktop ? "!text-lg" : "")}
         onClick={onClick}
       >
-        <a 
+        <a
           href={`#${anchorTags(item).id}`}
           className={isDesktop ? "!text-lg" : ""}
         >
@@ -26,12 +23,9 @@ const MenuItems = ({ items, onClick, isDesktop = false }) => (
   </>
 );
 
-export const Topbar = ({ logoOverride, children, theme }) => {
-  const siteData = useSiteData();
-  const [drawerOpened, setDrawerOpened] = useState(false);
+export const Topbar = ({ logo, children, backgroundColor = "transparent" }) => {
   const [atTop, setAtTop] = useState(true);
   const [sectionIds, setSectionIds] = useState([]);
-  const colors = useTheme(theme);
 
   useEffect(() => {
     const onWindowScroll = () => {
@@ -55,7 +49,7 @@ export const Topbar = ({ logoOverride, children, theme }) => {
     <>
       <div
         id="navbar-wrapper"
-        style={{ backgroundColor: colors?.primary }}
+        style={{ backgroundColor }}
         className={`bg-transparent inset-x-0 top-0 !z-50 transition-all duration-500 ${
           !atTop ? "py-0" : "py-4"
         }`}
@@ -75,26 +69,11 @@ export const Topbar = ({ logoOverride, children, theme }) => {
                   height: "100%"
                 }}
               >
-                {logoOverride ? (
+                {logo && (
                   <img
-                    src={logoOverride}
+                    src={logo}
                     alt="Logo"
                     className="w-full h-auto object-cover"
-                  />
-                ) : (
-                  <ReactSVG
-                    src={siteData.logo}
-                    beforeInjection={(svg) => {
-                      svg.querySelectorAll("[fill]").forEach((element) => {
-                        siteData.logoRecolour &&
-                          element.removeAttribute("fill");
-                      });
-                      svg.setAttribute(
-                        "style",
-                        `width: 100%; height: auto; object-fit: cover; ${siteData.logoRecolour ? `fill: ${siteData.primaryColour}` : null}`
-                      );
-                    }}
-                    className="w-full h-auto"
                   />
                 )}
               </a>

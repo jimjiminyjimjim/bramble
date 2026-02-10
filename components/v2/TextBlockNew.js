@@ -1,7 +1,6 @@
 "use client";
 import { anchorTags } from "@/helpers/anchorTags";
 import React from "react";
-import { useTheme } from "@/helpers/theme";
 import { Blocks, BuilderBlock } from "@builder.io/sdk-react";
 import { useRouter } from "next/navigation";
 import { ClientHtmlContent } from "../ClientHtmlContent";
@@ -12,7 +11,6 @@ export function TextBlockNew({
   subtitle,
   body,
   anchor,
-  siteData,
   coloumnTest,
   builderBlock,
   alignment = "left",
@@ -154,14 +152,10 @@ export function TextBlockNew({
 
   const childrenWithProps = React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
-      const extraProps = { siteData };
-
       // If it's a Stats component, add the isChildComponent prop
       if (child.type?.name === "Stats" || child.props?.component === "Stats") {
-        extraProps.isChildComponent = true;
+        return React.cloneElement(child, { isChildComponent: true });
       }
-
-      return React.cloneElement(child, extraProps);
     }
     return child;
   });

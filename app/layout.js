@@ -10,9 +10,9 @@ const libreFranklin = Libre_Franklin({
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" data-theme="cupcake" className={`min-h-screen ${libreFranklin.variable}`}>
+    <html lang="en" data-theme="light" className={`min-h-screen bg-white ${libreFranklin.variable}`}>
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM} />
-      <body className="min-h-screen flex flex-col justify-center">
+      <body className="min-h-screen flex flex-col justify-center bg-white">
         {children}
       </body>
     </html>

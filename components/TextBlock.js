@@ -1,7 +1,6 @@
 'use client'
 import { anchorTags } from "@/helpers/anchorTags";
 import React from "react";
-import { useTheme } from "@/helpers/theme";
 import { Blocks, BuilderBlock } from "@builder.io/sdk-react";
 import { ClientHtmlContent } from "./ClientHtmlContent";
 
@@ -11,7 +10,6 @@ export function TextBlock({
   subtitle,
   body,
   anchor,
-  siteData,
   theme,
   coloumnTest,
   builderBlock,
@@ -22,13 +20,11 @@ export function TextBlock({
   useGradientText = false,
   gradientColor1 = "#3B82F6",
   gradientColor2 = "#8B5CF6",
-  textColor,
+  textColor = "#000000",
   noPadding = true
 }) {
-  const colors = useTheme(theme);
-  
-  // Determine the text color to use (custom color overrides theme)
-  const finalTextColor = textColor || colors.dark;
+  // Determine the text color to use
+  const finalTextColor = textColor;
 
   // Define vertical alignment classes
   const getVerticalAlignmentClasses = (vAlign) => {
@@ -100,14 +96,16 @@ export function TextBlock({
 
   const childrenWithProps = React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
-      const extraProps = { siteData };
+      const extraProps = {};
 
       // If it's a Stats component, add the isChildComponent prop
       if (child.type?.name === "Stats" || child.props?.component === "Stats") {
         extraProps.isChildComponent = true;
       }
 
-      return React.cloneElement(child, extraProps);
+      return Object.keys(extraProps).length > 0
+        ? React.cloneElement(child, extraProps)
+        : child;
     }
     return child;
   });

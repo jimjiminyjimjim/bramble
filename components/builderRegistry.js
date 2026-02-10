@@ -118,15 +118,16 @@ export const customComponents = [
     canHaveChildren: true,
     inputs: [
       {
-        name: "logoOverride",
+        name: "logo",
         type: "file",
-        allowedFileTypes: ["jpeg", "jpg", "png", "svg"]
+        allowedFileTypes: ["jpeg", "jpg", "png", "svg"],
+        helperText: "Logo image for the navbar"
       },
       {
-        name: "theme",
-        type: "enum",
-        enum: ["light", "dark", "white"],
-        defaultValue: "light"
+        name: "backgroundColor",
+        type: "color",
+        defaultValue: "transparent",
+        helperText: "Background color for the navbar"
       }
     ]
   },

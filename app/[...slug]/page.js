@@ -5,7 +5,6 @@ import {
   isPreviewing,
 } from "@builder.io/sdk-react";
 import { customComponents } from "@/components/builderRegistry";
-import Layout from "@/components/Layout";
 import { BuilderSection } from "@/components/BuilderSection";
 
 const PUBLIC_API_KEY = process.env.NEXT_PUBLIC_BUILDER_API_KEY
@@ -46,17 +45,12 @@ export default async function Page(props) {
   console.log("urlPath", urlPath);
 
   console.log("searchParams", searchParams);
-  
+
   const content = await fetchOneEntry({
     options: {...getBuilderSearchParams(searchParams), enrich: true},
     apiKey: PUBLIC_API_KEY,
     model: "page",
     userAttributes: { urlPath },
-  });
-
-  const siteData = await fetchOneEntry({
-    apiKey: PUBLIC_API_KEY,
-    model: "site-data"
   });
 
   const canShowContent = content || isPreviewing(searchParams);
@@ -71,16 +65,15 @@ export default async function Page(props) {
   }
 
   return (
-    <Layout siteData={siteData?.data}>
+    <>
       <BuilderSection model="navbar" searchParams={searchParams} />
       <Content
         content={content}
         apiKey={PUBLIC_API_KEY}
         model="page"
         customComponents={customComponents}
-        context={siteData?.data}
       />
       <BuilderSection model="footer" searchParams={searchParams} />
-    </Layout>
+    </>
   );
 }
